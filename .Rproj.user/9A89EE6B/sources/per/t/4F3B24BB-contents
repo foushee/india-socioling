@@ -1,0 +1,1168 @@
+---
+title             : "Sociolinguistics Data Analysis - CogDev Submission"
+shorttitle        : "Multilingual Dev"
+
+floatsintext      : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : yes
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "doc"
+output            : papaja::apa6_pdf
+---
+How does the presence of diversity in children’s linguistic environments shape social associations regarding the language one speaks? Prior research in sociolinguistic development has focused on contexts in which a small number of well-defined linguistic distinctions (e.g., speaking one English dialect versus another) map predictably onto distinct social features (e.g., growing up in the South versus North, or being judged ‘nice’ versus ‘smart;’ Kinzler & DeJesus, 2013). In contexts with higher linguistic diversity, we might expect language-based assumptions about individual speakers to be inhibited, given that speakers can be assumed to know multiple languages beyond the one they are currently using. On the other hand, a multilingual environment might make contrasts among different languages more salient, exaggerating language-based stereotypes and other associations.
+
+*Acknowledgments:* Jacqueline Nguyen, Prachi Talwar, DJ, Neha
+
+```{r setup}
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+options(knitr.table.format = "latex")
+
+source('0-useful/isl-0.0-resources.R')
+```
+
+```{r read-in-data, echo=F}
+d <- read.csv("data/india_socioling_data_final.csv")
+d$standard <- as.factor(d$standard)
+d$standard_num <- as.numeric(d$standard)
+d$child_age <- d$child_age - na.mean(d$child_age)
+#d_temp <- read.csv("data/d_temp.csv")
+```
+
+```{r learning-recode}
+d[d$question_type=="learning",]$hindu_face <- d[d$question_type=="learning",]$hindu_face-1
+
+d[d$question_type=="learning",]$muslim_face <- d[d$question_type=="learning",]$muslim_face-1
+
+
+d[d$question_type=="learning",]$dravidian_face <- d[d$question_type=="learning",]$dravidian_face-1
+
+d[d$question_type=="learning",]$asian_face <- d[d$question_type=="learning",]$asian_face-1
+
+d[d$question_type=="learning",]$white_face <- d[d$question_type=="learning",]$white_face-1
+```
+
+```{r set-vars}
+p <- d %>% filter(question_type == "likert")
+```
+
+# Method
+
+## Participants
+```{r demogs}
+d %>%
+    distinct(id, .keep_all=T) %>%
+    dplyr::summarise(n = n(),
+                    ladies = na.sum(child_sex=="female"),
+                    gents  = na.sum(child_sex=="male"),
+                    hindus = na.sum(child_religion=="hindu"),
+                    muslims = na.sum(child_religion=="muslim"),
+                    mean = mean(child_age),
+                    min  = min(child_age),
+                    max  = max(child_age),
+                    sd   = sd(child_age),
+                    cilo = mean - ci.low(child_age),
+                    cihi  = mean + ci.high(child_age))
+```
+
+* Three "standards"/grades: 3rd, 5th, and 7th (also ran 1st graders, but did not understand the task) 
+
+* Students run in groups of 4--12, depending on age: older students run in groups of 8--12, younger students in groups of 4--8
+
+* Selected to roughly balance gender and religion (estimated by local research assistants based on child name)
+
+```{r demogs-grade}
+d %>%
+    distinct(id, .keep_all=T) %>%
+    group_by(standard) %>%
+    dplyr::summarise(n = n(),
+                    ladies = na.sum(child_sex=="female"),
+                    gents  = na.sum(child_sex=="male"),
+                    hindus = na.sum(child_religion=="hindu"),
+                    muslims = na.sum(child_religion=="muslim"),
+                    mean = mean(child_age),
+                    min  = min(child_age),
+                    max  = max(child_age),
+                    sd   = sd(child_age),
+                    cilo = mean - ci.low(child_age),
+                    cihi  = mean + ci.high(child_age))
+```
+
+## Stimuli
+
+### Languages 
+
+We tested children's recognition of and associations with eight languages/language variants crossing regional, political, ethnic, and religious boundaries, and representing multiple language families:  
+
+* Gujarati  
+* Marathi  
+* Hindi  
+* Urdu  
+* Tamil  
+* Indian English  
+* Mainstream American English  
+* Mandarin  
+
+When languages were queried by name, rather than presented in an unlabeled audio clip, the number of languages reduced to seven, as Indian and U.S. English were both referred to as "English:"
+
+* Gujarati  
+* Marathi  
+* Hindi  
+* Urdu  
+* Tamil  
+* English  
+* Mandarin  
+
+### Audio Clips
+
+Audio clips from a male and female speaker of each of the eight languages/language variants were recorded producing the same sentence, selected to highlight phonological and lexical differences even between highly similar languages/language variants (16 clips total).
+
+### Face Arrays
+
+Visual stimuli included arrays of five stereotypical faces depicting:
+
+* an averaged 'Indian' woman wearing a bindhi ("hindu")
+* a woman with her head covered ("muslim")
+* a South Indian woman wearing a bindhi ("dravidian")
+* a white woman with light brown hair ("white")
+* an averaged 'Chinese' woman ("east asian") 
+
+or 
+
+* an averaged 'Indian' man  ("hindu")
+* a man wearing a topi cap and keffiyeh ("muslim")
+* a South Indian man ("dravidian")
+* an averaged 'White American' man ("white")
+* an averaged 'Chinese' man ("east asian")
+
+Children always had a final option: *No Opinion.*
+
+## Procedure 
+
+### Speaker Associations
+
+Children heard unlabeled audio samples of each language in a male voice and a female voice (16 total trials), and for each clip, judged the speaker's geographic origins, religion, and wealth.
+
+**Geographic origins** were judged by selecting from among four options in response to the prompt "This speaker is from...": 
+
+* *Gujarat (Same place as me)*
+
+* *Another part of India (A different city)*
+
+* *Outside India (Foreign)*
+
+* *No opinion*
+
+**Religion** was judged by selecting from among six options in response to the prompt "This speaker’s religion is...": 
+
+* *Hindu*
+
+* *Muslim*
+
+* *Jain*
+
+* *Buddhist*
+
+* *Christian*
+
+* *No opinion*
+
+**Wealth** was judged by selecting from among four options in response to the prompt "This speaker has...": 
+
+* *Less money than the people in my city*
+
+* *As much money as the people in my city*
+
+* *More money than the people in my city*
+
+* *No opinion*
+
+### Face Selections  
+
+Children guessed who ‘could be speaking’ from among five stereotypical faces (Hindu North Indian, Muslim, South Indian, Han Chinese, and White) in response to each language presented either auditorily or by name. 
+
+For each language, children were queried about both a male and a female speaker. That is, in the AUDIO block, children might first hear samples of each language in male voices, and select from among five male faces as potential speakers of each sample, then hear samples of each language in female voices, each time selecting from among five female faces (8 male voice/face trials + 8 female voice/face trials = 16 total AUDIO trials). 
+
+In the subsequent LANGUAGE NAME block, children might be asked to tick which of the five male faces speaks [Gujarati/Hindi/Urdu/Marathi/Tamil/English/Chinese], before being asked to tick which of the five female faces speaks each language (7 male voice/face trials + 7 female voice/face trials = 14 total LANGUAGE NAME trials).
+
+### Essentialism & Learning
+
+In the Essentialism & Learning block, children judged how well different faces would 'come to learn' different languages, if they had never spoken them before, but went to study them now (e.g., *How well will which each of these women come to speak Hindi? Remember, they do not speak it now.*). They selected from among four options for each face:
+
+* *Not at all (0%)*
+* *Medium (50%)* 
+* *Very well (100%)*
+* *No opinion*
+
+#### Likert Items 
+
+* *It is easier to learn a language that was spoken by your ancestors than a language that was not spoken by your ancestors, even if no one in your family currently speaks it.*
+
+...*Why?*
+
+* *Imagine two people, one who is from India, one is not from India. It will be easier for the person from India originally to learn an Indian language (e.g., Gujarati, Hindi, Marathi), even if they do not live in India now, and do not know any other Indian languages.*
+
+...*Why?*
+
+* *I could learn French as well as someone whose ancestors spoke French, but whose family lives in India and does not speak French.*
+
+...*Why?*
+
+* *You can tell a lot about a person by the language(s) they speak.*
+
+...*Why?*
+
+* *You can tell where a person is from by the language(s) they speak.*
+
+...*Why?*
+
+* *You can tell how much education someone has had by the language(s) they speak.*
+
+...*Why?*
+
+### Language Identification 
+
+In the language identification block (which always followed the other critical blocks), children heard the audio clips
+
+### Linguistic Identity 
+```{r}
+cls <- read.csv("data/child_languages.csv")
+```
+
+```{r cls-num-langs}
+cls %>% 
+  filter(question %in% 
+           c("lang1", "lang2", "lang3", 
+             "lang4", "lang5"),
+         !is.na(languages)) %>%
+  group_by(id) %>%
+  summarize(n=n()) %>%
+  ungroup %>%
+  summarize(mean=na.mean(n),
+            med=na.med(n),
+            min=na.min(n),
+            max=na.max(n))
+```
+
+```{r cls-nums-by-context}
+cls %>% 
+  filter(question %in% 
+           c("speak", "understand", 
+             "mother_tongue", "home_language", 
+             "friends_language", "lang home and friends")) %>%
+  group_by(question) %>%
+  summarize(mean=na.mean(langs_sum),
+            med=na.med(langs_sum),
+            min=na.min(langs_sum),
+            max=na.max(langs_sum))
+
+cls %>% 
+  filter(question %in% 
+           c("speak", "understand", 
+             "mother_tongue", "home_language", 
+             "friends_language", "lang home and friends")) %>%
+  group_by(question, langs_sum) %>%
+  summarize(n_children=n())
+```
+
+```{r cls-unique-langs}
+cls %>%
+  filter(question %in% c("speak", "understand", 
+             "mother_tongue", "home_language", 
+             "friends_language", "lang home and friends")) %>%
+  dplyr::select("question", "gujarati", "hindi", "english", 
+                "marathi", "urdu", "sindhi", "punjabi", "bengali",
+                "marwari", "kathiyawadi", "malyam", "memon",
+                "tamil", "rajasthani", "arabic", "bihari",
+                "telgu", "other") %>%
+  gather(language, listed, -question) %>%
+  group_by(question, language) %>%
+  summarize(listed=as.numeric(sum(listed)>0)) %>%
+  group_by(question) %>%
+  summarize(n_unique_langs=sum(listed)) %>%
+  arrange(desc(n_unique_langs))
+```
+
+```{r cls-n-per-lang}
+N_CLS <- length(unique(cls$id))
+
+cls %>%
+  dplyr::select("id", "standard", "gujarati", "hindi", "english", 
+                "marathi", "urdu", "sindhi", "punjabi", "bengali",
+                "marwari", "kathiyawadi", "malyam", "memon",
+                "tamil", "rajasthani", "arabic", "bihari",
+                "telgu", "other") %>%
+  gather(language, listed, -id, -standard) %>%
+  group_by(id, standard, language) %>%
+  summarize(listed=as.numeric(sum(listed)>0)) %>%
+  group_by(language) %>%
+  summarize(n_children=sum(listed),
+            prop_children=round(n_children/N_CLS, 2)) %>%
+  arrange(desc(n_children))
+```
+
+Hindi (n=122), Gujarati (n=117), English (n=106), Marathi (n=59), Urdu (n=23), Tamil (n=4).
+
+* *What is your mother tongue?*
+
+```{r cls-mother-lang}
+cls %>%
+    filter(question=="mother_tongue") %>%
+    mutate(language=alph_order) %>%
+    group_by(language) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+* *What languages do you speak?*
+
+```{r cls-langs-speak}
+cls %>%
+    filter(question=="speak") %>%
+    mutate(language=alph_order) %>%
+    group_by(language) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+* *What languages do you understand if someone talks, even if you can’t talk in them yourself? (for example, your grandparents’ languages)*
+
+```{r cls-langs-understand}
+cls %>%
+    filter(question=="understand") %>%
+    mutate(language=alph_order) %>%
+    group_by(language) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+* *How do you know each of your languages (e.g., from the start/birth, from friends, from a brother or sister, from your parents, from your teachers or school)* 
+
+```{r cls-how-learned}
+cls %>%
+  filter(!is.na(how_learned),
+         how_learned!="") %>%
+    group_by(how_learned) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+[Table with *Language:* / *How you know it:*]
+
+...reported learning from the beginning/forever, family, neighbors and friends, and school.
+
+* *What language(s) do you use at home?*
+
+```{r cls-home-lang}
+cls %>%
+    filter(question=="home_language") %>%
+    mutate(language=alph_order) %>%
+    group_by(language) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+* *What language(s) do you use with your friends?*
+
+```{r cls-friends-lang}
+cls %>%
+    filter(question=="friends_language") %>%
+    mutate(language=alph_order) %>%
+    group_by(language) %>%
+    dplyr::summarise(n = n()) %>%
+    arrange(desc(n)) 
+```
+
+* *Please tick the speaker who looks most like you:*
+
+[all 10 faces]
+
+```{r speaker-like-me}
+idsp <- d[d$question_type=="speaker_like_me",]
+idsp$face_category <- idsp$response
+idsp$face_category <- gsub("_female$", "", idsp$face_category)
+idsp$face_category <- gsub("_male$", "", idsp$face_category)
+idsp$face_category <- gsub("^male ", "", idsp$face_category)
+idsp$face_category <- gsub("^female ", "", idsp$face_category)
+idsp$face_category <- gsub(" female$", "", idsp$face_category)
+idsp$face_category <- gsub(" male$", "", idsp$face_category)
+
+idsp %>%
+  filter(face_category %in% c("white", "hindu", "muslim",
+                                     "dravidian", "asian")) %>%
+  summarize(hindu=sum(face_category=="hindu"),
+            muslim=sum(face_category=="muslim"),
+            dravidian=sum(face_category=="dravidian"),
+            asian=sum(face_category=="asian"),
+            white=sum(face_category=="white"))
+
+idsp %>%
+  filter(face_category %in% c("hindu", "muslim")) %>%
+           mutate(congruent=(face_category==child_religion)) %>%
+           summarize(congruent=na.sum(congruent))
+
+nrow(idsp[idsp$child_religion=="hindu" & idsp$face_category=="muslim",])
+nrow(idsp[idsp$child_religion=="muslim" & idsp$face_category %in%
+            c("hindu", "dravidian"),])
+nrow(idsp[idsp$child_religion=="hindu" & idsp$face_category %in%
+            c("hindu", "dravidian"),])
+nrow(idsp[idsp$child_religion=="hindu" & idsp$face_category %in%
+            c("asian", "white"),])
+nrow(idsp[idsp$child_religion=="muslim" & idsp$face_category %in%
+            c("asian", "white"),])
+```
+
+34 muslim, 32 hindu, 14 dravidian, 6 asian, 15 white
+
+# Results
+
+## Speaker Associations
+
+```{r associations-df}
+#a <- read.csv("data/associations_data.csv")
+a <- d %>% filter(question_type=="associations",
+                  !is.na(language),
+                  language!="") %>%
+  distinct(., .keep_all = T) %>%
+  dplyr::select(c("id", "standard", "standard_num",
+                  "child_age", "child_sex", "child_religion", 
+                  "sequence", "question_type", 
+                  "language", "speaker_gender", 
+                  "origin", all_of(origin_vars), 
+                  "religion", all_of(religion_vars),
+                  "wealth", all_of(wealth_vars)))
+
+a$language <- factor(a$language, 
+                     levels=c("gujarati", "hindi", "urdu", 
+                       "marathi", "tamil", "english_indian", 
+                       "english_american", "chinese"),
+                     labels=language_labels)
+
+a$language <- relevel(a$language, ref="Gujarati")
+```
+
+### Geographic Origins
+
+```{r geo-summary-table}
+tablifyAssociationsByStd(
+  a, "origin", origin_vars, origin_labels
+  )
+
+a %>% 
+  group_by(standard) %>%
+  summarize(gujarat=na.mean(gujarat),
+            india=na.mean(india),
+            foreign=na.mean(foreign))
+  
+tablifyAssociationsByLanguage(a, "origin", origin_vars, origin_labels)
+```
+
+```{r child="isl-1.1a-geographic-origin-associations.Rmd"}
+```
+
+### Religion
+
+```{r religion-summary-table}
+tablifyAssociationsByStd(
+  a, "religion", religion_vars, religion_labels)
+```
+
+```{r child="isl-1.1b-religion-associations.Rmd"}
+```
+
+### Comparative Wealth 
+
+```{r wealth-summary-table}
+tablifyAssociationsByStd(
+  a, "wealth", wealth_vars, wealth_labels)
+```
+
+```{r child="isl-1.1c-wealth-associations.Rmd"}
+```
+
+```{r combined-plots}
+g <- ggplot(geographic_summary_tab, 
+       aes(x=origin, y=mean, fill=origin)) +
+    geom_bar(stat="identity") + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = origin_colors, name='\n"This speaker is from..."\n') +
+    ylim(0, 1) +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono"),
+    legend.position = "bottom",
+    legend.direction="vertical") 
+
+r <- ggplot(religion_summary_tab, 
+       aes(x=religion, fill=religion)) +
+    geom_bar(stat="identity", aes(y=mean)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = religion_fills, name=religion_legend_title1) +
+    ylim(0, 1) +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono"),
+    legend.position = "bottom",
+    legend.direction="vertical") 
+
+w <- ggplot(wealth_summary_tab, 
+       aes(x=wealth, y=mean, fill=wealth)) +
+    geom_bar(stat="identity") + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = wealth_colors, 
+                      name='\n"This speaker has..."\n') +
+    ylim(0, 1) +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono"),
+    legend.position = "bottom",
+    legend.direction="vertical") 
+
+library(cowplot)
+plot_grid(g, r, w, labels = "AUTO", nrow=1)
+
+ggsave('speaker_associations.png', width=12, units="in")
+
+```
+
+```{r}
+a %>%
+  group_by(language, standard) %>%
+  summarize(mean = na.mean(coded_wealth),
+            cilo = mean-ci.low(coded_wealth),
+            cihi = mean+ci.high(coded_wealth))
+
+a %>%
+  group_by(language, standard) %>%
+  summarize(more = na.sum(richer))
+
+ggplot(a, aes(x=child_age, y=coded_wealth)) +
+  stat_smooth(method="lm") +
+  facet_wrap(~language)
+
+View(a)
+a$child_age_centered <- a$child_age
+
+write.csv(a[c("id","standard","standard_num", "child_age_centered",
+              "child_sex", "child_religion", "question_type", "sequence",
+              "language", "speaker_gender", "origin", "gujarat", "india",
+              "foreign", "no_opinion_geo", "religion", "hindu", "muslim", "jain",
+              "christian", "buddhist", "no_opinion_religion", "wealth", 
+              "poorer", "same", "richer", "no_opinion_wealth", "coded_wealth")],
+          "data/speaker_associations_data.csv")
+
+write.csv(l[c("id","standard","standard_num", "child_age_centered",])
+```
+
+## Face Selections  
+```{r faces-df}
+f <- read.csv("data/face_selection_data.csv") %>%
+  distinct(., .keep_all = T)
+f$language <- factor(f$language, 
+                     levels=c("gujarati", "hindi", "urdu", 
+                       "marathi", "tamil", "english_indian", 
+                       "english_american", "english", "chinese"),
+                     labels=c("Gujarati", "Hindi", "Urdu",
+                              "Marathi", "Tamil", "English (India)", 
+                              "English (U.S.)", 
+                              "English", "Mandarin"))
+
+f$language <- relevel(f$language, ref="Gujarati")
+f$standard <- as.factor(f$standard)
+
+f$language[f$presentation=="label" & f$language=="English (U.S.)"] <- "English"
+```
+
+```{r child="isl-1.2-face-selections.Rmd"}
+```
+
+```{r fa-summary-table}
+tablifyFacesByStd(fa, 
+                  face_vars[1:5], face_labels[1:5])
+```
+
+```{r fl-summary-table}
+tablifyFacesByStd(fl, 
+                  face_vars[1:5], face_labels[1:5])
+```
+
+## Essentialism and Learning. 
+
+## Learning  
+Children predicted how well each face would ‘come to speak [LANGUAGE],’ if the individual had never heard it before and had begun studying it. 
+
+* How well will s/he come to speak [LANGUAGE]?: 
+
++ "Not at All" (0)
++ "Medium" (1)
++ "Very well" (2)
+
+```{r learning-df}
+l <- d[d$question_type=="learning",] %>%
+  dplyr::select( "id", "standard", "standard_num",
+                "child_age_centered", "child_sex", "child_religion", "language", 
+                "hindu_face", "muslim_face", 
+                "dravidian_face", "asian_face", "white_face",
+                "no_opinion_face", "no_opinion_face_hindu",
+                "no_opinion_face_muslim", "no_opinion_face_dravidian",
+                "no_opinion_face_asian", "no_opinion_face_white") %>%
+  gather(., face, rating, -language, -standard, -standard_num, 
+         -id, -child_age_centered, -child_sex, -child_religion, -no_opinion_face,
+         -no_opinion_face_asian, -no_opinion_face_hindu, 
+         -no_opinion_face_muslim, -no_opinion_face_dravidian,
+         -no_opinion_face_white) %>%
+    group_by(face) %>%
+  distinct(., .keep_all = T) %>%
+  filter(rating>0) %>%
+  dplyr::select("id", "standard", "standard_num",
+                "child_age_centered", "child_sex", "child_religion", "language", 
+                "face", "rating",
+                "no_opinion_face", "no_opinion_face_hindu",
+                "no_opinion_face_muslim", "no_opinion_face_dravidian",
+                "no_opinion_face_asian", "no_opinion_face_white") %>%
+  arrange(standard)
+
+l$language <- factor(
+  l$language, 
+  levels=c("gujarati", "hindi", "urdu", "marathi", "tamil", 
+            "english", "chinese"), 
+  labels=language_name_labels)
+
+l$face<- factor(l$face,
+                levels=face_vars[1:5],
+                labels=c("hindu", "muslim", "dravidian", "white", "asian"))
+
+write.csv(l, "data/learning_data.csv")
+```
+
+```{r learning-summary-table}
+tablifyFacesByStd(d[d$question_type=="learning" &
+                      d$language!="marathi",], 
+                  face_vars[1:5], face_labels[1:5])
+```
+
+```{r learning-lang-face, include=F}
+learning_summary_tab <- l %>%
+  filter(!is.na(language)) %>%
+    group_by(language, face) %>%
+    summarize(mean=na.mean(rating),
+              cilo = mean-ci.low(rating),
+              cihi = mean+ci.high(rating)) 
+
+learning_summary_tab$language <- factor(
+  learning_summary_tab$language, 
+  levels=c("gujarati", "hindi", "urdu", "marathi", "tamil", 
+            "english", "chinese"), 
+  labels=language_name_labels)
+
+learning_summary_tab$face <- factor(
+  learning_summary_tab$face, 
+      levels=face_vars[1:5],
+      labels=face_labels[1:5])
+
+ggplot(learning_summary_tab, 
+       aes(x=face, y=mean, fill=face)) +
+    geom_bar(stat="identity", aes(x=face, y=mean, fill=face)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = face_colors, name=face_legend_title, labels=face_labels) +
+    labs(title='"How well will she come to learn [LANGUAGE]?"') +
+    sans_theme +
+    ylab("Mean") +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono")) 
+
+ggsave("learning_faces.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 6, height = 6, units = "in")
+```
+
+```{r learning-lang-face-std}
+learning_summary_tab <- l %>%
+  filter(!is.na(language)) %>%
+    group_by(language, standard, standard_num, face) %>%
+    summarize(mean=na.mean(rating),
+              cilo = mean-ci.low(rating),
+              cihi = mean+ci.high(rating)) 
+
+learning_summary_tab$language <- factor(
+  learning_summary_tab$language, 
+  levels=c("gujarati", "hindi", "urdu", "marathi", "tamil", 
+            "english", "chinese"), 
+  labels=language_name_labels)
+
+learning_summary_tab$face <- factor(
+  learning_summary_tab$face, 
+      levels=face_vars[1:5],
+      labels=face_labels[1:5])
+
+ggplot(learning_summary_tab[learning_summary_tab$language!="\"Marathi\"",], 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) +
+    geom_point(aes(shape=face)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) + 
+    facet_wrap(~language, ncol=3) +
+    scale_color_manual(values = FACE_colors[1:5], name=face_legend_title1, labels=face_labels[1:5]) + 
+    scale_shape_manual(values = face_shapes[1:5], name=face_legend_title1, labels=face_labels[1:5]) +
+    scale_linetype_manual(values = face_ltys[1:5], name=face_legend_title1, labels=face_labels[1:5]) +
+   # ylim(0, 2) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +    
+    sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean")
+
+ggsave("learning_faces_std_no_marathi.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+### Hindu Face  
+
+```{r hindu-rating}
+l$language <- as.factor(l$language)
+l$language <- relevel(l$language, ref="gujarati")
+hindu_lm <- lm(rating ~ language + child_age, l[l$face=='hindu_face' & l$language!="marathi",])
+summary(hindu_lm)
+Anova(hindu_lm)
+
+learning_face_hindu_lm_coefs <- as.data.frame(
+  cbind(coef(hindu_lm), confint(hindu_lm)))
+
+learning_face_hindu_lm_coefs %>% round(., 2)
+#learning_face_hindu_lm_coefs$toss <- learning_face_hindu_lm_coefs$`2.5 %`<1 #& learning_face_hindu_lm_coefs$`97.5 %`>1
+
+#learning_face_hindu_lm_coefs %>%filter(toss==0)
+```
+
+Language: ($`r reportFTest(hindu_lm, "language")`$),
+*English: ($`r reportCoefs(learning_face_hindu_lm_coefs, "languageenglish")`$)
+*Gujarati: ($`r reportCoefs(learning_face_hindu_lm_coefs, "languagegujarati")`$)
+*Hindi: ($`r reportCoefs(learning_face_hindu_lm_coefs, "languagehindi")`$)
+*Tamil: ($`r reportCoefs(learning_face_hindu_lm_coefs, "languagetamil")`$)
+
+
+```{r hindu-rating-int, include=F}
+hindu_lm <- lm(rating ~ language*child_age, l[l$face=='hindu_face',])
+summary(hindu_lm)
+Anova(hindu_lm)
+```
+
+### Muslim Face
+
+```{r muslim-rating}
+muslim_lm <- lm(rating ~ language + child_age, l[l$face=='muslim_face' & l$language!="marathi",])
+summary(muslim_lm)
+Anova(muslim_lm)
+
+learning_face_muslim_lm_coefs <- cbind(coef(muslim_lm), confint(muslim_lm)) %>% round(., 2)
+```
+
+Language: ($`r reportFTest(muslim_lm, "language")`$),
+Child age: ($`r reportFTest(muslim_lm, "child_age")`$),
+*English: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languageenglish")`$)
+*Gujarati: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagegujarati")`$)
+*Hindi: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagehindi")`$)
+Tamil: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagetamil")`$)
+*Child age: ($`r reportCoefs(learning_face_muslim_lm_coefs, "child_age")`$)
+
+```{r muslim-rating-int, include=F}
+muslim_lm <- lm(rating ~ language*child_age, l[l$face=='muslim_face',])
+summary(muslim_lm)
+Anova(muslim_lm)
+```
+
+### Dravidian Face
+
+```{r dravidian-rating}
+dravidian_lm <- lm(rating ~ language + child_age, l[l$face=='dravidian_face' & l$language!="marathi",])
+summary(dravidian_lm)
+Anova(dravidian_lm)
+
+learning_face_dravidian_lm_coefs <- cbind(coef(dravidian_lm), confint(dravidian_lm)) %>% round(., 2)
+
+```
+
+Language: ($`r reportFTest(dravidian_lm, "language")`$),
+*English: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languageenglish")`$)
+*Gujarati: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagegujarati")`$)
+*Hindi: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagehindi")`$)
+*Tamil: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagetamil")`$)
+
+```{r dravidian-rating-int, include=F}
+dravidian_lm <- lm(rating ~ language*child_age, l[l$face=='dravidian_face',])
+summary(dravidian_lm)
+Anova(dravidian_lm)
+```
+
+### Asian Face
+
+```{r asian-rating, include=F}
+asian_lm <- lm(rating ~ language + child_age, l[l$face=='asian_face',])
+summary(asian_lm)
+Anova(asian_lm)
+```
+
+```{r asian-rating-int}
+asian_lm <- lm(rating ~ language*child_age, l[l$face=='asian_face' & l$language!="marathi",])
+summary(asian_lm)
+Anova(asian_lm)
+
+learning_face_asian_lm_coefs <- cbind(coef(asian_lm), confint(asian_lm)) %>% round(., 2)
+```
+Language: ($`r reportFTest(asian_lm, "language")`$),
+Child age: ($`r reportFTest(asian_lm, "child_age")`$),
+Interaction: ($`r reportFTest(asian_lm, "language:child_age")`$),
+*English: ($`r reportCoefs(learning_face_asian_lm_coefs, "languageenglish")`$)
+*Gujarati: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagegujarati")`$)
+*Hindi: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagehindi")`$)
+*Tamil: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagetamil")`$)
+*languagetamil:child_age: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagetamil:child_age")`$)
+
+### White Face
+
+```{r white-rating}
+white_lm <- lm(rating ~ language*child_age, l[l$face=='white_face' & l$language!="marathi",])
+summary(white_lm)
+Anova(white_lm)
+mean(as.numeric(l[l$face=='asian_face' & l$language!="marathi",]$rating))
+learning_face_white_lm_coefs<- cbind(coef(white_lm), confint(white_lm)) %>% round(., 2)
+```
+Language: ($`r reportFTest(white_lm, "language")`$),
+Child age: ($`r reportFTest(white_lm, "child_age")`$),
+Interaction: ($`r reportFTest(white_lm, "language:child_age")`$),
+*English: ($`r reportCoefs(learning_face_white_lm_coefs, "languageenglish")`$)
+*Gujarati: ($`r reportCoefs(learning_face_white_lm_coefs, "languagegujarati")`$)
+Hindi: ($`r reportCoefs(learning_face_white_lm_coefs, "languagehindi")`$)
+*Tamil: ($`r reportCoefs(learning_face_white_lm_coefs, "languagetamil")`$)
+languagetamil:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagetamil:child_age")`$)
+languagegujarati:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagegujarati:child_age")`$)
+languagehindi:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagehindi:child_age")`$)
+
+
+
+```{r diverging-barchart}
+ldf <- d[d$question_type=="learning", 
+         c("language", "id", "standard", face_vars[1:5])] %>% gather(., face, rating, -language, -standard, -id) %>%
+    group_by(face) %>% filter(!is.na(rating)) %>%
+  group_by(language) %>%
+  mutate(mean_rating = na.mean(rating),
+         sd_rating = sd(rating, na.rm=T),
+         by_lang_z = (rating-mean_rating)/sd_rating,
+         rating_type=ifelse(by_lang_z < 0, "below", "above")) %>%
+  group_by(language, face, rating_type) %>%
+  summarize(sum=sum(by_lang_z))
+
+#ldf$rating_type <- factor(ldf$rating_type, levels=c("below", "above"),
+#                          labels=c("Below Average", "Above Average"))
+ldf$language <- factor(ldf$language, 
+                       levels = c("gujarati", "hindi", "tamil",
+                                  "chinese", "english"),
+                       labels = c('"Gujarati"', '"Hindi"', '"Tamil"',
+                                  '"Chinese"', '"English"')
+                  )
+
+ldf$face <- plyr::mapvalues(ldf$face,from=c(face_vars[1:5]),
+                            to=c("HINDU", "MUSLIM", 
+                                 "DRAVIDIAN", "WHITE", "ASIAN"))
+
+ggplot(ldf[!is.na(ldf$language),], 
+       aes(x=face, y=sum)) + 
+  geom_bar(stat="identity", aes(fill=rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    #labels = c("Above Average", "Below Average"), 
+                    values = c("gray65", "#31a354")) + 
+  facet_wrap(~language, ncol=3) +
+  xlab("Face") +
+  #ylim(-100, 100) +
+  ylab("Normalized Rating") +
+    sans_axes_theme +
+    theme(axis.text.y=element_text(size=8, color="gray30", 
+                              family="sans"),
+          #legend.text = element_text(size=10),
+          #legend.title = element_text(size=10),
+          legend.position = "bottom") +
+    coord_flip() 
+
+ggsave("learning_diverging_barplot.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+ldf$face_rating_type <- ldf$rating_type
+ldf$face_rating_type[ldf$rating_type=="above"] <- 
+  paste("Above Average:", ldf$face[ldf$rating_type=="above"])
+
+ldf$face_rating_type <- factor(ldf$face_rating_type, 
+                               levels=c("below", "Above Average: HINDU",
+                                        "Above Average: MUSLIM",
+                                        "Above Average: DRAVIDIAN",
+                                        "Above Average: ASIAN",
+                                        "Above Average: WHITE"),
+                          labels=c("Below Average", "Above Average: HINDU",
+                                        "Above Average: MUSLIM",
+                                        "Above Average: DRAVIDIAN",
+                                        "Above Average: ASIAN",
+                                        "Above Average: WHITE"))
+
+face_rating_type_colors <- c(
+  "Below Average" = "gray65",
+  "Above Average: HINDU" = "#1b9e77", # teal
+  "Above Average: MUSLIM" = "#7570b3", # purple
+  "Above Average: DRAVIDIAN" = "#e7298a", # magenta
+  "Above Average: ASIAN" = "#d95f02", # burnt orange
+  "Above Average: WHITE" = "#e6ab02" # goldenrod 
+)
+
+ggplot(ldf[!is.na(ldf$language),], 
+       aes(x=face, y=sum)) + 
+  geom_bar(stat="identity", aes(fill=face_rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    values=face_rating_type_colors) + 
+                    #labels = c("Above Average", "Below Average"), 
+                    #values = c("gray65", "#31a354")) + 
+  facet_wrap(~language, ncol=3) +
+  xlab("Face") +
+  #ylim(-100, 100) +
+  ylab("Normalized Rating") +
+    sans_axes_theme +
+    theme(axis.text.y=element_text(size=8, color="gray30", 
+                              family="sans"),
+          legend.text = element_text(size=8),
+          legend.title = element_text(size=10),
+          legend.position = "bottom") +
+    coord_flip() 
+
+ggsave("learning_diverging_barplot_colored.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r}
+fa$modal <- NA
+fa$modal[fa$language=="Urdu" & fa$muslim_face==1] <- 1
+fa$modal[fa$language=="Urdu" & fa$hindu_face==1] <- 0
+fa$modal[fa$language=="Urdu" & fa$asian_face==1] <- 0
+fa$modal[fa$language=="Urdu" & fa$white_face==1] <- 0
+fa$modal[fa$language=="Urdu" & fa$dravidian_face==1] <- 0
+fa$modal[fa$language=="Urdu" & fa$no_opinion_face==1] <- 0
+
+fa$modal[fa$language=="Mandarin" & fa$asian_face==1] <- 1
+fa$modal[fa$language=="Mandarin" & fa$white_face==1] <- 0
+fa$modal[fa$language=="Mandarin" & fa$muslim_face==1] <- 0
+fa$modal[fa$language=="Mandarin" & fa$hindu_face==1] <- 0
+fa$modal[fa$language=="Mandarin" & fa$dravidian_face==1] <- 0
+fa$modal[fa$language=="Mandarin" & fa$no_opinion_face==1] <- 0
+
+fa$modal[fa$language=="Marathi" & fa$asian_face==1] <- 0
+fa$modal[fa$language=="Marathi" & fa$white_face==1] <- 0
+fa$modal[fa$language=="Marathi" & fa$muslim_face==1] <- 0
+fa$modal[fa$language=="Marathi" & fa$hindu_face==1] <- 1
+fa$modal[fa$language=="Marathi" & fa$dravidian_face==1] <- 0
+fa$modal[fa$language=="Marathi" & fa$no_opinion_face==1] <- 0
+
+fa$modal[fa$language=="Tamil" & fa$dravidian_face==1] <- 1
+fa$modal[fa$language=="Tamil" & fa$asian_face==1] <- 0
+fa$modal[fa$language=="Tamil" & fa$muslim_face==1] <- 0
+fa$modal[fa$language=="Tamil" & fa$hindu_face==1] <- 0
+fa$modal[fa$language=="Tamil" & fa$white_face==1] <- 0
+fa$modal[fa$language=="Tamil" & fa$no_opinion_face==1] <- 0
+
+faid <- merge(fa, i[c("id", "language", "correct")], by=c("id", "language"))
+
+faid %>% 
+  filter(!is.na(correct)) %>%
+  group_by(standard, language, correct) %>%
+  summarize(mean_trials = na.mean(modal))
+
+
+a$modal <- NA
+a$modal[a$language=="Urdu" & a$muslim==1] <- 1
+a$modal[a$language=="Urdu" & a$hindu==1] <- 0
+a$modal[a$language=="Urdu" & a$christian==1] <- 0
+a$modal[a$language=="Urdu" & a$buddhist==1] <- 0
+a$modal[a$language=="Urdu" & a$jain==1] <- 0
+a$modal[a$language=="Urdu" & a$no_opinion_religion==1] <- 0
+
+a$modal[a$language=="Marathi" & a$muslim==1] <- 0
+a$modal[a$language=="Marathi" & a$hindu==1] <- 1
+a$modal[a$language=="Marathi" & a$christian==1] <- 0
+a$modal[a$language=="Marathi" & a$buddhist==1] <- 0
+a$modal[a$language=="Marathi" & a$jain==1] <- 0
+a$modal[a$language=="Marathi" & a$no_opinion_religion==1] <- 0
+
+aid <- merge(a, i[c("id", "language", "correct")], by=c("id", "language"))
+
+aid %>% 
+  filter(!is.na(correct)) %>%
+  group_by(standard, language, correct) %>%
+  summarize(mean_trials = na.mean(modal))
+
+a$modal <- NA
+a$modal[a$language=="Urdu" & a$gujarat==1] <- 1
+a$modal[a$language=="Urdu" & a$india==1] <- 0
+a$modal[a$language=="Urdu" & a$foreign==1] <- 0
+a$modal[a$language=="Urdu" & a$no_opinion_geo==1] <- 0
+
+a$modal[a$language=="Marathi" & a$gujarat==1] <- 0
+a$modal[a$language=="Marathi" & a$india==1] <- 1
+a$modal[a$language=="Marathi" & a$foreign==1] <- 0
+a$modal[a$language=="Marathi" & a$no_opinion_geo==1] <- 0
+
+a$modal[a$language=="Tamil" & a$gujarat==1] <- 0
+a$modal[a$language=="Tamil" & a$india==1] <- 1
+a$modal[a$language=="Tamil" & a$foreign==1] <- 0
+a$modal[a$language=="Tamil" & a$no_opinion_geo==1] <- 0
+
+a$modal[a$language=="Mandarin" & a$gujarat==1] <- 0
+a$modal[a$language=="Mandarin" & a$india==1] <- 1
+a$modal[a$language=="Mandarin" & a$foreign==1] <- 0
+a$modal[a$language=="Mandarin" & a$no_opinion_geo==1] <- 0
+
+aid <- merge(a, i[c("id", "language", "correct")], by=c("id", "language"))
+
+aid %>% 
+  filter(!is.na(correct)) %>%
+  group_by(standard, language, correct) %>%
+  summarize(mean_trials = na.mean(modal)) %>%
+  filter(!is.na(mean_trials))
+```
+
+```{r}
+l_lmer <- lmer(rating ~ face*language+child_age + (1|id), l)
+summary(l_lmer)
+Anova(l_lmer)
+
+l_lmer <- lmer(rating ~ face*language*child_age + (1|id), l)
+summary(l_lmer)
+Anova(l_lmer)
+```
+
+### Likert Items  
+
+```{r likert-df}
+likert_df <- d %>%
+  dplyr::select("id", "standard", "standard_num",
+                "child_age_centered", "child_sex", "child_religion",
+                "question_type", "response", "why") %>%
+  filter(question_type %in% c("tell_a_lot", "tell_where_from", "tell_education", "french", "ancestors", "indian"),
+         !is.na(response)) 
+
+likert_df$response <- as.numeric(as.character(likert_df$response))
+
+likert_df %>%
+  group_by(question_type) %>%
+  summarize(mean = na.mean(response),
+            min=min(response, na.rm=T),
+            max=max(response, na.rm=T),
+            cilo = mean - ci.low(response),
+            cihi = mean + ci.high(response)) %>%
+  group_by(question_type) %>%
+  summarize(text=paste("M=", round(mean,2),
+                       " [", round(cilo,2),
+                       ", ", round(cihi,2),
+                       "]", sep=""))
+
+write.csv(likert_df, "data/likert_items_data.csv")
+
+i <- i %>%
+  dplyr::select("id", "standard", "standard_num",
+                "child_age_centered", "child_sex", "child_religion",
+                "question_type", "language", "response", "correct") %>%
+  filter(!is.na(response)) 
+
+i$language <- factor(
+  i$language, levels=language_vars, 
+  labels=language_labels)
+
+write.csv(i, "data/language_identification_data.csv")
+```
+
+```{r likert-summary-table}
+likert_std_summary_tab <- likert_df %>%
+  filter(question_type %in% c("tell_a_lot", "tell_where_from", "tell_education", "french", "ancestors", "indian")) %>%
+  ungroup(.) %>%
+  dplyr::select("question_type", "standard", "standard_num", "response") %>%
+    group_by(question_type, standard, standard_num) %>%
+    summarize(mean=na.mean(response),
+              cilo = mean-ci.low(response),
+              cihi = mean+ci.high(response)) 
+
+likert_std_summary_tab$question_type <- factor(
+  likert_std_summary_tab$question_type,
+  levels = likert_levels,
+  labels = likert_labels
+)
+
+ggplot(likert_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=question_type)) +
+    geom_line(aes(lty=question_type)) + 
+    geom_point(aes(shape=question_type)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~question_type, ncol=3) +
+    scale_color_manual(values=likert_colors, 
+      likert_legend_title) + 
+    scale_shape_manual(values=likert_shapes,
+                      likert_legend_title) +
+    scale_linetype_manual(values=likert_ltys,
+                          likert_legend_title) +
+    ylim(1, 5) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +
+    sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean")
+  
+ggsave("likert_std.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r}
+id_std_summary_tab <- i %>%
+  group_by(language, standard_num) %>%
+  summarize(mean = na.mean(correct),
+            cilo = mean-ci.low(correct),
+            cihi = mean+ci.high(correct))
+  
+id_std_summary_tab$language <- factor(
+  id_std_summary_tab$language, levels=language_vars, 
+  labels=language_labels)
+
+ggplot(id_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=language)) +
+    geom_line(aes(lty=language), size=1) + 
+    geom_point(aes(shape=language), size=3) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), size=1, width=0) +
+    scale_color_manual(values=language_colors, 
+      "Language") + 
+    scale_shape_manual(values=language_shapes,
+                      "Language") +
+    scale_linetype_manual(values=language_ltys,
+                      "Language") +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +
+    sans_axes_theme_bigger +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean Accuracy")
+
+ggsave("id_accuracy_std.png", device = "png", 
+       path = "plots/final",
+       scale = 1, width = 7, height = 5, units = "in")
+```

@@ -1,0 +1,463 @@
+---
+title: "India Sociolinguistics Face Selection Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-17"
+output: pdf_document
+---
+```{r faces-setup, include=FALSE}
+#knitr::opts_chunk$set(echo = F)
+
+#source("0-useful/isl-0.0-resources.R")
+#f <- read.csv("data/face_selection_data.csv") %>%
+#  distinct(., .keep_all = T)
+
+f$language <- relevel(f$language, ref="Gujarati")
+f$standard <- as.factor(f$standard)
+f$num_faces <- f$hindu_face + f$muslim_face + f$dravidian_face +
+  f$asian_face + f$white_face
+
+fl <-f[f$presentation=="label",]
+fl$language <- factor(fl$language, levels=c("Gujarati", 
+                                            "Hindi", "Urdu", "Marathi", "Tamil", "English", "Mandarin"))
+```
+
+```{r how-many-faces, include=F}
+#table("std"=f$standard, "num faces"=f$num_faces)
+num_face_summary_tab <- f %>% 
+  ungroup() %>%
+  mutate(n=n()) %>%
+  filter(!is.na(num_faces)) %>%
+  group_by(num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+num_face_std_summary_tab <- f %>% 
+  filter(!is.na(num_faces)) %>%
+  group_by(standard) %>%
+  mutate(n=n()) %>% 
+  group_by(standard, num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+nfp <- ggplot(num_face_std_summary_tab, 
+       aes(x=num_faces, y=percent_selection)) +
+  geom_bar(stat="identity") +
+  facet_grid(~standard) +
+  sans_theme +
+  ylab("percent of selections") +
+  xlab("# faces selected") +
+  sans_axes_theme +
+    labs(title="Number of Faces Selected by Standard")
+
+#table(f$num_faces>1) #90 trials more than one face
+#length(unique(f[f$num_faces>1,]$id)) #24 kids
+
+# table(f$face) # 69 no-opinion trials
+# length(unique(f[f$face=="idk",]$id)) # 36 kids
+```
+
+```{r no-face,include=F}
+f %>%
+  group_by(id, question_type, presentation, speaker_gender, language, sequence) %>%
+  mutate(num_opt_outs = sum(no_opinion_face)) %>%
+  group_by(standard) %>%
+  summarize(num_opt_outs = sum(num_opt_outs)/n()) %>%
+  kable(.) 
+
+length(unique(f[f$no_opinion_face==1,]$id))
+```
+...and rarely 'opted out'
+
+# Face Preferences
+
+## Language Presented in Audio Clip
+
+*Who could be speaking?* 
+
+Children across standards tended to select a single face in response to the face selection questions (95\% of trials in 3rd standard, 89\% of trials in 5th standard, and 90\% of trials in 7th standard; 91\% overall). Twenty-two children selected more than one face across 53 trials (10 for both Hindi and Urdu, 7 for U.S English, Indian English, and Marathi, 5 for Tamil, 4 for Gujarati, and 3 for Mandarin).
+Twenty-nine children selected ``no opinion'' on 39 trials (13 for Mandarin, 11 for Tamil, 6 for Marathi, 3 for Gujarati and Urdu, 2 for U.S. English, and 1 for Hindi). 
+
+Children exhibited a preference for 1-2 faces as speakers for most languages they heard in audio clips. 
+
+## Language Presented by Name
+
+*Who speaks [LANGUAGE]?*
+
+Children exhibited a preference for 1-2 faces as speakers for most languages they were asked about by name. 
+
+## Over Time 
+
+### By Standard (Grade)
+
+#### in Audio Clip
+
+#### by Language Name
+
+Selective face preferences tended to get stronger with age for both auditorily presented and named languages (a greater and greater proportion of children chose the same face(s) as speakers of a given audio clip, or for a given named language).
+
+## By Age
+
+### in Audio Clip
+
+## Models: Odds of Face Selection
+
+### AUDIO
+
+```{r audio-opt-out-more-than-1}
+table(f[f$presentation=="audio",]$num_faces>1) #51 trials more than one face
+length(unique(f[f$presentation=="audio" & f$num_faces>1,]$id)) #21 kids
+
+table(f[f$presentation=="audio",]$face) # 39 no-opinion trials
+length(unique(f[f$presentation=="audio" & f$no_opinion_face==1,]$id)) # 29 kids
+table(unique(f[f$presentation=="audio" & f$face=="idk",]$language)) 
+```
+
+#### Hindu face (from audio clip)
+
+```{r audio-hindu-glm, include=F}
+options(scipen=1000)
+fa <- f[f$presentation=="audio",]
+fa$child_age <- fa$child_age - na.mean(fa$child_age)
+
+audio_face_hindu_glm <- glm(
+  hindu_face ~ child_age + language, 
+  family="binomial", fa)
+
+audio_face_hindu_glm_coefs <- cbind(round(exp(coef(audio_face_hindu_glm)), 2), round(exp(confint(audio_face_hindu_glm)), 2))
+```
+
+```{r audio-hindu-int-glm}
+fa %>%
+  group_by(language, standard) %>%
+  summarize(mean=na.mean(hindu_face))
+
+fa %>%
+  group_by(language, standard) %>%
+  summarize(mean=na.mean(asian_face))
+
+fl %>%
+  group_by(language) %>%
+  summarize(mean=na.mean(hindu_face))
+
+audio_face_hindu_int_glm <- glm(
+  hindu_face ~ child_age*language, 
+  family="binomial", fa)
+
+audio_face_hindu_int_glm_coefs <- as.data.frame(cbind(round(exp(coef(audio_face_hindu_int_glm)), 2),
+round(exp(confint(audio_face_hindu_int_glm)), 2)))
+
+audio_face_hindu_int_glm_coefs$toss <- audio_face_hindu_int_glm_coefs$`2.5 %`<1 & audio_face_hindu_int_glm_coefs$`97.5 %`>1
+
+audio_face_hindu_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_hindu_int_glm)
+```
+
+There was a significant interaction between child age and language ($`r reportAnova(audio_face_hindu_int_glm, "child_age:language")`$), such that as children got older, they increasingly selected the hindu face for Hindi ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageHindi")`$), 
+Urdu ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageUrdu")`$), 
+Gujarati ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age")`$),
+Marathi ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageMarathi")`$),
+Tamil ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageTamil")`$), and
+Indian English ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageEnglish (India)")`$), and 
+decreasingly selected it in response to clips of Mandarin ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageMandarin")`$).
+
+#### Muslim face (from audio clip)
+
+```{r audio-muslim-glm, include=F}
+#audio_face_muslim_glmer <- glmer(
+#  muslim_face ~ child_age + language + (1|id), 
+#  family="binomial", f[f$presentation=="audio",])
+
+#cbind(round(exp(fixef(audio_face_muslim_glmer)), 2),
+#round(exp(confint(audio_face_muslim_glmer)), 2))
+
+audio_face_muslim_glm <- glm(
+  muslim_face ~ child_age + language, 
+  family="binomial", fa)
+
+audio_face_muslim_glm_coefs <- cbind(round(exp(coef(audio_face_muslim_glm)), 2),
+round(exp(confint(audio_face_muslim_glm)), 2))
+```
+
+```{r audio-muslim-int-glm}
+audio_face_muslim_int_glm <- glm(
+  muslim_face ~ child_age*language, 
+  family="binomial", fa)
+
+audio_face_muslim_int_glm_coefs <- as.data.frame( cbind(round(exp(coef(audio_face_muslim_int_glm)), 2),
+round(exp(confint(audio_face_muslim_int_glm)), 2))
+)
+
+audio_face_muslim_int_glm_coefs$toss <- audio_face_muslim_int_glm_coefs$`2.5 %`<1 & audio_face_muslim_int_glm_coefs$`97.5 %`>1
+
+audio_face_muslim_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_muslim_int_glm)
+
+fa%>% group_by(language,standard) %>%
+  summarize(mean=na.mean(muslim_face))
+
+#, such that as children got older, they increasingly selected the hindu face for Indian English ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageEnglish (India)"`$)$), Hindi ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageHindi")`$), Gujarati ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageGujarati")`$),  Tamil ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageTamil")`$), and Urdu ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageUrdu")`$), and decreasingly selected it in response to clips of Mandarin ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age")`$), U.S. English .
+```
+
+There were significant effects of language ($`r reportAnova(audio_face_muslim_int_glm, "language")`$) and its interaction with child age ($`r reportAnova(audio_face_muslim_int_glm, "child_age:language")`$). 
+Children tended to select the muslim face as a speaker of Urdu (52\% of trials overall; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageUrdu")`$), and not to select the muslim face as a speaker of Gujarati (12\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageGujarati")`$), Mandarin (3\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageMandarin")`$), and Marathi (6\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageMarathi")`$). 
+As children got older, they associated the muslim face with Gujarati even less (35\% of trials in 3rd grade to 6\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageGujarati")`$), and 
+increased their relative selection of it as the speaker of the Hindi (42\% of trials in 3rd grade to 61\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageHind")`$), Urdu (48\% of trials in 3rd grade to 59\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageUrdu")`$), and Indian English ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age:languageEnglish (India)")`$) audio clips. 
+
+#### Dravidian face (from audio clip)
+
+```{r audio-dravidian-glm, include=F}
+audio_face_dravidian_glm <- glm(
+  dravidian_face ~ child_age + language, 
+  family="binomial", fa)
+
+audio_face_dravidian_glm_coefs <-
+  cbind(round(exp(coef(audio_face_dravidian_glm)), 2),
+        round(exp(confint(audio_face_dravidian_glm)), 2))
+```
+
+```{r audio-dravidian-int-glm}
+audio_face_dravidian_int_glm <- glm(
+  dravidian_face ~ child_age*language, 
+  family="binomial", fa)
+
+audio_face_dravidian_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_dravidian_int_glm)), 2),
+        round(exp(confint(audio_face_dravidian_int_glm)), 2))
+)
+
+audio_face_dravidian_int_glm_coefs$toss <- audio_face_dravidian_int_glm_coefs$`2.5 %`<1 & audio_face_dravidian_int_glm_coefs$`97.5 %`>1
+
+audio_face_dravidian_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_dravidian_int_glm)
+#Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age")`$), 
+# Hindi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age:languageHindi")`$), 
+```
+
+There was a significant effect of language ($`r reportAnova(audio_face_dravidian_int_glm, "language")`$), such that children were unlikely to select the dravidian face as a speaker of Mandarin ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageMandarin")`$), 
+Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "(Intercept)")`$), 
+Indian English ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageEnglish (India)")`$), Hindi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageHindi")`$), or
+U.S. English ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageEnglish (U.S.)")`$),
+and likely to select it as a speaker of Marathi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageMarathi")`$). 
+A significant interaction between child age and language  ($`r reportAnova(audio_face_dravidian_int_glm, "child_age:language")`$), further revealed that as children got older, they increasingly selected the dravidian face in response to clips of 
+Tamil ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age:languageTamil")`$) and Marathi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age:languageMarathi")`$), and decreasingly in response to Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age")`$) and Mandarin ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age:languageMandarin")`$). 
+
+#### East Asian face (from audio clip)
+
+```{r audio-asian-glm, include=F}
+audio_face_asian_glm <- glm(
+  asian_face ~ child_age + language, 
+  family="binomial", fa)
+
+audio_face_asian_glm_coefs <- cbind(round(exp(coef(audio_face_asian_glm)), 2),
+round(exp(confint(audio_face_asian_glm)), 2))
+```
+
+```{r audio-asian-int-glm}
+audio_face_asian_int_glm <- glm(
+  asian_face ~ child_age*language, 
+  family="binomial", fa)
+
+audio_face_asian_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_asian_int_glm)), 2),
+        round(exp(confint(audio_face_asian_int_glm)), 2))
+)
+
+audio_face_asian_int_glm_coefs$toss <- 
+  audio_face_asian_int_glm_coefs$`2.5 %`<1 &
+  audio_face_asian_int_glm_coefs$`97.5 %`>1
+
+audio_face_asian_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_asian_int_glm)
+```
+
+There was a significant effect of language ($`r reportAnova(audio_face_asian_int_glm, "language")`$), such that children were likely to select the asian face as the speaker of Mandarin ($`r reportORs(audio_face_asian_int_glm_coefs, "languageMandarin")`$), Tamil ($`r reportORs(audio_face_asian_int_glm_coefs, "languageTamil")`$), U.S. English ($`r reportORs(audio_face_asian_int_glm_coefs, "languageEnglish (U.S.)")`$), and Indian English ($`r reportORs(audio_face_asian_int_glm_coefs, "languageEnglish (India)")`$), and unlikely to select the asian face as the speaker of Gujarati ($`r reportORs(audio_face_asian_int_glm_coefs, "(Intercept)")`$).
+We also saw a significant interaction between language and child age ($`r reportAnova(audio_face_asian_int_glm, "child_age:language")`$), such that as children got older, they increasingly selected the east asian face for 
+Mandarin ($`r reportORs(audio_face_asian_int_glm_coefs, "child_age:languageMandarin")`$).
+
+#### White face (from audio clip)
+
+```{r audio-white-glm, include=F}
+audio_face_white_glm <- glm(
+  white_face ~ child_age + language, 
+  family="binomial", fa)
+
+audio_face_white_glm_coefs <- 
+  cbind(round(exp(coef(audio_face_white_glm)), 2),
+        round(exp(confint(audio_face_white_glm)), 2)) 
+```
+
+```{r audio-white-int-glm}
+audio_face_white_int_glm <- glm(
+  white_face ~ child_age*language, 
+  family="binomial", fa)
+
+audio_face_white_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_white_int_glm)), 2),
+        round(exp(confint(audio_face_white_int_glm)), 2))
+)
+
+audio_face_white_int_glm_coefs$toss <- 
+  audio_face_white_int_glm_coefs$`2.5 %`<1 &
+  audio_face_white_int_glm_coefs$`97.5 %`>1
+
+audio_face_white_int_glm_coefs %>% filter(toss==0)
+
+Anova(audio_face_white_int_glm)
+```
+There was a significant effect of language ($`r reportAnova(audio_face_white_int_glm, "language")`$), such that children rarely selected the white face as a speaker of Gujarati (4\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "(Intercept)")`$), and selected it as a speaker of either English (Indian, 70\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageEnglish (India)")`$; U.S., 65\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageEnglish (U.S.)")`$), Mandarin (12\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageMandarin")`$) and Tamil (16\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageTamil")`$). 
+There was a significant interaction between child age and language ($`r reportAnova(audio_face_white_int_glm, "child_age:language")`$), such that as children got older, they increasingly selected the white face for 
+Indian English ($`r reportORs(audio_face_white_int_glm_coefs, "child_age:languageEnglish (India)")`$) and 
+U.S. English ($`r reportORs(audio_face_asian_int_glm_coefs, "child_age:languageEnglish (U.S.)")`$).
+
+### LANGUAGE NAME
+
+```{r label-opt-out-more-than-1}
+table(f[f$presentation=="label",]$num_faces>1) #37 trials more than one face
+length(unique(f[f$presentation=="label" & f$num_faces>1,]$id)) #14 kids
+
+table(f[f$presentation=="label",]$face) # 30 no-opinion trials
+length(unique(f[f$presentation=="label" & f$no_opinion_face==1,]$id)) # 14 kids
+table(unique(f[f$presentation=="label" & f$no_opinion_face==1,]$language))
+```
+
+#### Hindu face (from language name)
+
+```{r label-hindu-glm, include=F}
+fl$child_age <- fl$child_age - mean(fl$child_age)
+label_face_hindu_glm <- glm(
+  hindu_face ~ child_age + language, 
+  family="binomial", fl)
+
+summary(label_face_hindu_glm)
+label_face_hindu_glm_coefs <- cbind(round(exp(coef(label_face_hindu_glm)), 2),
+round(exp(confint(label_face_hindu_glm)), 2))
+```
+
+```{r label-hindu-int-glm}
+label_face_hindu_int_glm <- glm(
+  hindu_face ~ child_age*language, 
+  family="binomial", fl)
+
+label_face_hindu_int_glm_coefs <- cbind(round(exp(coef(label_face_hindu_int_glm)), 2),
+round(exp(confint(label_face_hindu_int_glm)), 2))
+
+Anova(label_face_hindu_int_glm)
+```
+We saw significant effects of language ($`r reportAnova(label_face_hindu_int_glm, "language")`$), child age ($`r reportAnova(label_face_hindu_int_glm, "child_age")`$), and their interaction ($`r reportAnova(label_face_hindu_int_glm, "child_age:language")`$).
+Children robustly selected the hindu face as a speaker of Gujarati (58\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "(Intercept)")`$), and did so significantly less for Mandarin (2\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageMandarin")`$), 
+English (2\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageEnglish")`$), 
+Urdu (7\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageUrdu")`$), 
+Tamil (25\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageTamil")`$), 
+Hindi (35\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageHindi")`$), and 
+Marathi (49\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageMarathi")`$).
+With age, children became less likely to select the hindu face as the speaker of 
+Urdu (from 15\% to 2\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age:languageUrdu")`$), 
+Chinese (from 2\% to 1\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age:languageMandarin")`$), and 
+Tamil (from 31\% to 22\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age:languageTamil")`$).
+
+#### Muslim face (from language name)
+
+```{r label-muslim-glm, include=F}
+label_face_muslim_glm <- glm(
+  muslim_face ~ child_age + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_muslim_glm)), 2),
+round(exp(confint(label_face_muslim_glm)), 2)) 
+```
+
+```{r label-muslim-int-glm}
+label_face_muslim_int_glm <- glm(
+  muslim_face ~ child_age*language, 
+  family="binomial", fl)
+
+label_face_muslim_int_glm_coefs <- cbind(round(exp(coef(label_face_muslim_int_glm)), 2),
+round(exp(confint(label_face_muslim_int_glm)), 2)) 
+
+Anova(label_face_muslim_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_muslim_int_glm, "language")`$), child age ($`r reportAnova(label_face_muslim_int_glm, "child_age")`$), and their interaction ($`r reportAnova(label_face_muslim_int_glm, "child_age:language")`$): with age, children became increasingly likely to select the \textsc{muslim} face as the speaker of Urdu (from 58\% of trials in 3rd grade to 93\% of trials in 7th; $`r reportORs(label_face_muslim_int_glm_coefs, "languageUrdu")`$).
+
+#### Dravidian face (from language name)
+
+```{r label-dravidian-glm, include=F}
+label_face_dravidian_glm <- glm(
+  dravidian_face ~ child_age + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_dravidian_glm)), 2),
+round(exp(confint(label_face_dravidian_glm)), 2))
+```
+
+```{r label-dravidian-int-glm}
+label_face_dravidian_int_glm <- glm(
+  dravidian_face ~ child_age*language, 
+  family="binomial", fl)
+
+label_face_dravidian_int_glm_coefs <- cbind(round(exp(coef(label_face_dravidian_int_glm)), 2),
+round(exp(confint(label_face_dravidian_int_glm)), 2))
+
+Anova(label_face_dravidian_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_dravidian_int_glm, "language")`$), such that children preferred the dravidian faces as speakers of Tamil (53\% of trials overall; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageTamil")`$) and Marathi (38\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageMarathi")`$), and significantly less for English (2\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageEnglish")`$), Mandarin (4\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageMandarin")`$), Urdu (7\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageUrdu")`$), Gujarati (21\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "(Intercept)")`$), and Hindi (10\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageEnglish")`$).  
+A significant interaction between language and child age ($`r reportAnova(label_face_dravidian_int_glm, "child_age:language")`$) additionally suggested that, with age, children became more likely to identify the dravidian face as specifically a potential speaker of Tamil (from 33\% of trials in 3rd grade, to 68\% of trials in 7th grade; $`r reportORs(label_face_dravidian_int_glm_coefs, "child_age:languageTamil")`$). 
+
+* This reflects accurate model of language--phenotype association
+
+#### East Asian face (from language name)
+
+```{r label-asian-glm, include=F}
+label_face_asian_glm <- glm(
+  asian_face ~ child_age + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_asian_glm)), 2),
+round(exp(confint(label_face_asian_glm)), 2)) 
+```
+
+```{r label-asian-int-glm}
+label_face_asian_int_glm <- glm(
+  asian_face ~ child_age*language, 
+  family="binomial", fl)
+
+label_face_asian_int_glm_coefs <- cbind(round(exp(coef(label_face_asian_int_glm)), 2),
+round(exp(confint(label_face_asian_int_glm)), 2))
+
+Anova(label_face_asian_int_glm)
+```
+
+We saw a significant effect of language ($`r reportAnova(label_face_asian_int_glm, "language")`$) and its interaction with child age ($`r reportAnova(label_face_asian_int_glm, "child_age:language")`$) such that children were most likely to select the asian face in response to Chinese (85\% across trials; $`r reportORs(label_face_asian_int_glm_coefs, "languageMandarin")`$) or English (9\%; $`r reportORs(label_face_asian_int_glm_coefs, "languageEnglish")`$), and avoided it in response to Gujarati (4\% across trials; $`r reportORs(label_face_asian_int_glm_coefs, "(Intercept)")`$) --- tendencies that persisted or strengthened over time. That is, with age, children became even less likely to identify the asian face as a speaker of Gujarati (10\% to 1\%; $`r reportORs(label_face_asian_int_glm_coefs, "child_age")`$), and all the more likely to identify the asian face as a speaker of Chinese (from 73\% in 3rd grade to 96\% in 7th; $`r reportORs(label_face_asian_int_glm_coefs, "child_age:languageMandarin")`$) or English (14\% to 12\%; $`r reportORs(label_face_asian_int_glm_coefs, "child_age:languageEnglish")`$).
+
+#### White face (from language name)
+
+```{r label-white-glm, include=F}
+label_face_white_glm <- glm(
+  white_face ~ child_age + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_white_glm)), 2),
+round(exp(confint(label_face_white_glm)), 2)) 
+```
+
+```{r label-white-int-glm}
+options(scipen=10000)
+label_face_white_int_glm <- glm(
+  white_face ~ child_age*language, 
+  family="binomial", fl)
+
+label_face_white_int_glm_coefs <- cbind(round(exp(coef(label_face_white_int_glm)), 2),
+round(exp(confint(label_face_white_int_glm)), 2))
+
+Anova(label_face_white_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_white_int_glm, "language")`$), child age ($`r reportAnova(label_face_white_int_glm, "child_age")`$), and their interaction ($`r reportAnova(label_face_white_int_glm, "child_age:language")`$), such that children showed a preference for the white face when asked about English (83\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageEnglish")`$), Chinese (8\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageMandarin")`$), and Tamil (9\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageTamil")`$), and a dispreference when asked about Gujarati (3\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "(Intercept)")`$). 
+With age, children became even more likely to select the white face in response to English (from 73\% in 3rd grade to 92\% in 7th grade; $`r reportORs(label_face_white_int_glm_coefs, "child_age:languageEnglish")`$) and less likely to select the white face in response to Gujarati (6\% down to 1\%; $`r reportORs(label_face_white_int_glm_coefs, "child_age")`$).

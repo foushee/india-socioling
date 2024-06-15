@@ -1,0 +1,29 @@
+{
+    "id": "4F3B24BB",
+    "path": "~/Box/121 Sociolinguistics/Analysis/isl-1.0-ms-analyses_08.17.23_RF.Rmd",
+    "project_path": null,
+    "type": "r_markdown",
+    "hash": "2966284937",
+    "contents": "",
+    "dirty": false,
+    "created": 1698471124647.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "1088,25",
+        "scrollLine": "1084",
+        "last_setup_crc32": "74295a7680beb578",
+        "docOutlineSize": "151",
+        "docOutlineVisible": "1"
+    },
+    "folds": "252|26|271|0|\n324|22|331|0|\n335|27|342|0|\n361|20|368|0|\n372|23|379|0|\n385|22|418|0|\n426|22|447|0|\n465|58|466|0|\n480|27|483|0|\n485|47|486|0|\n569|15|585|0|\n590|23|593|0|\n782|35|786|0|\n805|38|809|0|\n813|30|817|0|\n",
+    "lastKnownWriteTime": 1699604079,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1699604079502,
+    "read_only": false,
+    "read_only_alternatives": []
+}

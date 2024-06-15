@@ -1,0 +1,31 @@
+{
+    "id": "F55B5DBF",
+    "path": "~/Box/121 Sociolinguistics/Analysis/isl-1.2-face-selections.Rmd",
+    "project_path": null,
+    "type": "r_markdown",
+    "hash": "2866072428",
+    "contents": "",
+    "dirty": false,
+    "created": 1699029674526.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "83,0",
+        "scrollLine": "79",
+        "rmdVisualMode": "false",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "2:0",
+        "docOutlineSize": "178",
+        "docOutlineVisible": "1"
+    },
+    "folds": "250|33|257|0|\n284|33|292|0|\n",
+    "lastKnownWriteTime": 1699604082,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1699604082858,
+    "read_only": false,
+    "read_only_alternatives": []
+}

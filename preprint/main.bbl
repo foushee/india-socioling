@@ -1,0 +1,899 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{barr2013random}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=753f43903878bb8de4a1be793bf5be58}{%
+           family={Barr},
+           familyi={B\bibinitperiod},
+           given={Dale\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2e20881923b91d44e8f1ba7e0f38f42c}{%
+           family={Levy},
+           familyi={L\bibinitperiod},
+           given={Roger},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=630d5ab6be2422fc76366edb31934eed}{%
+           family={Scheepers},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0f7f1b3552a961a694045bcc0786ca4c}{%
+           family={Tily},
+           familyi={T\bibinitperiod},
+           given={Harry\bibnamedelima J.},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fbff7d6762c67d31ac00e78e1aafc3a5}
+      \strng{fullhash}{3de80d9ace3368f3798a77fe6e20f4a4}
+      \strng{bibnamehash}{3de80d9ace3368f3798a77fe6e20f4a4}
+      \strng{authorbibnamehash}{3de80d9ace3368f3798a77fe6e20f4a4}
+      \strng{authornamehash}{fbff7d6762c67d31ac00e78e1aafc3a5}
+      \strng{authorfullhash}{3de80d9ace3368f3798a77fe6e20f4a4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Memory and Language}
+      \field{number}{3}
+      \field{title}{Random effects structure for confirmatory hypothesis testing: Keep it maximal}
+      \field{volume}{68}
+      \field{year}{2013}
+      \field{pages}{255\bibrangedash 278}
+      \range{pages}{24}
+    \endentry
+    \entry{buttelmann2013selective}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=f42e292b7b82d2473062f8e3a6179ace}{%
+           family={Buttelmann},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2672d30eeb54f00db359d2a3e0882606}{%
+           family={Zmyj},
+           familyi={Z\bibinitperiod},
+           given={Norbert},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1244900052319accd8367f57ede594e5}{%
+           family={Daum},
+           familyi={D\bibinitperiod},
+           given={Moritz},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c989378fce82102030e3bb52a295b24a}{%
+           family={Carpenter},
+           familyi={C\bibinitperiod},
+           given={Malinda},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{d41578d68f208ea9b821d248c20b1c66}
+      \strng{fullhash}{18c466516325ba73770eec0b92f5d49b}
+      \strng{bibnamehash}{18c466516325ba73770eec0b92f5d49b}
+      \strng{authorbibnamehash}{18c466516325ba73770eec0b92f5d49b}
+      \strng{authornamehash}{d41578d68f208ea9b821d248c20b1c66}
+      \strng{authorfullhash}{18c466516325ba73770eec0b92f5d49b}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Child development}
+      \field{number}{2}
+      \field{title}{Selective imitation of in-group over out-group members in 14-month-old infants}
+      \field{volume}{84}
+      \field{year}{2013}
+      \field{pages}{422\bibrangedash 428}
+      \range{pages}{7}
+    \endentry
+    \entry{byers2015bilingualism}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=36e6a59fec562502f061c3ae8b95b5da}{%
+           family={Byers-Heinlein},
+           familyi={B\bibinithyphendelim H\bibinitperiod},
+           given={Krista},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c62b7ca4e23c6ba5e48abf2a84ee46f3}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Bianca},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{7644a185b9f9f0c95cdece876414297d}
+      \strng{fullhash}{7644a185b9f9f0c95cdece876414297d}
+      \strng{bibnamehash}{7644a185b9f9f0c95cdece876414297d}
+      \strng{authorbibnamehash}{7644a185b9f9f0c95cdece876414297d}
+      \strng{authornamehash}{7644a185b9f9f0c95cdece876414297d}
+      \strng{authorfullhash}{7644a185b9f9f0c95cdece876414297d}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Developmental Science}
+      \field{number}{2}
+      \field{title}{Bilingualism changes children's beliefs about what is innate}
+      \field{volume}{18}
+      \field{year}{2015}
+      \field{pages}{344\bibrangedash 350}
+      \range{pages}{7}
+    \endentry
+    \entry{dautel2018once}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ddfd9240707a211bdfa1ea08185c2c88}{%
+           family={Dautel},
+           familyi={D\bibinitperiod},
+           given={Jocelyn\bibnamedelima B},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{aba84eaa1626007788370d393c0e630b}
+      \strng{fullhash}{aba84eaa1626007788370d393c0e630b}
+      \strng{bibnamehash}{aba84eaa1626007788370d393c0e630b}
+      \strng{authorbibnamehash}{aba84eaa1626007788370d393c0e630b}
+      \strng{authornamehash}{aba84eaa1626007788370d393c0e630b}
+      \strng{authorfullhash}{aba84eaa1626007788370d393c0e630b}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cognitive Science}
+      \field{title}{Once a French speaker, always a French speaker? Bilingual children's thinking about the stability of language}
+      \field{volume}{42}
+      \field{year}{2018}
+      \field{pages}{287\bibrangedash 302}
+      \range{pages}{16}
+    \endentry
+    \entry{d2015persona}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7d26246c036f869cbbe00092817077b8}{%
+           family={D'Onofrio},
+           familyi={D\bibinitperiod},
+           given={Annette},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{fullhash}{7d26246c036f869cbbe00092817077b8}
+      \strng{bibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorbibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authornamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorfullhash}{7d26246c036f869cbbe00092817077b8}
+      \field{extraname}{1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Sociolinguistics}
+      \field{number}{2}
+      \field{title}{Persona-based information shapes linguistic perception: Valley Girls and California vowels}
+      \field{volume}{19}
+      \field{year}{2015}
+      \field{pages}{241\bibrangedash 256}
+      \range{pages}{16}
+    \endentry
+    \entry{d2016social}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7d26246c036f869cbbe00092817077b8}{%
+           family={D'Onofrio},
+           familyi={D\bibinitperiod},
+           given={Annette},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Stanford University}%
+      }
+      \strng{namehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{fullhash}{7d26246c036f869cbbe00092817077b8}
+      \strng{bibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorbibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authornamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorfullhash}{7d26246c036f869cbbe00092817077b8}
+      \field{extraname}{2}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Social meaning in linguistic perception}
+      \field{year}{2016}
+    \endentry
+    \entry{donofrio2020personae}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7d26246c036f869cbbe00092817077b8}{%
+           family={D'Onofrio},
+           familyi={D\bibinitperiod},
+           given={Annette},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{fullhash}{7d26246c036f869cbbe00092817077b8}
+      \strng{bibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorbibnamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authornamehash}{7d26246c036f869cbbe00092817077b8}
+      \strng{authorfullhash}{7d26246c036f869cbbe00092817077b8}
+      \field{extraname}{3}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wiley Interdisciplinary Reviews: Cognitive Science}
+      \field{number}{6}
+      \field{title}{Personae in sociolinguistic variation}
+      \field{volume}{11}
+      \field{year}{2020}
+      \field{pages}{e1543}
+      \range{pages}{-1}
+    \endentry
+    \entry{grosjean2010bilingual}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=32a343492ebefb3c02f685c065833b89}{%
+           family={Grosjean},
+           familyi={G\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Harvard university press}%
+      }
+      \strng{namehash}{32a343492ebefb3c02f685c065833b89}
+      \strng{fullhash}{32a343492ebefb3c02f685c065833b89}
+      \strng{bibnamehash}{32a343492ebefb3c02f685c065833b89}
+      \strng{authorbibnamehash}{32a343492ebefb3c02f685c065833b89}
+      \strng{authornamehash}{32a343492ebefb3c02f685c065833b89}
+      \strng{authorfullhash}{32a343492ebefb3c02f685c065833b89}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bilingual: Life and reality}
+      \field{year}{2010}
+    \endentry
+    \entry{hirschfeld1997young}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=65e7fe5fa90582a28c6d2fdc9853880a}{%
+           family={Hirschfeld},
+           familyi={H\bibinitperiod},
+           given={Lawrence\bibnamedelima A},
+           giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a33ad58d3bae1d3c5315d285a20b7154}{%
+           family={Gelman},
+           familyi={G\bibinitperiod},
+           given={Susan\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{53dfd18af4dfa6de030dac88a419110b}
+      \strng{fullhash}{53dfd18af4dfa6de030dac88a419110b}
+      \strng{bibnamehash}{53dfd18af4dfa6de030dac88a419110b}
+      \strng{authorbibnamehash}{53dfd18af4dfa6de030dac88a419110b}
+      \strng{authornamehash}{53dfd18af4dfa6de030dac88a419110b}
+      \strng{authorfullhash}{53dfd18af4dfa6de030dac88a419110b}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cognitive Development}
+      \field{number}{2}
+      \field{title}{What young children think about the relationship between language variation and social difference}
+      \field{volume}{12}
+      \field{year}{1997}
+      \field{pages}{213\bibrangedash 238}
+      \range{pages}{26}
+    \endentry
+    \entry{kinzler2012children}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ddfd9240707a211bdfa1ea08185c2c88}{%
+           family={Dautel},
+           familyi={D\bibinitperiod},
+           given={Jocelyn\bibnamedelima B},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{df2398a8945841eb07aa482b2aeef164}
+      \strng{fullhash}{df2398a8945841eb07aa482b2aeef164}
+      \strng{bibnamehash}{df2398a8945841eb07aa482b2aeef164}
+      \strng{authorbibnamehash}{df2398a8945841eb07aa482b2aeef164}
+      \strng{authornamehash}{df2398a8945841eb07aa482b2aeef164}
+      \strng{authorfullhash}{df2398a8945841eb07aa482b2aeef164}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Developmental science}
+      \field{number}{1}
+      \field{title}{Children’s essentialist reasoning about language and race}
+      \field{volume}{15}
+      \field{year}{2012}
+      \field{pages}{131\bibrangedash 138}
+      \range{pages}{8}
+    \endentry
+    \entry{kinzler2013northern}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=058d1741c07ef12e333e100fffb59cda}{%
+           family={DeJesus},
+           familyi={D\bibinitperiod},
+           given={Jasmine\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \strng{fullhash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \strng{bibnamehash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \strng{authorbibnamehash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \strng{authornamehash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \strng{authorfullhash}{2b528385deedfea16d5a0a54c48dfcb0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Quarterly Journal of Experimental Psychology}
+      \field{number}{6}
+      \field{title}{Northern= smart and Southern= nice: The development of accent attitudes in the United States}
+      \field{volume}{66}
+      \field{year}{2013}
+      \field{pages}{1146\bibrangedash 1158}
+      \range{pages}{13}
+    \endentry
+    \entry{kinzler2007native}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=152d4e00d9f2ff059ead02b986fddf58}{%
+           family={Dupoux},
+           familyi={D\bibinitperiod},
+           given={Emmanuel},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b5dc622909b3084e4448e04be4a1fd3e}{%
+           family={Spelke},
+           familyi={S\bibinitperiod},
+           given={Elizabeth\bibnamedelima S},
+           giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {National Acad Sciences}%
+      }
+      \strng{namehash}{bd02c76f983a5c71f9ad7dd2be1f4b10}
+      \strng{fullhash}{8c7aec74d7d9900c29819b89b638dbef}
+      \strng{bibnamehash}{8c7aec74d7d9900c29819b89b638dbef}
+      \strng{authorbibnamehash}{8c7aec74d7d9900c29819b89b638dbef}
+      \strng{authornamehash}{bd02c76f983a5c71f9ad7dd2be1f4b10}
+      \strng{authorfullhash}{8c7aec74d7d9900c29819b89b638dbef}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{30}
+      \field{title}{The native language of social cognition}
+      \field{volume}{104}
+      \field{year}{2007}
+      \field{pages}{12577\bibrangedash 12580}
+      \range{pages}{4}
+    \endentry
+    \entry{liberman2017preverbal}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=768d118f43789e51b1ff7968a1d7a146}{%
+           family={Liberman},
+           familyi={L\bibinitperiod},
+           given={Zoe},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d681d8347c65f70d92d4ce9596064d6}{%
+           family={Woodward},
+           familyi={W\bibinitperiod},
+           given={Amanda\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{16c54e92249a754fdf3a71649aea37cd}
+      \strng{fullhash}{d6aea8f6453edc2080fb2d1f143aa76c}
+      \strng{bibnamehash}{d6aea8f6453edc2080fb2d1f143aa76c}
+      \strng{authorbibnamehash}{d6aea8f6453edc2080fb2d1f143aa76c}
+      \strng{authornamehash}{16c54e92249a754fdf3a71649aea37cd}
+      \strng{authorfullhash}{d6aea8f6453edc2080fb2d1f143aa76c}
+      \field{extraname}{1}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cognitive Science}
+      \field{title}{Preverbal infants infer third-party social relationships based on language}
+      \field{volume}{41}
+      \field{year}{2017}
+      \field{pages}{622\bibrangedash 634}
+      \range{pages}{13}
+    \endentry
+    \entry{liberman2016early}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=768d118f43789e51b1ff7968a1d7a146}{%
+           family={Liberman},
+           familyi={L\bibinitperiod},
+           given={Zoe},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d681d8347c65f70d92d4ce9596064d6}{%
+           family={Woodward},
+           familyi={W\bibinitperiod},
+           given={Amanda\bibnamedelima L},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=44e224fddc6b4d61cfec2a5a48dd57bd}{%
+           family={Sullivan},
+           familyi={S\bibinitperiod},
+           given={Kathleen\bibnamedelima R},
+           giveni={K\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {National Acad Sciences}%
+      }
+      \strng{namehash}{16c54e92249a754fdf3a71649aea37cd}
+      \strng{fullhash}{050a455baaeed884098ec2ae19487483}
+      \strng{bibnamehash}{050a455baaeed884098ec2ae19487483}
+      \strng{authorbibnamehash}{050a455baaeed884098ec2ae19487483}
+      \strng{authornamehash}{16c54e92249a754fdf3a71649aea37cd}
+      \strng{authorfullhash}{050a455baaeed884098ec2ae19487483}
+      \field{extraname}{2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{34}
+      \field{title}{Early emerging system for reasoning about the social nature of food}
+      \field{volume}{113}
+      \field{year}{2016}
+      \field{pages}{9480\bibrangedash 9485}
+      \range{pages}{6}
+    \endentry
+    \entry{lin2020research}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=606111130e5186bd35aaba966040f3e4}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Zhong},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95c93fcb04dc5b0e25093331b9843fc4}{%
+           family={Lei},
+           familyi={L\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI}%
+      }
+      \strng{namehash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \strng{fullhash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \strng{bibnamehash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \strng{authorbibnamehash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \strng{authornamehash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \strng{authorfullhash}{f3be3972e49b7e1258e71c50fd583c0f}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sustainability}
+      \field{number}{15}
+      \field{title}{The research trends of multilingualism in applied linguistics and education (2000--2019): A bibliometric analysis}
+      \field{volume}{12}
+      \field{year}{2020}
+      \field{pages}{6058}
+      \range{pages}{1}
+    \endentry
+    \entry{mccullough2019regional}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8ef9212b1aac44ed6cb55b709ddfc701}{%
+           family={McCullough},
+           familyi={M\bibinitperiod},
+           given={Elizabeth\bibnamedelima A},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fc5c66f764f05a1a846598e42cfc2d20}{%
+           family={Clopper},
+           familyi={C\bibinitperiod},
+           given={Cynthia\bibnamedelima G},
+           giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=09c5ebc960d59c9b03a82747fb19d7be}{%
+           family={Wagner},
+           familyi={W\bibinitperiod},
+           given={Laura},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{84d798cf68f82ceeb9973a7c5d315ab6}
+      \strng{fullhash}{12bd4619ab4c79794b7fd705959a0397}
+      \strng{bibnamehash}{12bd4619ab4c79794b7fd705959a0397}
+      \strng{authorbibnamehash}{12bd4619ab4c79794b7fd705959a0397}
+      \strng{authornamehash}{84d798cf68f82ceeb9973a7c5d315ab6}
+      \strng{authorfullhash}{12bd4619ab4c79794b7fd705959a0397}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Language and speech}
+      \field{number}{1}
+      \field{title}{Regional dialect perception across the lifespan: Identification and discrimination}
+      \field{volume}{62}
+      \field{year}{2019}
+      \field{pages}{115\bibrangedash 136}
+      \range{pages}{22}
+    \endentry
+    \entry{moon1993two}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=19781b6bbcbec7497ca91aa9e5872512}{%
+           family={Moon},
+           familyi={M\bibinitperiod},
+           given={Christine},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7def483a0b25dadc9440b8bdb650e7a7}{%
+           family={Cooper},
+           familyi={C\bibinitperiod},
+           given={Robin\bibnamedelima Panneton},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=093b63c96521c71ce5d0ed7d89a30186}{%
+           family={Fifer},
+           familyi={F\bibinitperiod},
+           given={William\bibnamedelima P},
+           giveni={W\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JAI}%
+      }
+      \strng{namehash}{4c491a60704b5bcae99a4f6e8d996472}
+      \strng{fullhash}{87833b71879170c77641d8a3a2837073}
+      \strng{bibnamehash}{87833b71879170c77641d8a3a2837073}
+      \strng{authorbibnamehash}{87833b71879170c77641d8a3a2837073}
+      \strng{authornamehash}{4c491a60704b5bcae99a4f6e8d996472}
+      \strng{authorfullhash}{87833b71879170c77641d8a3a2837073}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Infant behavior and development}
+      \field{number}{4}
+      \field{title}{Two-day-olds prefer their native language}
+      \field{volume}{16}
+      \field{year}{1993}
+      \field{pages}{495\bibrangedash 500}
+      \range{pages}{6}
+    \endentry
+    \entry{pratt2017jaw}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=faf8efbbb9557c13ff59e466624159ad}{%
+           family={Pratt},
+           familyi={P\bibinitperiod},
+           given={Teresa},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7d26246c036f869cbbe00092817077b8}{%
+           family={D'Onofrio},
+           familyi={D\bibinitperiod},
+           given={Annette},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{a36513f956eb65507c6afc6f1274d8ef}
+      \strng{fullhash}{a36513f956eb65507c6afc6f1274d8ef}
+      \strng{bibnamehash}{a36513f956eb65507c6afc6f1274d8ef}
+      \strng{authorbibnamehash}{a36513f956eb65507c6afc6f1274d8ef}
+      \strng{authornamehash}{a36513f956eb65507c6afc6f1274d8ef}
+      \strng{authorfullhash}{a36513f956eb65507c6afc6f1274d8ef}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Language in Society}
+      \field{number}{3}
+      \field{title}{Jaw setting and the California Vowel Shift in parodic performance}
+      \field{volume}{46}
+      \field{year}{2017}
+      \field{pages}{283\bibrangedash 312}
+      \range{pages}{30}
+    \endentry
+    \entry{santhanagopalan2021nationality}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=668751fd9c396e3fdc694d863fefcdd4}{%
+           family={Santhanagopalan},
+           familyi={S\bibinitperiod},
+           given={Radhika},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=058d1741c07ef12e333e100fffb59cda}{%
+           family={DeJesus},
+           familyi={D\bibinitperiod},
+           given={Jasmine\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dde1b18f1bd2742db6c72d6fdee98b0f}{%
+           family={Moorthy},
+           familyi={M\bibinitperiod},
+           given={Ramya\bibnamedelima S},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{85a10c3b497a967efb712fa252e4ece8}
+      \strng{fullhash}{d45835d0450859b8ffca6166a6237966}
+      \strng{bibnamehash}{d45835d0450859b8ffca6166a6237966}
+      \strng{authorbibnamehash}{d45835d0450859b8ffca6166a6237966}
+      \strng{authornamehash}{85a10c3b497a967efb712fa252e4ece8}
+      \strng{authorfullhash}{d45835d0450859b8ffca6166a6237966}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cognitive Development}
+      \field{title}{Nationality cognition in India: Social category information impacts children’s judgments of people and their national identity}
+      \field{volume}{57}
+      \field{year}{2021}
+      \field{pages}{100990}
+      \range{pages}{1}
+    \endentry
+    \entry{shutts2009social}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d9ce17173f5580a467cca2a5c844e76b}{%
+           family={Shutts},
+           familyi={S\bibinitperiod},
+           given={Kristin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4d6ad556e40120edf6638b6ec26fbbcb}{%
+           family={Kinzler},
+           familyi={K\bibinitperiod},
+           given={Katherine\bibnamedelima D},
+           giveni={K\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=589c5536c3a173b1b8dd783b8e0bec18}{%
+           family={McKee},
+           familyi={M\bibinitperiod},
+           given={Caitlin\bibnamedelima B},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b5dc622909b3084e4448e04be4a1fd3e}{%
+           family={Spelke},
+           familyi={S\bibinitperiod},
+           given={Elizabeth\bibnamedelima S},
+           giveni={E\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{2925f6ae44020cd4a8026276a6d883c1}
+      \strng{fullhash}{96d4ad753c08106fa821666df051a1ab}
+      \strng{bibnamehash}{96d4ad753c08106fa821666df051a1ab}
+      \strng{authorbibnamehash}{96d4ad753c08106fa821666df051a1ab}
+      \strng{authornamehash}{2925f6ae44020cd4a8026276a6d883c1}
+      \strng{authorfullhash}{96d4ad753c08106fa821666df051a1ab}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of cognition and development}
+      \field{number}{1-2}
+      \field{title}{Social information guides infants' selection of foods}
+      \field{volume}{10}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 17}
+      \range{pages}{17}
+    \endentry
+    \entry{weatherhead2019preschoolers}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=56c907b2691cdfa8e380fe7cf21e16a7}{%
+           family={Weatherhead},
+           familyi={W\bibinitperiod},
+           given={Drew},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3969c4b587aaa8262403854cc8e58502}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Ori},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05cdf421e19caf3739cadd2be47bdc57}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={Katherine\bibnamedelima S},
+           giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{f06448ed42726e67fa3c81d185f4867f}
+      \strng{fullhash}{3de90d01a1d5c94c9b69710fa2b62434}
+      \strng{bibnamehash}{3de90d01a1d5c94c9b69710fa2b62434}
+      \strng{authorbibnamehash}{3de90d01a1d5c94c9b69710fa2b62434}
+      \strng{authornamehash}{f06448ed42726e67fa3c81d185f4867f}
+      \strng{authorfullhash}{3de90d01a1d5c94c9b69710fa2b62434}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of child language}
+      \field{number}{6}
+      \field{title}{Preschoolers are sensitive to accent distance}
+      \field{volume}{46}
+      \field{year}{2019}
+      \field{pages}{1058\bibrangedash 1072}
+      \range{pages}{15}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

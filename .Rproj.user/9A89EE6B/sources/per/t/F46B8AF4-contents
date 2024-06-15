@@ -1,0 +1,1233 @@
+---
+title: "Sociolinguistics Data Analysis 2020"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    keep_md: yes
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+    df_print: paged
+    theme: sandstone
+    highlight: tango
+---
+How does the presence of diversity in children’s linguistic environments shape social associations regarding the language one speaks? Prior research in sociolinguistic development has focused on contexts in which a small number of well-defined linguistic distinctions (e.g., speaking one English dialect versus another) map predictably onto distinct social features (e.g., growing up in the South versus North, or being judged ‘nice’ versus ‘smart;’ Kinzler & DeJesus, 2013). In contexts with higher linguistic diversity, we might expect language-based assumptions about individual speakers to be inhibited, given that speakers can be assumed to know multiple languages beyond the one they are currently using. On the other hand, a multilingual environment might make contrasts among different languages more salient, exaggerating language-based stereotypes and other associations.
+
+*Acknowledgments:* Jacqueline Nguyen, Prachi Talwar, DJ, Neha
+
+```{r setup}
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source('0-useful/isl-0.0-resources.R')
+```
+
+```{r read-in-data, echo=F}
+d <- read.csv("data/india_socioling_data_final.csv")
+```
+
+```{r face-df}
+
+```
+
+```{r set-vars}
+d$face <- as.factor(d$face)
+levels(d$face)
+
+d$face <- factor(d$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+d$language <- 
+a  <- d %>% filter(question_type == "associations",
+                  language != "NA")
+head(a)
+a$language <- factor(a$language, levels = c("gujarati", "hindi", "urdu", "marathi", "tamil", "english_indian", "english_american", "chinese"),
+                  labels = c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", "English (India)", "English (U.S.)", "Mandarin")
+                  )
+f  <- d %>% filter(question_type == "faces")
+fa <- f %>% filter(presentation == "audio")
+fa$language <- factor(fa$language, levels = c("gujarati", "hindi", "urdu", "marathi", "tamil", "english_indian", "english_american", "chinese"),
+                  labels = c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", "English (India)", "English (U.S.)", "Mandarin")
+                  )
+fl <- f %>% filter(presentation == "label")
+fl$language <- factor(fl$language, levels = c("gujarati", "hindi", "urdu", "marathi", "tamil", "english", "chinese"),
+                  labels = c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", "English", "Mandarin")
+                  )
+faces.df <- d %>%
+    filter(question_type=="faces",
+          language != "english_indian",
+          language != "english_american",
+          language != "english")
+    
+faces.df$language <- factor(faces.df$language, levels = c("gujarati", "hindi", "urdu", "marathi", "tamil", "chinese"),
+                  labels = c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", "Mandarin")
+                  )
+
+id <- d %>% filter(question_type == "id")
+l  <- d %>% filter(question_type == "learning")
+p <- d %>% filter(question_type == "likert")
+
+```
+
+## Participant Demographics
+
+```{r demogs echo=F message=F warning=F}
+d %>%
+    distinct(id, .keep_all=T) %>%
+    dplyr::summarise(n = n(),
+                    ladies = na.sum(gender=="female"),
+                    gents  = na.sum(gender=="male"),
+                    hindus = na.sum(religion=="hindu"),
+                    muslims = na.sum(religion=="muslim"),
+                    mean = mean(age),
+                    min  = min(age),
+                    max  = max(age),
+                    sd   = sd(age),
+                    ci.low = mean - ci.low(age),
+                    ci.hi  = mean + ci.high(age))
+```
+
+* Three "standards"/grades: 3rd, 5th, and 7th (also ran 1st graders, but did not understand the task) 
+* Students run in groups of 4-12, depending on age: older students run in groups of 8-12, younger students in groups of 4-8
+* Selected to roughly balance gender and religion (estimated by local research assistants based on child name)
+
+```{r demogs-grade echo=F message=F warning=F}
+d$grade.group <- d$standard
+d$grade.group[d$standard==8] <- 7
+
+d %>%
+    distinct(id, .keep_all=T) %>%
+    group_by(grade.group) %>%
+    dplyr::summarise(n = n(),
+                    ladies = na.sum(gender=="female"),
+                    gents  = na.sum(gender=="male"),
+                    hindus = na.sum(religion=="hindu"),
+                    muslims = na.sum(religion=="muslim"),
+             mean = mean(age),
+             min  = min(age),
+             max  = max(age),
+             sd   = sd(age),
+             ci.low = mean - ci.low(age),
+             ci.hi  = mean + ci.high(age))
+```
+
+
+## Speaker Associations {.tabset-pills}
+Children heard unlabeled audio samples of each language, and judged speakers’ wealth, geographic origins, and religion.
+
+### Geographic Origin
+
+### Religion
+```{r echo=F message=F}
+religion <- a %>%
+    filter(language != "") %>%
+    group_by(id, age, language) %>%
+    summarize(hindu = mean(religion=="hindu", na.rm=T),
+              muslim = mean(religion=="muslim", na.rm=T),
+              #jain = mean(religion == "jain", na.rm=T),
+              christian = mean(religion == "christian", na.rm=T)
+              #buddhist = mean(religion == "buddhist", na.rm=T)
+              ) %>%
+    group_by(language)
+
+rline.df <- gather(religion, religion, mean, -language, -age, -id) %>%
+    group_by(language, religion) %>%
+    summarize(mean = na.mean(mean))
+
+rline.df$religion <- factor(rline.df$religion, levels = c("hindu", "muslim", "christian"),
+                           labels = c("Hindu", "Muslim", "Christian"))
+rline.df
+a
+```
+
+```{r }
+ggplot(rline.df, aes(x=religion, y=mean, fill=religion)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~language, ncol=4) +
+    #scale_color_manual(values = religion.colors, labels=religion.labels) +
+    ylim(0, 1) +
+    labs(title="Average Religious Associations Across Standards, by Language") +
+    face.theme #+
+    #geom_segment(aes(y=0.5, yend=0.5, x=7, xend=13), lty=2, colour="grey")
+
+#ggsave("religions_lines.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 4, units = "in")
+```
+
+### Wealth
+```{r echo=F}
+wealth <- a %>%
+    filter(language != "",
+          wealth != "") %>%
+    group_by(language) %>%
+    summarize(richer = mean(wealth=="richer", na.rm=T),
+              poorer = mean(wealth=="poorer", na.rm=T))
+
+w <- gather(wealth, level, mean, -language) %>%
+    group_by(language)
+```
+
+```{r w-poorer-richer-barplot echo=F}
+ggplot(w, aes(x=language, y=mean, fill=language)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~level, ncol=2) +
+    scale_fill_manual(values = language.colors, labels=language.labels) +
+    ylim(0, 1) +
+    face.theme +
+labs(title="Wealth Associations by Language",
+        y = "Proportion Selection")
+    #theme(axis.title.y=element_text)
+
+#ggsave("poorerricher_by_lang.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 6, height = 4, units = "in")
+```
+
+```{r w-lang-boxplot echo=F}
+wc.df <- a %>%
+    group_by(language, standard) %>%
+    summarize(mean=na.mean(coded_wealth))
+
+ggplot(wc.df, aes(x=language, y=mean, fill=language)) +
+    geom_boxplot() + 
+    scale_fill_manual(values = language.colors) +
+    ylim(-.6, .6) +
+    face.theme +
+    theme(axis.text.y=element_text(family="mono", colour="gray42", size=12)) +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Relative Wealth Associations by Language \n(0="As much money as the people in my city")",
+        y = "Proportion Selection") +
+    geom_segment(aes(y=0, yend=0, x=0, xend=10), lty=2, colour="grey")
+
+#ggsave("wealth_boxplot.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 6, height = 5, units = "in")
+```
+
+
+
+
+## Face Selections {.tabset-pills}
+### Audio 
+Children selected from among five gender-matched stereotypical faces depicting:
+* a North Indian woman wearing a bindhi ("hindu")
+* a woman with her head covered ("muslim")
+* a South Indian woman wearing a bindhi ("dravidian")
+* a White woman ("white")
+* an averaged mainland Chinese face ("east asian")
+```{r faces-overall echo=F warning= F message=F}
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+f %>%
+  filter(language != "NA") %>%
+    group_by(presentation) %>%
+    summarize(hindu = na.mean(hindu),
+             muslim = na.mean(muslim),
+             dravidian = na.mean(dravidian),
+            asian = na.mean(asian),
+             white = na.mean(white)) %>%
+    gather(., face, mean, -presentation) %>%
+ggplot(., aes(x=face, y=mean, fill=face)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~presentation, ncol=2) +
+    scale_fill_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rates Across Language Presentation Method") +
+    face.theme
+```
+
+```{r face-audio-df echo=F warning=F}
+
+faces_audio1 <- fa %>%
+    filter(language != "NA") %>%
+    group_by(language) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_audio2 <- gather(faces_audio1, face, mean, -language) 
+faces_audio <- faces_audio2 %>%
+    group_by(language)
+
+faces_audio$face <- factor(faces_audio$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+
+faces_audio1
+```
+
+```{r fa-barplot echo=F}
+
+ggplot(faces_audio, aes(x=face, y=mean, fill=face)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~language, ncol=4) +
+    scale_fill_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    labs(title="Proportion Stereotypical Face Selections by Language") +
+    face.theme
+#ggsave("audio_faces.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 3.5, units = "in")
+```
+
+```{r fa-std-line echo=F}
+faces_audio_std <- fa %>%
+    filter(language != "NA") %>%
+    group_by(language, standard) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_audio <- gather(faces_audio_std, face, mean, -language, -standard) %>%
+    group_by(language)
+
+faces_audio$face <- factor(faces_audio$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+ggplot(faces_audio, aes(x=standard, y=mean, color=face)) +
+    geom_point() +
+    geom_line() + 
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rate Across Standards 3-7, by Language") +
+    geom_segment(aes(y=0.5, yend=0.5, x=3, xend=7), lty=2, colour="grey") +
+    face.theme 
+
+#ggsave("audio_faces_std.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 4, units = "in")
+```
+
+```{r fa-bypp echo= F}
+faces_audio_by_kid <- fa %>%
+    filter(language != "NA") %>%
+    select(language, age, id, standard, hindu, muslim, dravidian, asian, white) %>%
+    group_by(language, id) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white))
+```
+
+```{r fa-age-line echo=F}
+ faces_audio_by_kid <- fa %>%
+    filter(language != "NA",
+          face != "NA") %>%
+    select(language, age, speaker_gender, id, standard, hindu, muslim, dravidian, asian, white) %>%
+    group_by(id, age, speaker_gender, language) %>%
+    summarize(hindu = sum(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_audio_plot.df <- gather(faces_audio_by_kid, face, selection, -language, -id, -age, -speaker_gender) %>%
+    group_by(language)
+
+faces_audio_plot.df$face <- factor(faces_audio_plot.df$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+ggplot(faces_audio_plot.df, aes(x=age, y=selection, color=face)) +
+    stat_smooth(aes(x=age, y=selection), method="lm", level=.75, fullrange=T) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rate with Age, by Language") +
+    geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    face.theme 
+
+#ggsave("audio_faces_age_lm.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 4, units = "in")
+```
+
+### Models: Odds of Face Selection 
+#### Hindu
+```{r fa-mod-hindu}
+# hindu
+audio_face_hindu.glm <- glm(hindu ~ standard + language, family="binomial", fa)
+cbind(round(exp(coef(audio_face_hindu.glm)), 2),
+round(exp(confint(audio_face_hindu.glm)), 2))
+
+audio_face_hindu.glm <- glm(hindu ~ age, family="binomial", fa)
+cbind(round(exp(coef(audio_face_hindu.glm)), 2),
+round(exp(confint(audio_face_hindu.glm)), 2))
+```
+
+#### Muslim
+```{r fa-mod-hindu}
+audio_face_muslim.glm <- glm(muslim ~ standard + language, family="binomial", fa)
+cbind(round(exp(coef(audio_face_muslim.glm)), 2),
+round(exp(confint(audio_face_muslim.glm)), 2))
+
+audio_face_muslim.glm <- glm(muslim ~ age, family="binomial", fa)
+cbind(round(exp(coef(audio_face_muslim.glm)), 2),
+round(exp(confint(audio_face_muslim.glm)), 2))
+```
+
+#### Dravidian
+```{r}
+# dravidian
+audio_face_dravidian.glm <- glm(dravidian ~ standard + language, family="binomial", fa)
+cbind(round(exp(coef(audio_face_dravidian.glm)), 2),
+round(exp(confint(audio_face_dravidian.glm)), 2))
+
+audio_face_dravidian.glm <- glm(dravidian ~ age, family="binomial", fa)
+cbind(round(exp(coef(audio_face_dravidian.glm)), 2),
+round(exp(confint(audio_face_dravidian.glm)), 2))
+```
+
+#### East Asian
+```{r}
+# east asian
+audio_face_asian.glm <- glm(asian ~ standard + language, family="binomial", fa)
+cbind(round(exp(coef(audio_face_asian.glm)), 2),
+round(exp(confint(audio_face_asian.glm)), 2))
+
+audio_face_asian.glm <- glm(asian ~ age, family="binomial", fa)
+cbind(round(exp(coef(audio_face_asian.glm)), 2),
+round(exp(confint(audio_face_asian.glm)), 2))
+```
+
+#### white
+```{r}
+# white
+audio_face_white.glm <- glm(white ~ standard + language, family="binomial", fa)
+cbind(round(exp(coef(audio_face_white.glm)), 2),
+round(exp(confint(audio_face_white.glm)), 2))
+
+audio_face_white.glm <- glm(white ~ age, family="binomial", fa)
+cbind(round(exp(coef(audio_face_white.glm)), 2),
+round(exp(confint(audio_face_white.glm)), 2))
+```
+
+
+### Language Label
+```{r faces-label-barplot echo=F}
+faces_label1 <- fl %>%
+    filter(language != "NA",
+          language != "english_american") %>%
+    group_by(language) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_label <- gather(faces_label1, face, mean, -language) %>%
+    group_by(language) 
+
+
+faces_label$face <- factor(faces_label$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+
+ggplot(faces_label, aes(x=face, y=mean, fill=face)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~language, ncol=4) +
+    scale_fill_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Who Speaks [LANGUAGE]?",
+        y = "Proportion Face Selection")
+
+#ggsave("label_faces.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 3.5, units = "in")
+```
+
+```{r fl-std-line echo=F}
+faces_label1 <- fl %>%
+    filter(language != "NA",
+          language != "english_american") %>%
+    group_by(language, standard) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_label <- gather(faces_label1, face, mean, -language, -standard) %>%
+    group_by(language) 
+
+faces_label$face <- factor(faces_label$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+ggplot(faces_label, aes(x=standard, y=mean, color=face)) +
+    geom_point() +
+    geom_line() + 
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Who Speaks [LANGUAGE]? -- Face Selections Across Standards",
+        y = "Proportion Face Selection")  +
+    geom_segment(aes(y=0.5, yend=0.5, x=3, xend=7), lty=2, colour="grey")
+
+#ggsave("label_faces_std.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 3.5, units = "in")
+```
+
+```{r fl-age-line echo=F message=F warning=F}
+faces_label_by_kid <- fl %>%
+    filter(language != "NA",
+           language != "english_american",
+          face != "NA") %>%
+    select(language, age, speaker_gender, id, standard, hindu, muslim, dravidian, asian, white) %>%
+    group_by(id, age, speaker_gender, language) %>%
+    summarize(hindu = mean(hindu),
+             muslim = mean(muslim),
+             dravidian = mean(dravidian),
+            asian = mean(asian),
+             white = mean(white)) 
+
+faces_label_plot.df <- gather(faces_label_by_kid, face, selection, -language, -id, -age, -speaker_gender) %>%
+    group_by(language)
+
+faces_label_plot.df$face <- factor(faces_label_plot.df$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+face.labels <- c("hindu", "muslim", "dravidian", "east asian", "white")
+
+ggplot(faces_label_plot.df, aes(x=age, y=selection, color=face)) +
+    stat_smooth(aes(x=age, y=selection), method="lm", level=.75, fullrange=T) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    labs(title="Who Speaks [LANGUAGE]? -- Face Selections with Age",
+        y = "Proportion Face Selection") +
+    geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    face.theme 
+
+#ggsave("label_faces_age.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 4, units = "in")
+```
+
+### Comparing Audio and Label
+```{r}
+fdf <- faces.df %>%
+    group_by(language, presentation, standard) %>%
+    summarize(hindu = na.mean(hindu),
+             muslim = na.mean(muslim),
+             dravidian = na.mean(dravidian),
+            asian = na.mean(asian),
+             white = na.mean(white)) 
+
+all_faces <- gather(fdf, face, mean, -language, -standard, -presentation) %>%
+    group_by(face) 
+
+all_faces$face <- factor(all_faces$face, levels = c("hindu", "muslim", "dravidian", "asian", "white"),
+                  labels = c("hindu", "muslim", "dravidian", "east asian", "white"))
+
+ggplot(all_faces, aes(x=standard, y=mean, color=language, lty=presentation)) +
+    geom_point() +
+    geom_line() + 
+    facet_wrap(~face, ncol=3) +
+    scale_color_manual(values = sharedlang.colors, labels=sharedlang.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Language-Face Associations Across Standards by Presentation Method",
+        y = "Proportion Selection") +
+    geom_segment(aes(y=0.5, yend=0.5, x=3, xend=7), lty=2, colour="grey")
+
+#ggsave("faces_presentation_std.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 3.5, units = "in")
+```
+
+```{r}
+ggplot(all_faces, aes(x=standard, y=mean, color=face, lty=presentation)) +
+    geom_point() +
+    geom_line() + 
+    facet_wrap(~language, ncol=3) +
+    scale_color_manual(values = face.colors, labels=face.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Language-Face Associations Across Standards by Presentation Method",
+        y = "Proportion Selection") +
+    geom_segment(aes(y=0.5, yend=0.5, x=3, xend=7), lty=2, colour="grey")
+
+#ggsave("lang_faces_presentation_std.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 7, height = 3.5, units = "in")
+```
+
+```{r}
+
+ggplot(all_faces[all_faces$standard==7, ], aes(x=, y=mean, color=language, lty=presentation)) +
+    geom_bar(stat="identity") +
+    geom_line() + 
+    facet_wrap(~face, ncol=3) +
+    scale_color_manual(values = sharedlang.colors, labels=sharedlang.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="Language-Face Associations Across Standards by Presentation Method",
+        y = "Proportion Selection") +
+    geom_segment(aes(y=0.5, yend=0.5, x=3, xend=7), lty=2, colour="grey")
+```
+
+## Stereotypical Speakers {.tabset-pills}
+Children guessed who ‘could be speaking’ from among five stereotypical faces (Hindu North Indian, Muslim, South Indian, Han Chinese, and White) in response to each language presented either auditorily or by name. 
+
+```{r}
+
+```
+
+
+## Essentialism and Learning {.tabset-pills}
+
+
+## Learning {.tabset-pills}
+Children predicted how well each face would ‘come to speak [LANGUAGE],’ if the individual had never heard it before and had begun studying it. 
+
+* How well will s/he come to speak [LANGUAGE]?: 
++ "No opinion" (0)
++ "Not at All" (1)
++ "Medium" (2)
++ "Very well" (3)
+
+### English
+```{r}
+# Data Prep
+el <- ldf[ldf$language=="English", ]
+el$rating_z <- round((el$rating - na.mean(el$rating))/sd(el$rating, na.rm=T), 2)  # compute normalized rating
+el$rating_type <- ifelse(el$rating_z < 0, "below", "above")  # above / below avg flag
+#el <- el[order(el$rating_z), ]  # sort
+
+# Diverging Barcharts
+ggplot(el, aes(x=face, y=rating_z, label=rating_z)) + 
+  geom_bar(stat="identity", aes(fill=rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    labels = c("Above Average", "Below Average"), 
+                    values = c("above"="#31a354", "below"="gray65")) + 
+  xlab("Face") +
+  ylim(-100, 100) +
+  ylab("Normalized Rating") +
+  #labs(subtitle="Normalized Learning Potential: English") + 
+    sans_axes_theme +
+  theme(axis.text.x=element_text(size=8, colour="gray30", 
+                              family="sans", face="bold")) +
+    coord_flip()
+ggsave("norm_english_learn.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 8, units = "in")
+```
+
+### Mandarin
+```{r}
+learning.df <- d[d$question_type=="learning", c(1, 10, 19, 22, 31:35, 38)]
+learning.df <- gather(learning.df, face, rating, -language, -standard, -id, -age, -question_type) %>%
+    group_by(face)
+learning.df <- learning.df[learning.df$rating <= 4, ]
+learning.df <- learning.df[!is.na(learning.df$rating), ]
+
+learning.df$language <- factor(learning.df$language, levels = c("gujarati", "hindi", "marathi", "tamil", "chinese", "english"),
+                  labels = c("Gujarati", "Hindi", "Marathi", "Tamil", "Mandarin", "English")
+                  )
+
+# Data Prep
+learning.df <- learning.df[learning.df$language=="Mandarin", ]
+learning.df$face2 <- learning.df$face  # create new column for lang names
+learning.df$rating_z <- round((learning.df$rating - na.mean(learning.df$rating))/sd(learning.df$rating, na.rm=T), 2)  # compute normalized mpg
+learning.df$rating_type <- ifelse(learning.df$rating_z < 0, "below", "above")  # above / below avg flag
+learning.df <- learning.df[order(learning.df$rating_z), ]  # sort
+#learning.df$face2 <- factor(learning.df$face2, levels = levels(learning.df$face2))  # convert to factor to retain sorted order in plot.
+learning.df$face2 <- factor(learning.df$face2)
+learning.df$face2 <- factor(learning.df$face2, levels = c("dravidian", "muslim", "hindu", "white", "asian"))
+
+# Diverging Barcharts
+ggplot(learning.df, aes(x=face2, y=rating_z, label=rating_z)) + 
+  geom_bar(stat="identity", aes(fill=rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    labels = c("Above Average", "Below Average"), 
+                    values = c("above"="#00ba38", "below"="#f8766d")) + 
+  labs(subtitle="Normalized Learning Potential: Mandarin") + 
+    face.theme +
+    theme(axis.text.y = element_text(size=12, colour="gray42", family="mono")) +
+    coord_flip()
+
+#ggsave("norm_mandarin_learn.png", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 8, units = "in")
+```
+
+### Gujarati
+```{r}
+learning.df <- d[d$question_type=="learning", c(1, 10, 19, 22, 31:35, 38)]
+learning.df <- gather(learning.df, face, rating, -language, -standard, -id, -age, -question_type) %>%
+    group_by(face)
+learning.df <- learning.df[learning.df$rating <= 4, ]
+learning.df <- learning.df[!is.na(learning.df$rating), ]
+
+learning.df$language <- factor(learning.df$language, levels = c("gujarati", "hindi", "marathi", "tamil", "chinese", "english"),
+                  labels = c("Gujarati", "Hindi", "Marathi", "Tamil", "Mandarin", "English")
+                  )
+
+# Data Prep
+learning.df <- learning.df[learning.df$language=="Gujarati", ]
+learning.df$face2 <- learning.df$face  # create new column for lang names
+learning.df$rating_z <- round((learning.df$rating - na.mean(learning.df$rating))/sd(learning.df$rating, na.rm=T), 2)  # compute normalized mpg
+learning.df$rating_type <- ifelse(learning.df$rating_z < 0, "below", "above")  # above / below avg flag
+learning.df <- learning.df[order(learning.df$rating_z), ]  # sort
+#learning.df$face2 <- factor(learning.df$face2, levels = levels(learning.df$face2))  # convert to factor to retain sorted order in plot.
+learning.df$face2 <- factor(learning.df$face2)
+learning.df$face2 <- factor(learning.df$face2, levels = c("asian", "white", "dravidian", "muslim", "hindu"))
+
+# Diverging Barcharts
+ggplot(learning.df, aes(x=face2, y=rating_z, label=rating_z)) + 
+  geom_bar(stat="identity", aes(fill=rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    labels = c("Above Average", "Below Average"), 
+                    values = c("above"="#00ba38", "below"="#f8766d")) + 
+  labs(subtitle="Normalized Learning Potential: Gujarati") + 
+    face.theme +
+    theme(axis.text.y = element_text(size=12, colour="gray42", family="mono")) +
+    coord_flip()
+
+ggsave("norm_gujarati_learn.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 8, units = "in")
+```
+
+
+### Language Identification {.tabset-pills}
+
+```{r lang-id-df echo=F}
+
+id.std.df <- id.df %>%
+    group_by(standard, language) %>%
+    summarize(mean = na.mean (correct),
+                    sd   = sd(correct),
+                    ci.low = mean - ci.low(correct),
+                    ci.hi  = mean + ci.high(correct))
+
+id.df2 <- id.df %>%
+    group_by(language) %>%
+    summarize(mean = na.mean (correct),
+                    sd   = sd(correct),
+                    ci.low = mean - ci.low(correct),
+                    ci.hi  = mean + ci.high(correct))
+
+id.std.df
+```
+
+```{r li-barplot echo=F}
+id.df2$language <- factor(id.df2$language, levels = c("gujarati", "hindi", "marathi", "tamil", "chinese", "english_indian", "english_american", "urdu"),
+                  labels = c("Gujarati", "Hindi", "Marathi", "Tamil", "Mandarin", "English (India)", "English (U.S.)", "Urdu")
+                  )
+
+ggplot(id.df2, aes(x=language, y=mean, fill=language)) +
+    geom_bar(stat="identity", position="dodge") + 
+      geom_errorbar(aes(ymin = ci.low, ymax = ci.hi), 
+                position=position_dodge(.9), 
+                width=.1, lwd = .4, color = "black") +  # error bars
+    scale_fill_manual(values = language.colors, labels=language.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="",
+        y = "Proportion Correct") #+
+#    geom_segment(aes(y=0.5, yend=0.5, x=0, xend=8), lty=2, colour="grey")
+
+#ggsave("id_correctness_all", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 5, units = "in")
+
+```
+
+
+```{r li-std-barplot echo=F}
+id.std.df$language <- factor(id.std.df$language, levels = c("gujarati", "hindi", "marathi", "tamil", "chinese", "english_indian", "english_american", "urdu"),
+                  labels = c("Gujarati", "Hindi", "Marathi", "Tamil", "Mandarin", "English (India)", "English (U.S.)", "Urdu")
+                  )
+
+ggplot(id.std.df, aes(x=standard, y=mean, fill=language)) +
+    geom_bar(stat="identity", position="dodge") + 
+      geom_errorbar(aes(ymin = ci.low, ymax = ci.hi), 
+                position=position_dodge(.9), 
+                width=.1, lwd = .4, color = "black") +  # error bars
+    facet_wrap(~language, ncol=4) +
+    scale_fill_manual(values = language.colors, labels=language.labels) +
+    ylim(0, 1) +
+    face.theme +
+    theme(axis.title.y=element_text(angle=90, family="mono", colour="gray42", size=12))+
+    labs(title="",
+        y = "Proportion Correct") +
+    geom_segment(aes(y=0.5, yend=0.5, x=2, xend=8), lty=2, colour="grey")
+
+#ggsave("id_correctness_std", device = "png", 
+#       path = "plots/",
+#       scale = 1, width = 8, height = 8, units = "in")
+```
+
+```{r li-age-line echo=F warning=F}
+id.df <- d %>%
+    filter(question_type=="id") 
+
+ggplot(id.df, aes(x=age, y=correct, color=language)) +
+    stat_smooth(aes(x=age, y=correct), method="lm", level=.75, fullrange=T) + 
+    #facet_wrap(~language, ncol=4) +
+    #scale_color_manual(values=wealth.colors, labels=wealth.labels) +
+    ylim(0, 1) +
+    labs(title="Language Classification Accuracy by Age") +
+    face.theme +
+    geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey")
+```
+
+
+
+## Child-Speaker Identification {.tabset-pills}
+
+```{r}
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+
+```{r audio-lang-face-selections, include=F}
+face_audio_summary_tab <- f %>%
+  filter(presentation=="audio",
+         !is.na(language)) %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", all_of(face_vars)) %>%
+  gather(., face, selection, -language) %>%
+    group_by(language, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+face_audio_summary_tab$face <- factor(face_audio_summary_tab$face, levels=face_vars,
+                                      labels=face_labels)
+
+ggplot(face_audio_summary_tab, 
+       aes(x=face, fill=face)) +
+    geom_bar(stat="identity", aes(y=mean)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = face_colors) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rates by Language\nPresented in Audio") +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono")) 
+
+ggsave("audio_faces.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 6, height = 6, units = "in")
+```
+
+
+```{r label-lang-face-selections, include=F}
+
+face_label_summary_tab <- fl %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", all_of(face_vars)) %>%
+  gather(., face, selection, -language) %>%
+    group_by(language, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+face_label_summary_tab$face <- factor(face_label_summary_tab$face, levels=face_vars,
+                                      labels=face_labels)
+
+ggplot(face_label_summary_tab, 
+       aes(x=face, fill=face)) +
+    geom_bar(stat="identity", aes(y=mean)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = face_colors) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rates by Language\nPresented by Name:",
+         subtitle = '"Who Speaks [LANGUAGE-NAME]?"') +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=8, colour="gray30", family="sans")) 
+
+ggsave("label_faces.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 7, height = 7, units = "in")
+```
+
+
+```{r by-presentation-method, include=F}
+face_presentation_summary_tab <- f %>%
+  ungroup(.)%>%
+  dplyr::select("presentation", all_of(face_vars)) %>%
+  gather(., face, selection, -presentation) %>%
+    group_by(presentation, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+face_presentation_summary_tab$face <- factor(face_presentation_summary_tab$face, 
+      levels=face_vars,
+      labels=face_labels)
+
+ggplot(face_presentation_summary_tab, 
+       aes(x=face, fill=face)) +
+    geom_bar(stat="identity", aes(y=mean)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~presentation, ncol=2) +
+    scale_fill_manual(values = face_colors) +
+    ylim(0, 1) +
+    labs(title="Face Selection Rates Across\nLanguage Presentation Method") +
+    sans_theme +
+  theme(axis.text.y = element_text(
+    size=12, colour="gray30", family="mono"))
+```
+
+
+```{r audio-face-selections, include=F}
+face_audio_tab <- f %>%
+  filter(presentation=="audio",
+         !is.na(language)) %>%
+  group_by(standard) %>%
+  mutate(n= n()) %>%
+  group_by(as.factor(num_faces), standard) %>%
+  summarize(n_num_faces = n(), 
+            percent_selection = n_num_faces/n) %>%
+  distinct(.)
+
+face_audio_tab <- f %>%
+  filter(presentation=="audio",
+         !is.na(language)) %>%
+  ungroup() %>%
+  mutate(n= n()) %>%
+  group_by(as.factor(num_faces)) %>%
+  summarize(n_num_faces = n(), 
+            percent_selection = n_num_faces/n) %>%
+  distinct(.)
+  
+length(unique(f[f$presentation=="audio" &
+                  f$no_opinion_face==1,]$id))
+sum(f[f$presentation=="audio",]$no_opinion_face, na.rm=T)
+table(f[f$presentation=="audio" & f$no_opinion_face==1, ]$language)
+table(f[f$presentation=="audio",]$language)
+
+  
+length(unique(f[f$presentation=="audio" & f$num_faces>1,]$id))
+f %>%
+  filter(presentation=="audio", num_faces>1, language!="") %>%
+  ungroup() %>%
+  summarize(n=n())
+
+table(f[f$presentation=="audio" & f$num_faces>1, ]$language)
+```
+
+
+```{r audio-std-lineplot}
+f$standard <- as.factor(f$standard)
+audio_face_std_summary_tab <- f %>%
+  filter(!is.na(language),
+         !is.na(face),
+         presentation=="audio") %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(face_vars)) %>%
+  gather(., face, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+audio_face_std_summary_tab$face <- factor(
+  audio_face_std_summary_tab$face, 
+  levels=face_vars, 
+  labels=face_labels)
+
+ggplot(audio_face_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +    
+  sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean")
+  
+ggsave("audio_faces_std.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+# Selective face preferences tended to get stronger with age (a greater and greater proportion of children chose the same face).
+```
+
+
+```{r label-std-lineplot}
+label_face_std_summary_tab <- fl %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(face_vars)) %>%
+  gather(., face, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+label_face_std_summary_tab$face <- factor(
+  label_face_std_summary_tab$face, 
+  levels=face_vars, 
+  labels=face_labels)
+
+label_face_std_summary_tab$language <- factor(
+  label_face_std_summary_tab$language, 
+  levels=c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", 
+           "English", "Mandarin"), 
+  labels=c('"Gujarati"', '"Hindi"', '"Urdu"', '"Marathi"', '"Tamil"', '"English"', '"Chinese"'))
+
+ggplot(label_face_std_summary_tab[!is.na(label_face_std_summary_tab$language),], 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +    
+  sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean")
+  
+ggsave("label_faces_std.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+# Selective face preferences tended to get stronger with age (a greater and greater proportion of children chose the same face).
+```
+
+
+```{r comp-lang-std-faces, include=F}
+face_comp_std_summary_tab <- f %>%
+  filter(!is.na(language)) %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "presentation", "standard", "standard_num",
+    "hindu_face", "muslim_face",
+    "dravidian_face", "asian_face", "white_face") %>%
+  gather(., face, selection, -language, -standard, -standard_num, -presentation) %>%
+    group_by(language, presentation, standard, standard_num, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+face_comp_std_summary_tab$face <- factor(
+  face_comp_std_summary_tab$face, 
+      levels=face_vars,
+      labels=face_labels)
+
+ggplot(face_comp_std_summary_tab[
+  !is.na(face_comp_std_summary_tab$language),], 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), 
+                  width=0) +
+    geom_line(aes(x=standard_num, lty=presentation)) + 
+    facet_wrap(~language, ncol=3) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    #labs(title="Face Selection Rate Across Standards 3-7\n& Presentation Methods") +
+    sans_axes_theme +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +
+    theme(legend.position = "bottom") +
+    xlab("Standard") +
+    ylab("Mean")
+
+ggsave("faces_comp_std.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+```{r comp-diffs-std-lineplot}
+face_comp_std_diffs_tab <- face_comp_std_summary_tab %>%
+  filter(!is.na(language)) %>%
+  dplyr::select(language, standard, standard_num, face, mean, presentation) %>%
+  spread(presentation, mean) %>%
+  mutate(diff=label-audio)
+
+face_comp_std_diffs_tab$language <- factor(
+  face_comp_std_diffs_tab$language, 
+  levels=c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", 
+           "Mandarin"), 
+  labels=c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", 
+           "Mandarin"))
+
+face_comp_std_diffs_tab$face <- factor(
+  face_comp_std_diffs_tab$face, 
+      levels=face_vars,
+      labels=face_labels)
+
+ggplot(face_comp_std_diffs_tab[!is.na(face_comp_std_diffs_tab$language),], 
+       aes(x=standard_num, y=diff, color=face)) +
+    geom_point(aes(shape=face)) +
+    geom_line(aes(lty=face)) + 
+    facet_wrap(~language, ncol=3) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(-.5, .5) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +
+    sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Standard") +
+    ylab("Mean")
+
+ggsave("faces_comp_diff_std.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+```{r audio-lang-age-faces}
+face_audio_age <- f %>%
+  filter(presentation=="audio",
+         !is.na(language)) %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "child_age", all_of(face_vars)) %>%
+  gather(., face, selection, -language, -child_age) 
+
+face_audio_age$face <- factor(
+  face_audio_age$face, levels=face_vars, labels=face_labels)
+
+ggplot(face_audio_age, aes(
+  x=child_age, y=selection, color=face, fill=face)) +
+    stat_smooth(aes(x=child_age, y=selection), 
+                method="lm", level=.75, fullrange=T) +
+  geom_rug(aes(x=child_age), color="black") +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    ylab("Mean Selection") +
+    xlab("Child Age (yrs)") +
+    #labs(title="Face Selection Rate with Age,\nby Language Presented in Audio") +
+    #geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    sans_axes_theme 
+
+ggsave("audio_faces_age_lm.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 6, units = "in")
+```
+
+### by Language Name
+
+```{r label-lang-age-faces}
+face_label_age <- fl %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "child_age", all_of(face_vars)) %>%
+  gather(., face, selection, -language, -child_age) 
+
+face_label_age$face <- factor(
+  face_label_age$face, 
+      levels=face_vars,
+      labels=face_labels)
+
+ggplot(face_label_age, aes(
+  x=age, y=selection, color=face, fill=face)) +
+    stat_smooth(aes(x=child_age, y=selection), 
+                method="lm", level=.75, fullrange=T) +
+    geom_rug(aes(x=child_age), color="black") +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    ylab("Mean Selection") +
+    xlab("Child Age (yrs)") +
+    #labs(title="Face Selection Rate with Age,\nby Language Presented by Name") +
+    #geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    sans_axes_theme 
+
+ggsave("label_faces_age_lm.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 6, units = "in")
+```
+
+```{r comp-lang-age-faces}
+face_comp_age_df <- f %>%
+  filter(!is.na(language)) %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "presentation", "child_age", 
+    all_of(face_vars)) %>%
+  gather(., face, selection, -language, -child_age, -presentation) 
+
+face_comp_age_df$face <- factor(
+  face_comp_age_df$face, 
+      levels=face_vars,
+      labels=face_labels)
+
+ggplot(face_comp_age_df[
+  !is.na(face_comp_age_df$language),], 
+       aes(x=child_age, y=mean, color=face)) +
+    stat_smooth(aes(x=child_age, y=selection, lty=presentation), 
+                method="lm", se=F, fullrange=T) +
+    facet_wrap(~language, ncol=3) +
+    scale_color_manual(values = face_colors, name=face_legend_title) +
+    ylim(0, 1) +
+    ylab("Mean Selection") +
+    xlab("Child Age (yrs)") +
+   # labs(title="Face Selection Rate Across Standards 3-7\n& Presentation Methods") +
+    sans_axes_theme 
+
+ggsave("faces_comp_age.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 6, units = "in")
+```

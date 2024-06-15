@@ -1,0 +1,39 @@
+Anova(wealth_lmer) %>%
+  kable(.)
+library(apaTables)
+apa_table(wealth_lmer)
+
+
+library("dplyr")
+library("papaja")
+library("lmerTest")
+
+lmer_test_summary <- summary(wealth_lmer)
+lmer_test_summary <- summary(ass_gujarat_int_glm)
+
+lmer_test_summary_table <- lmer_test_summary$coefficients %>%
+  as.data.frame %>%
+  rename(
+    "$b$" = "Estimate"
+    , "SE" = "Std. Error"
+    , "$z$" = "z value"
+    #, "$t$" = "t value"
+    , "$p$" = "Pr(>|z|)"
+  ) %>%
+  mutate(
+    Effect = papaja:::beautify_terms(rownames(.))
+  ) %>%
+  printnum(
+    digits = c(2, 2, 2, 3, 0)
+    , gt1 = c(TRUE, TRUE, TRUE, TRUE, FALSE)
+    , zero = c(TRUE, TRUE, TRUE, TRUE, FALSE)
+  ) %>%
+  select(Effect, `$b$`, `SE`, `$z$`, `$p$`)
+
+write(apa_table(lmer_test_summary_table, 
+                caption='Recoded Wealth Mixed Effects Linear Model'),
+      'tables/wealth_lmer_table.tex')
+
+write(apa_table(lmer_test_summary_table, 
+                caption='Geographic Origin: Gujarat Logit Model'),
+      'tables/gujarat_glm_table.tex')

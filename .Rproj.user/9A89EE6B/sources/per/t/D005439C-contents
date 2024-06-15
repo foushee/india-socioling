@@ -1,0 +1,100 @@
+---
+title: "India Sociolinguistics Language ID Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-18"
+output: pdf_document
+---
+
+```{r id-setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+#source("0-useful/isl-0.0-resources.R")
+
+#d <- read.csv("data/india_socioling_data_final.csv")
+
+i <- d %>% filter(question_type=="id") %>%
+  distinct(., .keep_all = T)
+```
+
+```{r id-accuracy-table}
+id_summary_tab <- i %>%
+  group_by(language) %>%
+  summarize(mean_accuracy = na.mean(correct),
+            cilo = mean_accuracy-ci.low(correct),
+            cihi = mean_accuracy + ci.high(correct))
+  
+id_summary_tab$language <- factor(
+  id_summary_tab$language, levels=c("gujarati", "hindi", 
+                                            "urdu", "marathi",
+                                            "tamil", 
+                     "english_indian", "english_american",
+                     "chinese"), 
+  labels=language.labels)
+
+id_summary_tab <- id_summary_tab %>%
+  filter(!is.na(language))
+
+ggplot(id_summary_tab, 
+       aes(x=language, y=mean_accuracy)) +
+    geom_bar(stat="identity", aes(fill=language), alpha=0.9) +
+    scale_fill_manual(values=language.colors, name="Language") +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, color=line.color) +
+    scale_color_manual(values=language.colors, name="Language") +
+    ylim(0, 1) +
+    labs(title='Language Identification Accuracy') +
+    ylab("Proportion Correct") + 
+    xlab("Grade") +
+    sans_axes_theme_bigger +
+  theme(axis.text.x=element_text(angle=60, hjust=1))
+
+ggsave("id_accuracy_barplot.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 8, height = 6, units = "in")
+```
+
+```{r id-accuracy-age}
+id_age_summary_tab <- i %>%
+  group_by(language, child_age, id) %>%
+  summarize(accuracy = na.mean(correct))
+  
+id_age_summary_tab$language <- factor(
+  id_age_summary_tab$language, levels=c("gujarati", "hindi", 
+                                            "urdu", "marathi",
+                                            "tamil", 
+                     "english_indian", "english_american",
+                     "chinese"), 
+  labels=language.labels)
+
+id_age_summary_tab <- id_age_summary_tab %>%
+  filter(!is.na(language))
+
+ggplot(id_age_summary_tab, 
+       aes(x=child_age, y=accuracy)) +
+    geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    stat_smooth(aes(x=child_age, y=accuracy, 
+                    color=language, fill=language),
+                method="lm", level=.75, fullrange=T) +
+    geom_rug(aes(x=child_age), color="black") +
+    scale_color_manual(values=language.colors, name="Language") +
+    scale_fill_manual(values=language.colors, name="Language") +
+    facet_wrap(~language, ncol=4) +
+    ylim(0, 1) +
+    labs(title='Language Identification Accuracy with Age') +
+    ylab("Proportion Correct") + 
+    xlab("Child Age (years)") +
+    face.axes.theme 
+
+ggsave("id_accuracy_age.png", device = "png", 
+       path = "plots/",
+       scale = 1.5, width = 6, height = 4, units = "in")
+
+id_lm <- lm(correct ~ child_age*language + child_religion, i)
+summary(id_lm)
+Anova(id_lm)
+
+i %>%
+  group_by(standard) %>%
+  summarize(mean = na.mean(correct))
+```

@@ -1,0 +1,21 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'main.blg'
+[86] biber-darwin:340> INFO - === Thu Nov  9, 2023, 22:26:04
+[108] Biber.pm:415> INFO - Reading 'main.bcf'
+[229] Biber.pm:952> INFO - Found 21 citekeys in bib section 0
+[246] Biber.pm:4340> INFO - Processing section 0
+[260] Biber.pm:4531> INFO - Looking for bibtex format file 'india-socioling.bib' for section 0
+[263] bibtex.pm:1689> INFO - LaTeX decoding ...
+[300] bibtex.pm:1494> INFO - Found BibTeX data source 'india-socioling.bib'
+[302] Utils.pm:395> WARN - Duplicate entry key: 'shutts2009social' in file 'india-socioling.bib', skipping ...
+[302] Utils.pm:395> WARN - Duplicate entry key: 'byers2015bilingualism' in file 'india-socioling.bib', skipping ...
+[302] Utils.pm:395> WARN - Duplicate entry key: 'santhanagopalan2021nationality' in file 'india-socioling.bib', skipping ...
+[303] Utils.pm:395> WARN - Duplicate entry key: 'kinzler2012children' in file 'india-socioling.bib', skipping ...
+[303] Utils.pm:395> WARN - Duplicate entry key: 'weatherhead2019preschoolers' in file 'india-socioling.bib', skipping ...
+[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[470] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[470] Biber.pm:4168> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[470] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[495] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[512] bbl.pm:757> INFO - Output to main.bbl
+[512] Biber.pm:128> INFO - WARNINGS: 5
