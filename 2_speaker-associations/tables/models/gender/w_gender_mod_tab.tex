@@ -1,0 +1,46 @@
+\begin{table*}[t]
+\small
+\caption{Cumulative Link Mixed Model of Children's Wealth Associations, Given Language, Child Age, and Speaker Gender}\label{tab:wealth-gender-ord}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcr}
+ \toprule
+& \multicolumn{3}{c}{\textbf{Wealth}\tnote{a}} \\
+\cline{2-4} \\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+``less money''$|$``as much money'' 0.19 *** & 0.13--0.30 & $<$0.001 \\ 
+  ``as much money''$|$``more money'' & 2.19 *** & 1.43--3.34 & $<$0.001 \\ 
+  Hindi & 1.01 & 0.58--1.75 & 0.970 \\ 
+  English(India) & 2.20 ** & 1.23--3.96 & 0.008 \\ 
+  English (U.S.) & 1.80 * & 1.04--3.12 & 0.037 \\
+  Mandarin & 4.46 *** & 2.44--8.13 & $<$0.001 \\ 
+  Marathi & 1.09 & 0.62--1.91 & 0.759 \\ 
+  Tamil & 0.69 & 0.58 & 0.33--1.03 & 0.061 \\ 
+  Urdu & 1.05 & 0.61--1.80 & 0.868 \\ 
+  Age\tnote{b} & 0.87 * & 0.77--0.98 & 0.021 \\ 
+  Gujarati:\textsc{Female} & 0.67 & 0.39--1.15 & 0.150 \\ 
+  Hindi:\textsc{Female} & 1.03 & 0.48--2.21 & 0.933 \\ 
+  English(India):\textsc{Female} & 1.54 & 0.69--3.42 & 0.288 \\ 
+  English (U.S.):\textsc{Female} & 2.67 * & 1.21--5.86 & 0.014 \\
+  Mandarin:\textsc{Female} & 0.63 & 0.28--1.45 & 0.277 \\ 
+  Marathi:\textsc{Female} & 1.02 & 0.46--2.22 & 0.969 \\ 
+  Tamil:\textsc{Female} & 1.81 & 0.83--3.94 & 0.136 \\ 
+  Urdu:\textsc{Female} & 1.31 & 0.62--2.77 & 0.474 \\ 
+\midrule
+\bfseries{\textit{N} children}\tnote{c} & 127 & & \\ 
+\textbf{Observations}\tnote{d} & 1,588 & &\\ 
+ \textbf{Marginal R2} &  0.092 &&\\
+ \textbf{Conditional R2} & 0.245 &  &  \\ 
+\bottomrule\\[-.75em]
+\multicolumn{4}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
+\end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Ordinal variable: ``more money than the people in my city'' \textgreater ``as much money as the people in my city'' \textgreater ``less money than the people in my city''
+    \item[b] Mean-centered, in years.
+    \item[c] Model includes random intercepts for each child.
+    \item[d] Model data excludes ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

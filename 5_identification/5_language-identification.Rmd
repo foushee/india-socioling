@@ -1,0 +1,143 @@
+---
+title: "India Sociolinguistics Language ID Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-18"
+output: pdf_document
+---
+```{r id-setup, include=FALSE}
+library(here)
+here::i_am('5_identification/5_language-identification.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r id-read-in-data}
+i <- read.csv(here('data/r_dfs/subsets/language_identification_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'language', 'speaker_gender', 
+                 'army_navy_language')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence')
+
+i <- i %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+i$language <- factor(i$language, levels=language_labels)
+```
+
+```{r id-accuracy-table}
+id_summary_tab <- i %>%
+  group_by(language) %>%
+  summarize(mean_accuracy = na.mean(id_correct),
+            cilo = mean_accuracy-ci.low(id_correct),
+            cihi = mean_accuracy + ci.high(id_correct))
+
+ggplot(id_summary_tab, 
+       aes(x=language, y=mean_accuracy)) +
+    geom_bar(stat="identity", aes(fill=language), alpha=0.9) +
+    scale_fill_manual(values=language_colors, name="Language") +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, color=line_color) +
+    scale_color_manual(values=language_colors, name="Language") +
+    ylim(0, 1) +
+    labs(title='Language Identification Accuracy') +
+    ylab("Proportion Correct") + 
+    xlab("Language") +
+    sans_axes_theme_bigger +
+  theme(axis.text.x=element_text(angle=60, hjust=1),
+        legend.key = element_rect(color=NA))
+
+ggsave("id_accuracy_barplot.pdf", device = "pdf", 
+       path = "plots/barplots_overall/",
+       scale = 1, width = 8, height = 6, units = "in")
+```
+
+```{r id-accuracy-age}
+id_age_summary_tab <- i %>%
+  group_by(language, child_age, id) %>%
+  summarize(accuracy = na.mean(id_correct))
+
+ggplot(id_age_summary_tab, 
+       aes(x=child_age, y=accuracy)) +
+    geom_segment(aes(y=0.5, yend=0.5, x=7.2, xend=13), lty=2, colour="grey") +
+    stat_smooth(aes(x=child_age, y=accuracy, 
+                    color=language, fill=language),
+                method="lm", level=.75, fullrange=T) +
+    geom_rug(aes(x=child_age), color="black") +
+    scale_color_manual(values=language_colors, name="Language") +
+    scale_fill_manual(values=language_colors, name="Language") +
+    facet_wrap(~language, ncol=4) +
+    ylim(0, 1) +
+    labs(title='Language Identification Accuracy with Age') +
+    ylab("Proportion Correct") + 
+    xlab("Child Age (years)") +
+    face_axes_theme 
+
+ggsave("id_accuracy_age.pdf", device = "pdf", 
+       path = "plots/with_age",
+       scale = 1.5, width = 6, height = 4, units = "in")
+```
+
+```{r id-accuracy-std}
+id_std_summary_tab <- i %>%
+  group_by(language, standard_num) %>%
+  summarize(mean = na.mean(id_correct),
+            cilo = mean-ci.low(id_correct),
+            cihi = mean+ci.high(id_correct))
+
+ggplot(id_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=language)) +
+  geom_line(aes(lty=language), size=1) + 
+  geom_point(aes(shape=language), size=3) +
+  geom_errorbar(aes(ymin=cilo, ymax=cihi), size=1, width=0) +
+  scale_color_manual(values=language_colors, 
+                     "Language") + 
+  scale_shape_manual(values=language_shapes,
+                     "Language") +
+  scale_linetype_manual(values=language_ltys,
+                        "Language") +
+  ylim(0, 1) +
+  scale_x_continuous(breaks=c(3, 5, 7), 
+                     label=std_axis_labels) +
+  sans_axes_theme_bigger +
+  theme(legend.position = "bottom",
+        legend.key = element_rect(color=NA)) +
+  xlab("Grade") +
+  ylab("Mean Accuracy")
+
+ggsave("id_accuracy_std.pdf", device = "pdf", 
+       path = "plots/by_standard/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r id-glmers, include=F}
+id_glmer <- glmer(correct ~ child_age_centered*language + 
+                  (1|id), family="binomial", i)
+summary(id_glmer)
+Anova(id_glmer)
+
+id_ar_glmer <- glmer(correct ~ child_age_centered*language + child_religion + 
+                  (1|id), family="binomial", i)
+summary(id_ar_glmer)
+Anova(id_ar_glmer)
+
+# models fail to converge
+```
+
+```{r id-glms}
+id_glm <- glm(correct ~ child_age_centered*language, family="binomial", i)
+summary(id_glm)
+Anova(id_glm)
+
+id_ar_glm <- glm(correct ~ child_age_centered*language + child_religion,
+                  family="binomial", i)
+summary(id_ar_glm)
+Anova(id_ar_glm)
+```

@@ -1,0 +1,646 @@
+---
+title: "India Sociolinguistics Wealth Associations Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-18"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r wealth-setup, include=FALSE}
+library(here)
+here::i_am('2_speaker-associations/2c_wealth.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r read-in-data}
+a <- read.csv(here('data/r_dfs/subsets/associations_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'language', 'speaker_gender', 
+                 'origin', 'geographic_origin', 'religion', 'wealth',
+                 'army_navy_language')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence', 'coded_wealth')
+
+a <- a %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+w <- a %>%
+  filter(wealth!="")
+
+w$language <- factor(w$language, levels=language_labels)
+```
+
+```{r wealth-no-opinion-trials}
+N_TRIALS <- w %>%
+  filter(no_opinion_wealth==1) %>%
+  summarize(no_opinion_trials=n()) %>%
+  as.numeric()
+
+N_CHILDREN <- w %>%
+  filter(no_opinion_wealth==1) %>%
+  group_by(id) %>%
+  summarize(no_opinion_trials=n()) %>%
+  summarize(n_children=n()) %>%
+  as.numeric()
+  
+w %>%
+  filter(no_opinion_wealth==1) %>%
+  group_by(id)%>%
+  summarize(no_opinion_trials=n()) %>%
+  group_by(no_opinion_trials) %>%
+  summarize(n_children=n()) %>%
+  kable(.)
+
+w %>%
+  filter(no_opinion_wealth==1) %>%
+  group_by(language)%>%
+  summarize(n=n()) %>%
+  arrange(desc(n)) %>%
+  kable(.)
+
+#265 opted out, 61 children, most on chinese and marathi
+```
+
+"No opinion" selected on `r N_TRIALS` trials by `r N_CHILDREN` children; all children selected single response.
+
+```{r wealth-single-trials}
+table(w$wealth)
+```
+
+```{r wealth-counts-by-std}
+w %>%
+  group_by(standard) %>%
+  mutate(n_std=n()) %>%
+  group_by(standard, wealth, n_std) %>%
+  reframe(n=n(),
+            prop=n/n_std) %>%
+  distinct(standard, wealth, n, n_std, prop)
+```
+
+```{r wealth-counts-by-lang}
+w %>%
+  group_by(language) %>%
+  mutate(n_trials=n()) %>%
+  group_by(wealth, n_trials, language) %>%
+  reframe(n=n(),
+            prop=n/n_trials) %>%
+  distinct(wealth, language, prop)  %>%
+  spread(wealth, prop)
+```
+
+```{r wealth-counts-by-lang-std}
+w %>%
+  group_by(standard, language) %>%
+  mutate(n_trials=n()) %>%
+  group_by(standard, wealth, n_trials, language) %>%
+  reframe(n=n(),
+            prop=n/n_trials) %>%
+  distinct(standard, wealth, language, prop) %>%
+  filter(wealth=="richer") %>%
+  spread(standard, prop) %>%
+  mutate(less_7th = `7`<`3`)
+
+w %>%
+  group_by(standard, language) %>%
+  mutate(n_trials=n()) %>%
+  group_by(standard, wealth, n_trials, language) %>%
+  reframe(n=n(),
+            prop=n/n_trials) %>%
+  distinct(standard, wealth, language, prop) %>%
+  spread(standard, prop) %>%
+  mutate(less_7th = `7`<`3`)
+#from 31--55\% of trials in 3rd to 7--34\% of trials in 7th
+#(Gujarati: 39\%; Hindi: 32\%, Urdu: 31\%, Marathi: 33\%, Tamil: 37\%, Indian English: 35\%, U.S. English: 55\%, Mandarin: 51\%)
+
+#(Gujarati: 12\%; Hindi: 12\%, Urdu: 13\%, Marathi: 12\%, Tamil: 7\%, Indian English: 34\%, U.S. English: 27\%, Mandarin: 34\%)
+
+```
+### Diverging Barchart
+
+```{r diverging-barchart-colorway2}
+wd <- w %>% filter(!is.na(coded_wealth)) %>%
+              group_by(language) %>%
+              mutate(mean_wealth = na.mean(coded_wealth),
+                     sd_wealth = sd(coded_wealth, na.rm=T),
+                     by_lang_z = (coded_wealth-mean_wealth)/sd_wealth,
+                     rating_type=ifelse(
+                       by_lang_z < 0, "below", "above")) %>%
+              group_by(language, rating_type) %>%
+              summarize(sum=sum(by_lang_z))
+
+wd$rating_type <- factor(wd$rating_type, levels=c("below", "above"),
+                         labels=c("Below\nAverage", "Above Average"))
+
+wd$lang_rating_type <- as.character(wd$rating_type)
+wd[wd$rating_type=="Above Average",]$lang_rating_type <- 
+  paste("Above Average:", 
+        wd[wd$rating_type=="Above Average",]$language,
+        sep="\n")
+
+lang_rating_type_colors <- c(
+  "Below\nAverage" = "gray65",
+  "Above Average:\nGujarati" = "#ff7f00", 
+  "Above Average:\nHindi" = "#6a3d9a", # purple
+  "Above Average:\nUrdu" = "#cab2d6", # magenta
+  "Above Average:\nMarathi" = "#fdbf6f", # goldenrod 
+  "Above Average:\nTamil" = "#e31a1c", # burnt orange
+  "Above Average:\nEnglish (India)" = "#33a02c",
+  "Above Average:\nEnglish (U.S.)" = "#b2df8a",
+  "Above Average:\nMandarin" = "#f781bf"
+)
+
+ggplot(wd, 
+       aes(x=fct_rev(language), y=sum)) + 
+  geom_bar(stat="identity", aes(fill=lang_rating_type), width=.5)  +
+  scale_fill_manual(name="Relative Wealth", 
+                    values=lang_rating_type_colors) + 
+    #scale_fill_manual(name="Predicted Wealth", 
+    #                values=lang_rating_type_colors) + 
+  #labels = c("Above Average", "Below Average"), 
+  #values = c("gray65", "#31a354")) + 
+  #facet_wrap(~language, ncol=3) +
+  xlab("Language") +
+  #ylim(-100, 100) +
+  ylab("Normalized Predicted Wealth") +
+  sans_axes_theme +
+  theme(axis.text.y=element_text(size=10, color="gray30", 
+                                 family="sans"),
+        legend.text = element_text(size=8),
+        legend.title = element_text(size=10),
+        legend.key = element_rect(color=NA),
+        legend.position = "bottom",
+        legend.title.position = "top",
+        legend.margin = margin(0,0,0,-55)) +
+  coord_flip() 
+
+ggsave("wealth_diverging_barplot_colored.pdf", device = "pdf", 
+       path = "plots/barplots_overall/",
+       scale = 1, width = 6, height = 6, units = "in")
+```
+
+## Categorically: "Less $"/"As Much $"/"More $"
+
+```{r wealth-overall-barplot, include=F}
+wealth_summary_tab <- w %>%
+  ungroup(.) %>%
+  dplyr::select("language", all_of(wealth_vars)) %>%
+  gather(., wealth, selection, -language) %>%
+    group_by(language, wealth) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+wealth_summary_tab$wealth <- factor(
+  wealth_summary_tab$wealth, 
+  levels=wealth_vars, 
+  labels=wealth_labels)
+
+ggplot(wealth_summary_tab, 
+       aes(x=wealth, y=mean, fill=wealth)) +
+    geom_bar(stat="identity") + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language, ncol=2) +
+    scale_fill_manual(values = wealth_colors,
+                      wealth_legend_title1) +
+    ylim(0, 1) +
+    sans_theme +
+    theme(legend.title = element_text(
+      size=10, colour="gray30", family="sans", face="italic")) +
+    ylab("Mean")
+
+ggsave("wealth_associations.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+### Over Time
+
+#### By Standard
+##### Plots
+```{r wealth-std-lineplot}
+wealth_std_summary_tab <- w %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(wealth_vars)) %>%
+  gather(., wealth, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, wealth) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+wealth_std_summary_tab$wealth <- factor(
+  wealth_std_summary_tab$wealth, 
+  levels=wealth_vars, 
+  labels=wealth_labels)
+
+ggplot(wealth_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=wealth)) +
+    geom_line(aes(lty=wealth)) + 
+    geom_point(aes(shape=wealth)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=wealth_colors, wealth_legend_title) + 
+    scale_shape_manual(values=wealth_shapes, wealth_legend_title) +
+    scale_linetype_manual(values=wealth_ltys,
+                          wealth_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(1, 2, 3), 
+                       label=std_axis_labels) +
+   # labs(title="wealth Associations Across Standards 3-7") +
+    sans_axes_theme +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+  
+ggsave("wealth_std.pdf", device = "pdf", 
+       path = "plots/by_standard/line_plots",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r wealth-std-barplot, include=F}
+ggplot(wealth_std_summary_tab, 
+       aes(x=wealth, y=mean, fill=wealth)) +
+    geom_bar(stat="identity") + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                  color=line_color) + 
+    facet_wrap(~language + standard, ncol=3) +
+    scale_fill_manual(values = wealth_colors, wealth_legend_title1) +
+    ylim(0, 1) +
+    xlab("Standard") +
+    ylab("Mean Proportion") +
+    sans_axes_theme +
+    theme(legend.title = element_text(
+      size=10, colour="gray30", family="sans", face="italic"))
+
+ggsave("wealth_std.pdf", device = "pdf", 
+       path = "plots/by_standard/barplots",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+#### With Age
+##### Plots 
+```{r wealth-age, include=F}
+wealth_age_df <- w %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "child_age", all_of(wealth_vars)) %>%
+  gather(., wealth, selection, -language, -child_age) 
+
+wealth_age_df$wealth <- factor(wealth_age_df$wealth, 
+      levels=wealth_vars, labels=wealth_labels)
+
+ggplot(wealth_age_df, 
+       aes(x=child_age, y=selection, color=wealth, lty=wealth, fill=wealth)) +
+    stat_smooth(aes(x=child_age, y=selection), 
+                method="lm", level=.75, fullrange=T) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values = wealth_colors, wealth_legend_title1) +
+    scale_linetype_manual(values=wealth_ltys, wealth_legend_title1) +
+    scale_fill_manual(values=wealth_colors, wealth_legend_title1) +
+    ylim(0, 1) +
+    ylab("Mean") +
+    xlab("Child Age (yrs)") +
+    #labs(title="wealth Associations with Age") +
+    sans_axes_theme +
+    theme(legend.title = element_text(
+      size=10, colour="gray30", family="sans", face="italic"))
+
+ggsave("wealth_age_lm.png", device = "png", 
+       path = "plots/by_age/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+## Ordinal Logistic Regression
+
+```{r}
+w %>%
+  group_by(wealth) %>%
+  summarize(n=n())
+
+w_for_plots <- w %>%
+  filter(wealth!="idk")
+
+w_for_plots$wealth <- factor(w_for_plots$wealth, 
+                             levels=c("poorer", "same", "richer"))
+w_for_plots$language <- relevel_languages(w_for_plots$language)
+
+w_ord_ageint_mod <- clmm(wealth ~ language*child_age_centered + 
+                    (1|id), link="logit", w_for_plots)
+
+w_ord_mod <- clmm(wealth ~ 0 + language + child_age_centered + 
+                    (1|id), link="logit", w_for_plots)
+
+w_ord_noage_mod <- clmm(wealth ~ language + 
+                    (1|id), link="logit", w_for_plots)
+```
+
+```{r}
+summary(w_ord_mod)
+anova(w_ord_ageint_mod, w_ord_mod)
+
+anova(w_ord_mod, w_ord_noage_mod)
+#($\chi^{2}(7)=8.03$, $p=0.33$)
+```
+
+#### Table 
+
+```{r}
+sjPlot::tab_model(
+    w_ord_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, 
+    file = "tables/models/primary/w_ord_mod_tab.html")
+
+w_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/primary/w_ord_mod_tab.html'),
+  header=T) 
+
+w_tab_df <- as.data.frame(w_tab_df)
+names(w_tab_df) <- w_tab_df[1,]
+w_tab_df <- w_tab_df[-1,]
+
+print.xtable(w_tab_df, type="latex", file="tables/models/primary/w_ordinal_tab.tex")
+```
+
+#### Forest Plot
+
+```{r w-ordmod-plot}
+wp <- make_forest_plot(w_ord_mod)
+  wp$data$term <- gsub("language", "", wp$data$term)
+  wp$data$term <- factor(wp$data$term, 
+                              levels=language_labels) %>%
+    fct_rev(.)
+ # wp$data$facet <- "less money  . . .  as much money  . . .  more money"
+  wp$data$facet <- "less $$ . . . as much $$ . . . more $$"
+  wp$data <- wp$data[!is.na(wp$data$term), ]
+  
+final_wp <- wp + geom_hline(yintercept=1, lty=2, color="gray50") + 
+  facet_grid(~facet) + 
+    theme(panel.background = element_rect(fill=NA, color="gray30"),
+          panel.grid = element_line(color="gray60", linetype="dotted"),
+          strip.background = element_rect(fill="gray90", color="gray30"),
+          strip.text = element_text(color="gray30", size=12, face="bold.italic"),
+          title=element_text(color="gray30", face="bold.italic"),
+          legend.key = element_rect(linewidth=0, color=NA),
+          legend.text = element_text(color="gray30", size=10),
+          axis.text = element_text(color="gray30", size=10, face="plain"),
+          axis.title.x=element_text(color="gray30", size=11,
+                                    face="plain")) +
+    scale_color_manual(values=c("#fc8d59", "#99d594")) + ##33a02c
+    labs(title="This speaker has...")
+  #labs(title="")
+
+ggsave("wp_mod_no_interaction.png", final_wp, device="png", 
+       path="plots/forest_plots/", scale = 1, width = 4, height = 6, units = "in")
+```
+
+### Familiarity
+```{r}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+wi <- merge(w_for_plots, i, by=c("language", "id")) %>%
+  filter(language!="English (India)",
+         language!="Hindi")
+
+wi <- merge(w_for_plots, i, by=c("language", "id"))
+wi$familiar <- factor(wi$familiar, levels=c(0, 1))
+
+w_fam_mod <- clmm(wealth ~ language*familiar + child_age_centered + 
+                    (1|id), link="logit", wi)
+```
+
+#### Table 
+
+```{r}
+sjPlot::tab_model(
+    w_fam_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, 
+    show.reflvl = TRUE,
+    file = "tables/models/familiarity/w_fam_mod_tab.html")
+
+w_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/familiarity/w_fam_mod_tab.html'),
+  header=T) 
+
+w_tab_df <- as.data.frame(w_tab_df)
+names(w_tab_df) <- w_tab_df[1,]
+w_tab_df <- w_tab_df[-1,]
+
+print.xtable(w_tab_df, type="latex", file="tables/models/familiarity/w_fam_mod_tab.tex")
+```
+
+### Gender
+```{r}
+w_for_plots$speaker_FEMALE <- plyr::mapvalues(w_for_plots$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+w_for_plots$speaker_FEMALE <- factor(w_for_plots$speaker_FEMALE, levels=c(0,1))
+w_for_plots$language <- relevel(w_for_plots$language, ref="Gujarati")
+w_gender_mod <- clmm(wealth ~ language*speaker_FEMALE + child_age_centered + 
+                    (1|id), link="logit",
+                    w_for_plots[w_for_plots$speaker_gender!="",])
+```
+
+
+#### Table 
+
+```{r}
+sjPlot::tab_model(
+    w_gender_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, 
+    file = "tables/models/gender/w_gender_mod_tab2.html")
+
+w_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/gender/w_gender_mod_tab2.html'),
+  header=T) 
+
+w_tab_df <- as.data.frame(w_tab_df)
+names(w_tab_df) <- w_tab_df[1,]
+w_tab_df <- w_tab_df[-1,]
+
+print.xtable(w_tab_df, type="latex", file="tables/models/gender/w_gender_mod_tab2.tex")
+```
+
+## Analyzed as a Continuous Variable 
+
+Recoded responses to prompt "This speaker has...": 
+
+* -1: "*Less* money than the people in my city" 
+
+* 0: "*As much* money as the people in my city" 
+
+* 1: "*More* money than the people in my city"
+
+* NA: "No Opinion"
+
+```{r recoded-wealth-df}
+coded_wealth_df <- w %>% filter(!is.na(coded_wealth)) %>%
+  group_by(language) %>%
+  mutate(mean_wealth = na.mean(coded_wealth))
+
+coded_wealth_df <- coded_wealth_df %>%
+  filter(!is.na(language))
+```
+
+```{r recoded-wealth-barplots-colored}
+wb <- coded_wealth_df %>%
+  group_by(language)%>%
+  summarize(mean = mean(coded_wealth),
+            cilo = mean - ci.low(coded_wealth),
+            cihi = mean + ci.high(coded_wealth)) %>%
+ggplot(., 
+       aes(x=language, y=mean)) +
+    geom_bar(stat="identity", aes(fill=language), alpha=0.9) +
+    geom_hline(yintercept=0, lty=2, colour=line_color) +
+    scale_fill_manual(values=language_colors, name="Language") +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, color=line_color) +
+    scale_color_manual(values=language_colors, name="Language (audio)") +
+    ylim(-0.4, 0.6) +
+    #labs(title='Relative Wealth Associations by Language\n(0="As much money as the people in my city"') +
+    ylab("Comparative Wealth") + 
+    xlab("Language (audio)") +
+    sans_axes_theme_bigger +
+  theme(axis.text.x=element_text(angle=60, hjust=1, face="bold"),
+        legend.position = "none")
+
+ggsave("wealth_recoded_meaned_barplot.pdf", device = "pdf", 
+       path = "plots/barplots_overall/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+### With Age  
+
+```{r recoded-wealth-age}
+coded_wealth_df$language <- relevel_languages(coded_wealth_df$language)
+
+wal <- ggplot(coded_wealth_df, 
+       aes(x=child_age, y=coded_wealth)) +
+    geom_segment(aes(y=0, yend=0, x=7.2, xend=13), lty=2, 
+                 colour="gray20", linewidth = .75) +
+    stat_smooth(aes(x=child_age, y=coded_wealth, 
+                    color=language, fill=language),
+                method="lm", level=.75, fullrange=T) +
+    scale_color_manual(values=language_colors, name="Language") +
+    scale_fill_manual(values=language_colors, name="Language") +
+    facet_wrap(~language, ncol=4) +
+    ylim(-0.5, 1) +
+    ylab("Comparative Wealth") + 
+    xlab("Child Age (years)") +
+    sans_axes_theme_bigger +
+  theme(legend.position = "none")
+
+ggsave("wealth_recoded_age_lm.png", device = "png", 
+       path = "plots/by_age/",
+       scale = 1.5, width = 6, height = 4, units = "in")
+
+ggsave("wealth_recoded_age_lm_short.pdf", device = "pdf", 
+       path = "plots/by_age/",
+       scale = 2, width = 4, height = 2.5, units = "in")
+
+ggsave("wealth_recoded_age_lm_6in.pdf", device = "pdf", 
+       path = "plots/by_age",
+       scale = 1.5, width = 6, height = 4, units = "in")
+```
+
+```{r recoded-combined-plots}
+wc <- ggarrange(wal, wb + ylim(-0.5, 1), 
+          labels='AUTO', widths = c(4, 3), 
+          ncol = 2, nrow = 1, align = 'v')
+
+save_combined_plot_svg(wc, "combined_wealth_labeled.svg")
+```
+
+## LMERs
+
+```{r recoded-wealth-lmer}
+wealth_lmer <- lmer(coded_wealth ~ language + 
+                      child_age_centered + (1|id), w)
+
+cbind(fixef(wealth_lmer), confint(wealth_lmer)[3:11,]) %>%
+  kable(., caption="Wealth Model Fixed Effects")
+```
+
+```{r recoded-wealth-int-lmer}
+wealth_int_lmer <- lmer(
+  coded_wealth ~ language*child_age_centered + (1|id),
+                    w)
+
+cbind(fixef(wealth_int_lmer), confint(wealth_int_lmer)[3:18,]) %>%
+  kable(., caption="Wealth Interaction Model Fixed Effects")
+
+anova(wealth_lmer, wealth_int_lmer)
+
+Anova(wealth_int_lmer)
+
+wealth_int_lm <- lm(
+  coded_wealth ~ language*child_age_centered,
+                    w)
+```
+
+The interaction between language and child age is not significant in predicting children's speaker--wealth associations.
+
+```{r}
+w$speaker_FEMALE <- plyr::mapvalues(w$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+w$speaker_FEMALE <- as.numeric(
+  as.character(
+    w$speaker_FEMALE))
+
+w$language <- relevel(w$language, ref="Gujarati")
+w_gender_mod <- lmer(coded_wealth ~ 0 + language*speaker_FEMALE + 
+                       child_age_centered + (1|id), w)
+
+stargazer(w_gender_mod, ci=T, ci.separator = "--", digits=2,
+          star.cutoffs=c(0.05, 0.01, 0.001), single.row = T) 
+```
+
+### Language ID  
+
+```{r recoded-wealth-id-int-lmer}
+wealth_id_lmer <- lmer(
+  coded_wealth ~ language*familiar + child_age_centered + (1|id),
+                    wi)
+
+cbind(fixef(wealth_id_lmer), confint(wealth_id_lmer)[3:18,]) %>%
+  kable(., caption="Wealth-ID Interaction + Age Model Fixed Effects")
+
+#anova(wealth_id_lmer, wealth_int_lmer)
+
+Anova(wealth_id_lmer)
+```
+
+```{r recoded-wealth-ida-int-lmer}
+wealth_idint_lmer <- lmer(
+  coded_wealth ~ language*familiar*child_age_centered + (1|id),
+                    wi)
+
+cbind(fixef(wealth_idint_lmer), confint(wealth_idint_lmer)[3:32,]) %>%
+  kable(., caption="Wealth Interaction Model Fixed Effects")
+
+#anova(wealth_id_lmer, wealth_idint_lmer)
+
+Anova(wealth_idint_lmer)
+```

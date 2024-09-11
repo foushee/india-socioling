@@ -1,0 +1,1050 @@
+"","id","language","army_navy_language","id_correct","knows","familiar"
+"1","Z03A06","Gujarati","gujarati",1,1,1
+"2","Z03A06","Hindi","hindi",1,1,1
+"3","Z03A06","Urdu","urdu",0,0,0
+"4","Z03A06","Marathi","marathi",0,0,0
+"5","Z03A06","Tamil","tamil",0,0,0
+"6","Z03A06","English (India)","english",0,0,0
+"7","Z03A06","English (U.S.)","english",1,NA,1
+"8","Z03A06","Mandarin","chinese",0,NA,0
+"9","Z03A09","Gujarati","gujarati",0,0,0
+"10","Z03A09","Hindi","hindi",0,1,1
+"11","Z03A09","Urdu","urdu",1,1,1
+"12","Z03A09","Marathi","marathi",0,0,0
+"13","Z03A09","Tamil","tamil",0,0,0
+"14","Z03A09","English (India)","english",1,0,1
+"15","Z03A09","English (U.S.)","english",1,NA,1
+"16","Z03A09","Mandarin","chinese",0,NA,0
+"17","Z03A16","Gujarati","gujarati",0,0,0
+"18","Z03A16","Hindi","hindi",0,1,1
+"19","Z03A16","Urdu","urdu",0,0,0
+"20","Z03A16","Marathi","marathi",1,0,1
+"21","Z03A16","Tamil","tamil",0,0,0
+"22","Z03A16","English (India)","english",0,0,0
+"23","Z03A16","English (U.S.)","english",1,NA,1
+"24","Z03A16","Mandarin","chinese",0,NA,0
+"25","Z03A51","Gujarati","gujarati",1,1,1
+"26","Z03A51","Hindi","hindi",1,1,1
+"27","Z03A51","Urdu","urdu",1,0,1
+"28","Z03A51","Marathi","marathi",0,0,0
+"29","Z03A51","Tamil","tamil",1,0,1
+"30","Z03A51","English (India)","english",1,1,1
+"31","Z03A51","English (U.S.)","english",1,NA,1
+"32","Z03A51","Mandarin","chinese",0,NA,0
+"33","Z03A59","Gujarati","gujarati",0,1,1
+"34","Z03A59","Hindi","hindi",1,0,1
+"35","Z03A59","Urdu","urdu",0,0,0
+"36","Z03A59","Marathi","marathi",1,0,1
+"37","Z03A59","Tamil","tamil",0,0,0
+"38","Z03A59","English (India)","english",0,0,0
+"39","Z03A59","English (U.S.)","english",1,NA,1
+"40","Z03A59","Mandarin","chinese",0,NA,0
+"41","Z03A60","Gujarati","gujarati",1,0,1
+"42","Z03A60","Hindi","hindi",1,0,1
+"43","Z03A60","Urdu","urdu",0,0,0
+"44","Z03A60","Marathi","marathi",1,0,1
+"45","Z03A60","Tamil","tamil",0,0,0
+"46","Z03A60","English (India)","english",1,0,1
+"47","Z03A60","English (U.S.)","english",1,NA,1
+"48","Z03A60","Mandarin","chinese",0,NA,0
+"49","Z03B58","Gujarati","gujarati",1,1,1
+"50","Z03B58","Hindi","hindi",1,1,1
+"51","Z03B58","Urdu","urdu",0,1,1
+"52","Z03B58","Marathi","marathi",0,0,0
+"53","Z03B58","Tamil","tamil",0,0,0
+"54","Z03B58","English (India)","english",1,1,1
+"55","Z03B58","English (U.S.)","english",1,NA,1
+"56","Z03B58","Mandarin","chinese",0,NA,0
+"57","Z03C01","Gujarati","gujarati",0,1,1
+"58","Z03C01","Hindi","hindi",1,1,1
+"59","Z03C01","Urdu","urdu",1,1,1
+"60","Z03C01","Marathi","marathi",0,0,0
+"61","Z03C01","Tamil","tamil",0,0,0
+"62","Z03C01","English (India)","english",1,1,1
+"63","Z03C01","English (U.S.)","english",1,NA,1
+"64","Z03C01","Mandarin","chinese",0,NA,0
+"65","Z03C02","Gujarati","gujarati",0,1,1
+"66","Z03C02","Hindi","hindi",0,1,1
+"67","Z03C02","Urdu","urdu",0,0,0
+"68","Z03C02","Marathi","marathi",0,0,0
+"69","Z03C02","Tamil","tamil",0,0,0
+"70","Z03C02","English (India)","english",1,1,1
+"71","Z03C02","English (U.S.)","english",0,NA,0
+"72","Z03C02","Mandarin","chinese",0,NA,0
+"73","Z03C04","Gujarati","gujarati",1,1,1
+"74","Z03C04","Hindi","hindi",1,1,1
+"75","Z03C04","Urdu","urdu",0,0,0
+"76","Z03C04","Marathi","marathi",0,0,0
+"77","Z03C04","Tamil","tamil",0,0,0
+"78","Z03C04","English (India)","english",1,1,1
+"79","Z03C04","English (U.S.)","english",1,NA,1
+"80","Z03C04","Mandarin","chinese",1,NA,1
+"81","Z03C06","Gujarati","gujarati",1,1,1
+"82","Z03C06","Hindi","hindi",1,1,1
+"83","Z03C06","Urdu","urdu",0,1,1
+"84","Z03C06","Marathi","marathi",0,0,0
+"85","Z03C06","Tamil","tamil",0,0,0
+"86","Z03C06","English (India)","english",0,1,1
+"87","Z03C06","English (U.S.)","english",0,NA,0
+"88","Z03C06","Mandarin","chinese",0,NA,0
+"89","Z03C07","Gujarati","gujarati",1,1,1
+"90","Z03C07","Hindi","hindi",0,1,1
+"91","Z03C07","Urdu","urdu",0,0,0
+"92","Z03C07","Marathi","marathi",0,0,0
+"93","Z03C07","Tamil","tamil",0,1,1
+"94","Z03C07","English (India)","english",0,1,1
+"95","Z03C07","English (U.S.)","english",1,NA,1
+"96","Z03C07","Mandarin","chinese",1,NA,1
+"97","Z03C09","Gujarati","gujarati",0,1,1
+"98","Z03C09","Hindi","hindi",1,1,1
+"99","Z03C09","Urdu","urdu",1,0,1
+"100","Z03C09","Marathi","marathi",0,0,0
+"101","Z03C09","Tamil","tamil",1,0,1
+"102","Z03C09","English (India)","english",0,1,1
+"103","Z03C09","English (U.S.)","english",1,NA,1
+"104","Z03C09","Mandarin","chinese",1,NA,1
+"105","Z03C10","Gujarati","gujarati",1,1,1
+"106","Z03C10","Hindi","hindi",1,1,1
+"107","Z03C10","Urdu","urdu",0,0,0
+"108","Z03C10","Marathi","marathi",1,1,1
+"109","Z03C10","Tamil","tamil",0,0,0
+"110","Z03C10","English (India)","english",1,0,1
+"111","Z03C10","English (U.S.)","english",1,NA,1
+"112","Z03C10","Mandarin","chinese",1,NA,1
+"113","Z03C14","Gujarati","gujarati",1,1,1
+"114","Z03C14","Hindi","hindi",1,1,1
+"115","Z03C14","Urdu","urdu",0,1,1
+"116","Z03C14","Marathi","marathi",0,1,1
+"117","Z03C14","Tamil","tamil",0,0,0
+"118","Z03C14","English (India)","english",1,1,1
+"119","Z03C14","English (U.S.)","english",1,NA,1
+"120","Z03C14","Mandarin","chinese",1,NA,1
+"121","Z03C16","Gujarati","gujarati",0,0,0
+"122","Z03C16","Hindi","hindi",1,1,1
+"123","Z03C16","Urdu","urdu",0,0,0
+"124","Z03C16","Marathi","marathi",0,0,0
+"125","Z03C16","Tamil","tamil",1,0,1
+"126","Z03C16","English (India)","english",1,0,1
+"127","Z03C16","English (U.S.)","english",1,NA,1
+"128","Z03C16","Mandarin","chinese",0,NA,0
+"129","Z03C18","Gujarati","gujarati",0,1,1
+"130","Z03C18","Hindi","hindi",1,1,1
+"131","Z03C18","Urdu","urdu",0,0,0
+"132","Z03C18","Marathi","marathi",0,1,1
+"133","Z03C18","Tamil","tamil",1,0,1
+"134","Z03C18","English (India)","english",1,1,1
+"135","Z03C18","English (U.S.)","english",1,NA,1
+"136","Z03C18","Mandarin","chinese",0,NA,0
+"137","Z03C20","Gujarati","gujarati",0,0,0
+"138","Z03C20","Hindi","hindi",0,1,1
+"139","Z03C20","Urdu","urdu",0,1,1
+"140","Z03C20","Marathi","marathi",0,0,0
+"141","Z03C20","Tamil","tamil",0,0,0
+"142","Z03C20","English (India)","english",1,1,1
+"143","Z03C20","English (U.S.)","english",1,NA,1
+"144","Z03C20","Mandarin","chinese",0,NA,0
+"145","Z03C43","Gujarati","gujarati",1,1,1
+"146","Z03C43","Hindi","hindi",0,1,1
+"147","Z03C43","Urdu","urdu",0,0,0
+"148","Z03C43","Marathi","marathi",0,0,0
+"149","Z03C43","Tamil","tamil",0,0,0
+"150","Z03C43","English (India)","english",1,1,1
+"151","Z03C43","English (U.S.)","english",1,NA,1
+"152","Z03C43","Mandarin","chinese",1,NA,1
+"153","Z03C44","Gujarati","gujarati",1,1,1
+"154","Z03C44","Hindi","hindi",1,1,1
+"155","Z03C44","Urdu","urdu",0,0,0
+"156","Z03C44","Marathi","marathi",1,1,1
+"157","Z03C44","Tamil","tamil",0,0,0
+"158","Z03C44","English (India)","english",1,1,1
+"159","Z03C44","English (U.S.)","english",1,NA,1
+"160","Z03C44","Mandarin","chinese",1,NA,1
+"161","Z03C46","Gujarati","gujarati",0,1,1
+"162","Z03C46","Hindi","hindi",1,1,1
+"163","Z03C46","Urdu","urdu",1,0,1
+"164","Z03C46","Marathi","marathi",1,0,1
+"165","Z03C46","Tamil","tamil",0,0,0
+"166","Z03C46","English (India)","english",1,1,1
+"167","Z03C46","English (U.S.)","english",1,NA,1
+"168","Z03C46","Mandarin","chinese",1,NA,1
+"169","Z03C47","Gujarati","gujarati",0,1,1
+"170","Z03C47","Hindi","hindi",1,1,1
+"171","Z03C47","Urdu","urdu",0,0,0
+"172","Z03C47","Marathi","marathi",1,1,1
+"173","Z03C47","Tamil","tamil",0,0,0
+"174","Z03C47","English (India)","english",1,1,1
+"175","Z03C47","English (U.S.)","english",1,NA,1
+"176","Z03C47","Mandarin","chinese",0,NA,0
+"177","Z03C48","Gujarati","gujarati",1,1,1
+"178","Z03C48","Hindi","hindi",1,1,1
+"179","Z03C48","Urdu","urdu",0,0,0
+"180","Z03C48","Marathi","marathi",0,0,0
+"181","Z03C48","Tamil","tamil",1,0,1
+"182","Z03C48","English (India)","english",1,1,1
+"183","Z03C48","English (U.S.)","english",1,NA,1
+"184","Z03C48","Mandarin","chinese",0,NA,0
+"185","Z03C49","Gujarati","gujarati",1,1,1
+"186","Z03C49","Hindi","hindi",1,1,1
+"187","Z03C49","Urdu","urdu",0,0,0
+"188","Z03C49","Marathi","marathi",0,0,0
+"189","Z03C49","Tamil","tamil",0,0,0
+"190","Z03C49","English (India)","english",1,1,1
+"191","Z03C49","English (U.S.)","english",1,NA,1
+"192","Z03C49","Mandarin","chinese",1,NA,1
+"193","Z03C51","Gujarati","gujarati",1,1,1
+"194","Z03C51","Hindi","hindi",1,1,1
+"195","Z03C51","Urdu","urdu",1,0,1
+"196","Z03C51","Marathi","marathi",0,0,0
+"197","Z03C51","Tamil","tamil",1,0,1
+"198","Z03C51","English (India)","english",0,1,1
+"199","Z03C51","English (U.S.)","english",1,NA,1
+"200","Z03C51","Mandarin","chinese",1,NA,1
+"201","Z03C60","Gujarati","gujarati",0,1,1
+"202","Z03C60","Hindi","hindi",1,1,1
+"203","Z03C60","Urdu","urdu",0,0,0
+"204","Z03C60","Marathi","marathi",1,0,1
+"205","Z03C60","Tamil","tamil",1,0,1
+"206","Z03C60","English (India)","english",0,1,1
+"207","Z03C60","English (U.S.)","english",1,NA,1
+"208","Z03C60","Mandarin","chinese",0,NA,0
+"209","Z03C62","Gujarati","gujarati",1,1,1
+"210","Z03C62","Hindi","hindi",0,1,1
+"211","Z03C62","Urdu","urdu",1,0,1
+"212","Z03C62","Marathi","marathi",0,0,0
+"213","Z03C62","Tamil","tamil",0,0,0
+"214","Z03C62","English (India)","english",0,1,1
+"215","Z03C62","English (U.S.)","english",0,NA,0
+"216","Z03C62","Mandarin","chinese",1,NA,1
+"217","Z05A03","Gujarati","gujarati",0,1,1
+"218","Z05A03","Hindi","hindi",1,1,1
+"219","Z05A03","Urdu","urdu",0,0,0
+"220","Z05A03","Marathi","marathi",0,1,1
+"221","Z05A03","Tamil","tamil",0,0,0
+"222","Z05A03","English (India)","english",1,1,1
+"223","Z05A03","English (U.S.)","english",1,NA,1
+"224","Z05A03","Mandarin","chinese",1,NA,1
+"225","Z05A04","Gujarati","gujarati",1,1,1
+"226","Z05A04","Hindi","hindi",1,1,1
+"227","Z05A04","Urdu","urdu",0,0,0
+"228","Z05A04","Marathi","marathi",1,1,1
+"229","Z05A04","Tamil","tamil",0,0,0
+"230","Z05A04","English (India)","english",0,1,1
+"231","Z05A04","English (U.S.)","english",1,NA,1
+"232","Z05A04","Mandarin","chinese",1,NA,1
+"233","Z05A05","Gujarati","gujarati",1,1,1
+"234","Z05A05","Hindi","hindi",1,1,1
+"235","Z05A05","Urdu","urdu",0,0,0
+"236","Z05A05","Marathi","marathi",0,0,0
+"237","Z05A05","Tamil","tamil",0,0,0
+"238","Z05A05","English (India)","english",1,1,1
+"239","Z05A05","English (U.S.)","english",1,NA,1
+"240","Z05A05","Mandarin","chinese",0,NA,0
+"241","Z05A07","Gujarati","gujarati",1,1,1
+"242","Z05A07","Hindi","hindi",1,1,1
+"243","Z05A07","Urdu","urdu",0,0,0
+"244","Z05A07","Marathi","marathi",1,1,1
+"245","Z05A07","Tamil","tamil",0,0,0
+"246","Z05A07","English (India)","english",0,1,1
+"247","Z05A07","English (U.S.)","english",1,NA,1
+"248","Z05A07","Mandarin","chinese",1,NA,1
+"249","Z05A08","Gujarati","gujarati",1,0,1
+"250","Z05A08","Hindi","hindi",1,1,1
+"251","Z05A08","Urdu","urdu",0,1,1
+"252","Z05A08","Marathi","marathi",1,0,1
+"253","Z05A08","Tamil","tamil",1,0,1
+"254","Z05A08","English (India)","english",0,1,1
+"255","Z05A08","English (U.S.)","english",1,NA,1
+"256","Z05A08","Mandarin","chinese",1,NA,1
+"257","Z05A09","Gujarati","gujarati",1,1,1
+"258","Z05A09","Hindi","hindi",1,1,1
+"259","Z05A09","Urdu","urdu",1,1,1
+"260","Z05A09","Marathi","marathi",0,0,0
+"261","Z05A09","Tamil","tamil",0,1,1
+"262","Z05A09","English (India)","english",1,1,1
+"263","Z05A09","English (U.S.)","english",1,NA,1
+"264","Z05A09","Mandarin","chinese",0,NA,0
+"265","Z05A10","Gujarati","gujarati",0,1,1
+"266","Z05A10","Hindi","hindi",0,1,1
+"267","Z05A10","Urdu","urdu",0,0,0
+"268","Z05A10","Marathi","marathi",0,0,0
+"269","Z05A10","Tamil","tamil",0,0,0
+"270","Z05A10","English (India)","english",1,0,1
+"271","Z05A10","English (U.S.)","english",1,NA,1
+"272","Z05A10","Mandarin","chinese",1,NA,1
+"273","Z05A13","Gujarati","gujarati",1,1,1
+"274","Z05A13","Hindi","hindi",1,1,1
+"275","Z05A13","Urdu","urdu",0,0,0
+"276","Z05A13","Marathi","marathi",0,1,1
+"277","Z05A13","Tamil","tamil",0,0,0
+"278","Z05A13","English (India)","english",1,1,1
+"279","Z05A13","English (U.S.)","english",1,NA,1
+"280","Z05A13","Mandarin","chinese",1,NA,1
+"281","Z05A19","Gujarati","gujarati",0,1,1
+"282","Z05A19","Hindi","hindi",1,1,1
+"283","Z05A19","Urdu","urdu",0,0,0
+"284","Z05A19","Marathi","marathi",1,0,1
+"285","Z05A19","Tamil","tamil",0,0,0
+"286","Z05A19","English (India)","english",1,1,1
+"287","Z05A19","English (U.S.)","english",1,NA,1
+"288","Z05A19","Mandarin","chinese",1,NA,1
+"289","Z05A33","Gujarati","gujarati",1,1,1
+"290","Z05A33","Hindi","hindi",1,1,1
+"291","Z05A33","Urdu","urdu",0,0,0
+"292","Z05A33","Marathi","marathi",0,0,0
+"293","Z05A33","Tamil","tamil",0,0,0
+"294","Z05A33","English (India)","english",0,1,1
+"295","Z05A33","English (U.S.)","english",1,NA,1
+"296","Z05A33","Mandarin","chinese",1,NA,1
+"297","Z05A42","Gujarati","gujarati",0,1,1
+"298","Z05A42","Hindi","hindi",1,1,1
+"299","Z05A42","Urdu","urdu",0,1,1
+"300","Z05A42","Marathi","marathi",0,0,0
+"301","Z05A42","Tamil","tamil",1,0,1
+"302","Z05A42","English (India)","english",1,1,1
+"303","Z05A42","English (U.S.)","english",1,NA,1
+"304","Z05A42","Mandarin","chinese",1,NA,1
+"305","Z05A43","Gujarati","gujarati",1,1,1
+"306","Z05A43","Hindi","hindi",1,1,1
+"307","Z05A43","Urdu","urdu",0,0,0
+"308","Z05A43","Marathi","marathi",1,1,1
+"309","Z05A43","Tamil","tamil",0,0,0
+"310","Z05A43","English (India)","english",1,1,1
+"311","Z05A43","English (U.S.)","english",1,NA,1
+"312","Z05A43","Mandarin","chinese",1,NA,1
+"313","Z05A47","Gujarati","gujarati",1,1,1
+"314","Z05A47","Hindi","hindi",1,1,1
+"315","Z05A47","Urdu","urdu",0,0,0
+"316","Z05A47","Marathi","marathi",1,1,1
+"317","Z05A47","Tamil","tamil",0,0,0
+"318","Z05A47","English (India)","english",1,1,1
+"319","Z05A47","English (U.S.)","english",1,NA,1
+"320","Z05A47","Mandarin","chinese",1,NA,1
+"321","Z05A48","Gujarati","gujarati",1,1,1
+"322","Z05A48","Hindi","hindi",1,1,1
+"323","Z05A48","Urdu","urdu",0,0,0
+"324","Z05A48","Marathi","marathi",0,0,0
+"325","Z05A48","Tamil","tamil",0,0,0
+"326","Z05A48","English (India)","english",1,1,1
+"327","Z05A48","English (U.S.)","english",1,NA,1
+"328","Z05A48","Mandarin","chinese",1,NA,1
+"329","Z05A49","Gujarati","gujarati",1,1,1
+"330","Z05A49","Hindi","hindi",1,1,1
+"331","Z05A49","Urdu","urdu",0,0,0
+"332","Z05A49","Marathi","marathi",1,1,1
+"333","Z05A49","Tamil","tamil",1,0,1
+"334","Z05A49","English (India)","english",0,1,1
+"335","Z05A49","English (U.S.)","english",1,NA,1
+"336","Z05A49","Mandarin","chinese",0,NA,0
+"337","Z05A4X","Gujarati","gujarati",1,1,1
+"338","Z05A4X","Hindi","hindi",1,1,1
+"339","Z05A4X","Urdu","urdu",0,1,1
+"340","Z05A4X","Marathi","marathi",1,1,1
+"341","Z05A4X","Tamil","tamil",1,0,1
+"342","Z05A4X","English (India)","english",1,0,1
+"343","Z05A4X","English (U.S.)","english",1,NA,1
+"344","Z05A4X","Mandarin","chinese",1,NA,1
+"345","Z05A51","Gujarati","gujarati",1,1,1
+"346","Z05A51","Hindi","hindi",1,1,1
+"347","Z05A51","Urdu","urdu",1,0,1
+"348","Z05A51","Marathi","marathi",0,0,0
+"349","Z05A51","Tamil","tamil",1,0,1
+"350","Z05A51","English (India)","english",0,0,0
+"351","Z05A51","English (U.S.)","english",1,NA,1
+"352","Z05A51","Mandarin","chinese",0,NA,0
+"353","Z05A52","Gujarati","gujarati",1,1,1
+"354","Z05A52","Hindi","hindi",1,1,1
+"355","Z05A52","Urdu","urdu",0,0,0
+"356","Z05A52","Marathi","marathi",0,0,0
+"357","Z05A52","Tamil","tamil",1,0,1
+"358","Z05A52","English (India)","english",0,1,1
+"359","Z05A52","English (U.S.)","english",1,NA,1
+"360","Z05A52","Mandarin","chinese",1,NA,1
+"361","Z05A53","Gujarati","gujarati",1,1,1
+"362","Z05A53","Hindi","hindi",1,1,1
+"363","Z05A53","Urdu","urdu",0,0,0
+"364","Z05A53","Marathi","marathi",0,0,0
+"365","Z05A53","Tamil","tamil",0,0,0
+"366","Z05A53","English (India)","english",0,1,1
+"367","Z05A53","English (U.S.)","english",1,NA,1
+"368","Z05A53","Mandarin","chinese",1,NA,1
+"369","Z05A56","Gujarati","gujarati",1,1,1
+"370","Z05A56","Hindi","hindi",1,1,1
+"371","Z05A56","Urdu","urdu",0,0,0
+"372","Z05A56","Marathi","marathi",1,1,1
+"373","Z05A56","Tamil","tamil",0,0,0
+"374","Z05A56","English (India)","english",1,1,1
+"375","Z05A56","English (U.S.)","english",1,NA,1
+"376","Z05A56","Mandarin","chinese",1,NA,1
+"377","Z05A57","Gujarati","gujarati",1,1,1
+"378","Z05A57","Hindi","hindi",1,1,1
+"379","Z05A57","Urdu","urdu",0,0,0
+"380","Z05A57","Marathi","marathi",0,0,0
+"381","Z05A57","Tamil","tamil",0,0,0
+"382","Z05A57","English (India)","english",0,1,1
+"383","Z05A57","English (U.S.)","english",1,NA,1
+"384","Z05A57","Mandarin","chinese",0,NA,0
+"385","Z05A60","Gujarati","gujarati",1,1,1
+"386","Z05A60","Hindi","hindi",1,1,1
+"387","Z05A60","Urdu","urdu",0,0,0
+"388","Z05A60","Marathi","marathi",1,1,1
+"389","Z05A60","Tamil","tamil",0,0,0
+"390","Z05A60","English (India)","english",0,1,1
+"391","Z05A60","English (U.S.)","english",1,NA,1
+"392","Z05A60","Mandarin","chinese",0,NA,0
+"393","Z05B03","Gujarati","gujarati",1,0,1
+"394","Z05B03","Hindi","hindi",0,0,0
+"395","Z05B03","Urdu","urdu",0,0,0
+"396","Z05B03","Marathi","marathi",0,1,1
+"397","Z05B03","Tamil","tamil",1,0,1
+"398","Z05B03","English (India)","english",1,0,1
+"399","Z05B03","English (U.S.)","english",1,NA,1
+"400","Z05B03","Mandarin","chinese",1,NA,1
+"401","Z05B04","Gujarati","gujarati",1,0,1
+"402","Z05B04","Hindi","hindi",1,0,1
+"403","Z05B04","Urdu","urdu",0,0,0
+"404","Z05B04","Marathi","marathi",0,1,1
+"405","Z05B04","Tamil","tamil",0,0,0
+"406","Z05B04","English (India)","english",1,0,1
+"407","Z05B04","English (U.S.)","english",1,NA,1
+"408","Z05B04","Mandarin","chinese",1,NA,1
+"409","Z05B05","Gujarati","gujarati",1,1,1
+"410","Z05B05","Hindi","hindi",1,1,1
+"411","Z05B05","Urdu","urdu",0,0,0
+"412","Z05B05","Marathi","marathi",0,0,0
+"413","Z05B05","Tamil","tamil",1,0,1
+"414","Z05B05","English (India)","english",1,1,1
+"415","Z05B05","English (U.S.)","english",1,NA,1
+"416","Z05B05","Mandarin","chinese",1,NA,1
+"417","Z05B11","Gujarati","gujarati",1,1,1
+"418","Z05B11","Hindi","hindi",1,1,1
+"419","Z05B11","Urdu","urdu",0,0,0
+"420","Z05B11","Marathi","marathi",1,1,1
+"421","Z05B11","Tamil","tamil",0,0,0
+"422","Z05B11","English (India)","english",0,1,1
+"423","Z05B11","English (U.S.)","english",1,NA,1
+"424","Z05B11","Mandarin","chinese",0,NA,0
+"425","Z05B12","Gujarati","gujarati",1,1,1
+"426","Z05B12","Hindi","hindi",1,1,1
+"427","Z05B12","Urdu","urdu",0,1,1
+"428","Z05B12","Marathi","marathi",1,1,1
+"429","Z05B12","Tamil","tamil",1,0,1
+"430","Z05B12","English (India)","english",1,1,1
+"431","Z05B12","English (U.S.)","english",1,NA,1
+"432","Z05B12","Mandarin","chinese",1,NA,1
+"433","Z05B16","Gujarati","gujarati",0,0,0
+"434","Z05B16","Hindi","hindi",1,1,1
+"435","Z05B16","Urdu","urdu",0,0,0
+"436","Z05B16","Marathi","marathi",0,0,0
+"437","Z05B16","Tamil","tamil",0,0,0
+"438","Z05B16","English (India)","english",0,0,0
+"439","Z05B16","English (U.S.)","english",1,NA,1
+"440","Z05B16","Mandarin","chinese",0,NA,0
+"441","Z05B17","Gujarati","gujarati",1,1,1
+"442","Z05B17","Hindi","hindi",1,1,1
+"443","Z05B17","Urdu","urdu",0,0,0
+"444","Z05B17","Marathi","marathi",1,1,1
+"445","Z05B17","Tamil","tamil",1,0,1
+"446","Z05B17","English (India)","english",1,1,1
+"447","Z05B17","English (U.S.)","english",1,NA,1
+"448","Z05B17","Mandarin","chinese",1,NA,1
+"449","Z05B19","Gujarati","gujarati",0,1,1
+"450","Z05B19","Hindi","hindi",1,1,1
+"451","Z05B19","Urdu","urdu",0,0,0
+"452","Z05B19","Marathi","marathi",1,1,1
+"453","Z05B19","Tamil","tamil",1,0,1
+"454","Z05B19","English (India)","english",1,1,1
+"455","Z05B19","English (U.S.)","english",1,NA,1
+"456","Z05B19","Mandarin","chinese",1,NA,1
+"457","Z05B20","Gujarati","gujarati",1,1,1
+"458","Z05B20","Hindi","hindi",1,1,1
+"459","Z05B20","Urdu","urdu",0,1,1
+"460","Z05B20","Marathi","marathi",1,0,1
+"461","Z05B20","Tamil","tamil",1,0,1
+"462","Z05B20","English (India)","english",1,1,1
+"463","Z05B20","English (U.S.)","english",1,NA,1
+"464","Z05B20","Mandarin","chinese",1,NA,1
+"465","Z05B32","Gujarati","gujarati",NA,0,NA
+"466","Z05B32","Hindi","hindi",NA,1,1
+"467","Z05B32","Urdu","urdu",NA,0,NA
+"468","Z05B32","Marathi","marathi",NA,0,NA
+"469","Z05B32","Tamil","tamil",NA,0,NA
+"470","Z05B32","English (India)","english",NA,0,NA
+"471","Z05B32","English (U.S.)","english",NA,NA,NA
+"472","Z05B32","Mandarin","chinese",NA,NA,NA
+"473","Z05B44","Gujarati","gujarati",1,1,1
+"474","Z05B44","Hindi","hindi",1,1,1
+"475","Z05B44","Urdu","urdu",0,0,0
+"476","Z05B44","Marathi","marathi",1,0,1
+"477","Z05B44","Tamil","tamil",0,0,0
+"478","Z05B44","English (India)","english",0,0,0
+"479","Z05B44","English (U.S.)","english",1,NA,1
+"480","Z05B44","Mandarin","chinese",0,NA,0
+"481","Z05B46","Gujarati","gujarati",1,1,1
+"482","Z05B46","Hindi","hindi",1,0,1
+"483","Z05B46","Urdu","urdu",0,0,0
+"484","Z05B46","Marathi","marathi",0,1,1
+"485","Z05B46","Tamil","tamil",0,0,0
+"486","Z05B46","English (India)","english",0,0,0
+"487","Z05B46","English (U.S.)","english",1,NA,1
+"488","Z05B46","Mandarin","chinese",1,NA,1
+"489","Z05B47","Gujarati","gujarati",1,0,1
+"490","Z05B47","Hindi","hindi",1,1,1
+"491","Z05B47","Urdu","urdu",0,0,0
+"492","Z05B47","Marathi","marathi",0,0,0
+"493","Z05B47","Tamil","tamil",0,0,0
+"494","Z05B47","English (India)","english",0,0,0
+"495","Z05B47","English (U.S.)","english",1,NA,1
+"496","Z05B47","Mandarin","chinese",0,NA,0
+"497","Z05B48","Gujarati","gujarati",1,1,1
+"498","Z05B48","Hindi","hindi",1,0,1
+"499","Z05B48","Urdu","urdu",1,0,1
+"500","Z05B48","Marathi","marathi",0,1,1
+"501","Z05B48","Tamil","tamil",1,0,1
+"502","Z05B48","English (India)","english",1,0,1
+"503","Z05B48","English (U.S.)","english",0,NA,0
+"504","Z05B48","Mandarin","chinese",0,NA,0
+"505","Z05B49","Gujarati","gujarati",NA,0,NA
+"506","Z05B49","Hindi","hindi",NA,0,NA
+"507","Z05B49","Urdu","urdu",NA,0,NA
+"508","Z05B49","Marathi","marathi",NA,1,1
+"509","Z05B49","Tamil","tamil",NA,0,NA
+"510","Z05B49","English (India)","english",NA,0,NA
+"511","Z05B49","English (U.S.)","english",NA,NA,NA
+"512","Z05B49","Mandarin","chinese",NA,NA,NA
+"513","Z05B50","Gujarati","gujarati",1,0,1
+"514","Z05B50","Hindi","hindi",1,0,1
+"515","Z05B50","Urdu","urdu",0,0,0
+"516","Z05B50","Marathi","marathi",1,1,1
+"517","Z05B50","Tamil","tamil",1,0,1
+"518","Z05B50","English (India)","english",1,0,1
+"519","Z05B50","English (U.S.)","english",1,NA,1
+"520","Z05B50","Mandarin","chinese",0,NA,0
+"521","Z05B55","Gujarati","gujarati",1,1,1
+"522","Z05B55","Hindi","hindi",1,1,1
+"523","Z05B55","Urdu","urdu",0,0,0
+"524","Z05B55","Marathi","marathi",1,0,1
+"525","Z05B55","Tamil","tamil",1,0,1
+"526","Z05B55","English (India)","english",1,1,1
+"527","Z05B55","English (U.S.)","english",1,NA,1
+"528","Z05B55","Mandarin","chinese",1,NA,1
+"529","Z05B56","Gujarati","gujarati",1,1,1
+"530","Z05B56","Hindi","hindi",1,1,1
+"531","Z05B56","Urdu","urdu",0,1,1
+"532","Z05B56","Marathi","marathi",1,1,1
+"533","Z05B56","Tamil","tamil",1,1,1
+"534","Z05B56","English (India)","english",1,1,1
+"535","Z05B56","English (U.S.)","english",1,NA,1
+"536","Z05B56","Mandarin","chinese",1,NA,1
+"537","Z05B62","Gujarati","gujarati",1,1,1
+"538","Z05B62","Hindi","hindi",1,1,1
+"539","Z05B62","Urdu","urdu",0,0,0
+"540","Z05B62","Marathi","marathi",1,1,1
+"541","Z05B62","Tamil","tamil",1,0,1
+"542","Z05B62","English (India)","english",1,1,1
+"543","Z05B62","English (U.S.)","english",1,NA,1
+"544","Z05B62","Mandarin","chinese",1,NA,1
+"545","Z05C03","Gujarati","gujarati",1,1,1
+"546","Z05C03","Hindi","hindi",1,1,1
+"547","Z05C03","Urdu","urdu",0,0,0
+"548","Z05C03","Marathi","marathi",1,1,1
+"549","Z05C03","Tamil","tamil",1,0,1
+"550","Z05C03","English (India)","english",0,1,1
+"551","Z05C03","English (U.S.)","english",1,NA,1
+"552","Z05C03","Mandarin","chinese",0,NA,0
+"553","Z05C04","Gujarati","gujarati",1,1,1
+"554","Z05C04","Hindi","hindi",1,1,1
+"555","Z05C04","Urdu","urdu",0,0,0
+"556","Z05C04","Marathi","marathi",1,1,1
+"557","Z05C04","Tamil","tamil",1,0,1
+"558","Z05C04","English (India)","english",1,1,1
+"559","Z05C04","English (U.S.)","english",1,NA,1
+"560","Z05C04","Mandarin","chinese",1,NA,1
+"561","Z05C06","Gujarati","gujarati",1,1,1
+"562","Z05C06","Hindi","hindi",1,1,1
+"563","Z05C06","Urdu","urdu",0,0,0
+"564","Z05C06","Marathi","marathi",0,0,0
+"565","Z05C06","Tamil","tamil",1,0,1
+"566","Z05C06","English (India)","english",1,1,1
+"567","Z05C06","English (U.S.)","english",1,NA,1
+"568","Z05C06","Mandarin","chinese",1,NA,1
+"569","Z05C07","Gujarati","gujarati",0,1,1
+"570","Z05C07","Hindi","hindi",1,1,1
+"571","Z05C07","Urdu","urdu",0,0,0
+"572","Z05C07","Marathi","marathi",0,0,0
+"573","Z05C07","Tamil","tamil",0,0,0
+"574","Z05C07","English (India)","english",0,1,1
+"575","Z05C07","English (U.S.)","english",1,NA,1
+"576","Z05C07","Mandarin","chinese",0,NA,0
+"577","Z05C09","Gujarati","gujarati",1,1,1
+"578","Z05C09","Hindi","hindi",1,1,1
+"579","Z05C09","Urdu","urdu",0,0,0
+"580","Z05C09","Marathi","marathi",1,1,1
+"581","Z05C09","Tamil","tamil",0,0,0
+"582","Z05C09","English (India)","english",1,1,1
+"583","Z05C09","English (U.S.)","english",1,NA,1
+"584","Z05C09","Mandarin","chinese",1,NA,1
+"585","Z05C10","Gujarati","gujarati",1,1,1
+"586","Z05C10","Hindi","hindi",1,1,1
+"587","Z05C10","Urdu","urdu",0,0,0
+"588","Z05C10","Marathi","marathi",0,0,0
+"589","Z05C10","Tamil","tamil",0,0,0
+"590","Z05C10","English (India)","english",0,1,1
+"591","Z05C10","English (U.S.)","english",1,NA,1
+"592","Z05C10","Mandarin","chinese",1,NA,1
+"593","Z05C44","Gujarati","gujarati",1,1,1
+"594","Z05C44","Hindi","hindi",1,1,1
+"595","Z05C44","Urdu","urdu",0,0,0
+"596","Z05C44","Marathi","marathi",1,1,1
+"597","Z05C44","Tamil","tamil",1,0,1
+"598","Z05C44","English (India)","english",1,1,1
+"599","Z05C44","English (U.S.)","english",1,NA,1
+"600","Z05C44","Mandarin","chinese",1,NA,1
+"601","Z05C45","Gujarati","gujarati",1,1,1
+"602","Z05C45","Hindi","hindi",1,1,1
+"603","Z05C45","Urdu","urdu",0,0,0
+"604","Z05C45","Marathi","marathi",0,0,0
+"605","Z05C45","Tamil","tamil",1,0,1
+"606","Z05C45","English (India)","english",1,1,1
+"607","Z05C45","English (U.S.)","english",1,NA,1
+"608","Z05C45","Mandarin","chinese",0,NA,0
+"609","Z05C46","Gujarati","gujarati",1,1,1
+"610","Z05C46","Hindi","hindi",1,1,1
+"611","Z05C46","Urdu","urdu",0,0,0
+"612","Z05C46","Marathi","marathi",1,0,1
+"613","Z05C46","Tamil","tamil",0,0,0
+"614","Z05C46","English (India)","english",0,1,1
+"615","Z05C46","English (U.S.)","english",1,NA,1
+"616","Z05C46","Mandarin","chinese",0,NA,0
+"617","Z05C48","Gujarati","gujarati",0,1,1
+"618","Z05C48","Hindi","hindi",0,1,1
+"619","Z05C48","Urdu","urdu",1,0,1
+"620","Z05C48","Marathi","marathi",0,0,0
+"621","Z05C48","Tamil","tamil",0,0,0
+"622","Z05C48","English (India)","english",0,1,1
+"623","Z05C48","English (U.S.)","english",1,NA,1
+"624","Z05C48","Mandarin","chinese",0,NA,0
+"625","Z05C49","Gujarati","gujarati",1,1,1
+"626","Z05C49","Hindi","hindi",1,1,1
+"627","Z05C49","Urdu","urdu",0,1,1
+"628","Z05C49","Marathi","marathi",1,1,1
+"629","Z05C49","Tamil","tamil",1,1,1
+"630","Z05C49","English (India)","english",1,1,1
+"631","Z05C49","English (U.S.)","english",1,NA,1
+"632","Z05C49","Mandarin","chinese",1,NA,1
+"633","Z05C50","Gujarati","gujarati",1,1,1
+"634","Z05C50","Hindi","hindi",1,1,1
+"635","Z05C50","Urdu","urdu",0,0,0
+"636","Z05C50","Marathi","marathi",0,0,0
+"637","Z05C50","Tamil","tamil",1,0,1
+"638","Z05C50","English (India)","english",1,1,1
+"639","Z05C50","English (U.S.)","english",1,NA,1
+"640","Z05C50","Mandarin","chinese",0,NA,0
+"641","Z05C51","Gujarati","gujarati",1,1,1
+"642","Z05C51","Hindi","hindi",0,1,1
+"643","Z05C51","Urdu","urdu",0,0,0
+"644","Z05C51","Marathi","marathi",0,0,0
+"645","Z05C51","Tamil","tamil",0,0,0
+"646","Z05C51","English (India)","english",1,1,1
+"647","Z05C51","English (U.S.)","english",1,NA,1
+"648","Z05C51","Mandarin","chinese",0,NA,0
+"649","Z05C56","Gujarati","gujarati",0,1,1
+"650","Z05C56","Hindi","hindi",1,1,1
+"651","Z05C56","Urdu","urdu",0,0,0
+"652","Z05C56","Marathi","marathi",1,0,1
+"653","Z05C56","Tamil","tamil",1,0,1
+"654","Z05C56","English (India)","english",0,1,1
+"655","Z05C56","English (U.S.)","english",1,NA,1
+"656","Z05C56","Mandarin","chinese",0,NA,0
+"657","Z07A01","Gujarati","gujarati",1,1,1
+"658","Z07A01","Hindi","hindi",0,1,1
+"659","Z07A01","Urdu","urdu",0,0,0
+"660","Z07A01","Marathi","marathi",1,1,1
+"661","Z07A01","Tamil","tamil",1,0,1
+"662","Z07A01","English (India)","english",1,1,1
+"663","Z07A01","English (U.S.)","english",1,NA,1
+"664","Z07A01","Mandarin","chinese",1,NA,1
+"665","Z07A02","Gujarati","gujarati",1,1,1
+"666","Z07A02","Hindi","hindi",1,1,1
+"667","Z07A02","Hindi","hindi",1,1,1
+"668","Z07A02","Urdu","urdu",0,0,0
+"669","Z07A02","Marathi","marathi",0,1,1
+"670","Z07A02","Marathi","marathi",0,1,1
+"671","Z07A02","Tamil","tamil",0,0,0
+"672","Z07A02","English (India)","english",1,0,1
+"673","Z07A02","English (U.S.)","english",1,NA,1
+"674","Z07A02","English (U.S.)","english",1,NA,1
+"675","Z07A02","Mandarin","chinese",1,NA,1
+"676","Z07A04","Gujarati","gujarati",1,1,1
+"677","Z07A04","Hindi","hindi",1,1,1
+"678","Z07A04","Urdu","urdu",0,0,0
+"679","Z07A04","Marathi","marathi",1,1,1
+"680","Z07A04","Tamil","tamil",0,0,0
+"681","Z07A04","English (India)","english",1,1,1
+"682","Z07A04","English (U.S.)","english",1,NA,1
+"683","Z07A04","Mandarin","chinese",1,NA,1
+"684","Z07A05","Gujarati","gujarati",1,1,1
+"685","Z07A05","Hindi","hindi",1,1,1
+"686","Z07A05","Urdu","urdu",0,1,1
+"687","Z07A05","Marathi","marathi",1,0,1
+"688","Z07A05","Tamil","tamil",1,0,1
+"689","Z07A05","English (India)","english",1,0,1
+"690","Z07A05","English (U.S.)","english",1,NA,1
+"691","Z07A05","Mandarin","chinese",1,NA,1
+"692","Z07A06","Gujarati","gujarati",1,1,1
+"693","Z07A06","Hindi","hindi",1,1,1
+"694","Z07A06","Urdu","urdu",0,0,0
+"695","Z07A06","Marathi","marathi",1,1,1
+"696","Z07A06","Tamil","tamil",0,0,0
+"697","Z07A06","English (India)","english",1,1,1
+"698","Z07A06","English (U.S.)","english",1,NA,1
+"699","Z07A06","Mandarin","chinese",1,NA,1
+"700","Z07A07","Gujarati",NA,NA,1,1
+"701","Z07A07","Hindi",NA,NA,1,1
+"702","Z07A07","Urdu",NA,NA,0,NA
+"703","Z07A07","Marathi",NA,NA,1,1
+"704","Z07A07","Tamil",NA,NA,0,NA
+"705","Z07A07","English (India)",NA,NA,1,1
+"706","Z07A09","Gujarati","gujarati",1,1,1
+"707","Z07A09","Hindi","hindi",1,1,1
+"708","Z07A09","Urdu","urdu",0,0,0
+"709","Z07A09","Marathi","marathi",0,0,0
+"710","Z07A09","Tamil","tamil",0,0,0
+"711","Z07A09","English (India)","english",1,1,1
+"712","Z07A09","English (U.S.)","english",1,NA,1
+"713","Z07A09","Mandarin","chinese",1,NA,1
+"714","Z07A10","Gujarati","gujarati",1,1,1
+"715","Z07A10","Hindi","hindi",1,1,1
+"716","Z07A10","Urdu","urdu",0,1,1
+"717","Z07A10","Marathi","marathi",1,1,1
+"718","Z07A10","Tamil","tamil",0,0,0
+"719","Z07A10","English (India)","english",1,1,1
+"720","Z07A10","English (U.S.)","english",1,NA,1
+"721","Z07A10","Mandarin","chinese",1,NA,1
+"722","Z07A11","Gujarati","gujarati",1,1,1
+"723","Z07A11","Hindi","hindi",1,1,1
+"724","Z07A11","Urdu","urdu",0,0,0
+"725","Z07A11","Marathi","marathi",1,1,1
+"726","Z07A11","Tamil","tamil",0,0,0
+"727","Z07A11","English (India)","english",1,1,1
+"728","Z07A11","English (U.S.)","english",1,NA,1
+"729","Z07A11","Mandarin","chinese",0,NA,0
+"730","Z07A12","Gujarati","gujarati",1,1,1
+"731","Z07A12","Hindi","hindi",1,1,1
+"732","Z07A12","Urdu","urdu",0,1,1
+"733","Z07A12","Marathi","marathi",1,1,1
+"734","Z07A12","Tamil","tamil",0,0,0
+"735","Z07A12","English (India)","english",0,1,1
+"736","Z07A12","English (U.S.)","english",1,NA,1
+"737","Z07A12","Mandarin","chinese",1,NA,1
+"738","Z07A13","Gujarati","gujarati",1,1,1
+"739","Z07A13","Hindi","hindi",1,1,1
+"740","Z07A13","Urdu","urdu",1,1,1
+"741","Z07A13","Marathi","marathi",1,0,1
+"742","Z07A13","Tamil","tamil",1,0,1
+"743","Z07A13","English (India)","english",1,1,1
+"744","Z07A13","English (U.S.)","english",1,NA,1
+"745","Z07A13","Mandarin","chinese",1,NA,1
+"746","Z07A14","Gujarati","gujarati",1,1,1
+"747","Z07A14","Hindi","hindi",1,1,1
+"748","Z07A14","Urdu","urdu",0,0,0
+"749","Z07A14","Marathi","marathi",1,1,1
+"750","Z07A14","Tamil","tamil",0,0,0
+"751","Z07A14","English (India)","english",0,1,1
+"752","Z07A14","English (U.S.)","english",1,NA,1
+"753","Z07A14","Mandarin","chinese",1,NA,1
+"754","Z07A16","Gujarati","gujarati",1,1,1
+"755","Z07A16","Hindi","hindi",1,1,1
+"756","Z07A16","Urdu","urdu",0,1,1
+"757","Z07A16","Marathi","marathi",0,0,0
+"758","Z07A16","Tamil","tamil",0,0,0
+"759","Z07A16","English (India)","english",1,1,1
+"760","Z07A16","English (U.S.)","english",1,NA,1
+"761","Z07A16","Mandarin","chinese",1,NA,1
+"762","Z07A18","Gujarati","gujarati",1,1,1
+"763","Z07A18","Hindi","hindi",1,1,1
+"764","Z07A18","Urdu","urdu",0,0,0
+"765","Z07A18","Marathi","marathi",1,0,1
+"766","Z07A18","Tamil","tamil",0,0,0
+"767","Z07A18","English (India)","english",0,1,1
+"768","Z07A18","English (U.S.)","english",1,NA,1
+"769","Z07A18","Mandarin","chinese",1,NA,1
+"770","Z07A19","Gujarati","gujarati",1,1,1
+"771","Z07A19","Hindi","hindi",1,1,1
+"772","Z07A19","Urdu","urdu",0,0,0
+"773","Z07A19","Marathi","marathi",1,0,1
+"774","Z07A19","Tamil","tamil",0,0,0
+"775","Z07A19","English (India)","english",1,1,1
+"776","Z07A19","English (U.S.)","english",1,NA,1
+"777","Z07A19","Mandarin","chinese",1,NA,1
+"778","Z07A20","Gujarati","gujarati",1,1,1
+"779","Z07A20","Hindi","hindi",1,1,1
+"780","Z07A20","Urdu","urdu",0,0,0
+"781","Z07A20","Marathi","marathi",1,0,1
+"782","Z07A20","Tamil","tamil",0,0,0
+"783","Z07A20","English (India)","english",1,1,1
+"784","Z07A20","English (U.S.)","english",1,NA,1
+"785","Z07A20","Mandarin","chinese",1,NA,1
+"786","Z07A21","Gujarati","gujarati",1,1,1
+"787","Z07A21","Hindi","hindi",0,1,1
+"788","Z07A21","Urdu","urdu",0,0,0
+"789","Z07A21","Marathi","marathi",1,0,1
+"790","Z07A21","Tamil","tamil",0,0,0
+"791","Z07A21","English (India)","english",0,1,1
+"792","Z07A21","English (U.S.)","english",1,NA,1
+"793","Z07A21","Mandarin","chinese",1,NA,1
+"794","Z07A39","Gujarati","gujarati",1,1,1
+"795","Z07A39","Hindi","hindi",1,1,1
+"796","Z07A39","Urdu","urdu",0,0,0
+"797","Z07A39","Marathi","marathi",1,0,1
+"798","Z07A39","Tamil","tamil",0,0,0
+"799","Z07A39","English (India)","english",1,1,1
+"800","Z07A39","English (U.S.)","english",1,NA,1
+"801","Z07A39","Mandarin","chinese",1,NA,1
+"802","Z07A40","Gujarati","gujarati",1,1,1
+"803","Z07A40","Gujarati","gujarati",1,1,1
+"804","Z07A40","Hindi","hindi",1,1,1
+"805","Z07A40","Hindi","hindi",1,1,1
+"806","Z07A40","Urdu","urdu",0,1,1
+"807","Z07A40","Urdu","urdu",0,1,1
+"808","Z07A40","Marathi","marathi",NA,0,NA
+"809","Z07A40","Marathi","marathi",NA,0,NA
+"810","Z07A40","Tamil","tamil",0,0,0
+"811","Z07A40","Tamil","tamil",0,0,0
+"812","Z07A40","English (India)","english",1,1,1
+"813","Z07A40","English (India)","english",1,1,1
+"814","Z07A40","English (U.S.)","english",1,NA,1
+"815","Z07A40","English (U.S.)","english",1,NA,1
+"816","Z07A40","Mandarin","chinese",0,NA,0
+"817","Z07A40","Mandarin","chinese",0,NA,0
+"818","Z07A41","Gujarati","gujarati",1,1,1
+"819","Z07A41","Hindi","hindi",1,1,1
+"820","Z07A41","Urdu","urdu",0,0,0
+"821","Z07A41","Marathi","marathi",1,1,1
+"822","Z07A41","Tamil","tamil",0,0,0
+"823","Z07A41","English (India)","english",1,0,1
+"824","Z07A41","English (U.S.)","english",1,NA,1
+"825","Z07A41","Mandarin","chinese",1,NA,1
+"826","Z07A42","Gujarati","gujarati",1,1,1
+"827","Z07A42","Hindi","hindi",1,1,1
+"828","Z07A42","Urdu","urdu",0,0,0
+"829","Z07A42","Marathi","marathi",0,1,1
+"830","Z07A42","Tamil","tamil",0,0,0
+"831","Z07A42","English (India)","english",1,1,1
+"832","Z07A42","English (U.S.)","english",1,NA,1
+"833","Z07A42","Mandarin","chinese",1,NA,1
+"834","Z07A43","Gujarati","gujarati",1,1,1
+"835","Z07A43","Hindi","hindi",1,1,1
+"836","Z07A43","Urdu","urdu",0,0,0
+"837","Z07A43","Marathi","marathi",1,0,1
+"838","Z07A43","Tamil","tamil",1,0,1
+"839","Z07A43","English (India)","english",1,1,1
+"840","Z07A43","English (U.S.)","english",1,NA,1
+"841","Z07A43","Mandarin","chinese",1,NA,1
+"842","Z07A45","Gujarati","gujarati",1,1,1
+"843","Z07A45","Hindi","hindi",1,1,1
+"844","Z07A45","Urdu","urdu",0,0,0
+"845","Z07A45","Marathi","marathi",1,0,1
+"846","Z07A45","Tamil","tamil",0,0,0
+"847","Z07A45","English (India)","english",0,1,1
+"848","Z07A45","English (U.S.)","english",1,NA,1
+"849","Z07A45","Mandarin","chinese",1,NA,1
+"850","Z07A46","Gujarati","gujarati",1,1,1
+"851","Z07A46","Hindi","hindi",1,1,1
+"852","Z07A46","Urdu","urdu",0,0,0
+"853","Z07A46","Marathi","marathi",1,0,1
+"854","Z07A46","Tamil","tamil",0,0,0
+"855","Z07A46","English (India)","english",0,1,1
+"856","Z07A46","English (U.S.)","english",0,NA,0
+"857","Z07A46","Mandarin","chinese",1,NA,1
+"858","Z07A47","Gujarati","gujarati",1,1,1
+"859","Z07A47","Hindi","hindi",1,1,1
+"860","Z07A47","Urdu","urdu",0,0,0
+"861","Z07A47","Marathi","marathi",1,1,1
+"862","Z07A47","Tamil","tamil",0,0,0
+"863","Z07A47","English (India)","english",1,1,1
+"864","Z07A47","English (U.S.)","english",1,NA,1
+"865","Z07A47","Mandarin","chinese",1,NA,1
+"866","Z07A48","Gujarati","gujarati",1,1,1
+"867","Z07A48","Hindi","hindi",1,1,1
+"868","Z07A48","Urdu","urdu",0,1,1
+"869","Z07A48","Marathi","marathi",1,1,1
+"870","Z07A48","Tamil","tamil",0,0,0
+"871","Z07A48","English (India)","english",1,1,1
+"872","Z07A48","English (U.S.)","english",1,NA,1
+"873","Z07A48","Mandarin","chinese",1,NA,1
+"874","Z07A50","Gujarati","gujarati",1,1,1
+"875","Z07A50","Hindi","hindi",1,1,1
+"876","Z07A50","Urdu","urdu",0,1,1
+"877","Z07A50","Marathi","marathi",1,1,1
+"878","Z07A50","Tamil","tamil",0,0,0
+"879","Z07A50","English (India)","english",1,1,1
+"880","Z07A50","English (U.S.)","english",1,NA,1
+"881","Z07A50","Mandarin","chinese",1,NA,1
+"882","Z07A51","Gujarati","gujarati",1,1,1
+"883","Z07A51","Hindi","hindi",0,1,1
+"884","Z07A51","Urdu","urdu",0,1,1
+"885","Z07A51","Marathi","marathi",0,0,0
+"886","Z07A51","Tamil","tamil",0,0,0
+"887","Z07A51","English (India)","english",1,1,1
+"888","Z07A51","English (U.S.)","english",1,NA,1
+"889","Z07A51","Mandarin","chinese",1,NA,1
+"890","Z07A55","Gujarati","gujarati",1,1,1
+"891","Z07A55","Hindi","hindi",1,1,1
+"892","Z07A55","Urdu","urdu",0,0,0
+"893","Z07A55","Marathi","marathi",1,0,1
+"894","Z07A55","Tamil","tamil",0,0,0
+"895","Z07A55","English (India)","english",1,1,1
+"896","Z07A55","English (U.S.)","english",1,NA,1
+"897","Z07A55","Mandarin","chinese",1,NA,1
+"898","Z07A56","Gujarati","gujarati",1,1,1
+"899","Z07A56","Hindi","hindi",1,1,1
+"900","Z07A56","Urdu","urdu",0,0,0
+"901","Z07A56","Marathi","marathi",1,1,1
+"902","Z07A56","Tamil","tamil",1,0,1
+"903","Z07A56","English (India)","english",1,1,1
+"904","Z07A56","English (U.S.)","english",1,NA,1
+"905","Z07A56","Mandarin","chinese",1,NA,1
+"906","Z07A58","Gujarati","gujarati",1,1,1
+"907","Z07A58","Hindi","hindi",1,1,1
+"908","Z07A58","Urdu","urdu",0,0,0
+"909","Z07A58","Marathi","marathi",1,1,1
+"910","Z07A58","Tamil","tamil",1,0,1
+"911","Z07A58","English (India)","english",1,1,1
+"912","Z07A58","English (U.S.)","english",1,NA,1
+"913","Z07A58","Mandarin","chinese",1,NA,1
+"914","Z07A59","Gujarati","gujarati",1,1,1
+"915","Z07A59","Hindi","hindi",1,1,1
+"916","Z07A59","Urdu","urdu",0,0,0
+"917","Z07A59","Marathi","marathi",1,1,1
+"918","Z07A59","Tamil","tamil",0,0,0
+"919","Z07A59","English (India)","english",1,1,1
+"920","Z07A59","English (U.S.)","english",1,NA,1
+"921","Z07A59","Mandarin","chinese",1,NA,1
+"922","Z07B03","Gujarati","gujarati",1,1,1
+"923","Z07B03","Hindi","hindi",1,1,1
+"924","Z07B03","Urdu","urdu",0,0,0
+"925","Z07B03","Marathi","marathi",1,1,1
+"926","Z07B03","Tamil","tamil",0,0,0
+"927","Z07B03","English (India)","english",0,1,1
+"928","Z07B03","English (U.S.)","english",1,NA,1
+"929","Z07B03","Mandarin","chinese",1,NA,1
+"930","Z07B05","Gujarati","gujarati",0,1,1
+"931","Z07B05","Hindi","hindi",1,1,1
+"932","Z07B05","Urdu","urdu",0,0,0
+"933","Z07B05","Marathi","marathi",1,0,1
+"934","Z07B05","Tamil","tamil",0,0,0
+"935","Z07B05","English (India)","english",1,1,1
+"936","Z07B05","English (U.S.)","english",0,NA,0
+"937","Z07B05","Mandarin","chinese",1,NA,1
+"938","Z07B06","Gujarati","gujarati",1,1,1
+"939","Z07B06","Hindi","hindi",1,1,1
+"940","Z07B06","Urdu","urdu",0,0,0
+"941","Z07B06","Marathi","marathi",1,1,1
+"942","Z07B06","Tamil","tamil",1,0,1
+"943","Z07B06","English (India)","english",1,1,1
+"944","Z07B06","English (U.S.)","english",1,NA,1
+"945","Z07B06","Mandarin","chinese",1,NA,1
+"946","Z07B07","Gujarati","gujarati",1,1,1
+"947","Z07B07","Hindi","hindi",0,1,1
+"948","Z07B07","Urdu","urdu",0,0,0
+"949","Z07B07","Marathi","marathi",1,1,1
+"950","Z07B07","Tamil","tamil",0,0,0
+"951","Z07B07","English (India)","english",0,1,1
+"952","Z07B07","English (U.S.)","english",0,NA,0
+"953","Z07B07","Mandarin","chinese",0,NA,0
+"954","Z07B08","Gujarati","gujarati",1,1,1
+"955","Z07B08","Hindi","hindi",1,1,1
+"956","Z07B08","Urdu","urdu",0,0,0
+"957","Z07B08","Marathi","marathi",1,1,1
+"958","Z07B08","Tamil","tamil",0,0,0
+"959","Z07B08","English (India)","english",1,1,1
+"960","Z07B08","English (U.S.)","english",1,NA,1
+"961","Z07B08","Mandarin","chinese",1,NA,1
+"962","Z07B11","Gujarati","gujarati",0,1,1
+"963","Z07B11","Hindi","hindi",0,1,1
+"964","Z07B11","Urdu","urdu",1,0,1
+"965","Z07B11","Marathi","marathi",0,0,0
+"966","Z07B11","Tamil","tamil",1,0,1
+"967","Z07B11","English (India)","english",1,1,1
+"968","Z07B11","English (U.S.)","english",1,NA,1
+"969","Z07B11","Mandarin","chinese",1,NA,1
+"970","Z07B12","Gujarati","gujarati",1,1,1
+"971","Z07B12","Hindi","hindi",1,1,1
+"972","Z07B12","Urdu","urdu",0,0,0
+"973","Z07B12","Marathi","marathi",0,0,0
+"974","Z07B12","Tamil","tamil",0,0,0
+"975","Z07B12","English (India)","english",1,1,1
+"976","Z07B12","English (U.S.)","english",1,NA,1
+"977","Z07B12","Mandarin","chinese",0,NA,0
+"978","Z07B21","Gujarati","gujarati",1,1,1
+"979","Z07B21","Hindi","hindi",1,1,1
+"980","Z07B21","Urdu","urdu",0,0,0
+"981","Z07B21","Marathi","marathi",1,1,1
+"982","Z07B21","Tamil","tamil",1,0,1
+"983","Z07B21","English (India)","english",1,1,1
+"984","Z07B21","English (U.S.)","english",1,NA,1
+"985","Z07B21","Mandarin","chinese",0,NA,0
+"986","Z07B38","Gujarati","gujarati",1,1,1
+"987","Z07B38","Hindi","hindi",1,1,1
+"988","Z07B38","Urdu","urdu",0,0,0
+"989","Z07B38","Marathi","marathi",1,1,1
+"990","Z07B38","Tamil","tamil",0,0,0
+"991","Z07B38","English (India)","english",1,1,1
+"992","Z07B38","English (U.S.)","english",1,NA,1
+"993","Z07B38","Mandarin","chinese",0,NA,0
+"994","Z07B39","Gujarati","gujarati",1,1,1
+"995","Z07B39","Hindi","hindi",1,1,1
+"996","Z07B39","Urdu","urdu",0,0,0
+"997","Z07B39","Marathi","marathi",1,1,1
+"998","Z07B39","Tamil","tamil",1,0,1
+"999","Z07B39","English (India)","english",1,1,1
+"1000","Z07B39","English (U.S.)","english",1,NA,1
+"1001","Z07B39","Mandarin","chinese",1,NA,1
+"1002","Z07B40","Gujarati","gujarati",1,1,1
+"1003","Z07B40","Hindi","hindi",1,1,1
+"1004","Z07B40","Urdu","urdu",0,0,0
+"1005","Z07B40","Marathi","marathi",1,1,1
+"1006","Z07B40","Tamil","tamil",0,0,0
+"1007","Z07B40","English (India)","english",1,1,1
+"1008","Z07B40","English (U.S.)","english",1,NA,1
+"1009","Z07B40","Mandarin","chinese",1,NA,1
+"1010","Z07B41","Gujarati","gujarati",1,1,1
+"1011","Z07B41","Hindi","hindi",1,1,1
+"1012","Z07B41","Urdu","urdu",0,0,0
+"1013","Z07B41","Marathi","marathi",1,1,1
+"1014","Z07B41","Tamil","tamil",0,0,0
+"1015","Z07B41","English (India)","english",0,1,1
+"1016","Z07B41","English (U.S.)","english",1,NA,1
+"1017","Z07B41","Mandarin","chinese",0,NA,0
+"1018","Z07B42","Gujarati","gujarati",1,1,1
+"1019","Z07B42","Hindi","hindi",1,1,1
+"1020","Z07B42","Urdu","urdu",0,0,0
+"1021","Z07B42","Marathi","marathi",0,0,0
+"1022","Z07B42","Tamil","tamil",0,0,0
+"1023","Z07B42","English (India)","english",1,1,1
+"1024","Z07B42","English (U.S.)","english",1,NA,1
+"1025","Z07B42","Mandarin","chinese",0,NA,0
+"1026","Z07B43","Gujarati","gujarati",1,1,1
+"1027","Z07B43","Hindi","hindi",1,1,1
+"1028","Z07B43","Urdu","urdu",0,0,0
+"1029","Z07B43","Marathi","marathi",1,1,1
+"1030","Z07B43","Tamil","tamil",0,0,0
+"1031","Z07B43","English (India)","english",0,1,1
+"1032","Z07B43","English (U.S.)","english",1,NA,1
+"1033","Z07B43","Mandarin","chinese",1,NA,1
+"1034","Z07B48","Gujarati","gujarati",1,1,1
+"1035","Z07B48","Hindi","hindi",1,1,1
+"1036","Z07B48","Urdu","urdu",0,0,0
+"1037","Z07B48","Marathi","marathi",1,0,1
+"1038","Z07B48","Tamil","tamil",1,0,1
+"1039","Z07B48","English (India)","english",1,1,1
+"1040","Z07B48","English (U.S.)","english",1,NA,1
+"1041","Z07B48","Mandarin","chinese",0,NA,0
+"1042","Z07B55","Gujarati","gujarati",0,1,1
+"1043","Z07B55","Hindi","hindi",1,1,1
+"1044","Z07B55","Urdu","urdu",0,0,0
+"1045","Z07B55","Marathi","marathi",1,0,1
+"1046","Z07B55","Tamil","tamil",0,0,0
+"1047","Z07B55","English (India)","english",1,0,1
+"1048","Z07B55","English (U.S.)","english",1,NA,1
+"1049","Z07B55","Mandarin","chinese",0,NA,0

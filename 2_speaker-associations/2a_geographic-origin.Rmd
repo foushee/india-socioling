@@ -1,0 +1,537 @@
+---
+title: "India Sociolinguistics Geographic Associations Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-18"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+header-includes:
+- \usepackage{array}
+- \usepackage{longtable}
+- \newcommand\textstyleStrongEmphasis[1]{\textbf{#1}}
+- \makeatletter
+- \newcommand\arraybslash{\let\\\@arraycr}
+---
+
+```{r origin-setup, include=FALSE}
+library(here)
+here::i_am('2_speaker-associations/2a_geographic-origin.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r read-in-data}
+a <- read.csv(here('data/r_dfs/subsets/associations_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'language', 'speaker_gender', 
+                 'origin', 'geographic_origin', 'religion', 'wealth',
+                 'army_navy_language')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence', 'coded_wealth')
+
+a <- a %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+g <- a %>%
+  filter(origin!="")
+```
+
+```{r origin-no-opinion-trials}
+N_TRIALS <- g %>%
+  filter(no_opinion_geo==1) %>%
+  summarize(no_opinion_trials=n()) %>%
+  as.numeric()
+
+N_CHILDREN <- g %>%
+  filter(no_opinion_geo==1) %>%
+  group_by(id) %>%
+  summarize(no_opinion_trials=n()) %>%
+  summarize(n_children=n()) %>%
+  as.numeric()
+  
+g %>%
+  filter(no_opinion_geo==1) %>%
+  group_by(id)%>%
+  summarize(no_opinion_trials=n()) %>%
+  group_by(no_opinion_trials) %>%
+  summarize(n_children=n()) %>%
+  kable(.)
+
+g %>%
+  filter(no_opinion_geo==1) %>%
+  group_by(language)%>%
+  summarize(n=n()) %>%
+  arrange(desc(n)) %>%
+  kable(.)
+
+# 39 trials opted out from 27 children, most for chinese/tamil
+```
+
+"No opinion" selected on `r N_TRIALS` trials by `r N_CHILDREN` children; all children selected single response.
+
+```{r origin-overall-barplot, include=F}
+geographic_summary_tab <- g %>%
+  ungroup(.) %>%
+  dplyr::select("language", all_of(origin_vars)) %>%
+  gather(., origin, selection, -language) %>%
+    group_by(language, origin) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) %>%
+  mutate_at("language", order_languages)
+
+geographic_summary_tab$var_labeled <- 
+  factor(geographic_summary_tab$origin, 
+  levels=origin_vars, 
+  labels=origin_labels)
+
+make_overall_barplot(geographic_summary_tab, origin_colors, 
+                     "This speaker is from...") %>%
+save_plot(., "barplot_overall", "geographic_associations")
+```
+
+## By Standard
+
+```{r origin-std-lineplot}
+geographic_std_summary_tab <- g %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(origin_vars)) %>%
+  gather(., origin, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, origin) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) %>%
+  mutate_at("language", order_languages)
+
+geographic_std_summary_tab$var_labeled <- factor(
+  geographic_std_summary_tab$origin, 
+  levels=origin_vars, 
+  labels=origin_labels)
+
+make_lineplot_by_std(geographic_std_summary_tab, 
+                     origin_colors, origin_shapes, origin_ltys) %>%
+save_plot(., which_data="geographic_origin", plot_class="line_std")
+```
+
+```{r origin-std-barplot, include=F}
+make_barplot_by_std(geographic_std_summary_tab, origin_colors) %>%
+  save_plot(., "barplot_std", "geographic_origin")
+```
+
+## With Age
+
+```{r origin-age, include=F}
+geographic_age_df <- g %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "child_age_centered", all_of(origin_vars)) %>%
+  gather(., origin, selection, -language, -child_age_centered) %>%
+  mutate_at("language", order_languages)
+geographic_age_df$var_labeled <- factor(geographic_age_df$origin, 
+      levels=origin_vars, labels=origin_labels)
+
+make_age_lm_plot(geographic_age_df, origin_colors, origin_ltys)
+
+save_plot(which_data="geographic_origin", plot_class="age_lm")
+```
+
+## Mixed Effects Multinomial Regression  
+
+### Language x Age
+```{r geo-for-plots-data}
+ # dropping idks
+g_for_plots <- g %>% filter(origin!="idk",
+                           origin!="")
+g_for_plots$origin <- factor(g_for_plots$origin, levels=c("Gujarat",
+                                                          "India",
+                                                          "foreign"))
+g_for_plots$var_labeled <- plyr::mapvalues(g_for_plots$origin,
+                                             from=c("Gujarat",
+                                                    "India",
+                                                    "foreign"),
+                                             to=c("Gujarat (same place as me)",
+                                                  "another place in India",
+                                                  "outside India (foreign)"))
+g_for_plots$language <- order_languages(g_for_plots$language)
+```
+
+```{r geo-mblogit, warning=F}
+geo_mod <- mblogit(var_labeled ~  0 + language*child_age_centered,
+                   random=~1|id,
+                   g_for_plots)
+
+geo_noint_mod <- mblogit(var_labeled ~ 0 + language + child_age_centered,
+                   random=~1|id,
+                   g_for_plots)
+
+anova(geo_noint_mod, geo_mod, test="Chisq") #language x age: X2(14)=67.9,p<0.001
+```
+
+There is a significant interaction between language and child age.
+
+#### Forest Plot 
+
+```{r geo-mblogit-plot}
+gp <- make_forest_plot(geo_mod)
+g_n <- get_point_sizes(g_for_plots, "Gujarat (same place as me)")
+edited_gp <- edit_forest_plot_data(gp, g_n, 
+                                   ordered_facet_levels = 
+                                     c("another place in India",
+                                       "outside India (foreign)"))
+#edited_gp$data$facet <- paste(edited_gp$data$facet, "\nrelative to Gujarat", sep="")
+updated_gp <- update_forest_plot(edited_gp, title="This speaker is from...")
+
+save_forest_plot_svg(updated_gp, "geo_mod_with_age_interaction.svg")
+save_forest_plot_png(updated_gp, "geo_mod_with_age_interaction.png")
+```
+
+#### Table  
+```{r geomod-table}
+prefix <- "geo"
+filename <- paste(prefix, "_mod_tab.html", sep="")
+file_path <- paste("tables/models/primary/", filename, sep="")
+model <- geo_mod
+sjPlot::tab_model(
+      model, show.r2 = TRUE, show.icc = FALSE, show.re.var = FALSE, 
+      p.style = "numeric_stars", emph.p = TRUE, 
+      file = file_path)
+
+geo_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/primary/geo_mod_tab.html'), 
+              header=T) 
+geo_tab_df <- as.data.frame(geo_tab_df)
+geo_tab_df_temp <- geo_tab_df
+names(geo_tab_df) <- geo_tab_df[1,]
+geo_tab_df <- geo_tab_df[-1,]
+geo_tab_df$Predictors <- gsub("language", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("child_", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("_centered", "", geo_tab_df$Predictors)
+
+another_place_in_india <- geo_tab_df[,1:4]
+another_place_in_india$space <- ""
+
+outside_india <- geo_tab_df[,5:7]
+
+geo_mod_tab <- cbind(another_place_in_india, outside_india)
+
+print.xtable(geo_mod_tab, type="latex", 
+             file="tables/models/primary/geo_mod_tab.tex")
+```
+
+### Gender  
+
+```{r geo-gender-mod}
+g_for_plots$speaker_FEMALE <- plyr::mapvalues(g_for_plots$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+
+g_for_plots$speaker_FEMALE <- factor(g_for_plots$speaker_FEMALE, levels=c(0, 1))
+
+g_for_plots <- g_for_plots %>% filter(speaker_FEMALE!="")
+
+geo_gender_mod <- mblogit(var_labeled ~ 0 + language*speaker_FEMALE + 
+                            child_age_centered,
+                          g_for_plots)
+
+summary(geo_gender_mod)
+
+#vif(geo_gender_mod)
+```
+
+```{r geo-gender-anova}
+geo_gender_null_mod <- mblogit(var_labeled ~ 0 + language + speaker_FEMALE,
+                   g_for_plots)
+
+anova(geo_gender_null_mod, geo_gender_mod, test="Chisq") #X2(16)=33.8, p<0.01
+```
+
+#### Table  
+```{r geo-gender-mod-tab}
+#make_multinomial_html(geo_gender_mod, prefix="geo", model_class="gender")
+prefix <- "geo"
+filename <- paste(prefix, "_gender_mod_tab.html", sep="")
+file_path <- paste("tables/models/gender/", filename, sep="")
+model <- geo_gender_mod
+sjPlot::tab_model(
+      model, show.r2 = TRUE, show.icc = FALSE, show.re.var = FALSE, 
+      p.style = "numeric_stars", emph.p = TRUE, 
+      file = file_path)
+
+geo_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/gender/geo_gender_mod_tab.html'), 
+              header=T) 
+geo_tab_df <- as.data.frame(geo_tab_df)
+geo_tab_df_temp <- geo_tab_df
+names(geo_tab_df) <- geo_tab_df[1,]
+geo_tab_df <- geo_tab_df[-1,]
+geo_tab_df$Predictors <- gsub("language", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("child_", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("_centered", "", geo_tab_df$Predictors)
+
+another_place_in_india <- geo_tab_df[,1:4]
+another_place_in_india$space <- ""
+
+outside_india <- geo_tab_df[,5:7]
+
+geo_mod_tab <- cbind(another_place_in_india, outside_india)
+
+print.xtable(geo_mod_tab, type="latex", 
+             file="tables/models/gender/geo_gender_mod_tab.tex")
+```
+
+### Familiarity  
+```{r geo-fam-rates}
+gi %>%
+  group_by(language, familiar) %>%
+  summarize(n=n())
+```
+
+```{r geo-fam-mblogit, warning=F}
+gi <- merge(g_for_plots, i, by=c("language", "id")) %>% 
+  filter(!is.na(familiar),
+         language!="Hindi",
+         language!="English (India)",
+         language!="Gujarati")
+
+gi$language <- order_languages(gi$language)
+
+geo_fam_mod <- mblogit(var_labeled ~ 0 + language*familiar +
+                         child_age_centered, 
+                       random=~1|id, data = gi)
+
+geo_fam_mod_null <- mblogit(var_labeled ~ 0 + language + familiar + 
+                              child_age_centered,
+                   random=~1|id, data = gi)
+
+anova(geo_fam_mod, geo_fam_mod_null, test="Chisq") #X2(8) = 29.7 p<0.001
+```
+
+#### Table  
+```{r geomod-fam-table}
+#make_multinomial_html(geo_fam_mod, prefix="geo", model_class="familiarity")
+prefix <- "geo"
+filename <- paste(prefix, "_fam_mod_tab.html", sep="")
+file_path <- paste("tables/models/familiarity/", filename, sep="")
+model <- geo_fam_mod
+sjPlot::tab_model(
+      model, show.r2 = TRUE, show.icc = FALSE, show.re.var = FALSE, 
+      p.style = "numeric_stars", emph.p = TRUE, 
+      file = file_path)
+
+geo_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/familiarity/geo_fam_mod_tab.html'), 
+              header=T) 
+geo_tab_df <- as.data.frame(geo_tab_df)
+geo_tab_df_temp <- geo_tab_df
+names(geo_tab_df) <- geo_tab_df[1,]
+geo_tab_df <- geo_tab_df[-1,]
+geo_tab_df$Predictors <- gsub("language", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("child_", "", geo_tab_df$Predictors)
+geo_tab_df$Predictors <- gsub("_centered", "", geo_tab_df$Predictors)
+
+another_place_in_india <- geo_tab_df[,1:4]
+another_place_in_india$space <- ""
+
+outside_india <- geo_tab_df[,5:7]
+
+geo_mod_tab <- cbind(another_place_in_india, outside_india)
+
+print.xtable(geo_mod_tab, type="latex", 
+             file="tables/models/familiarity/geo_fam_mod_tab.tex")
+```
+
+## Combining Plots  
+
+```{r geo-combined-labeled}
+origin_legend_title <- "This speaker is from..."
+origin_legend_title <- ""
+origin_legend_labels <- c("Gujarat (same place as me)", 
+                                "another place in India",
+                                "outside India (foreign)",
+                                "No opinion")
+
+gs <- ggplot(geographic_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=var_labeled)) +
+    geom_line(aes(lty=var_labeled), linewidth=1.1) + 
+    geom_point(aes(shape=var_labeled)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=origin_colors, origin_legend_title) + 
+    scale_shape_manual(values=origin_shapes, origin_legend_title) +
+    scale_linetype_manual(values=origin_ltys, origin_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), label=std_axis_labels) +
+    sans_axes_theme_bigger +
+    theme(legend.position = "bottom",
+          legend.key=element_rect(color=NA),
+          legend.margin = margin(-5,0,0,0),
+          strip.background = element_rect(color=line_color,linewidth = .75)) +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+
+final_gp <- updated_gp + theme(axis.text.y = element_text(face="bold", size=10),
+                               axis.title.x=element_text(face="bold", size=10),
+                               legend.title = element_text(face="bold"),
+                               strip.text = element_text(color="gray30", 
+                                                         size=11, 
+                                                         face="bold.italic"),
+          title=element_text(color="gray30", face="bold.italic", size=10),
+          legend.key = element_rect(linewidth=0, color=NA),
+          legend.text = element_text(color="gray30", size=10),
+          axis.title.y=element_text(margin=margin(0,-10,0,0), face="bold"))#,
+         # legend.margin = margin(0,0,0,-5))#,
+         # panel.spacing.x = unit(0.3, "cm"))
+
+cg <- ggarrange(gs, final_gp, labels='AUTO', 
+                                           widths = c(4, 3), ncol = 2, nrow = 1, 
+                                           align = 'v')
+save_combined_plot_svg(
+  ggarrange(gs, final_gp, labels='AUTO', widths = c(4, 3), 
+            ncol = 2, nrow = 1, align = 'v'), "combined_geo_labeled.pdf"
+  )
+
+ggsave("combined_geo_labeled.svg", cg, path="plots/combined/",
+       width = 190, scale=2, units ='mm')
+
+save_combined_plot_svg(
+  ggarrange(gs, final_gp, labels='AUTO', widths = c(4, 3), 
+            ncol = 2, nrow = 1, align = 'v'), "combined_geo_labeled.svg"
+  )
+```
+
+## Models
+
+### Odds of Origin Selection
+
+#### Gujarat (Same place as me)  
+
+```{r gujarat-stats}
+g %>% 
+  mutate(total_trials=n(),
+    n_trials=sum(origin=="Gujarat")) %>%
+  distinct(id, .keep_all = T) %>%
+  mutate(n_children=n(),
+         prop = n_trials/total_trials) %>%
+  distinct(n_trials, total_trials, prop, n_children)
+```
+`Gujarat' selected on 33\% of trials (606/1834), by 127 children.
+
+```{r gujarat-glm}
+ass_gujarat_glm <- glm(
+  gujarat ~ child_age_centered + language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_gujarat_glm)), 2),
+round(exp(confint(ass_gujarat_glm)), 2)) %>%
+  kable(.)
+```
+
+```{r gujarat-int-glm}
+ass_gujarat_int_glm <- glm(
+  gujarat ~ child_age_centered*language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_gujarat_int_glm)), 2),
+round(exp(confint(ass_gujarat_int_glm)), 2))%>%
+  kable(.)
+
+Anova(ass_gujarat_int_glm)
+# sig interaction
+```
+
+```{r gujarat-id-glm}
+ass_gujarat_id_glm <- glm(
+  gujarat ~ language*id_correct + child_age_centered, 
+  family="binomial", gi)
+
+cbind(round(exp(coef(ass_gujarat_id_glm)), 2),
+round(exp(confint(ass_gujarat_id_glm)), 2))%>%
+  kable(.)
+
+Anova(ass_gujarat_id_glm)
+# sig interaction
+```
+
+#### Another part of India (A different city)  
+
+```{r india-glm}
+ass_india_glm <- glm(
+  india ~ child_age_centered + language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_india_glm)), 2),
+round(exp(confint(ass_india_glm)), 2))%>%
+  kable(.)
+```
+
+```{r india-int-glm}
+ass_india_int_glm <- glm(
+  india ~ child_age_centered*language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_india_int_glm)), 2),
+round(exp(confint(ass_india_int_glm)), 2))%>%
+  kable(.)
+
+Anova(ass_india_int_glm)
+# n.s. interaction
+```
+
+#### Outside India (Foreign)  
+
+```{r foreign-glm}
+ass_foreign_glm <- glm(
+  foreign ~ child_age_centered + language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_foreign_glm)), 2),
+round(exp(confint(ass_foreign_glm)), 2))%>%
+  kable(.)
+```
+
+```{r foreign-int-glm}
+ass_foreign_int_glm <- glm(
+  foreign ~ child_age_centered*language, 
+  family="binomial", g)
+
+cbind(round(exp(coef(ass_foreign_int_glm)), 2),
+round(exp(confint(ass_foreign_int_glm)), 2))%>%
+  kable(.)
+
+Anova(ass_foreign_int_glm)
+# sig interaction
+```
+
+
+```{r}
+g_for_plots %>%
+  group_by(id, language) %>%
+  mutate(n=n()) %>%
+  filter(n==2) %>%
+  dplyr::select("id", "language", "speaker_gender", "origin", "n") %>%
+  spread(speaker_gender, origin) %>%
+  mutate(same_twice = female==male) %>%
+  ungroup() %>%
+  summarize(corr=sum(same_twice)/(sum(same_twice)+sum(same_twice==FALSE)))
+```
+```{r}
+na.mean(g_for_plots$india) # 0.33
+sd(g_for_plots$india) # 0.47
+
+g_for_plots %>%
+  group_by(language) %>%
+  summarize(india_m=na.mean(india),
+            india_sd = sd(india))
+#3.06, 9.10, 7.26, 7.80 .21–.41
+
+```

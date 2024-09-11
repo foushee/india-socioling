@@ -1,0 +1,39 @@
+\begin{table*}[t]
+\small
+\caption{Cumulative Link Mixed Model of Children's Predicted Tamil-Learning by Different Speakers}\label{tab:tamil-ord}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcr}
+ \toprule
+& \multicolumn{3}{c}{\textbf{``Tamil'' Learning}\tnote{a}} \\
+\cline{2-4} \\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+  \hline
+``Not at all''$|$``Medium'' & 0.28 *** & 0.19--0.43 & $<$0.001 \\ 
+``Medium''$|$``Very well'' & 2.39 *** & 1.60--3.57 & $<$0.001 \\ 
+  \textsc{Muslim} & 0.29 *** & 0.17--0.50 & $<$0.001 \\ 
+  \textsc{Dravidian} & 2.10 * & 1.19--3.71 & 0.010 \\ 
+  \textsc{White} & 0.35 *** & 0.21--0.60 & $<$0.001 \\ 
+  \textsc{Asian} & 0.40 ** & 0.23--0.70 & 0.001 \\ 
+\textsc{Hindu}:Age\tnote{b}  & 0.92 & 0.72--1.17 & 0.495 \\ 
+  \textsc{Muslim}:Age & 1.37 & 0.95--1.97 & 0.095 \\ 
+  \textsc{Dravidian}:Age & 1.52 * & 1.03--2.25 & 0.034 \\ 
+  \textsc{White}:Age & 0.70 * & 0.50--0.99 & 0.045 \\ 
+  \textsc{Asian}:Age & 0.71 & 0.48--1.06 & 0.096 \\ 
+\midrule
+\bfseries{\textit{N} children}\tnote{c} & 117 &  &  \\ 
+ \textbf{Marginal R2} & 0.190 && \\ 
+ \textbf{Conditional R2} & 0.280 &  &  \\
+\bottomrule\\[-.75em]
+\multicolumn{4}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
+\end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Ordinal variable: ``Very well (100\%)'' \textgreater ``Medium (50\%)'' \textgreater ``Not at all (0\%)'
+    \item[b] Mean-centered, in years.
+    \item[c] Model includes random intercepts for each child.
+    \item[d] Model data excludes ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

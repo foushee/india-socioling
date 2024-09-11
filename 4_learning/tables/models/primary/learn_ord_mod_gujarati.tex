@@ -1,0 +1,40 @@
+\begin{table*}[t]
+\small
+\caption{Cumulative Link Mixed Model of Children's Predicted English-Learning by Different Speakers}\label{tab:wealth-ord}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcr}
+ \toprule
+& \multicolumn{3}{c}{\textbf{``Gujarati'' Learning}\tnote{a}} \\
+\cline{2-4} \\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+  \hline
+``Not at all''$|$``Medium'' & 0.03 *** & 0.02--0.05 & $<$0.001 \\ 
+``Medium''$|$``Very well'' & 0.29 *** & 0.19--0.46 & $<$0.001 \\ 
+  \textsc{Muslim} & 0.22 *** & 0.12--0.40 & $<$0.001 \\ 
+  \textsc{Dravidian} & 0.08 *** & 0.04--0.15 & $<$0.001 \\ 
+  \textsc{White} & 0.04 *** & 0.02--0.07 & $<$0.001 \\ 
+  \textsc{Asian} & 0.02 *** & 0.01--0.03 & $<$0.001 \\ 
+\textsc{Hindu}:Age\tnote{b}  & 1.12 & 0.84--1.49 & 0.429 \\ 
+  \textsc{Muslim}:Age & 1.09 & 0.73--1.62 & 0.678 \\ 
+  \textsc{Dravidian}:Age & 0.79 & 0.52--1.18 & 0.246 \\ 
+  \textsc{White}:Age & 0.60 ** & 0.41--0.87 & 0.007 \\ 
+  \textsc{Asian}:Age & 0.83 & 0.55--1.26 & 0.385 \\ 
+\midrule
+\bfseries{\textit{N} children}\tnote{c} & 118 &  &  \\ 
+\textbf{Observations}\tnote{d} & 527 &  &  \\ 
+ \textbf{Marginal R2} & 0.407 &&\\
+ \textbf{Conditional R2} & 0.433 &  &  \\ 
+\bottomrule\\[-.75em]
+\multicolumn{4}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
+\end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Ordinal variable: ``Very well (100\%)'' \textgreater ``Medium (50\%)'' \textgreater ``Not at all (0\%)'
+    \item[b] Mean-centered, in years.
+    \item[c] Model includes random intercepts for each child.
+    \item[d] Model data excludes ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

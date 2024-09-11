@@ -8,7 +8,7 @@
 %% Edited by Ruthe Foushee 2018
 \typeout{Document Class `HenriquesLab' <18-April-2018>.}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{zHenriquesLab-StyleBioRxiv}
+\ProvidesClass{foushee-adapted-preprint}
   [2018/04/18 revision by RH]
 
 %% Load base class
@@ -46,19 +46,19 @@
 \RequirePackage{xcolor}
 \RequirePackage{authblk}
 \RequirePackage[latin1,utf8]{inputenc}
-\RequirePackage[english]{babel}
+\RequirePackage[american]{babel}
 \RequirePackage{lmodern}
-\RequirePackage{siunitx}
-\RequirePackage{textgreek}
-\RequirePackage{gensymb}
+%\RequirePackage{siunitx}
+%\RequirePackage{textgreek}
+%\RequirePackage{gensymb}
 \RequirePackage{textcomp}
-\RequirePackage[version=4]{mhchem}
+%\RequirePackage[version=4]{mhchem}
 \RequirePackage[scaled]{helvet}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lettrine} % For dropped capitals
 \RequirePackage[rightcaption]{sidecap} % For sidecaptions
 \RequirePackage[misc]{ifsym} % For the \Letter symbol
-\RequirePackage{bbding} % For the \Envelope symbol
+%\RequirePackage{bbding} % For the \Envelope symbol
 %\RequirePackage[twoside,%
 %				letterpaper,includeheadfoot,%
 %				layoutsize={8.125in,10.875in},%
@@ -93,6 +93,8 @@
 \DeclareUnicodeCharacter{00B0}{\degree}
 
 \definecolor{livingcoral}{rgb}{1,.435,.38}
+\definecolor{lightgreen}{rgb}{0.698, 0.8745, 0.5412}
+\definecolor{lightergreen}{cmyk}{.20, 0, .38, 0} %0.13
 \RequirePackage[colorlinks=true, allcolors=livingcoral]{hyperref}
 \RequirePackage{cleveref}
 
@@ -328,8 +330,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% marks
-\def\markboth#1#2{\def\leftmark{#1}\def\rightmark{#2}}
-\def\footernote#1{\markboth{#1}{#1}}
+%\def\markboth#1#2{\def\leftmark{#1}\def\rightmark{#2}}
+%\def\footernote#1{\markboth{#1}{#1}}
 
 % %% bibliography
 %\RequirePackage{chapterbib}
@@ -424,8 +426,8 @@
 \twocolumn \sloppy \flushbottom
 
 %% Units
-\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
-\DeclareSIUnit\Molar{\textsc{m}}
+%\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+%\DeclareSIUnit\Molar{\textsc{m}}
 
 
 %% Allows to enter BIOGRAPHY leaving place for picture

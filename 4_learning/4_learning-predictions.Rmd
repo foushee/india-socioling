@@ -1,0 +1,829 @@
+---
+title: "India Sociolinguistics Learning Prediction Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-17"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r faces-setup, include=FALSE}
+library(here)
+here::i_am('4_learning/4_learning-predictions.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r l-read-in-data}
+l <- read.csv(here('data/r_dfs/subsets/learning_predictions_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'presentation',
+                 'language', 'speaker_gender', 
+                 'face', 'army_navy_language', 'rating_cat',
+                 'rating_cat_w_idk')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence', 'rating_num')
+
+l <- l %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+l$language <- factor(
+  l$language, 
+  levels=language_name_vars[c(1:2,5:7)], 
+  labels=language_name_labels[c(1:2,5:7)])
+
+l$face <- factor(
+  l$face, 
+  levels=face_vars[1:5],
+  labels=face_labels[1:5])
+```
+
+```{r l-vars}
+l$rating_cat <- factor(l$rating_cat, 
+                       levels=c("Not at all", "Medium", "Very well"))
+l$rating_cat <- relevel(l$rating_cat, ref="Medium")
+
+n_trials <- nrow(l[!is.na(l$rating_cat_w_idk),])
+
+l %>%
+  filter(!is.na(rating_cat_w_idk)) %>%
+  ungroup() %>%
+  group_by(rating_cat_w_idk) %>%
+  summarize(n=n(),
+            prop=n/n_trials)
+```
+
+```{r l-idk}
+l %>%
+  filter(rating_cat_w_idk=="No opinion") %>%
+  ungroup() %>%
+  mutate(n_total_trials=n()) %>%
+  distinct(id, .keep_all = T) %>%
+  group_by(n_total_trials) %>%
+  reframe(n_total_children=n()) 
+
+l %>%
+  filter(rating_cat_w_idk=="No opinion") %>%
+  ungroup() %>%
+  group_by(face) %>%
+  mutate(n_trials=n()) %>%
+  distinct(id, .keep_all = T) %>%
+  group_by(face, n_trials) %>%
+  reframe(n_children=n())
+```
+No children selected multiple options. The most frequent selection was "Medium" (1033 trials, 38\% of trials), followed by ``Very well'' (849, 31\%), "Not at all'' (705, 26\%), and "No opinion" (127 trials from 37 children; 32 dravidian, 28 asian, 25 hindu, 23 muslim, 19 white).
+
+```{r l-summs}
+l %>%
+  group_by(rating_cat, face) %>%
+  summarize(n=n())
+
+
+l %>%
+  group_by(face, rating_cat) %>%
+  summarize(n=n())
+
+l %>%
+  group_by(language, face) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+
+l %>%
+  filter(!is.na(rating_cat_w_idk)) %>%
+  group_by(language, face) %>%
+  summarize(n=n())
+
+l %>%
+  filter(!is.na(rating_cat_w_idk)) %>%
+  group_by(language, face) %>%
+  summarize(n_3rd=sum(standard=="3"),
+            n_5th=sum(standard=="5"),
+            n_7th=sum(standard=="7"))
+
+
+table(l[!is.na(l$rating_cat_w_idk),]$language, l[!is.na(l$rating_cat_w_idk),]$face)
+```
+
+```{r}
+l %>%
+  filter(language=='"Gujarati"') %>%
+  mutate(n=n()) %>%
+  group_by(language, face, n) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+```
+Gujarati: Most frequently selection "None" for Asian face, "Medium" for Dravidian, Muslim, and White, and "Very well" for Hindu face. 
+
+```{r}
+l %>%
+  filter(language=='"Hindi"') %>%
+  group_by(language, face) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+```
+Hindi: Most frequently selection "None" for Asian face, "Medium" for Dravidian and White, and "Very well" for Hindu and Muslim faces. 
+
+```{r}
+l %>%
+  filter(language=='"Tamil"') %>%
+  group_by(language, face) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+
+l %>% filter(language=='"Tamil"') %>%
+  group_by(language, face, standard) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+```
+Tamil: Most frequently selection "None" for Asian and White faces, "Medium" for Hindu and Muslim, and "Very well" for Dravidian faces. 
+
+```{r}
+l %>%
+  filter(language=='"Chinese"') %>%
+  group_by(language, face) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+```
+Mandarin: Most frequently selection "None" for Muslim and Dravidian faces, tied with "Medium" for Hindu, "Medium" for White, and "Very well" for Asian faces. 
+
+```{r}
+l %>%
+  filter(language=='"English"') %>%
+  group_by(language, face) %>%
+  summarize(none=na.sum(rating_cat=="Not at all"),
+            medium=na.sum(rating_cat=="Medium"),
+            well=na.sum(rating_cat=="Very well"))
+```
+
+# Response Analyzed Categorically  
+
+```{r}
+#random=~1|id, 
+#l$language <- factor(l$language, )
+#l$language <- relevel(l$language, ref="Gujarati")
+learn_mod <- mblogit(rating_cat ~ 0 + language*face*child_age_centered, l)
+learn_mod <- mblogit(rating_cat ~ 0 + language + face + child_age_centered +
+                       language:face + language:child_age_centered + 
+                       face:child_age_centered + language:face:child_age_centered, l)
+
+#learn_mod <- mblogit(rating_cat ~0 + language*face*child_age_centered,
+#                     random=~1|id, l)
+
+learn_mod <- mblogit(rating_cat ~0 + language*face*child_age_centered,
+                     random=~1|id, l)
+learn_null_mod <- mblogit(rating_cat ~ 0 + language*face + 
+                            language:child_age_centered + 
+                            face:child_age_centered, l)
+
+anova(learn_mod, learn_null_mod, test="Chisq")
+
+sjPlot::tab_model(
+      learn_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/learn_mod_explicit_tab.html")
+
+sjPlot::tab_model(learn_mod)
+plot_model(learn_mod, type = "pred", terms = c("language", "face"))
+```
+
+```{r}
+l$rating_cat <- factor(l$rating_cat, levels=c("Not at all", "Medium", "Very well"))
+l$rating_cat <- relevel(l$rating_cat, ref="Not at all")
+```
+
+
+```{r}
+learn_mod <- mblogit(rating_cat ~ 0 + face*child_age_centered, l)
+learn_mod <- mblogit(rating_cat ~ 0 + face + child_age_centered +
+                       face:child_age_centered, l)
+
+#learn_mod <- mblogit(rating_cat ~0 + language*face*child_age_centered,
+#                     random=~1|id, l)
+
+learn_mod <- mblogit(rating_cat ~0 + language*face*child_age_centered,
+                     random=~1|id, l)
+learn_null_mod <- mblogit(rating_cat ~ 0 + language*face + 
+                            language:child_age_centered + 
+                            face:child_age_centered, l)
+
+anova(learn_mod, learn_null_mod, test="Chisq")
+
+sjPlot::tab_model(
+      learn_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/learn_mod_explicit_tab.html")
+
+sjPlot::tab_model(learn_mod)
+plot_model(learn_mod, type = "pred", terms = c("language", "face"))
+```
+
+
+```{r}
+summary(m1.or)
+
+ratex  <- base::readRDS(url("https://slcladal.github.io/data/ratex.rda", "rb"))
+
+m1.or <- clmm(Accent ~ (1|Rater) + Family*Group, link="logit", data = ratex[complete.cases(ratex),])
+
+exp(0.43)/exp(1.60)
+exp(1.42)/exp(1.60)
+
+```
+
+
+```{r learning-lang-face, include=F}
+learning_summary_tab <- l %>%
+  group_by(language, face) %>%
+  summarize(mean=na.mean(rating),
+            cilo = mean-ci.low(rating),
+            cihi = mean+ci.high(rating)) 
+            
+ggplot(learning_summary_tab, 
+       aes(x=face, y=mean, fill=face)) +
+  geom_bar(stat="identity", aes(x=face, y=mean, fill=face)) + 
+  geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, 
+                color=line_color) + 
+  facet_wrap(~language, ncol=2) +
+  scale_fill_manual(values = face_colors[1:5], 
+                    name=face_legend_title, 
+                    labels=face_labels[1:5]) +
+  labs(title='How well will she come to learn...?') +   
+  scale_y_continuous(breaks=c(0, 1, 2),
+                     label=c("0%", "50%", "100%")) +
+  sans_theme +
+  ylab("Mean Predicted Learning") +
+  theme(axis.text.y = element_text(
+    size=10, colour="gray30", family="sans"),
+    plot.title = element_text(face="italic", size=10)) 
+
+ggsave("learning_faces_barplot.png", device = "png", 
+       path = "plots/",
+       scale = 1, width = 6, height = 6, units = "in")
+```
+
+```{r learning-lang-face-std}
+face_legend_title1 <- "Face:"
+learning_std_summary_tab <- l %>%
+  group_by(language, standard, standard_num, face) %>%
+  summarize(mean=na.mean(rating),
+            cilo = mean-ci.low(rating),
+            cihi = mean+ci.high(rating))
+
+lp <- ggplot(learning_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+  geom_line(aes(lty=face)) +
+  geom_point(aes(shape=face)) + 
+  geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) + 
+  facet_wrap(~language, ncol=3) +
+  scale_color_manual(values = face_colors[1:5], name=face_legend_title1, labels=face_labels[1:5]) + 
+  scale_shape_manual(values = face_shapes[1:5], name=face_legend_title1, labels=face_labels[1:5]) +
+  scale_linetype_manual(values = face_ltys[1:5], name=face_legend_title1, labels=face_labels[1:5]) +
+  # ylim(0, 2) +
+  scale_x_continuous(breaks=c(3, 5, 7), 
+                     label=std_axis_labels) +   
+  scale_y_continuous(breaks=c(0, 1, 2),
+                     label=c("0%", "50%", "100%")) +
+                     #label=c("0%\nNot at all", "50%\nMedium", "100%\nVery well")) +
+  sans_axes_theme +
+  #theme(legend.position = "bottom",
+  #      axis.text.y=element_text(face="italic")) +
+  xlab("Grade") +
+  labs(title='How well will she come to learn...?') +
+  sans_axes_theme +
+  ylab("Mean Predicted Learning") +
+  theme(axis.text.y = element_text(
+    size=10, colour="gray30", family="sans"),
+    plot.title = element_text(face="bold.italic", size=10),
+    legend.position="bottom") 
+
+lp_final <- lp + theme(plot.title=element_text(size=0),
+           legend.key = element_rect(color=NA))
+
+ggsave("learning_faces_std.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+
+### HINDU Face
+
+```{r hindu-rating}
+hindu_lmer <- lmer(rating ~ 0 + language + child_age_centered + (1|id), 
+                   l[l$face=='HINDU', ])
+
+#hindu_lm <- lm(rating ~ language + child_age, l[l$face=='hindu_face'])
+summary(hindu_lmer)
+Anova(hindu_lmer)
+
+learning_face_hindu_lmer_coefs <- as.data.frame(
+  cbind(fixef(hindu_lmer), confint(hindu_lmer)[3:8]))
+
+learning_face_hindu_lmer_coefs %>% round(., 2)
+#learning_face_hindu_lm_coefs$toss <- learning_face_hindu_lm_coefs$`2.5 %`<1 #& learning_face_hindu_lm_coefs$`97.5 %`>1
+
+#learning_face_hindu_lm_coefs %>%filter(toss==0)
+```
+            
+            Language: ($`r reportFTest(hindu_lmer, "language")`$),
+            *English: ($`r reportCoefs(learning_face_hindu_lmer_coefs,
+            'language"English"')`$)
+            *Gujarati: ($`r reportCoefs(learning_face_hindu_lmer_coefs, 'language"Gujarati"')`$)
+            *Hindi: ($`r reportCoefs(learning_face_hindu_lmer_coefs, 'language"Hindi"')`$)
+            *Tamil: ($`r reportCoefs(learning_face_hindu_lmer_coefs, 'language"English"')`$)
+            
+            
+```{r hindu-rating-int, include=F}
+#hindu_int_lmer <- lmer(rating ~ language*child_age + (1|id), l[l$face=='HINDU',])
+#summary(hindu_lmer)
+#Anova(hindu_lmer)
+#anova(hindu_lmer, hindu_int_lmer)
+```
+            
+### MUSLIM Face
+            
+```{r muslim-rating}
+muslim_lmer <- lmer(rating ~ 0 + language + child_age + (1|id), l[l$face=='MUSLIM',])
+summary(muslim_lmer)
+Anova(muslim_lmer)
+
+learning_face_muslim_lmer_coefs <- cbind(fixef(muslim_lmer), confint(muslim_lmer)[3:8,]) %>% round(., 2)
+```
+            
+            Language: ($`r reportFTest(muslim_lm, "language")`$),
+            Child age: ($`r reportFTest(muslim_lm, "child_age")`$),
+            *English: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languageenglish")`$)
+            *Gujarati: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagegujarati")`$)
+            *Hindi: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagehindi")`$)
+            Tamil: ($`r reportCoefs(learning_face_muslim_lm_coefs, "languagetamil")`$)
+            *Child age: ($`r reportCoefs(learning_face_muslim_lm_coefs, "child_age")`$)
+            
+```{r muslim-rating-int, include=F}
+#muslim_int_lmer <- lmer(rating ~ language*child_age_centered + (1|id), 
+                    #l[l$face=='MUSLIM',])
+#summary(muslim_lmer)
+#Anova(muslim_lmer)
+#anova(muslim_int_lmer, muslim_lmer)
+```
+            
+### DRAVIDIAN Face
+            
+```{r dravidian-rating}
+            dravidian_lm <- lm(rating ~ language + child_age, l[l$face=='dravidian_face' & l$language!="marathi",])
+            summary(dravidian_lm)
+            Anova(dravidian_lm)
+            
+            learning_face_dravidian_lm_coefs <- cbind(coef(dravidian_lm), confint(dravidian_lm)) %>% round(., 2)
+            
+```
+            
+            Language: ($`r reportFTest(dravidian_lm, "language")`$),
+            *English: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languageenglish")`$)
+            *Gujarati: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagegujarati")`$)
+            *Hindi: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagehindi")`$)
+            *Tamil: ($`r reportCoefs(learning_face_dravidian_lm_coefs, "languagetamil")`$)
+            
+```{r dravidian-rating-int, include=F}
+            dravidian_lm <- lm(rating ~ language*child_age, l[l$face=='dravidian_face',])
+            summary(dravidian_lm)
+            Anova(dravidian_lm)
+```
+            
+### ASIAN Face
+            
+```{r asian-rating, include=F}
+            asian_lm <- lm(rating ~ language + child_age, l[l$face=='asian_face',])
+            summary(asian_lm)
+            Anova(asian_lm)
+```
+            
+```{r asian-rating-int}
+            asian_lm <- lm(rating ~ language*child_age, l[l$face=='asian_face' & l$language!="marathi",])
+            summary(asian_lm)
+            Anova(asian_lm)
+            
+            learning_face_asian_lm_coefs <- cbind(coef(asian_lm), confint(asian_lm)) %>% round(., 2)
+```
+            
+            Language: ($`r reportFTest(asian_lm, "language")`$),
+            Child age: ($`r reportFTest(asian_lm, "child_age")`$),
+            Interaction: ($`r reportFTest(asian_lm, "language:child_age")`$),
+            *English: ($`r reportCoefs(learning_face_asian_lm_coefs, "languageenglish")`$)
+            *Gujarati: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagegujarati")`$)
+            *Hindi: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagehindi")`$)
+            *Tamil: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagetamil")`$)
+            *languagetamil:child_age: ($`r reportCoefs(learning_face_asian_lm_coefs, "languagetamil:child_age")`$)
+            
+### WHITE Face
+            
+```{r white-rating}
+            white_lm <- lm(rating ~ language*child_age, l[l$face=='white_face' & l$language!="marathi",])
+            summary(white_lm)
+            Anova(white_lm)
+            mean(as.numeric(l[l$face=='asian_face' & l$language!="marathi",]$rating))
+            learning_face_white_lm_coefs<- cbind(coef(white_lm), confint(white_lm)) %>% round(., 2)
+```
+            
+            Language: ($`r reportFTest(white_lm, "language")`$),
+            Child age: ($`r reportFTest(white_lm, "child_age")`$),
+            Interaction: ($`r reportFTest(white_lm, "language:child_age")`$),
+            *English: ($`r reportCoefs(learning_face_white_lm_coefs, "languageenglish")`$)
+            *Gujarati: ($`r reportCoefs(learning_face_white_lm_coefs, "languagegujarati")`$)
+            Hindi: ($`r reportCoefs(learning_face_white_lm_coefs, "languagehindi")`$)
+            *Tamil: ($`r reportCoefs(learning_face_white_lm_coefs, "languagetamil")`$)
+            languagetamil:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagetamil:child_age")`$)
+            languagegujarati:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagegujarati:child_age")`$)
+            languagehindi:child_age: ($`r reportCoefs(learning_face_white_lm_coefs, "languagehindi:child_age")`$)
+            
+```{r diverging-barchart-colorway1}
+ld <- l %>% filter(!is.na(rating_num)) %>%
+              group_by(language) %>%
+              mutate(mean_rating = na.mean(rating_num),
+                     sd_rating = sd(rating_num, na.rm=T),
+                     by_lang_z = (rating_num-mean_rating)/sd_rating,
+                     rating_type=ifelse(by_lang_z < 0, "below", "above")) %>%
+              group_by(language, face, rating_type) %>%
+              summarize(sum=sum(by_lang_z))
+
+ld$rating_type <- factor(ld$rating_type, levels=c("below", "above"),
+                         labels=c("Below Average", "Above Average"))
+
+ggplot(ld, 
+       aes(x=fct_rev(face), y=sum)) + 
+  geom_bar(stat="identity", aes(fill=rating_type), width=.5)  +
+  scale_fill_manual(name="Learning Potential", 
+                    #labels = c("Below Average", "Above Average"), 
+                    values = c("gray65", "#31a354")) + 
+  facet_wrap(~language, ncol=3) +
+  xlab("Face") +
+  #ylim(-100, 100) +
+  ylab("Normalized Rating") +
+  sans_axes_theme +
+  theme(axis.text.y=element_text(size=8, color="gray30", 
+                                 family="sans"),
+        #legend.text = element_text(size=10),
+        #legend.title = element_text(size=10),
+        legend.position = "bottom") +
+  coord_flip() 
+
+ggsave("learning_diverging_barplot.png", device = "png", 
+       path = "plots/final/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r diverging-barchart-colorway2}
+ld$face_rating_type <- as.character(ld$rating_type)
+ld[ld$rating_type=="Above Average",]$face_rating_type <- 
+  paste("Above Average:\n", ld[ld$rating_type=="Above Average",]$face)
+
+ld$face_rating_type <- factor(ld$face_rating_type, 
+                               levels=c("Below Average", "Above Average:\n HINDU",
+                                        "Above Average:\n MUSLIM",
+                                        "Above Average:\n DRAVIDIAN",
+                                        "Above Average:\n WHITE",
+                                        "Above Average:\n ASIAN"),
+                               labels=c("Below Average", "Above Average:\n HINDU",
+                                        "Above Average:\n MUSLIM",
+                                        "Above Average:\n DRAVIDIAN",
+                                        "Above Average:\n WHITE",
+                                        "Above Average:\n ASIAN"))
+
+face_rating_type_colors <- c(
+  "Below Average" = "gray65",
+  "Above Average:\n HINDU" = "#1b9e77", # teal
+  "Above Average:\n MUSLIM" = "#7570b3", # purple
+  "Above Average:\n DRAVIDIAN" = "#e7298a", # magenta
+  "Above Average:\n WHITE" = "#e6ab02", # goldenrod 
+  "Above Average:\n ASIAN" = "#d95f02" # burnt orange
+)
+
+ldc <- ggplot(ld, 
+       aes(x=fct_rev(face), y=sum)) + 
+  geom_bar(stat="identity", aes(fill=face_rating_type), width=.5)  +
+  scale_fill_manual(name="Estimated\nLearning\nPotential", 
+                    values=face_rating_type_colors) + 
+    scale_fill_manual(name="Predicted\nLearning:", 
+                    values=face_rating_type_colors) + 
+  facet_wrap(~language, ncol=3) +
+  xlab("Face") +
+  #ylim(-100, 100) +
+  ylab("Normalized Learning Rating") +
+  sans_axes_theme_bigger +
+  theme(axis.text.y=element_text(size=10, color="gray30", 
+                                 family="sans"),
+       # axis.title.y=element_text(size=11),
+        legend.text = element_text(size=10),
+        legend.title = element_text(size=11),
+        legend.key = element_rect(color=NA),
+        legend.position = "bottom") +
+  coord_flip() 
+
+ggsave("learning_diverging_barplot_colored.png", device = "png", 
+       path = "plots/barplots_overall/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+ggsave(file="learning_diverging_barplot_colored.svg", plot=ldc, 
+       path = "plots/barplots_overall/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r l-age-lineplot}
+coefs <- l %>% 
+    group_by(language, face) %>% 
+    do({
+      mod = lm(rating_num ~ child_age_centered, data = .)
+      data.frame(intercept = coef(mod)[1],
+                 slope = coef(mod)[2])
+    })
+
+ls <- merge(l, coefs, by=c("language", "face"))
+
+ls$abs_slope <- abs(ls$slope)
+ls$alpha_slope <- scale(ls$slope)/2.2
+ls$alpha_slope <-  abs(ls$alpha_slope)
+  
+la <- ggplot(ls, aes(child_age, rating_num, color=face, 
+                    fill=face, lty=face)) +
+  stat_smooth(method="lm", level=.75, fullrange=T, 
+              aes(alpha=alpha_slope)) +
+    stat_smooth(method="lm", level=.75, fullrange=T, 
+              se=F) +
+    scale_color_manual(values=face_colors, name="") +
+    scale_fill_manual(values=face_colors, name="") +
+    scale_linetype_manual(values=face_ltys, name="") +
+    facet_wrap(~language, ncol=3) +
+   # ylim(-1, 2) +
+    scale_y_continuous(limits=c(-0, 2.1), breaks=c(0, 1, 2),
+                    label=c("0%", "50%", "100%")) +
+    scale_alpha_identity(guide=F) +
+    ylab("Mean Predicted Learning") + 
+    xlab("Child Age (years)") +
+    sans_axes_theme_bigger +
+  
+  theme(legend.position = "bottom")#,
+       # axis.title.y=element_text(margin=margin(0,-5,0,0)))
+
+ggsave(file="learning_age_lms.svg", 
+       plot=la, 
+       path = "plots/by_age/",
+       scale = 1, width = 7, height = 5)
+```
+
+```{r}
+cl <- ggarrange(la + theme(legend.position = "none",
+                           axis.title.y=element_text(margin=margin(0,-10,0,0))), 
+                ldc + theme(legend.position = "none",
+                            axis.title.y=element_text(margin=margin(0,-5,0,0))), 
+                labels='AUTO', widths = c(3, 4), 
+            ncol = 2, nrow = 1, align = 'v')
+
+ggsave("combined_learning_labeled.svg", cl, path="plots/combined/",
+       width = 190, scale=2, units ='mm')
+```
+
+
+## LMERs
+```{r l-lmer}
+l_lmer <- lmer(rating ~ face*language+child_age_centered + (1|id), l)
+summary(l_lmer) 
+Anova(l_lmer)
+l_lm <- lm(rating ~ face*language+child_age_centered, l)
+```
+
+```{r l-lmer-3way-int}
+l_lmer <- lmer(rating ~ face*language*child_age_centered + (1|id), l)
+summary(l_lmer)
+Anova(l_lmer)
+View(summary(l_lmer))
+```
+
+## Gujarati
+```{r}
+g_ord_mod <- clmm(rating_cat ~ (1|id) + face*child_age_centered,
+  link="logit", data = l[l$language=='"Gujarati"', ])
+
+g_noint_ord_mod <- clmm(rating_cat ~ (1|id) + face + child_age_centered,
+  link="logit", data = l[l$language=='"Gujarati"', ])
+
+anova(g_noint_ord_mod, g_ord_mod, test="LRT")
+```
+
+```{r g-ord-tab}
+sjPlot::tab_model(
+      g_ord_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/primary/learn_ord_mod_gujarati.html")
+
+go_df <- readHTMLTable(here('4_learning/tables/models/primary/learn_ord_mod_gujarati.html'), header=T) 
+
+go_df <- as.data.frame(go_df)
+names(go_df) <- go_df[1,]
+go_df <- go_df[-1,]
+
+print.xtable(go_df, type="latex", file="tables/models/primary/learn_ord_mod_gujarati.tex")
+```
+
+## Hindi
+```{r}
+h_ord_mod <- clmm(rating_cat ~ (1|id) + face*child_age_centered,
+  link="logit", data = l[l$language=='"Hindi"', ])
+
+h_noint_ord_mod <- clmm(rating_cat ~ (1|id) + face + child_age_centered,
+  link="logit", data = l[l$language=='"Hindi"', ])
+
+anova(h_noint_ord_mod, h_ord_mod, test="LRT")
+```
+
+```{r h-ord-tab}
+sjPlot::tab_model(
+      h_ord_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/primary/learn_ord_mod_hindi.html")
+
+ho_df <- readHTMLTable(here('4_learning/tables/models/primary/learn_ord_mod_hindi.html'), header=T) 
+
+ho_df <- as.data.frame(ho_df)
+names(ho_df) <- ho_df[1,]
+ho_df <- ho_df[-1,]
+
+print.xtable(ho_df, type="latex", file="tables/models/primary/learn_ord_mod_hindi.tex")
+```
+
+## Tamil
+```{r}
+t_ord_mod <- clmm(rating_cat ~ (1|id) + face*child_age_centered,
+  link="logit", data = l[l$language=='"Tamil"', ])
+
+t_noint_ord_mod <- clmm(rating_cat ~ (1|id) + face + child_age_centered,
+  link="logit", data = l[l$language=='"Tamil"', ])
+
+anova(t_noint_ord_mod, t_ord_mod, test="LRT")
+```
+
+```{r t-ord-tab}
+sjPlot::tab_model(
+      t_ord_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/primary/learn_ord_mod_tamil.html")
+
+to_df <- readHTMLTable(here('4_learning/tables/models/primary/learn_ord_mod_tamil.html'), header=T) 
+
+to_df <- as.data.frame(to_df)
+names(to_df) <- to_df[1,]
+to_df <- to_df[-1,]
+
+print.xtable(to_df, type="latex", file="tables/models/primary/learn_ord_mod_tamil.tex")
+```
+
+```{r tamil-fam, warning=F}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+
+tli <- merge(l, i, by=c("army_navy_language", "id")) %>%
+  filter(army_navy_language=="tamil")
+
+tli_mod <- clmm(rating_cat ~ (1|id) + face*familiar + child_age_centered, link="logit", tli)
+
+tli_mod_null <- clmm(rating_cat ~ (1|id) + face + familiar + child_age_centered, link="logit", tli)
+
+anova(tli_mod, tli_mod_null, test = "Chisq")
+summary(tli_mod)
+```
+
+## Mandarin
+```{r}
+c_ord_mod <- clmm(rating_cat ~ (1|id) + face + child_age_centered,
+  link="logit", data = l[l$language=='"Chinese"', ])
+```
+
+```{r c-ord-tab}
+sjPlot::tab_model(
+      c_ord_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/primary/learn_ord_mod_mandarin.html")
+
+co_df <- readHTMLTable(here('4_learning/tables/models/primary/learn_ord_mod_mandarin.html'), header=T) 
+
+co_df <- as.data.frame(co_df)
+names(co_df) <- co_df[1,]
+co_df <- co_df[-1,]
+
+print.xtable(co_df, type="latex", file="tables/models/primary/learn_ord_mod_mandarin.tex")
+```
+
+```{r chinese-fam, warning=F}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+
+cli <- merge(l, i, by=c("army_navy_language", "id")) %>%
+  filter(army_navy_language=="chinese")
+
+cli_mod <- clmm(rating_cat ~ (1|id) + face*familiar + child_age_centered, link="logit", cli)
+
+cli_mod_null <- clmm(rating_cat ~ (1|id) + face + familiar + child_age_centered, link="logit", cli)
+
+anova(cli_mod, cli_mod_null, test = "Chisq")
+summary(cli_mod)
+```
+
+```{r c-fam-tab}
+sjPlot::tab_model(
+      cli_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/familiarity/learn_fam_mandarin.html")
+```
+
+## English
+```{r}
+e_ord_mod <- clmm(rating_cat ~ (1|id) + face*child_age_centered,
+  link="logit", data = l[l$language=='"English"', ])
+lalt <- l
+lalt$face <- relevel(lalt$face, ref="DRAVIDIAN")
+e_ord_modalt <- clmm(rating_cat ~ (1|id) + face*child_age_centered,
+  link="logit", data = lalt[lalt$language=='"English"', ])
+
+e_noint_ord_mod <- clmm(rating_cat ~ (1|id) + face + child_age_centered,
+  link="logit", data = l[l$language=='"English"', ])
+
+anova(e_noint_ord_mod, e_ord_mod, test="LRT")
+```
+
+```{r e-ord-tab}
+sjPlot::tab_model(
+      e_ord_mod, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE, 
+      file = "tables/models/primary/learn_ord_mod_english.html")
+
+eo_df <- readHTMLTable(here('4_learning/tables/models/primary/learn_ord_mod_english.html'), header=T) 
+
+eo_df <- as.data.frame(eo_df)
+names(eo_df) <- eo_df[1,]
+eo_df <- eo_df[-1,]
+
+print.xtable(eo_df, type="latex", file="tables/models/primary/learn_ord_mod_english.tex")
+```
+
+```{r}
+id_glm <- glm(id_correct ~ 0 +
+                    language*child_age_centered, 
+                  family="binomial", i)
+
+id_glm_null <- glm(id_correct ~ 0 +
+                    language + child_age_centered, 
+                  family="binomial", i)
+
+anova(id_glm_null, id_glm, test="Chisq")
+
+sjPlot::tab_model(
+      id_glm, 
+      show.r2 = TRUE, 
+      show.icc = FALSE, 
+      show.re.var = FALSE, 
+      p.style = "numeric_stars", 
+      emph.p = TRUE)
+
+```

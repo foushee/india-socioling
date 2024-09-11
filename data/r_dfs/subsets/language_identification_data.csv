@@ -1,0 +1,1044 @@
+"","study_name","school","id","standard","standard_num","child_age","child_age_centered","child_sex","child_religion","mother_tongue","home_language","friends_language","sequence","question_type","language","army_navy_language","presentation","speaker_gender","response","id_correct"
+"1","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",55,"id","Marathi","marathi","audio","female","tamil",0
+"2","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",56,"id","English (U.S.)","english","audio","female","english",1
+"3","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",57,"id","Hindi","hindi","audio","female","hindi",1
+"4","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"5","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",59,"id","English (India)","english","audio","female","chinese",0
+"6","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",60,"id","Mandarin","chinese","audio","female","marathi",0
+"7","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",61,"id","Tamil","tamil","audio","female","urdu",0
+"8","india-socioling","zenith","Z03A06",3,3,8.18548387096774,-2.41973410019171,"male","muslim","","hindi gujarati","",62,"id","Urdu","urdu","audio","female","tamil",0
+"9","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",31,"id","Marathi","marathi","audio","female","urdu",0
+"10","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",32,"id","English (U.S.)","english","audio","female","english",1
+"11","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",33,"id","Hindi","hindi","audio","female","urdu",0
+"12","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",34,"id","Gujarati","gujarati","audio","female","hindi",0
+"13","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",35,"id","English (India)","english","audio","female","english",1
+"14","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",36,"id","Mandarin","chinese","audio","female","marathi",0
+"15","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",37,"id","Tamil","tamil","audio","female","english",0
+"16","india-socioling","zenith","Z03A09",3,3,8.45698924731183,-2.14822872384762,"male","muslim","hindi/urdu","hindi/urdu","",38,"id","Urdu","urdu","audio","female","urdu",1
+"17","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",55,"id","Marathi","marathi","audio","female","marathi",1
+"18","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",56,"id","English (U.S.)","english","audio","female","english",1
+"19","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",57,"id","Hindi","hindi","audio","female","urdu",0
+"20","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",58,"id","Gujarati","gujarati","audio","female","punjabi",0
+"21","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",59,"id","English (India)","english","audio","female","tamil",0
+"22","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",60,"id","Mandarin","chinese","audio","female","pongul",0
+"23","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",61,"id","Tamil","tamil","audio","female","chinese",0
+"24","india-socioling","zenith","Z03A16",3,3,7.69623655913978,-2.90898141201968,"male","muslim","","hindi","",62,"id","Urdu","urdu","audio","female","odisha",0
+"25","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",31,"id","Marathi","marathi","audio","female","chinese",0
+"26","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",32,"id","English (U.S.)","english","audio","female","english",1
+"27","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",33,"id","Hindi","hindi","audio","female","hindi",1
+"28","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",34,"id","Gujarati","gujarati","audio","female","gujarati",1
+"29","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",35,"id","English (India)","english","audio","female","english",1
+"30","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",36,"id","Mandarin","chinese","audio","female","marathi",0
+"31","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",37,"id","Tamil","tamil","audio","female","tamil",1
+"32","india-socioling","zenith","Z03A51",3,3,7.91129032258065,-2.6939276485788,"female","hindu","","hindigujarati","hindi english",38,"id","Urdu","urdu","audio","female","urdu",1
+"33","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",31,"id","Marathi","marathi","audio","female","marathi",1
+"34","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",32,"id","English (U.S.)","english","audio","female","english",1
+"35","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",33,"id","Hindi","hindi","audio","female","hindi",1
+"36","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",34,"id","Gujarati","gujarati","audio","female","urdu",0
+"37","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",35,"id","English (India)","english","audio","female","tamil",0
+"38","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",36,"id","Mandarin","chinese","audio","female","marathi",0
+"39","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",37,"id","Tamil","tamil","audio","female","marathi",0
+"40","india-socioling","zenith","Z03A59",3,3,8.25537634408602,-2.34984162707343,"female","hindu","gujarati","gujarati","",38,"id","Urdu","urdu","audio","female","gujarati",0
+"41","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",55,"id","Marathi","marathi","audio","female","marathi",1
+"42","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",56,"id","English (U.S.)","english","audio","female","english",1
+"43","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",57,"id","Hindi","hindi","audio","female","hindi",1
+"44","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"45","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",59,"id","English (India)","english","audio","female","english",1
+"46","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",60,"id","Mandarin","chinese","audio","female","hindi",0
+"47","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",61,"id","Tamil","tamil","audio","female","urdu",0
+"48","india-socioling","zenith","Z03A60",3,3,8.20698924731183,-2.39822872384762,"female","other","malyam","malyam","",62,"id","Urdu","urdu","audio","female","hindi",0
+"49","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",59,"id","Urdu","urdu","audio","female","hindi",0
+"50","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",60,"id","Hindi","hindi","audio","female","hindi",1
+"51","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",61,"id","English (India)","english","audio","female","english",1
+"52","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",62,"id","English (U.S.)","english","audio","female","english",1
+"53","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",63,"id","Marathi","marathi","audio","female","chinese",0
+"54","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",64,"id","Mandarin","chinese","audio","female","marathi",0
+"55","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",65,"id","Tamil","tamil","audio","female","bengali",0
+"56","india-socioling","zenith","Z03B58",3,3,8.13440860215054,-2.47080936900892,"female","muslim","hindi","hindi","hindi english",66,"id","Gujarati","gujarati","audio","female","gujarati",1
+"57","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","tamil nadu",0
+"58","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"59","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"60","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","urdu",0
+"61","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"62","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","japanese",0
+"63","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","telegu",0
+"64","india-socioling","zenith","Z03C01",3,3,8.36827956989247,-2.23693840126698,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","urdu",1
+"65","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"66","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","gujarati",0
+"67","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","marathi",0
+"68","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","urdu",0
+"69","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"70","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","english",0
+"71","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","chinese",0
+"72","india-socioling","zenith","Z03C02",3,3,7.75806451612903,-2.84715345503042,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","english",0
+"73","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","chinese",0
+"74","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"75","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"76","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"77","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"78","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"79","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","chinese",0
+"80","india-socioling","zenith","Z03C04",3,3,9,-1.60521797115945,"male","muslim","gujarati","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"81","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",59,"id","Urdu","urdu","audio","female","christian",0
+"82","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"83","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",61,"id","English (India)","english","audio","female","christian",0
+"84","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",62,"id","English (U.S.)","english","audio","female","tamil",0
+"85","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",63,"id","Marathi","marathi","audio","female","gujarati",0
+"86","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",64,"id","Mandarin","chinese","audio","female","marathi",0
+"87","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",65,"id","Tamil","tamil","audio","female","christian",0
+"88","india-socioling","zenith","Z03C06",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",66,"id","Gujarati","gujarati","audio","female","gujarati",1
+"89","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"90","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"91","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",57,"id","Hindi","hindi","audio","female","tamil",0
+"92","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"93","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",59,"id","English (India)","english","audio","female","urdu",0
+"94","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"95","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",61,"id","Tamil","tamil","audio","female","urdu",0
+"96","india-socioling","zenith","Z03C07",3,3,8.6,-2.00521797115946,"male","hindu","gujarat","gujarati","gujarat hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"97","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",59,"id","Urdu","urdu","audio","female","urdu",1
+"98","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"99","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",61,"id","English (India)","english","audio","female","chinese",0
+"100","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",62,"id","English (U.S.)","english","audio","female","english",1
+"101","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",63,"id","Marathi","marathi","audio","female","tamil",0
+"102","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",64,"id","Mandarin","chinese","audio","female","chinese",1
+"103","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",65,"id","Tamil","tamil","audio","female","tamil",1
+"104","india-socioling","zenith","Z03C09",3,3,8,-2.60521797115945,"male","muslim","hindi","hindi","hindi",66,"id","Gujarati","gujarati","audio","female","tamil",0
+"105","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",55,"id","Marathi","marathi","audio","female","marathi",1
+"106","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",56,"id","English (U.S.)","english","audio","female","english",1
+"107","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",57,"id","Hindi","hindi","audio","female","hindi",1
+"108","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"109","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",59,"id","English (India)","english","audio","female","english",1
+"110","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"111","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",61,"id","Tamil","tamil","audio","female","chinese",0
+"112","india-socioling","zenith","Z03C10",3,3,8.4,-2.20521797115945,"male","hindu","marathi","marathi","marathi",62,"id","Urdu","urdu","audio","female","hindi",0
+"113","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",55,"id","Marathi","marathi","audio","female","gujarati",0
+"114","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"115","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"116","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"117","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",59,"id","English (India)","english","audio","female","english",1
+"118","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"119","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",61,"id","Tamil","tamil","audio","female","urdu",0
+"120","india-socioling","zenith","Z03C14",3,3,8.1,-2.50521797115946,"male","hindu","marathi","marathi","marathi gujarati",62,"id","Urdu","urdu","audio","female","gujarati",0
+"121","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",59,"id","Urdu","urdu","audio","female","hindi",0
+"122","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"123","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",61,"id","English (India)","english","audio","female","english",1
+"124","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",62,"id","English (U.S.)","english","audio","female","english",1
+"125","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",63,"id","Marathi","marathi","audio","female","tamil",0
+"126","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",64,"id","Mandarin","chinese","audio","female","english",0
+"127","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",65,"id","Tamil","tamil","audio","female","tamil",1
+"128","india-socioling","zenith","Z03C16",3,3,8.3,-2.30521797115945,"male","hindu","hindi","hindi","hindi",66,"id","Gujarati","gujarati","audio","female","tamil",0
+"129","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",59,"id","Urdu","urdu","audio","female","tamil",0
+"130","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",60,"id","Hindi","hindi","audio","female","hindi",1
+"131","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",61,"id","English (India)","english","audio","female","english",1
+"132","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",62,"id","English (U.S.)","english","audio","female","english",1
+"133","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",63,"id","Marathi","marathi","audio","female","tamil",0
+"134","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",64,"id","Mandarin","chinese","audio","female","chinese",0
+"135","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",65,"id","Tamil","tamil","audio","female","tamil",1
+"136","india-socioling","zenith","Z03C18",3,3,8.6,-2.00521797115946,"male","hindu","hindi","hindi","hindi gujarati english",66,"id","Gujarati","gujarati","audio","female","hindi",0
+"137","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",59,"id","Urdu","urdu","audio","female","muslim",0
+"138","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",60,"id","Hindi","hindi","audio","female","muslim",0
+"139","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",61,"id","English (India)","english","audio","female","english",1
+"140","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",62,"id","English (U.S.)","english","audio","female","english",1
+"141","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",63,"id","Marathi","marathi","audio","female","christian",0
+"142","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",64,"id","Mandarin","chinese","audio","female","christian",0
+"143","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",65,"id","Tamil","tamil","audio","female","christian",0
+"144","india-socioling","zenith","Z03C20",3,3,8.4,-2.20521797115945,"male","muslim","urdu","urdu","hindi urdu",66,"id","Gujarati","gujarati","audio","female","muslim",0
+"145","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","bengali",0
+"146","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"147","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","urdu",0
+"148","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"149","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"150","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"151","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","urdu",0
+"152","india-socioling","zenith","Z03C43",3,3,8,-2.60521797115945,"female","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"153","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"154","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"155","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"156","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"157","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"158","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"159","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","marathi",0
+"160","india-socioling","zenith","Z03C44",3,3,8.7,-1.90521797115946,"female","hindu","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"161","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"162","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"163","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"164","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","tamil",0
+"165","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"166","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"167","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","japanese",0
+"168","india-socioling","zenith","Z03C46",3,3,7.8,-2.80521797115945,"female","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","urdu",1
+"169","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",55,"id","Marathi","marathi","audio","female","marathi",1
+"170","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",56,"id","English (U.S.)","english","audio","female","english",1
+"171","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",57,"id","Hindi","hindi","audio","female","hindi",1
+"172","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",58,"id","Gujarati","gujarati","audio","female","tamil",0
+"173","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",59,"id","English (India)","english","audio","female","english",1
+"174","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",60,"id","Mandarin","chinese","audio","female","english",0
+"175","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",61,"id","Tamil","tamil","audio","female","chinese",0
+"176","india-socioling","zenith","Z03C47",3,3,8.3,-2.30521797115945,"female","hindu","hindi","hindi punjabi","hindi punjabi",62,"id","Urdu","urdu","audio","female","hindi",0
+"177","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",55,"id","Marathi","marathi","audio","female","tamil",0
+"178","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"179","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"180","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"181","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",59,"id","English (India)","english","audio","female","english",1
+"182","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",60,"id","Mandarin","chinese","audio","female","urdu",0
+"183","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"184","india-socioling","zenith","Z03C48",3,3,7.9,-2.70521797115945,"female","hindu","kathiyawadi","kathiyawadi","gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"185","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","hindi",0
+"186","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"187","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"188","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"189","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"190","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"191","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","chinese",0
+"192","india-socioling","zenith","Z03C49",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","gujarati",0
+"193","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",59,"id","Urdu","urdu","audio","female","urdu",1
+"194","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"195","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",61,"id","English (India)","english","audio","female","marathi",0
+"196","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",62,"id","English (U.S.)","english","audio","female","english",1
+"197","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",63,"id","Marathi","marathi","audio","female","tamil",0
+"198","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",64,"id","Mandarin","chinese","audio","female","chinese",1
+"199","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",65,"id","Tamil","tamil","audio","female","tamil",1
+"200","india-socioling","zenith","Z03C51",3,3,8,-2.60521797115945,"female","muslim","gujarati","gujarati","gujarati hindi",66,"id","Gujarati","gujarati","audio","female","gujarati",1
+"201","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",59,"id","Urdu","urdu","audio","female","tamil",0
+"202","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"203","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",61,"id","English (India)","english","audio","female","urdu",0
+"204","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",62,"id","English (U.S.)","english","audio","female","english",1
+"205","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",63,"id","Marathi","marathi","audio","female","marathi",1
+"206","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",64,"id","Mandarin","chinese","audio","female","urdu",0
+"207","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",65,"id","Tamil","tamil","audio","female","tamil",1
+"208","india-socioling","zenith","Z03C60",3,3,8.3,-2.30521797115945,"female","muslim","hindi","hindi","hindi",66,"id","Gujarati","gujarati","audio","female","urdu",0
+"209","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",59,"id","Urdu","urdu","audio","female","hindi",1
+"210","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",60,"id","Hindi","hindi","audio","female","urdu",0
+"211","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",61,"id","English (India)","english","audio","female","chinese",0
+"212","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",62,"id","English (U.S.)","english","audio","female","muslim",0
+"213","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",63,"id","Marathi","marathi","audio","female","gujarati",0
+"214","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",64,"id","Mandarin","chinese","audio","female","chinese",1
+"215","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",65,"id","Tamil","tamil","audio","female","english",0
+"216","india-socioling","zenith","Z03C62",3,3,8.5,-2.10521797115945,"female","muslim","gujarati","gujarati","hindi english",66,"id","Gujarati","gujarati","audio","female","gujarati",1
+"217","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",58,"id","Marathi","marathi","audio","female","hindi",0
+"218","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",59,"id","English (U.S.)","english","audio","female","english",1
+"219","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",60,"id","Hindi","hindi","audio","female","hindi",1
+"220","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",61,"id","Gujarati","gujarati","audio","female","marathi",0
+"221","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",62,"id","English (India)","english","audio","female","english",1
+"222","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",63,"id","Mandarin","chinese","audio","female","chinese",1
+"223","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",64,"id","Tamil","tamil","audio","female","marathi",0
+"224","india-socioling","zenith","Z05A03",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati","hindi marathi",65,"id","Urdu","urdu","audio","female","hindi",0
+"225","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"226","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"227","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"228","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"229","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","chinese",0
+"230","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"231","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","urdu",0
+"232","india-socioling","zenith","Z05A04",5,5,10,-0.605217971159455,"male","hindu","","marathi gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"233","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"234","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"235","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"236","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"237","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"238","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","french",0
+"239","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","english",0
+"240","india-socioling","zenith","Z05A05",5,5,10,-0.605217971159455,"male","hindu","","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"241","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",58,"id","Marathi","marathi","audio","female","marathi",1
+"242","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",59,"id","English (U.S.)","english","audio","female","english",1
+"243","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",60,"id","Hindi","hindi","audio","female","hindi",1
+"244","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"245","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",62,"id","English (India)","english","audio","female","spanish",0
+"246","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",63,"id","Mandarin","chinese","audio","female","chinese",1
+"247","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",64,"id","Tamil","tamil","audio","female","sanskrit",0
+"248","india-socioling","zenith","Z05A07",5,5,11,0.394782028840545,"male","hindu","marathi","marathi","hindi gujarati",65,"id","Urdu","urdu","audio","female","hindi",0
+"249","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",58,"id","Marathi","marathi","audio","female","marathi",1
+"250","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",59,"id","English (U.S.)","english","audio","female","english",1
+"251","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"252","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"253","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",62,"id","English (India)","english","audio","female","spanish",0
+"254","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",63,"id","Mandarin","chinese","audio","female","chinese",1
+"255","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",64,"id","Tamil","tamil","audio","female","tamil",1
+"256","india-socioling","zenith","Z05A08",5,5,10,-0.605217971159455,"male","hindu","hindi","hindi","hindi",65,"id","Urdu","urdu","audio","female","hindi",0
+"257","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",0
+"258","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"259","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"260","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"261","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"262","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",60,"id","Mandarin","chinese","audio","female","tamil",0
+"263","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",61,"id","Tamil","tamil","audio","female","chinese",0
+"264","india-socioling","zenith","Z05A09",5,5,11,0.394782028840545,"male","muslim","","hindi urdu","hindi gujarati",62,"id","Urdu","urdu","audio","female","urdu",1
+"265","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"266","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"267","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",57,"id","Hindi","hindi","audio","female","gujarati",0
+"268","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","hindi",0
+"269","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"270","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"271","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",61,"id","Tamil","tamil","audio","female","gujarati",0
+"272","india-socioling","zenith","Z05A10",5,5,10,-0.605217971159455,"male","muslim","","hindi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"273","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",55,"id","Marathi","marathi","audio","female","tamil",0
+"274","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",56,"id","English (U.S.)","english","audio","female","english",1
+"275","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",57,"id","Hindi","hindi","audio","female","hindi",1
+"276","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"277","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",59,"id","English (India)","english","audio","female","english",1
+"278","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"279","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",61,"id","Tamil","tamil","audio","female","urdu",0
+"280","india-socioling","zenith","Z05A13",5,5,11,0.394782028840545,"male","hindu","","gujarati","gujarati hindi marathi",62,"id","Urdu","urdu","audio","female","hindi",0
+"281","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"282","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"283","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"284","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","chinese",0
+"285","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"286","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"287","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",61,"id","Tamil","tamil","audio","female","gujarati",0
+"288","india-socioling","zenith","Z05A19",5,5,11,0.394782028840545,"male","muslim","","hindi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"289","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",58,"id","Marathi","marathi","audio","female","tamil",0
+"290","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",59,"id","English (U.S.)","english","audio","female","english",1
+"291","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",60,"id","Hindi","hindi","audio","female","hindi",1
+"292","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"293","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",62,"id","English (India)","english","audio","female","french",0
+"294","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",63,"id","Mandarin","chinese","audio","female","chinese",1
+"295","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",64,"id","Tamil","tamil","audio","female","marathi",0
+"296","india-socioling","zenith","Z05A33",5,5,9.8,-0.805217971159454,"male","muslim","hindi","hindi","hindi gujarati",65,"id","Urdu","urdu","audio","female","hindi",0
+"297","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"298","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"299","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"300","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"301","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"302","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"303","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"304","india-socioling","zenith","Z05A42",5,5,10,-0.605217971159455,"female","other","","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"305","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"306","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"307","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"308","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"309","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"310","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"311","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","malalyam",0
+"312","india-socioling","zenith","Z05A43",5,5,10,-0.605217971159455,"female","hindu","","marathi hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"313","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",58,"id","Marathi","marathi","audio","female","marathi",1
+"314","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",59,"id","English (U.S.)","english","audio","female","english",1
+"315","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"316","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"317","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",62,"id","English (India)","english","audio","female","english",1
+"318","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",63,"id","Mandarin","chinese","audio","female","chinese",1
+"319","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",64,"id","Tamil","tamil","audio","female","tamil",1
+"320","india-socioling","zenith","Z05A4X",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",65,"id","Urdu","urdu","audio","female","hindi",0
+"321","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"322","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"323","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"324","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"325","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"326","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"327","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","malalyam",0
+"328","india-socioling","zenith","Z05A47",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"329","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",55,"id","Marathi","marathi","audio","female","tamil",0
+"330","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"331","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"332","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"333","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",59,"id","English (India)","english","audio","female","english",1
+"334","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"335","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",61,"id","Tamil","tamil","audio","female","marathi",0
+"336","india-socioling","zenith","Z05A48",5,5,11,0.394782028840545,"female","muslim","","hindi","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"337","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"338","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"339","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"340","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","guajrati",1
+"341","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",59,"id","English (India)","english","audio","female","chinese",0
+"342","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","english",0
+"343","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"344","india-socioling","zenith","Z05A49",5,5,9.9,-0.705217971159454,"female","hindu","","hindi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"345","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",55,"id","Marathi","marathi","audio","female","chinese",0
+"346","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",56,"id","English (U.S.)","english","audio","female","english",1
+"347","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",57,"id","Hindi","hindi","audio","female","hindi",1
+"348","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"349","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",59,"id","English (India)","english","audio","female","english",0
+"350","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",60,"id","Mandarin","chinese","audio","female","marathi",0
+"351","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",61,"id","Tamil","tamil","audio","female","tamil",1
+"352","india-socioling","zenith","Z05A51",5,5,11,0.394782028840545,"female","hindu","","hindi gujarati","",62,"id","Urdu","urdu","audio","female","urdu",1
+"353","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","gujarati",0
+"354","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"355","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"356","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","guajarati",1
+"357","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","chinese",0
+"358","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"359","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"360","india-socioling","zenith","Z05A52",5,5,10,-0.605217971159455,"female","hindu","","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"361","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",58,"id","Marathi","marathi","audio","female","tamil",0
+"362","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",59,"id","English (U.S.)","english","audio","female","english",1
+"363","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",60,"id","Hindi","hindi","audio","female","hindi",1
+"364","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"365","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",62,"id","English (India)","english","audio","female","french",0
+"366","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",63,"id","Mandarin","chinese","audio","female","chinese",1
+"367","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",64,"id","Tamil","tamil","audio","female","marathi",0
+"368","india-socioling","zenith","Z05A53",5,5,11,0.394782028840545,"female","muslim","hindi","hindi","hindi english",65,"id","Urdu","urdu","audio","female","hindi",0
+"369","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",58,"id","Marathi","marathi","audio","female","marathi",1
+"370","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",59,"id","English (U.S.)","english","audio","female","english",1
+"371","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",60,"id","Hindi","hindi","audio","female","hindi",1
+"372","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"373","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",62,"id","English (India)","english","audio","female","english",1
+"374","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",63,"id","Mandarin","chinese","audio","female","chinese",1
+"375","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",64,"id","Tamil","tamil","audio","female","urdu",0
+"376","india-socioling","zenith","Z05A56",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","hindi english gujarati",65,"id","Urdu","urdu","audio","female","hindi",0
+"377","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",58,"id","Marathi","marathi","audio","female","urdu",0
+"378","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",59,"id","English (U.S.)","english","audio","female","english",1
+"379","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"380","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"381","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",62,"id","English (India)","english","audio","female","french",0
+"382","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",63,"id","Mandarin","chinese","audio","female","japanese",0
+"383","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",64,"id","Tamil","tamil","audio","female","chinese",0
+"384","india-socioling","zenith","Z05A57",5,5,10,-0.605217971159455,"female","hindu","marwadi","hindi marwadi","gujarati hindi",65,"id","Urdu","urdu","audio","female","hindi",0
+"385","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",58,"id","Marathi","marathi","audio","female","marathi",1
+"386","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",59,"id","English (U.S.)","english","audio","female","english",1
+"387","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",60,"id","Hindi","hindi","audio","female","hindi",1
+"388","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"389","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",62,"id","English (India)","english","audio","female","french",0
+"390","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",63,"id","Mandarin","chinese","audio","female","urdu",0
+"391","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",64,"id","Tamil","tamil","audio","female","chinese",0
+"392","india-socioling","zenith","Z05A60",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi gujarati","gujarati hindi",65,"id","Urdu","urdu","audio","female","hindi",0
+"393","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",31,"id","Marathi","marathi","audio","female","hindi",0
+"394","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",32,"id","English (U.S.)","english","audio","female","english",1
+"395","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",33,"id","Hindi","hindi","audio","female","urdu",0
+"396","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",34,"id","Gujarati","gujarati","audio","female","gujarati",1
+"397","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",35,"id","English (India)","english","audio","female","english",1
+"398","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",36,"id","Mandarin","chinese","audio","female","chinese",1
+"399","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",37,"id","Tamil","tamil","audio","female","tamil",1
+"400","india-socioling","zenith","Z05B03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",38,"id","Urdu","urdu","audio","female","hindi",0
+"401","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",55,"id","Marathi","marathi","audio","female","hindi",0
+"402","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",56,"id","English (U.S.)","english","audio","female","english",1
+"403","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"404","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"405","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",59,"id","English (India)","english","audio","female","english",1
+"406","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",60,"id","Mandarin","chinese","audio","female","chinese",1
+"407","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",61,"id","Tamil","tamil","audio","female","urdu",0
+"408","india-socioling","zenith","Z05B04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","",62,"id","Urdu","urdu","audio","female","hindi",0
+"409","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","madi",0
+"410","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"411","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"412","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"413","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"414","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"415","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"416","india-socioling","zenith","Z05B05",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"417","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"418","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"419","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"420","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"421","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",59,"id","English (India)","english","audio","female","urdu",0
+"422","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",60,"id","Mandarin","chinese","audio","female","tamil",0
+"423","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",61,"id","Tamil","tamil","audio","female","chinese",0
+"424","india-socioling","zenith","Z05B11",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english","gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"425","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"426","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"427","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"428","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"429","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"430","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"431","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"432","india-socioling","zenith","Z05B12",5,5,11,0.394782028840545,"male","muslim","hindi, gujarati","gujarati english hindi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"433","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",55,"id","Marathi","marathi","audio","female","tamil",0
+"434","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",56,"id","English (U.S.)","english","audio","female","english",1
+"435","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"436","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"437","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",59,"id","English (India)","english","audio","female","chinese",0
+"438","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",60,"id","Mandarin","chinese","audio","female","english",0
+"439","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",61,"id","Tamil","tamil","audio","female","urdu",0
+"440","india-socioling","zenith","Z05B16",5,5,11,0.394782028840545,"male","muslim","hindi","hindi","",62,"id","Urdu","urdu","audio","female","gujarati",0
+"441","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"442","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"443","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"444","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"445","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"446","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"447","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"448","india-socioling","zenith","Z05B17",5,5,10,-0.605217971159455,"male","hindu","gujarati","gujarati hindi english","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"449","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"450","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"451","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"452","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",58,"id","Gujarati","gujarati","audio","female","urdu",0
+"453","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",59,"id","English (India)","english","audio","female","english",1
+"454","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"455","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"456","india-socioling","zenith","Z05B19",5,5,11,0.394782028840545,"male","hindu","gujarati","gujarati english hindi","english gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"457","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"458","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"459","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"460","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"461","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"462","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"463","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"464","india-socioling","zenith","Z05B20",5,5,10,-0.605217971159455,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"465","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",55,"id","Marathi","marathi","audio","female","",NA
+"466","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",56,"id","English (U.S.)","english","audio","female","",NA
+"467","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",57,"id","Hindi","hindi","audio","female","",NA
+"468","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",58,"id","Gujarati","gujarati","audio","female","",NA
+"469","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",59,"id","English (India)","english","audio","female","",NA
+"470","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",60,"id","Mandarin","chinese","audio","female","",NA
+"471","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",61,"id","Tamil","tamil","audio","female","",NA
+"472","india-socioling","zenith","Z05B32",5,5,11,0.394782028840545,"male","muslim","hindi","","",62,"id","Urdu","urdu","audio","female","",NA
+"473","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"474","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"475","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"476","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"477","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","chinese",0
+"478","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","urdu",0
+"479","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","english",0
+"480","india-socioling","zenith","Z05B44",5,5,11,0.394782028840545,"female","muslim","gujarati","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"481","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",31,"id","Marathi","marathi","audio","female","tamil",0
+"482","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",32,"id","English (U.S.)","english","audio","female","english",1
+"483","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",33,"id","Hindi","hindi","audio","female","hindi",1
+"484","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",34,"id","Gujarati","gujarati","audio","female","gujarati",1
+"485","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",35,"id","English (India)","english","audio","female","urdu",0
+"486","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",36,"id","Mandarin","chinese","audio","female","chinese",1
+"487","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",37,"id","Tamil","tamil","audio","female","urdu",0
+"488","india-socioling","zenith","Z05B46",5,5,10,-0.605217971159455,"female","muslim","","gujarati marathi","",38,"id","Urdu","urdu","audio","female","hindi",0
+"489","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",55,"id","Marathi","marathi","audio","female","tamil",0
+"490","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",56,"id","English (U.S.)","english","audio","female","english",1
+"491","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"492","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"493","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",59,"id","English (India)","english","audio","female","tamil",0
+"494","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",60,"id","Mandarin","chinese","audio","female","chinese",0
+"495","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",61,"id","Tamil","tamil","audio","female","marathi",0
+"496","india-socioling","zenith","Z05B47",5,5,10,-0.605217971159455,"female","hindu","hindi","hindi","",62,"id","Urdu","urdu","audio","female","hindi",0
+"497","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",55,"id","Marathi","marathi","audio","female","chinese",0
+"498","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",56,"id","English (U.S.)","english","audio","female","urdu",0
+"499","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"500","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"501","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",59,"id","English (India)","english","audio","female","english",1
+"502","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",60,"id","Mandarin","chinese","audio","female","tamil",0
+"503","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",61,"id","Tamil","tamil","audio","female","tamil",1
+"504","india-socioling","zenith","Z05B48",5,5,10,-0.605217971159455,"female","hindu","","gujarati marathi","",62,"id","Urdu","urdu","audio","female","urdu",1
+"505","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,55,"id","Marathi","marathi","audio","female",NA,NA
+"506","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,56,"id","English (U.S.)","english","audio","female",NA,NA
+"507","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,57,"id","Hindi","hindi","audio","female",NA,NA
+"508","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,58,"id","Gujarati","gujarati","audio","female",NA,NA
+"509","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,59,"id","English (India)","english","audio","female",NA,NA
+"510","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,60,"id","Mandarin","chinese","audio","female",NA,NA
+"511","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,61,"id","Tamil","tamil","audio","female",NA,NA
+"512","india-socioling","zenith","Z05B49",5,5,10,-0.605217971159455,"female","hindu","marathi",NA,NA,62,"id","Urdu","urdu","audio","female",NA,NA
+"513","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",55,"id","Marathi","marathi","audio","female","marathi",1
+"514","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",56,"id","English (U.S.)","english","audio","female","english",1
+"515","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"516","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"517","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",59,"id","English (India)","english","audio","female","english",1
+"518","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",60,"id","Mandarin","chinese","audio","female","marathi",0
+"519","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",61,"id","Tamil","tamil","audio","female","tamil",1
+"520","india-socioling","zenith","Z05B50",5,5,9.8,-0.805217971159454,"female","muslim","marathi","marathi","",62,"id","Urdu","urdu","audio","female","hindi",0
+"521","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"522","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"523","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"524","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"525","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",59,"id","English (India)","english","audio","female","english",1
+"526","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"527","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",61,"id","Tamil","tamil","audio","female","tamil",1
+"528","india-socioling","zenith","Z05B55",5,5,10,-0.605217971159455,"female","muslim","gujarati","gujarati english","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"529","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",55,"id","Marathi","marathi","audio","female","marathi",1
+"530","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",56,"id","English (U.S.)","english","audio","female","english",1
+"531","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",57,"id","Hindi","hindi","audio","female","hindi",1
+"532","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"533","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",59,"id","English (India)","english","audio","female","english",1
+"534","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"535","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",61,"id","Tamil","tamil","audio","female","tamil",1
+"536","india-socioling","zenith","Z05B56",5,5,11,0.394782028840545,"female","muslim","hindi, urdu","hindi urdu","hindi gujarati english",62,"id","Urdu","urdu","audio","female","hindi",0
+"537","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"538","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"539","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"540","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"541","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"542","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"543","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"544","india-socioling","zenith","Z05B62",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"545","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",58,"id","Marathi","marathi","audio","female","marathi",1
+"546","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",59,"id","English (U.S.)","english","audio","female","english",1
+"547","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",60,"id","Hindi","hindi","audio","female","hindi",1
+"548","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"549","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",62,"id","English (India)","english","audio","female","chinese",0
+"550","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",63,"id","Mandarin","chinese","audio","female","tamil",0
+"551","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",64,"id","Tamil","tamil","audio","female","urdu",1
+"552","india-socioling","zenith","Z05C03",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","marathi gujarati",65,"id","Urdu","urdu","audio","female","hindi",0
+"553","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",55,"id","Marathi","marathi","audio","female","marathi",1
+"554","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",56,"id","English (U.S.)","english","audio","female","english",1
+"555","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",57,"id","Hindi","hindi","audio","female","hindi",1
+"556","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"557","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",59,"id","English (India)","english","audio","female","english",1
+"558","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"559","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",61,"id","Tamil","tamil","audio","female","tamil",1
+"560","india-socioling","zenith","Z05C04",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi english marathi",62,"id","Urdu","urdu","audio","female","hindi",0
+"561","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","gujarati",0
+"562","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"563","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"564","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"565","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"566","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"567","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"568","india-socioling","zenith","Z05C06",5,5,10,-0.605217971159455,"male","other","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","gujarati",0
+"569","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",58,"id","Marathi","marathi","audio","female","tamil",0
+"570","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",59,"id","English (U.S.)","english","audio","female","english",1
+"571","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",60,"id","Hindi","hindi","audio","female","hindi",1
+"572","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",61,"id","Gujarati","gujarati","audio","female","tamil",0
+"573","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",62,"id","English (India)","english","audio","female","tamil",0
+"574","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",63,"id","Mandarin","chinese","audio","female","tamil",0
+"575","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",64,"id","Tamil","tamil","audio","female","urdu",0
+"576","india-socioling","zenith","Z05C07",5,5,11,0.394782028840545,"male","muslim","gujarati","gujarati","hindi gujarati",65,"id","Urdu","urdu","audio","female","hindi",0
+"577","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"578","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"579","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"580","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"581","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",59,"id","English (India)","english","audio","female","english",1
+"582","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"583","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",61,"id","Tamil","tamil","audio","female","urdu",0
+"584","india-socioling","zenith","Z05C09",5,5,10,-0.605217971159455,"male","hindu","marathi","marathi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"585","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","mirite",0
+"586","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"587","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"588","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"589","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","french",0
+"590","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"591","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","punjabi",0
+"592","india-socioling","zenith","Z05C10",5,5,10,-0.605217971159455,"male","muslim","gujarati, hindi, english","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"593","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"594","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"595","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"596","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"597","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",59,"id","English (India)","english","audio","female","english",1
+"598","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"599","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"600","india-socioling","zenith","Z05C44",5,5,10,-0.605217971159455,"female","hindu","hindi","hind english gujarati","hind english gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"601","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",55,"id","Marathi","marathi","audio","female","hindi",0
+"602","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"603","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"604","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"605","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",59,"id","English (India)","english","audio","female","english",1
+"606","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",60,"id","Mandarin","chinese","audio","female","gujarati",0
+"607","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"608","india-socioling","zenith","Z05C45",5,5,10,-0.605217971159455,"female","hindu","gujarati","gujarati","hindi",62,"id","Urdu","urdu","audio","female","gujarati",0
+"609","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"610","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"611","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"612","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"613","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",59,"id","English (India)","english","audio","female","urdu",0
+"614","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",60,"id","Mandarin","chinese","audio","female","tamil",0
+"615","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",61,"id","Tamil","tamil","audio","female","krila",0
+"616","india-socioling","zenith","Z05C46",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi english","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"617","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"618","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"619","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",57,"id","Hindi","hindi","audio","female","urdu",0
+"620","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"621","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",59,"id","English (India)","english","audio","female","marathi",0
+"622","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",60,"id","Mandarin","chinese","audio","female","tamil",0
+"623","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",61,"id","Tamil","tamil","audio","female","gujarati",0
+"624","india-socioling","zenith","Z05C48",5,5,10,-0.605217971159455,"female","muslim","gujarati","hindi","english hindi",62,"id","Urdu","urdu","audio","female","urdu",1
+"625","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"626","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"627","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"628","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"629","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"630","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"631","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"632","india-socioling","zenith","Z05C49",5,5,10,-0.605217971159455,"female","hindu","marathi","marathi","marathi hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"633","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","urdu",0
+"634","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"635","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"636","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"637","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"638","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","tamil",0
+"639","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"640","india-socioling","zenith","Z05C50",5,5,9.7,-0.905217971159455,"female","hindu","gujarati","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"641","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",58,"id","Marathi","marathi","audio","female","hindi",0
+"642","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",59,"id","English (U.S.)","english","audio","female","english",1
+"643","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",60,"id","Hindi","hindi","audio","female","urdu",0
+"644","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",61,"id","Gujarati","gujarati","audio","female","gujarati",1
+"645","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",62,"id","English (India)","english","audio","female","english",1
+"646","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",63,"id","Mandarin","chinese","audio","female","urdu",0
+"647","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",64,"id","Tamil","tamil","audio","female","marathi",0
+"648","india-socioling","zenith","Z05C51",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi english",65,"id","Urdu","urdu","audio","female","hindi",0
+"649","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"650","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"651","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"652","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"653","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","tamil",0
+"654","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","marathi",0
+"655","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"656","india-socioling","zenith","Z05C56",5,5,10,-0.605217971159455,"female","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"657","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"658","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"659","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",57,"id","Hindi","hindi","audio","female","sanskrit",0
+"660","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"661","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",59,"id","English (India)","english","audio","female","english",1
+"662","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"663","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"664","india-socioling","zenith","Z07A01",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","hindi marathi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"665","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"666","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"667","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"668","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"669","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"670","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"671","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"672","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"673","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"674","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",61,"id","Tamil","tamil","audio","female","urdu",0
+"675","india-socioling","zenith","Z07A02",7,7,12,1.39478202884055,"male","hindu","sindhi","hindi sindhi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"676","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",55,"id","Marathi","marathi","audio","female","marathi",1
+"677","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",56,"id","English (U.S.)","english","audio","female","english",1
+"678","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",57,"id","Hindi","hindi","audio","female","hindi",1
+"679","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"680","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",59,"id","English (India)","english","audio","female","english",1
+"681","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",60,"id","Mandarin","chinese","audio","female","chinese",1
+"682","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"683","india-socioling","zenith","Z07A04",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"684","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"685","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"686","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"687","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"688","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"689","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"690","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"691","india-socioling","zenith","Z07A05",7,7,12,1.39478202884055,"male","muslim","gujarati","gujarati hindi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"692","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"693","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",56,"id","English (U.S.)","english","audio","female","english",1
+"694","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"695","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"696","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",59,"id","English (India)","english","audio","female","english",1
+"697","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"698","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",61,"id","Tamil","tamil","audio","female","idk",0
+"699","india-socioling","zenith","Z07A06",7,7,13,2.39478202884055,"male","hindu","marathi","marathi","hindi gujarati marathi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"700","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"701","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"702","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"703","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"704","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"705","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"706","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"707","india-socioling","zenith","Z07A09",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"708","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"709","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"710","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"711","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"712","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",59,"id","English (India)","english","audio","female","english",1
+"713","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"714","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",61,"id","Tamil","tamil","audio","female","bengali",0
+"715","india-socioling","zenith","Z07A10",7,7,13,2.39478202884055,"male","muslim","hindi","gujarati","hindi english gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"716","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"717","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"718","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"719","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"720","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"721","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","french",0
+"722","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"723","india-socioling","zenith","Z07A11",7,7,13,2.39478202884055,"male","hindu","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"724","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"725","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"726","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"727","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"728","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",59,"id","English (India)","english","audio","female","tamil",0
+"729","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"730","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"731","india-socioling","zenith","Z07A12",7,7,13,2.39478202884055,"male","hindu","hindi","gujarati","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"732","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"733","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"734","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"735","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"736","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",59,"id","English (India)","english","audio","female","english",1
+"737","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"738","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"739","india-socioling","zenith","Z07A13",7,7,12,1.39478202884055,"male",NA,"gujarati","gujarati","hindi",62,"id","Urdu","urdu","audio","female","hindi",1
+"740","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"741","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"742","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"743","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"744","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",59,"id","English (India)","english","audio","female","arabic",0
+"745","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"746","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"747","india-socioling","zenith","Z07A14",7,7,13,2.39478202884055,"male","hindu","gujarati","gujarati","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"748","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"749","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"750","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"751","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"752","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"753","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"754","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",61,"id","Tamil","tamil","audio","female","chinese",0
+"755","india-socioling","zenith","Z07A16",7,7,12,1.39478202884055,"male","muslim","hindi, urdu","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"756","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"757","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"758","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"759","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"760","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",59,"id","English (India)","english","audio","female","chinese",0
+"761","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"762","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",61,"id","Tamil","tamil","audio","female","marathi",0
+"763","india-socioling","zenith","Z07A18",7,7,12,1.39478202884055,"male","muslim","hindi, gujarati","hindi","hindi",62,"id","Urdu","urdu","audio","female","marathi",0
+"764","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"765","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"766","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"767","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"768","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",59,"id","English (India)","english","audio","female","english",1
+"769","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"770","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",61,"id","Tamil","tamil","audio","female","telugu",0
+"771","india-socioling","zenith","Z07A19",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"772","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"773","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"774","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"775","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"776","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"777","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"778","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","marathi",0
+"779","india-socioling","zenith","Z07A20",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"780","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"781","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"782","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","sanskrit",0
+"783","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"784","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","foreign",0
+"785","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"786","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","aasami",0
+"787","india-socioling","zenith","Z07A21",7,7,12,1.39478202884055,"male","hindu","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","sanskrit",0
+"788","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",55,"id","Marathi","marathi","audio","female","marathi",1
+"789","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",56,"id","English (U.S.)","english","audio","female","english",1
+"790","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",57,"id","Hindi","hindi","audio","female","hindi",1
+"791","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"792","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",59,"id","English (India)","english","audio","female","english",1
+"793","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"794","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",61,"id","Tamil","tamil","audio","female","tamil",0
+"795","india-socioling","zenith","Z07A39",7,7,12,1.39478202884055,"female","hindu","sindi","hindi english","english",62,"id","Urdu","urdu","audio","female","hindu",0
+"796","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","",NA
+"797","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","",NA
+"798","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"799","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"800","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"801","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"802","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"803","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"804","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"805","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"806","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","urdu",0
+"807","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","urdu",0
+"808","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","urdu",0
+"809","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","urdu",0
+"810","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"811","india-socioling","zenith","Z07A40",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"812","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"813","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"814","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"815","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"816","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"817","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"818","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"819","india-socioling","zenith","Z07A41",7,7,12,1.39478202884055,"female","hindu","sindhi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"820","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",55,"id","Marathi","marathi","audio","female","sanskrit",0
+"821","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"822","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"823","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"824","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",59,"id","English (India)","english","audio","female","english",1
+"825","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"826","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"827","india-socioling","zenith","Z07A42",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati hindi sindhi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"828","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"829","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"830","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi`",1
+"831","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"832","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"833","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"834","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"835","india-socioling","zenith","Z07A43",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"836","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"837","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"838","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"839","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"840","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",59,"id","English (India)","english","audio","female","chinese",0
+"841","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"842","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",61,"id","Tamil","tamil","audio","female","marathi",0
+"843","india-socioling","zenith","Z07A45",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"844","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"845","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",56,"id","English (U.S.)","english","audio","female","foreign",0
+"846","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"847","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"848","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",59,"id","English (India)","english","audio","female","foreign",0
+"849","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"850","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",61,"id","Tamil","tamil","audio","female","aaassemes",0
+"851","india-socioling","zenith","Z07A46",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"852","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"853","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"854","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"855","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"856","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"857","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",60,"id","Mandarin","chinese","audio","female"," chinese",1
+"858","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"859","india-socioling","zenith","Z07A47",7,7,13,2.39478202884055,"female","hindu","marathi","marathi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"860","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"861","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"862","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"863","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"864","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"865","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"866","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","bengali",0
+"867","india-socioling","zenith","Z07A48",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"868","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"869","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"870","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"871","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"872","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",59,"id","English (India)","english","audio","female","english",1
+"873","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"874","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",61,"id","Tamil","tamil","audio","female","jain",0
+"875","india-socioling","zenith","Z07A50",7,7,13,2.39478202884055,"female","muslim","hindi","hindi gujarati english","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"876","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","tamil",0
+"877","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"878","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","urdu",0
+"879","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"880","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"881","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"882","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"883","india-socioling","zenith","Z07A51",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"884","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"885","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"886","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"887","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"888","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"889","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"890","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"891","india-socioling","zenith","Z07A55",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"892","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"893","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"894","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"895","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"896","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"897","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"898","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"899","india-socioling","zenith","Z07A56",7,7,13,2.39478202884055,"female","hindu","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"900","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",55,"id","Marathi","marathi","audio","female","marathi",1
+"901","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",56,"id","English (U.S.)","english","audio","female","english",1
+"902","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",57,"id","Hindi","hindi","audio","female","hindi",1
+"903","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"904","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",59,"id","English (India)","english","audio","female","english",1
+"905","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",60,"id","Mandarin","chinese","audio","female","chinese",1
+"906","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",61,"id","Tamil","tamil","audio","female","tamil",1
+"907","india-socioling","zenith","Z07A58",7,7,12,1.39478202884055,"female","hindu","hindi","hindi","hindi english",62,"id","Urdu","urdu","audio","female","hindi",0
+"908","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"909","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"910","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"911","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"912","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","english",1
+"913","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"914","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"915","india-socioling","zenith","Z07A59",7,7,13,2.39478202884055,"female","hindu","gujarati","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"916","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"917","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"918","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"919","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"920","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",59,"id","English (India)","english","audio","female","french",0
+"921","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"922","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"923","india-socioling","zenith","Z07B03",7,7,12,1.39478202884055,"male","hindu","gujarati","gujarati","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"924","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"925","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","bengal",0
+"926","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"927","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","tamil",0
+"928","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"929","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"930","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","suncrat",0
+"931","india-socioling","zenith","Z07B05",7,7,12,1.39478202884055,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"932","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"933","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"934","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"935","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"936","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"937","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"938","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"939","india-socioling","zenith","Z07B06",7,7,13,2.39478202884055,"male","hindu","sindhi","hindi sindhi english gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"940","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"941","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","christian",0
+"942","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindu",0
+"943","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"944","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",59,"id","English (India)","english","audio","female","christian",0
+"945","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","jain",0
+"946","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"947","india-socioling","zenith","Z07B07",7,7,13,2.39478202884055,"male","hindu","marathi","marathi hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindu",0
+"948","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",55,"id","Marathi","marathi","audio","female","marathi",1
+"949","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",56,"id","English (U.S.)","english","audio","female","english",1
+"950","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",57,"id","Hindi","hindi","audio","female","hindi",1
+"951","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"952","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",59,"id","English (India)","english","audio","female","english",1
+"953","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"954","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"955","india-socioling","zenith","Z07B08",7,7,12,1.39478202884055,"male","hindu","marathi","marathi","gujarati hindi english marathi",62,"id","Urdu","urdu","audio","female","hindi",0
+"956","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",55,"id","Marathi","marathi","audio","female","tamil",0
+"957","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"958","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",57,"id","Hindi","hindi","audio","female","gujarati",0
+"959","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"960","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",59,"id","English (India)","english","audio","female","english",1
+"961","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"962","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"963","india-socioling","zenith","Z07B11",7,7,13,2.39478202884055,"male","other","gujarati","gujarati","gujarati",62,"id","Urdu","urdu","audio","female","hindi",1
+"964","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",55,"id","Marathi","marathi","audio","female","gujarati",0
+"965","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"966","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"967","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"968","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",59,"id","English (India)","english","audio","female","english",1
+"969","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",60,"id","Mandarin","chinese","audio","female","french",0
+"970","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"971","india-socioling","zenith","Z07B12",7,7,13,2.39478202884055,"male","muslim","hindi","hindi","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"972","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"973","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"974","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"975","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"976","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",59,"id","English (India)","english","audio","female","english",1
+"977","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",60,"id","Mandarin","chinese","audio","female","english",0
+"978","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",61,"id","Tamil","tamil","audio","female","tamil",1
+"979","india-socioling","zenith","Z07B21",7,7,13,2.39478202884055,"male","muslim","gujarati","gujarati","hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"980","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"981","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"982","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"983","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"984","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",59,"id","English (India)","english","audio","female","english",1
+"985","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",60,"id","Mandarin","chinese","audio","female","english",0
+"986","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"987","india-socioling","zenith","Z07B38",7,7,13,2.39478202884055,"female","hindu","marathi","gujarati","hindi english gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"988","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"989","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"990","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"991","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"992","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"993","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",60,"id","Mandarin","chinese","audio","female","chinese",1
+"994","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"995","india-socioling","zenith","Z07B39",7,7,12,1.39478202884055,"female","hindu","gujarati","gujarati polish","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"996","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",55,"id","Marathi","marathi","audio","female","marathi",1
+"997","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",56,"id","English (U.S.)","english","audio","female","english",1
+"998","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",57,"id","Hindi","hindi","audio","female","hindi",1
+"999","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"1000","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",59,"id","English (India)","english","audio","female","english",1
+"1001","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"1002","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"1003","india-socioling","zenith","Z07B40",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","hindi gujarati marathi",62,"id","Urdu","urdu","audio","female","hindi",0
+"1004","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"1005","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"1006","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"1007","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"1008","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","tamil",0
+"1009","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","jain",0
+"1010","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","budduie",0
+"1011","india-socioling","zenith","Z07B41",7,7,12,1.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"1012","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",55,"id","Marathi","marathi","audio","female","gujarati",0
+"1013","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",56,"id","English (U.S.)","english","audio","female","english",1
+"1014","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"1015","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"1016","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",59,"id","English (India)","english","audio","female","english",1
+"1017","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",60,"id","Mandarin","chinese","audio","female","french",0
+"1018","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",61,"id","Tamil","tamil","audio","female","sanskrit",0
+"1019","india-socioling","zenith","Z07B42",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","gujaratihindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"1020","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",55,"id","Marathi","marathi","audio","female","marathi",1
+"1021","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",56,"id","English (U.S.)","english","audio","female","english",1
+"1022","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",57,"id","Hindi","hindi","audio","female","hindi",1
+"1023","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"1024","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",59,"id","English (India)","english","audio","female","tamil",0
+"1025","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",60,"id","Mandarin","chinese","audio","female","chinese",1
+"1026","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",61,"id","Tamil","tamil","audio","female","buddhist",0
+"1027","india-socioling","zenith","Z07B43",7,7,12,1.39478202884055,"female","hindu","marathi","marathi","gujarati hindi",62,"id","Urdu","urdu","audio","female","hindi",0
+"1028","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"1029","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"1030","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"1031","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","gujarati",1
+"1032","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"1033","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",60,"id","Mandarin","chinese","audio","female","christian",0
+"1034","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",61,"id","Tamil","tamil","audio","female","tamil",1
+"1035","india-socioling","zenith","Z07B48",7,7,12,1.39478202884055,"female","muslim","gujarati","gujarati","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0
+"1036","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",55,"id","Marathi","marathi","audio","female","marathi",1
+"1037","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",56,"id","English (U.S.)","english","audio","female","english",1
+"1038","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",57,"id","Hindi","hindi","audio","female","hindi",1
+"1039","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",58,"id","Gujarati","gujarati","audio","female","marathi",0
+"1040","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",59,"id","English (India)","english","audio","female","english",1
+"1041","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",60,"id","Mandarin","chinese","audio","female","portugese",0
+"1042","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",61,"id","Tamil","tamil","audio","female","china",0
+"1043","india-socioling","zenith","Z07B55",7,7,13,2.39478202884055,"female","muslim","hindi","hindi","hindi gujarati",62,"id","Urdu","urdu","audio","female","hindi",0

@@ -1,0 +1,40 @@
+\begin{table*}[t]
+\small
+\caption{Mixed Effects Multinomial Model of Children's Geographic Origin Associations, Given Language, Child Age, and Language Familiarity}\label{tab:geoidmod}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcrclcrc}
+ \toprule
+& \multicolumn{4}{c}{\textbf{Another place in India vs.}} & \multicolumn{4}{c}{\textbf{Outside India (foreign) vs.}}\\
+ & \multicolumn{4}{c}{\textbf{Gujarat (same state)\tnote{a}}} & \multicolumn{4}{c}{\textbf{Gujarat (same state)\tnote{a}}}\\
+\cline{2-4} \cline{6-8}\\[-.75em]
+\textbf{Predictors}\tnote{b} & {OR} & {95\% CI} & \textit{p} & & {OR} & {95\% CI} & \textit{p} & \\ 
+\midrule
+Urdu & 0.49 *** & 0.34--0.71 & $<$0.001 &  & 0.05 *** & 0.02--0.12 & $<$0.001 \\
+Marathi & 1.70 & 0.93--3.11 & 0.087 &  & 0.78 & 0.39--1.57 & 0.485 \\
+Tamil & 5.25 *** & 3.10--8.90 & $<$0.001 &  & 1.69 & 0.94--3.05 & 0.081 \\
+English (U.S.) & 4.58 & 0.48--43.59 & 0.186 &  & 5.06 & 0.54--47.00 & 0.154 \\
+Mandarin & 4.34 ** & 1.67--11.25 & 0.003 &  & 8.74 *** & 3.60--21.21 & $<$0.001 \\
+\textsc{Familiar} & 1.95 & 0.92--4.11 & 0.081 &  & 4.97 * & 1.42--17.44 & 0.012 \\
+Urdu:Age\tnote{c} & 1.22 ** & 1.05--1.41 & 0.008 &  & 1.18 * & 1.01--1.37 & 0.034 \\
+Marathi:\textsc{Familiar} & 0.48 & 0.17--1.38 & 0.175 &  & 0.06 *** & 0.01--0.27 & $<$0.001 \\
+Tamil:\textsc{Familiar} & 0.31 * & 0.10--0.95 & 0.040 &  & 0.22 & 0.05--1.02 & 0.053 \\
+English (U.S.):\textsc{Familiar} & 0.21 & 0.02--2.42 & 0.213 &  & 0.26 & 0.02--3.50 & 0.310 \\
+Mandarin:\textsc{Familiar} & 0.88 & 0.16--4.86 & 0.880 &  & 0.97 & 0.14--6.64 & 0.973 \\
+\midrule
+\bfseries{\textit{N} children}\tnote{d} & 127 & & & & & & \\ 
+\textbf{Observations}\tnote{e} & 1,127 & & & & & & & \\ 
+ %& & & & & & & & \\ 
+\bottomrule\\[-.75em]
+\multicolumn{9}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
+\end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Baseline response category
+    \item[b] There was insufficient variance in familiarity for Gujarati, Hindi, and Indian English to permit inclusion in this analysis. 
+    \item[c] Mean-centered, in years.
+    \item[d] Model includes random intercepts for each child.
+    \item[e] Model data is limited to trials where children selected a geographic origin response category, i.e., excluding ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

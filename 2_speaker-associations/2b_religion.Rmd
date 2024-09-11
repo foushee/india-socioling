@@ -1,0 +1,777 @@
+---
+title: "India Sociolinguistics Religion Associations Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-18"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r religion-setup, include=FALSE}
+library(here)
+here::i_am('2_speaker-associations/2b_religion.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r read-in-data}
+a <- read.csv(here('data/r_dfs/subsets/associations_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'language', 'speaker_gender', 
+                 'origin', 'geographic_origin', 'religion', 'wealth',
+                 'army_navy_language')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence', 'coded_wealth')
+
+a <- a %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+r <- a %>%
+  filter(religion!="")
+```
+
+```{r religion-no-opinion-trials}
+N_TRIALS <- r %>%
+  filter(no_opinion_religion==1) %>%
+  summarize(no_opinion_trials=n()) %>%
+  as.numeric()
+
+N_CHILDREN <- r %>%
+  filter(no_opinion_religion==1) %>%
+  group_by(id) %>%
+  summarize(no_opinion_trials=n()) %>%
+  summarize(n_children=n()) %>%
+  as.numeric()
+  
+r %>%
+  filter(no_opinion_religion==1) %>%
+  group_by(id)%>%
+  summarize(no_opinion_trials=n()) %>%
+  group_by(no_opinion_trials) %>%
+  summarize(n_children=n()) %>%
+  kable(.)
+
+r %>%
+  filter(no_opinion_religion==1) %>%
+  group_by(language)%>%
+  summarize(n=n()) %>%
+  arrange(desc(n)) %>%
+  kable(.)
+
+# 273 trials opted out, 84 children, most for chinese (88)
+```
+
+"No opinion" selected on `r N_TRIALS` trials by `r N_CHILDREN` children; all but 3 children selected single response.
+
+```{r religion-single-trials}
+# 3 trials chose more than one, 
+table(r$religion)
+
+r[r$religion=="hindu muslim",]$id #Z07A06, Z03C18
+
+r[r$religion=="jain buddhist",]$id #Z07A06
+```
+
+Multiple religions selected on three trials ("hindu and muslim" twice in response to audio clips of spoken Urdu; "jain and buddhist" once in response to an audio clip of spoken Tamil)
+
+```{r religion-overall-barplot, include=F}
+religion_summary_tab <- r %>%
+  ungroup(.) %>%
+  dplyr::select("language", all_of(religion_vars)) %>%
+  gather(., religion, selection, -language) %>%
+    group_by(language, religion) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+religion_summary_tab$var_labeled <- factor(
+  religion_summary_tab$religion, 
+  levels=religion_vars, 
+  labels=religion_labels)
+
+make_overall_barplot(religion_summary_tab, religion_colors, 
+                     "This speaker's religion is...") %>%
+save_plot(., which_data="religious_associations", "barplot_overall")
+```
+
+## Over Time
+
+### By Standard
+
+```{r religion-std-lineplot}
+religion_std_summary_tab <- r %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(religion_vars)) %>%
+  gather(., religion, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, religion) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+religion_std_summary_tab$var_labeled <- factor(
+  religion_std_summary_tab$religion, 
+  levels=religion_vars, 
+  labels=religion_labels)
+
+make_lineplot_by_std(religion_std_summary_tab, 
+                     religion_colors, religion_shapes, religion_ltys) %>%
+save_plot(., which_data="religion", plot_class="line_std")
+```
+
+```{r religion-std-barplot, include=F}
+make_barplot_by_std(religion_std_summary_tab, religion_colors, 
+                    "This speaker's religion is...") 
+ggsave("religion_std_barplot.pdf", path="plots/by_standard/barplots", 
+       height=16, width=14, units="in")
+```
+
+### With Age. 
+
+```{r religion-age, include=F}
+religion_age_df <- r %>%
+  ungroup(.) %>%
+  dplyr::select(
+    "language", "child_age_centered", all_of(religion_vars)) %>%
+  gather(., religion, selection, -language, -child_age_centered) 
+
+religion_age_df$var_labeled <- factor(religion_age_df$religion, 
+      levels=religion_vars, labels=religion_labels)
+
+make_age_lm_plot(religion_age_df, religion_colors, religion_ltys, 
+                 "This speaker's religion is...") %>%
+save_plot(plot_class="age_lm", "religion")
+```
+
+### By Child Religion
+```{r}
+r_for_plots %>%
+  filter(child_religion %in% c("hindu", "muslim")) %>%
+  group_by(id, child_religion) %>%
+  summarize(muslim_prop=na.mean(muslim),
+            hindu_prop = na.mean(hindu)) %>%
+  group_by(child_religion) %>%
+  summarize(muslim_prop=na.mean(muslim_prop),
+            hindu_prop = na.mean(hindu_prop))
+
+r_for_plots %>%
+  filter(child_religion=="muslim") %>%
+  group_by(language) %>%
+  summarize(muslim_rel_prop=na.mean(muslim),
+            hindu_rel_prop = na.mean(hindu),
+            jain_rel_prop = na.mean(jain),
+            christ_rel_prop = na.mean(christian),
+            buddhist_rel_prop=na.mean(buddhist)) 
+
+r_for_plots %>%
+  filter(child_religion=="hindu") %>%
+  group_by(language) %>%
+  summarize(muslim_rel_prop=na.mean(muslim),
+            hindu_rel_prop = na.mean(hindu),
+            jain_rel_prop = na.mean(jain),
+            christ_rel_prop = na.mean(christian),
+            buddhist_rel_prop=na.mean(buddhist)) 
+
+r_for_plots %>%
+  filter(child_religion %in% c("hindu", "muslim")) %>%
+  summarize(muslim_rel_prop=na.mean(muslim),
+            hindu_rel_prop = na.mean(hindu),
+            jain_rel_prop = na.mean(jain),
+            christ_rel_prop = na.mean(christian),
+            buddhist_rel_prop=na.mean(buddhist)) 
+
+r_for_plots %>%
+  filter(child_religion %in% c("hindu", "muslim")) %>%
+  group_by(language, child_religion) %>%
+  summarize(muslim_rel_prop=na.mean(muslim),
+            hindu_rel_prop = na.mean(hindu),
+            jain_rel_prop = na.mean(jain),
+            christ_rel_prop = na.mean(christian),
+            buddhist_rel_prop=na.mean(buddhist)) 
+```
+
+## Mixed Effects Multinomial Regression  
+
+### Language x Age  
+```{r rel-mblogit, warning=F}
+# dropping idks
+r_for_plots <- r %>% filter(religion %in% religion_vars)
+r_for_plots$religion <- factor(r_for_plots$religion, 
+      levels=religion_vars, labels=religion_labels)
+r_for_plots$var_labeled <- r_for_plots$religion
+r_for_plots$language <- factor(r_for_plots$language, 
+                               levels=language_labels)
+r_for_plots$language <- relevel(r_for_plots$language, ref="Gujarati")
+r_for_plots$religion <- relevel(r_for_plots$religion, ref="Hindu")
+#rel_mod2 <- mblogit(religion ~ 0 + language*child_age_centered,
+#                   random=~1|id,
+#                   data = r_for_plots)
+
+rel_mod <- mblogit(var_labeled ~ 0 + language*child_age_centered,
+                   random=~1|id,
+                   data = r_for_plots)
+```
+
+```{r rel-anova, warning=F}
+rel_noint_mod <- mblogit(var_labeled ~ 0 + language + child_age_centered,
+                   random=~1|id,
+                   data = r_for_plots)
+summary(rel_mod)
+
+anova(rel_noint_mod, rel_mod, test="LRT") #(28) = 99.7, 0.00000000058 ***
+```
+
+#### Forest Plot  
+```{r rel-mblogit-plot}
+rp <- make_forest_plot(rel_mod)
+r_n <- get_point_sizes(r_for_plots, "Hindu")
+edited_rp <- edit_forest_plot_data(rp, r_n, ordered_facet_levels=c("Muslim",
+                                        "Jain",
+                                        "Christian",
+                                        "Buddhist"))
+updated_rp <- update_forest_plot(edited_rp, 
+                                 title="This speaker's religion is...")
+save_forest_plot(updated_rp, "rel_mod_with_age_interaction.pdf")
+```
+
+#### Table  
+```{r relmod-table}
+sjPlot::tab_model(
+    rel_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file = "tables/models/primary/rel_mod_tab.html")
+
+rel_tab_df <- readHTMLTable(here('2_speaker-associations/tables/models/primary/rel_mod_tab.html'), 
+              header=T) 
+rel_tab_df <- as.data.frame(rel_tab_df)
+rel_tab_df_temp <- rel_tab_df
+names(rel_tab_df) <- rel_tab_df[1,]
+rel_tab_df <- rel_tab_df[-1,]
+rel_tab_df$Predictors <- gsub("language", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("child_", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("_centered", "", rel_tab_df$Predictors)
+
+buddhist <- rel_tab_df[,2:4]
+
+christian <- rel_tab_df[,c(1,5:7)]
+christian$space <- ""
+
+jain <- rel_tab_df[,8:10]
+
+muslim <- rel_tab_df[,c(1, 11:13)]
+muslim$space <- ""
+
+rel_mod_tab <- rbind(cbind(muslim, jain), cbind(christian, buddhist))
+
+print.xtable(rel_mod_tab, type="latex", file="tables/models/primary/rel_mod_tab.tex")
+```
+
+### Child Religion
+
+```{r rel-chirel-mod}
+r_for_plots$child_MUSLIM <- plyr::mapvalues(r_for_plots$child_religion,
+                                                    from=c("hindu", "muslim"),
+                                                    to=c(0, 1))
+r_for_plots$child_MUSLIM <- factor(r_for_plots$child_MUSLIM, levels=c(0,1))
+
+rel_chirel_mod <- mblogit(religion ~ 0 + 
+                            #language + 
+                            language*child_religion + 
+                            child_age_centered,
+                            #language*child_age_centered,
+                          r_for_plots[
+                            r_for_plots$child_religion %in% religion_vars,])
+
+summary(rel_chirel_mod)
+```
+
+```{r rel-chirel-anova}
+rel_chirel_null_mod <- mblogit(religion ~ 0 + 
+                            #language + 
+                            language + child_religion,
+                            #language*child_age_centered,
+                          r_for_plots[
+                            r_for_plots$child_religion %in% religion_vars, ])
+
+anova(rel_chirel_null_mod, rel_chirel_mod, test="LRT") #X2(32)=149, p<0.001
+```
+
+#### Table  
+```{r rel-chirel-mod-tab}
+sjPlot::tab_model(
+    rel_chirel_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file="tables/models/primary/rel_chirel_mod_tab.html")
+
+rel_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/primary/rel_chirel_mod_tab.html'), 
+              header=T) 
+rel_tab_df <- as.data.frame(rel_tab_df)
+rel_tab_df_temp <- rel_tab_df
+names(rel_tab_df) <- rel_tab_df[1,]
+rel_tab_df <- rel_tab_df[-1,]
+rel_tab_df$Predictors <- gsub("language", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("child_", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("_centered", "", rel_tab_df$Predictors)
+
+buddhist <- rel_tab_df[,2:4]
+
+christian <- rel_tab_df[,c(1,5:7)]
+christian$space <- ""
+
+jain <- rel_tab_df[,8:10]
+
+muslim <- rel_tab_df[,c(1, 11:13)]
+muslim$space <- ""
+
+rel_mod_tab <- rbind(cbind(muslim, jain), cbind(christian, buddhist))
+
+print.xtable(rel_mod_tab, type="latex", 
+             file="tables/models/primary/rel_chirel_mod_tab.tex")
+```
+
+### Familiarity  
+
+```{r rel-familiarity-mblogit, warning=F}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+
+ri <- merge(r_for_plots, i, by=c("language", "id")) %>%
+  filter(language!="Hindi",
+         language!="English (India)")
+
+rel_fam_mod <- mblogit(religion ~ 0 + language*familiar + child_age_centered,
+                   random=~1|id,
+                   data = ri)
+
+summary(rel_fam_mod)
+```
+
+```{r rel-familiarity-anova, warning=F}
+rel_fam_null <- mblogit(religion ~ 0 + language + familiar,
+                   random=~1|id,
+                   data = ri)
+
+anova(rel_fam_mod, rel_fam_null, test="LRT")
+```
+
+#### Table  
+```{r rel-familiarity-mod-tab}
+sjPlot::tab_model(
+    rel_fam_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file="tables/models/familiarity/rel_fam_mod_tab.html")
+
+rel_tab_df <- readHTMLTable(
+  here('2_speaker-associations/tables/models/familiarity/rel_fam_mod_tab.html'), 
+              header=T) 
+rel_tab_df <- as.data.frame(rel_tab_df)
+rel_tab_df_temp <- rel_tab_df
+names(rel_tab_df) <- rel_tab_df[1,]
+rel_tab_df <- rel_tab_df[-1,]
+rel_tab_df$Predictors <- gsub("language", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("child_", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("_centered", "", rel_tab_df$Predictors)
+
+buddhist <- rel_tab_df[,2:4]
+
+christian <- rel_tab_df[,c(1,5:7)]
+christian$space <- ""
+
+jain <- rel_tab_df[,8:10]
+
+muslim <- rel_tab_df[,c(1, 11:13)]
+muslim$space <- ""
+
+rel_mod_tab <- rbind(cbind(muslim, jain), cbind(christian, buddhist))
+
+print.xtable(rel_mod_tab, type="latex", 
+             #include.rownames = F,
+             file="tables/models/familiarity/rel_fam_mod_tab.tex")
+```
+
+### Speaker Gender  
+
+```{r rel-gender-mod}
+r_for_plots$speaker_FEMALE <- plyr::mapvalues(r_for_plots$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+r_for_plots$speaker_FEMALE <- factor(r_for_plots$speaker_FEMALE, levels=c(0,1))
+
+rel_gender_mod <- mblogit(var_labeled ~ 0 + language*speaker_FEMALE +
+                            child_age_centered,
+                          r_for_plots[r_for_plots$speaker_FEMALE!="",])
+
+summary(rel_gender_mod)
+# no effect of gender
+```
+
+#### Table 
+```{r rel-gender-mod-tab}
+sjPlot::tab_model(
+    rel_gender_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file="tables/models/gender/rel_gender_mod_tab.html")
+
+rel_tab_df <- readHTMLTable(here(
+  '2_speaker-associations/tables/models/gender/rel_gender_mod_tab.html'), 
+              header=T) 
+rel_tab_df <- as.data.frame(rel_tab_df)
+rel_tab_df_temp <- rel_tab_df
+names(rel_tab_df) <- rel_tab_df[1,]
+rel_tab_df <- rel_tab_df[-1,]
+rel_tab_df$Predictors <- gsub("language", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("child_", "", rel_tab_df$Predictors)
+rel_tab_df$Predictors <- gsub("_centered", "", rel_tab_df$Predictors)
+
+buddhist <- rel_tab_df[,2:4]
+
+christian <- rel_tab_df[,c(1,5:7)]
+christian$space <- ""
+
+jain <- rel_tab_df[,8:10]
+
+muslim <- rel_tab_df[,c(1, 11:13)]
+muslim$space <- ""
+
+rel_mod_tab <- rbind(cbind(muslim, jain), cbind(christian, buddhist))
+
+print.xtable(rel_mod_tab, type="latex", 
+             file="tables/models/gender/rel_gender_mod_tab.tex")
+```
+
++ Some effect of speaker gender on children's religion selections 
+
+## Combining Plots  
+
+```{r rel-combined-plots}
+religion_std_summary_tab$language <- order_languages(religion_std_summary_tab$language)
+rs <- ggplot(religion_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=var_labeled)) +
+    geom_line(aes(lty=var_labeled)) + 
+    geom_point(aes(shape=var_labeled)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=religion_colors, religion_legend_title) + 
+    scale_shape_manual(values=religion_shapes, religion_legend_title) +
+    scale_linetype_manual(values=religion_ltys,
+                          religion_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +
+    sans_axes_theme_bigger +
+    theme(legend.position = "bottom",
+          legend.key=element_rect(color=NA),
+          legend.margin = margin(-5,0,0,0)) +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+
+final_rp <- updated_rp + theme(axis.text.y = element_text(face="bold", size=10),
+                               axis.title.y = element_text(face="bold"),
+                               axis.text.x=element_text(size=10),
+                               axis.title.x=element_text(face="bold", size=11),
+                               legend.title = element_text(face="bold", size=11),
+                               strip.text = element_text(color="gray30", 
+                                                         size=11, 
+                                                         face="bold.italic"),
+          title=element_text(color="gray30", face="bold.italic", size=10),
+          legend.key = element_rect(linewidth=0, fill=NA),
+          legend.text = element_text(color="gray30", size=10),
+          #legend.margin = margin(0,0,0,-5))#,
+          panel.spacing.x = unit(0.4, "cm"))
+
+rc <- grid.arrange(rs, final_rp, ncol=2, widths=c(3, 3.75))
+
+ggsave(plot=rc, 
+       "combined_rel.png", 
+       path="plots/combined/", 
+       device="png", width=7, height=3, scale=2, units="in")
+
+ggsave(plot=rc, 
+       "combined_rel_labeled.pdf", 
+       path="plots/combined/", 
+       device="pdf", width=7, height=3, scale=2, units="in")
+
+ggsave(plot=rc, 
+       "combined_rel.svg", 
+       path="plots/combined/", 
+       width=7, height=3, scale=2)
+
+#ggsave(rc,  
+#  labels='AUTO', widths = c(3, 3.75),
+#  ncol = 2, nrow = 1, align = 'v'), 
+  #width = 7, height=3, units ='in', scale=1.75)
+```
+
+## Models: Odds of Religion Selection
+
+#### Hindu
+
+```{r hindu-stats}
+r %>% 
+  mutate(total_trials=n(),
+    n_trials=sum(religion=="hindu")) %>%
+  distinct(id, .keep_all = T) %>%
+  mutate(n_children=n(),
+         prop = n_trials/total_trials) %>%
+  distinct(n_trials, total_trials, prop, n_children)
+```
+
+`Hindu' selected on 31\% of trials (574/1856), by 129 children.
+
+```{r hindu-glm, include=F}
+ass_hindu_glm <- glm(
+  hindu ~ child_age + language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_hindu_glm)), 2),
+round(exp(confint(ass_hindu_glm)), 2))%>%
+  kable(.)
+```
+
+```{r hindu-int-glm, include=F}
+ass_hindu_int_glm <- glm(
+  hindu ~ child_age*language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_hindu_int_glm)), 2),
+round(exp(confint(ass_hindu_int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_hindu_int_glm)
+
+Anova(ass_hindu_int_glm)
+```
+
+```{r hindu-2int-glm}
+ass_hindu_2int_glm <- glm(
+  hindu ~ child_age*language + child_religion*language, 
+  family="binomial", a[a$child_religion!="other",])
+
+cbind(round(exp(coef(ass_hindu_2int_glm)), 2),
+round(exp(confint(ass_hindu_2int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_hindu_2int_glm)
+
+Anova(ass_hindu_2int_glm)
+```
+
+#### Muslim
+
+```{r muslim-glm,include=F}
+ass_muslim_glm <- glm(
+  muslim ~ child_age + language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_muslim_glm)), 2),
+round(exp(confint(ass_muslim_glm)), 2))%>%
+  kable(.)
+```
+
+```{r muslim-int-glm, include=F}
+ass_muslim_int_glm <- glm(
+  muslim ~ child_age*language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_muslim_int_glm)), 2),
+round(exp(confint(ass_muslim_int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_muslim_int_glm)
+
+Anova(ass_muslim_int_glm)
+```
+
+```{r muslim-1int-glm}
+ass_muslim_1int_glm <- glm(
+  muslim ~ child_age + child_religion*language, 
+  family="binomial", a[a$child_religion!="other",])
+
+cbind(round(exp(coef(ass_muslim_1int_glm)), 2),
+round(exp(confint(ass_muslim_1int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_muslim_1int_glm)
+
+Anova(ass_muslim_1int_glm)
+```
+
+#### Jain
+
+```{r jain-glm, include=F}
+ass_jain_glm <- glm(
+  jain ~ child_age + language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_jain_glm)), 2),
+round(exp(confint(ass_jain_glm)), 2))%>%
+  kable(.)
+```
+
+```{r jain-int-glm, include=F}
+ass_jain_int_glm <- glm(
+  jain ~ child_age*language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_jain_int_glm)), 2),
+round(exp(confint(ass_jain_int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_jain_int_glm)
+
+Anova(ass_jain_int_glm)
+```
+
+```{r jain-1int-glm}
+ass_jain_1int_glm <- glm(
+  jain ~ child_age + child_religion*language, 
+  family="binomial", a[a$child_religion!="other",])
+
+ass_jain_1int_glm_coefs <- 
+  as.data.frame(cbind(round(exp(coef(ass_jain_1int_glm)), 2),
+round(exp(confint(ass_jain_1int_glm)), 2)))
+
+ass_jain_1int_glm_coefs$toss <- ass_jain_1int_glm_coefs$`2.5 %`<1 & ass_jain_1int_glm_coefs$`97.5 %`>1
+
+ass_jain_1int_glm_coefs %>%filter(toss==0)
+
+summary(ass_jain_1int_glm)
+
+Anova(ass_jain_1int_glm)
+```
+
+#### Christian
+
+```{r christian-glm, include=F}
+ass_christian_glm <- glm(
+  christian ~ child_age + language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_christian_glm)), 2),
+round(exp(confint(ass_christian_glm)), 2))%>%
+  kable(.)
+```
+
+```{r christian-int-glm, include=F}
+ass_christian_int_glm <- glm(
+  christian ~ child_age*language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_christian_int_glm)), 2),
+round(exp(confint(ass_christian_int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_christian_int_glm)
+
+options(scipen=100)
+
+Anova(ass_christian_int_glm)
+```
+
+```{r christian-2int-glm}
+ass_christian_2int_glm <- glm(
+  christian ~ child_age*language + child_religion*language, 
+  family="binomial", r[r$child_religion!="other",])
+
+ass_christian_2int_glm_coefs <- 
+  as.data.frame(cbind(round(exp(coef(ass_christian_2int_glm)), 2),
+                      round(exp(confint(ass_christian_2int_glm)), 2)))
+ass_christian_2int_glm_coefs$toss <- ass_christian_2int_glm_coefs$`2.5 %`<1 & ass_christian_2int_glm_coefs$`97.5 %`>1
+
+ass_christian_2int_glm_coefs %>%filter(toss==0)
+
+summary(ass_christian_2int_glm)
+
+options(scipen=100)
+
+Anova(ass_christian_2int_glm)
+```
+
+#### Buddhist
+
+```{r buddhist-glm, include=F}
+ass_buddhist_glm <- glm(
+  buddhist ~ child_age + language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_buddhist_glm)), 2),
+round(exp(confint(ass_buddhist_glm)), 2))%>%
+  kable(.)
+```
+
+```{r buddhist-int-glm, include=F}
+ass_buddhist_int_glm <- glm(
+  buddhist ~ child_age*language + child_religion, 
+  family="binomial", r)
+
+cbind(round(exp(coef(ass_buddhist_int_glm)), 2),
+round(exp(confint(ass_buddhist_int_glm)), 2))%>%
+  kable(.)
+
+summary(ass_buddhist_int_glm)
+
+Anova(ass_buddhist_int_glm)
+```
+
+```{r buddhist-2int-glm}
+ass_buddhist_2int_glm <- glm(
+  buddhist ~ child_age*language + child_religion*language, 
+  family="binomial", r[r$child_religion!="other",])
+
+ass_buddhist_2int_glm_coefs <- 
+  as.data.frame(cbind(round(exp(coef(ass_buddhist_2int_glm)), 2),
+round(exp(confint(ass_buddhist_2int_glm)), 2)))
+
+ass_buddhist_2int_glm_coefs$toss <- ass_buddhist_2int_glm_coefs$`2.5 %`<1 & ass_buddhist_2int_glm_coefs$`97.5 %`>1
+
+ass_buddhist_2int_glm_coefs %>% filter(toss==0)
+
+summary(ass_buddhist_2int_glm)
+
+Anova(ass_buddhist_2int_glm)
+```
+
+### No Opinion 
+
+```{r}
+ass_idk_glm <- glm(
+  no_opinion_religion ~ child_age + language, 
+  family="binomial", r[r$child_religion!="other",])
+
+ass_idk_glm_coefs <- 
+  as.data.frame(cbind(round(exp(coef(ass_idk_glm)), 2),
+round(exp(confint(ass_idk_glm)), 2)))
+
+ass_idk_glm_coefs$toss <- ass_idk_glm_coefs$`2.5 %`<1 & ass_idk_glm_coefs$`97.5 %`>1
+
+ass_idk_glm_coefs %>% filter(toss==0)
+
+summary(ass_buddhist_2int_glm)
+
+Anova(ass_buddhist_2int_glm)
+```

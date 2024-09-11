@@ -1,0 +1,36 @@
+\begin{table*}[t]
+\small
+\caption{Cumulative Link Mixed Model of Children's Predicted Mandarin-Learning by Different Speakers}\label{tab:mandarin-ord}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcr}
+ \toprule
+& \multicolumn{3}{c}{\textbf{``Chinese'' Learning}\tnote{a}} \\
+\cline{2-4} \\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+  \hline
+``Not at all''$|$``Medium'' & 0.74 & 0.48--1.14 & 0.168 \\ 
+``Medium''$|$``Very well'' & 13.79 *** & 7.93--23.99 & $<$0.001 \\ 
+  \textsc{Muslim} & 0.68 & 0.38--1.20 & 0.183 \\ 
+  \textsc{Dravidian} & 0.52 * & 0.29--0.93 & 0.028 \\ 
+  \textsc{White} & 2.16 ** & 1.24--3.77 & 0.006 \\ 
+  \textsc{Asian} & 146.96 *** & 58.95--366.33 & $<$0.001 \\ 
+Age\tnote{b} & 1.00 & 0.84--1.18 & 0.992 \\ 
+\midrule
+\bfseries{\textit{N} children}\tnote{c} & 110 &  &  \\ 
+\textbf{Observations}\tnote{d} & 487 &  &  \\ 
+ \textbf{Marginal R2} & 0.527 &  &  \\ 
+ \textbf{Conditional R2} & 0.599 &&\\
+\bottomrule\\[-.75em]
+\multicolumn{4}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
+\end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Ordinal variable: ``Very well (100\%)'' \textgreater ``Medium (50\%)'' \textgreater ``Not at all (0\%)'
+    \item[b] Mean-centered, in years.
+    \item[c] Model includes random intercepts for each child.
+    \item[d] Model data excludes ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

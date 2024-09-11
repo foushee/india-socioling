@@ -1,0 +1,227 @@
+---
+title: "India Sociolinguistics Child Languages Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-17"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r faces-setup, include=FALSE}
+library(here)
+here::i_am('1_child_languages/1_child-languages.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r read-in-data}
+cls <- read.csv(here('data/r_dfs/subsets/child_language_data.csv'))[,-1]
+
+child_languages <- c("gujarati", "hindi", "english", "urdu", "marathi", 
+                     "punjabi", "sindhi", "tamil", "telgu", "bengali", 
+                     "arabic", "bihari", "rajasthani", 
+                     "malyam", "kathiyawadi", "marwari", "memon", 
+                     "polish", "sanskrit", "french")
+questions <- c("speak", "understand", "mother_tongue", "home_language", 
+               "friends_language", "lang home and friends")
+#lang home and friends
+```
+
+# Table with column for each question, and counts for each language
+
+```{r lang-qs-table}
+speak_count <- cls %>%
+  filter(question =="speak") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(speak=sum(counted))
+
+understand_count <- cls %>%
+  filter(question =="understand") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(understand=sum(counted))
+
+mother_count <- cls %>%
+  filter(question =="mother_tongue") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(mother_tongue=sum(counted))
+  
+home_count <- cls %>%
+  filter(question =="home_language") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(at_home=sum(counted))
+
+friends_count <- cls %>%
+  filter(question =="friends_language") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(with_friends=sum(counted))
+
+lhf_count <- cls %>%
+  filter(question =="lang home and friends") %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(lhf=sum(counted))
+
+overall_count <- cls %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, counted, -id, -question) %>%
+  #spread(question, counted) %>%
+  group_by(language) %>%
+  summarize(total=sum(counted))
+
+su <- merge(speak_count, understand_count, by="language")
+sum <- merge(su, mother_count, by="language")
+sumh <- merge(sum, home_count, by="language")
+sumhc <- merge(sumh, friends_count, by="language") 
+all_tab <- merge(sumhc, overall_count, by="language")
+
+all_tab 
+
+sumhc %>%
+  arrange(desc(speak)) %>%
+  xtable(.)
+```
+
+
+```{r}
+learn_tab <- cls %>%
+  filter(!is.na(how_learned)) %>%
+  dplyr::select(id, learned_birth, 
+         learned_family, learned_neighborhood, learned_school, 
+         learned_friends, learned_other,
+         all_of(child_languages)) %>%
+  gather(language, learned, -id, -learned_birth, 
+         -learned_family, -learned_school, -learned_friends, 
+         -learned_neighborhood, -learned_other) %>%
+  filter(learned>0) %>%
+  group_by(language) %>%
+  summarize(birth=na.sum(learned_birth),
+            family=na.sum(learned_family),
+            friends=na.sum(learned_friends)+na.sum(learned_neighborhood),
+            school=na.sum(learned_school),
+            other=na.sum(learned_other)) %>%
+  arrange(desc(family))
+
+cl_tab <- merge(sumhc, learn_tab, by="language") 
+
+cl_tab_for_paper_temp <- cbind(cl_tab[,c(1,2,6,5,4,3)], "space1"="", 
+      "space2"="", cl_tab[,c(8,7,9,10)])
+
+#cl_tab_for_paper_temp$sum <- cl_tab_for_paper_temp$speak + cl_tab_for_paper_temp$with_friends + 
+#  cl_tab_for_paper_temp$at_home + cl_tab_for_paper_temp$mother_tongue + 
+#  cl_tab_for_paper_temp$understand + cl_tab_for_paper_temp$family +
+#  cl_tab_for_paper_temp$birth + cl_tab_for_paper_temp$friends + cl_tab_for_paper_temp$school 
+
+language_child_counts <- cls %>%
+  dplyr::select(id, question, all_of(child_languages)) %>%
+  gather(language, listed, -id, -question) %>%
+  group_by(id, language) %>%
+  summarize(listed = sum(listed)>0) %>%
+  filter(listed==T) %>%
+  group_by(language) %>%
+  summarize(n_children=n())
+
+cl_tab_for_paper_temp$space3 <- ""
+cl_tab_for_paper_temp$space4 <- ""
+
+cl_tab_for_paper <- merge(cl_tab_for_paper_temp, 
+                          language_child_counts, by="language") %>%
+  arrange(desc(n_children)) %>%
+  filter(n_children>1)
+
+cl_tab_for_paper$language <- str_to_title(cl_tab_for_paper$language)
+xtable(cl_tab_for_paper, type="latex", file="tables/child_languages.tex")
+
+language_child_counts$language <- str_to_title(language_child_counts$language)
+language_child_counts %>% arrange(desc(n_children)) %>%
+  filter(n_children>1) %>%
+  xtable(.)
+  
+```
+
+```{r}
+clsub_df <- cls %>%
+  dplyr::select("id", "gujarati", "hindi", "english", "urdu", "marathi", 
+                     "punjabi", "sindhi", "tamil", "telgu", "bengali", 
+                     "arabic", "bihari", "rajasthani", 
+                     "malyam", "kathiyawadi", "marwari", "memon", 
+                     "polish", "sanskrit", "french") %>%
+  gather(language, listed, -id) %>%
+  group_by(id, language) %>%
+  summarize(listed=as.numeric(sum(listed)>0)) %>%
+  spread(id, listed) 
+
+csub_net <- graph_from_data_frame(clsub_df, directed = F)
+cnet <- components(csub_net)
+plot(cnet)
+
+a_net <- graph_from_data_frame(clsub_df)
+V(a_net)
+E(a_net)
+V(a_net)$label <- V(a_net)$name
+V(a_net)$degree <- degree(a_net)
+set.seed(222)
+plot(a_net,
+     vertex.color = 'green',
+     vertext.size = 2,
+     edge.arrow.size = 0.1,
+     vertex.label.cex = 0.8)
+
+```
+
+```{r}
+clcounts_df <- cls %>%
+  dplyr::select("id", "gujarati", "hindi", "english", "urdu", "marathi", 
+                     "punjabi", "sindhi", "tamil", "telgu", "bengali", 
+                     "arabic", "bihari", "rajasthani", 
+                     "malyam", "kathiyawadi", "marwari", "memon", 
+                     "polish", "sanskrit", "french") %>%
+  gather(language, listed, -id) %>%
+  group_by(id, language) %>%
+  summarize(listed=as.numeric(sum(listed)>0)) %>%
+  group_by(id) %>%
+  mutate(total=sum(listed)) %>%
+  spread(language, listed) 
+```
+
+```{r}
+clcounts_df %>%
+  group_by(total) %>%
+  summarize(n=n())
+
+clcounts_df %>%
+  filter(total==6)
+
+```
+
+```{r}
+lists_stimuli_langs_df <- cls %>%
+  dplyr::select(id, hindi, urdu, gujarati, marathi, tamil, english) %>%
+  gather(language, knows, -id) 
+
+lists_stimuli_langs_df$language <- factor(lists_stimuli_langs_df$language, 
+                                          levels=language_name_vars,
+                                          labels = language_name_labels)
+lists_stimuli_langs_df$language <- as.factor(lists_stimuli_langs_df$language)
+```

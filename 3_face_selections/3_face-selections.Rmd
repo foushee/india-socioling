@@ -1,0 +1,1730 @@
+---
+title: "India Sociolinguistics Face Selection Analyses"
+author: "Ruthe Foushee"
+date: "2023-08-17"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r faces-setup, include=FALSE}
+library(here)
+here::i_am('3_face_selections/3_face-selections.Rmd')
+
+knitr::opts_chunk$set(
+  echo = FALSE, message=F, warning=F,
+  fig.width = 6)
+
+source(here('isl-resources.R'))
+```
+
+```{r read-in-data}
+f <- read.csv(here('data/r_dfs/subsets/face_selection_data.csv'))[,-1]
+
+factor_vars <- c('study_name', 'id', 'child_sex', 'child_religion', 
+                 'school', 'standard',
+                 'question_type', 'presentation',
+                 'language', 'speaker_gender', 
+                 'face', 'army_navy_language')
+
+numeric_vars <- c('standard_num', 'child_age', 'child_age_centered', 
+                  'sequence')
+
+f <- f %>%
+  mutate_at(factor_vars, as.factor) %>%
+  mutate_at(numeric_vars, as.numeric)
+
+f <- f %>%
+  filter(face!="")
+```
+
+```{r faces-label, include=FALSE}
+f$language <- relevel(f$language, ref="Gujarati")
+f$face <- relevel(f$face, ref="hindu")
+
+fl <-f[f$presentation=="label",]
+fl$language <- factor(fl$language, 
+                      levels=c("Gujarati", 
+                               "Hindi", "Urdu", 
+                               "Marathi", "Tamil", "English",
+                               "Mandarin"))
+
+write.csv(fl, here('data/r_dfs/subsets/faces_data_by_language_label.csv'))
+nrow(f)
+table(f$face)
+table(f$hindu_face)
+#nrow(f_for_plots)
+#809/3511
+
+fa <- f[f$presentation=="audio",]
+fa$language <- factor(fa$language, levels=language_labels)
+#write.csv(fa, here('data/r_dfs/subsets/faces_data_by_language_audio.csv'))
+```
+
+```{r how-many-faces, include=F}
+#table("std"=f$standard, "num faces"=f$num_faces)
+num_face_summary_tab <- f %>% 
+  ungroup() %>%
+  mutate(n=n()) %>%
+  filter(!is.na(num_faces)) %>%
+  group_by(num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+num_face_std_summary_tab <- f %>% 
+  filter(!is.na(num_faces)) %>%
+  group_by(standard) %>%
+  mutate(n=n()) %>% 
+  group_by(standard, num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+nfp <- ggplot(num_face_std_summary_tab, 
+       aes(x=num_faces, y=percent_selection)) +
+  geom_bar(stat="identity") +
+  facet_grid(~standard) +
+  sans_theme +
+  ylab("percent of selections") +
+  xlab("# faces selected") +
+  sans_axes_theme +
+    labs(title="Number of Faces Selected by Standard")
+
+#table(f$num_faces>1) #90 trials more than one face
+#length(unique(f[f$num_faces>1,]$id)) #24 kids
+
+# table(f$face) # 69 no-opinion trials
+# length(unique(f[f$face=="idk",]$id)) # 36 kids
+```
+
+```{r no-face,include=F}
+f %>%
+  group_by(standard) %>%
+  reframe(num_opt_outs = sum(no_opinion_face),
+            n_trials=n(),
+            percent = num_opt_outs/n_trials) %>%
+  kable(.) 
+
+length(unique(f[f$no_opinion_face==1,]$id))
+```
+
+...and rarely 'opted out'
+
+
+# Face Preferences
+
+## Language Presented in Audio Clip
+
+*Who could be speaking?* 
+```{r audio-num-faces}
+num_face_audio_std_tab <- fa %>% 
+  filter(!is.na(num_faces)) %>%
+  group_by(standard) %>%
+  mutate(n=n()) %>% 
+  group_by(standard, num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+num_face_audio_tab <- fa %>% 
+  ungroup() %>%
+  mutate(n=n()) %>%
+  filter(!is.na(num_faces)) %>%
+  group_by(num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+```
+
+```{r audio-opt-out-more-than-1}
+table(fa$num_faces>1) #51 trials more than one face
+length(unique(fa[fa$num_faces>1,]$id)) #20 kids
+
+table(fa[fa$num_faces>1,]$language)
+
+table(f[f$presentation=="audio",]$face) # 39 no-opinion trials
+length(unique(fa[fa$no_opinion_face==1,]$id)) # 29 kids
+table(fa[fa$face=="idk",]$language)
+```
+
+Children across standards tended to select a single face in response to the audio face selection questions (97\% of trials in 3rd standard, 99\% of trials in 5th standard, and 91\% of trials in 7th standard; 95\% overall). Twenty children selected more than one face across 51 trials (10 for both Hindi, 8 for Urdu, 7 for Indian and U.S. English and Marathi, 5 for Tamil, 4 for Gujarati, and 3 for Mandarin).
+
+Twenty-nine children selected ``no opinion'' on 39 trials (13 for Mandarin, 11 for Tamil, 6 for Marathi, 3 for Gujarati and Urdu, 2 for U.S. English, and 1 for Hindi).
+
+```{r fa-rates}
+fa %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            muslim=na.mean(muslim_face),
+            dravidian=na.mean(dravidian_face),
+            asian=na.mean(asian_face))
+
+fa %>%
+  group_by(language) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            #muslim=na.mean(muslim_face),
+            #dravidian=na.mean(dravidian_face),
+            #asian=na.mean(asian_face)
+            )
+
+fa %>%
+  group_by(language, standard) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            #muslim=na.mean(muslim_face),
+            #dravidian=na.mean(dravidian_face),
+            #asian=na.mean(asian_face)
+            )
+
+fa %>%
+  group_by(language) %>%
+  summarize(#white=na.mean(white_face),
+            hindu=na.sum(hindu_face),
+            #muslim=na.mean(muslim_face),
+            dravidian=na.sum(dravidian_face),
+            asian=na.sum(asian_face)
+            )
+
+fl %>%
+  group_by(language) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            #muslimM=na.mean(muslim_face),
+            #muslim=na.sum(muslim_face),
+            #dravidian=na.sum(dravidian_face),
+            asian=na.mean(asian_face)
+            )
+```
+
+## Language Presented by Name
+
+*Who speaks [LANGUAGE]?*
+
+```{r label-num-faces}
+num_face_label_std_tab <- fl %>% 
+  filter(!is.na(num_faces)) %>%
+  group_by(standard) %>%
+  mutate(n=n()) %>% 
+  group_by(standard, num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+
+num_face_label_tab <- fl %>% 
+  ungroup() %>%
+  mutate(n=n()) %>%
+  filter(!is.na(num_faces)) %>%
+  group_by(num_faces, n) %>%
+  reframe(n_face_count = n(),
+            percent_selection = n_face_count/n) %>%
+  distinct(.)
+```
+
+```{r label-opt-out-more-than-1}
+table(fl$num_faces>1) #37 trials more than one face
+length(unique(fl[fl$num_faces>1,]$id)) #13 kids
+
+table(fl[fl$num_faces>1,]$language)
+
+table(fl$face) # 30 no-opinion trials
+length(unique(fl[fl$no_opinion_face==1,]$id)) # 14 kids
+table(unique(fl[fl$no_opinion_face==1,]$language))
+```
+
+Children exhibited a preference for a single face for most languages they were asked about by name (on all but one trial in 3rd standard, 96\% of trials in 5th standard, and 92\% of trials in 7th standard; 96\% overall). Thirteen children selected more than one face across 37 trials (10 for both Hindi, 8 for Urdu, 7 for Indian and U.S. English and Marathi, 5 for Tamil, 4 for Gujarati, and 3 for Mandarin).
+
+Fourteen children selected ``no opinion'' on 30 trials (12 for Hindi, 9 for English, 5 for Gujarati and Mandarin, 4 for Marathi, and 2 for Tamil). 
+
+```{r fl-rates}
+fl %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            muslim=na.mean(muslim_face),
+            dravidian=na.mean(dravidian_face),
+            asian=na.mean(asian_face))
+
+fl %>%
+  group_by(language) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            muslim=na.mean(muslim_face),
+            dravidian=na.mean(dravidian_face),
+            asian=na.mean(asian_face))
+
+```
+
+## Over Time 
+
+### By Standard (Grade)
+
+#### in Audio Clip
+
+```{r audio-std-lineplot}
+audio_face_std_summary_tab <- fa %>%
+  filter(!is.na(language),
+         !is.na(face)) %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(face_vars)) %>%
+  gather(., face, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+audio_face_std_summary_tab$face <- factor(
+  audio_face_std_summary_tab$face, 
+  levels=face_vars, 
+  labels=face_labels)
+
+ggplot(audio_face_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +    
+  sans_axes_theme_bigger +
+    theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+  
+ggsave("audio_faces_std.png", device = "png", 
+       path = "plots/by_standard/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+# Selective face preferences tended to get stronger with age (a greater and greater proportion of children chose the same face).
+```
+
+#### by Language Name
+
+Selective face preferences tended to get stronger with age for both auditorily presented and named languages (a greater and greater proportion of children chose the same face(s) as speakers of a given audio clip, or for a given named language).
+
+```{r label-std-lineplot}
+label_face_std_summary_tab <- fl %>%
+  filter(!is.na(language),
+         !is.na(face)) %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num",
+    all_of(face_vars)) %>%
+  gather(., face, selection, -language, -standard, -standard_num) %>%
+    group_by(language, standard, standard_num, face) %>%
+    summarize(mean=na.mean(selection),
+              cilo = mean-ci.low(selection),
+              cihi = mean+ci.high(selection)) 
+
+label_face_std_summary_tab$face <- factor(
+  label_face_std_summary_tab$face, 
+  levels=face_vars, 
+  labels=face_labels)
+
+label_face_std_summary_tab$language <- factor(
+  label_face_std_summary_tab$language, 
+  levels=c("Gujarati", "Hindi", "Urdu", "Marathi", "Tamil", 
+           "English", "Mandarin"), 
+  labels=c('"Gujarati"', '"Hindi"', '"Urdu"', '"Marathi"', '"Tamil"', '"English"', '"Chinese"'))
+
+ggplot(label_face_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) + 
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +    
+  sans_axes_theme_bigger +
+    theme(legend.position = "bottom",
+          strip.text.x=element_text(face="bold.italic")) +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+  
+ggsave("label_faces_std.png", device = "png", 
+       path = "plots/by_standard/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+# Selective face preferences tended to get stronger with age (a greater and greater proportion of children chose the same face).
+```
+
+## By Age
+
+### in Audio Clip
+
+## Models: Odds of Face Selection
+
+### AUDIO
+
+#### Hindu face (from audio clip)
+
+```{r audio-hindu-stats}
+fa %>% 
+  mutate(total_trials=n(),
+    n_trials=sum(face=="hindu")) %>%
+  distinct(id, .keep_all = T) %>%
+  mutate(n_children=n(),
+         prop = n_trials/total_trials) %>%
+  distinct(n_trials, total_trials, prop, n_children)
+```
+HINDU face selected on 20\% of audio face trials (391/1940), by 126 children.
+
+```{r audio-hindu-glm, include=F}
+options(scipen=1000)
+
+audio_face_hindu_glm <- glm(
+  hindu_face ~ child_age_centered + language, 
+  family="binomial", fa)
+
+audio_face_hindu_glm_coefs <- cbind(round(exp(coef(audio_face_hindu_glm)), 2), round(exp(confint(audio_face_hindu_glm)), 2))
+```
+
+```{r audio-hindu-int-glm}
+fa %>%
+  group_by(language, standard) %>%
+  summarize(mean=na.mean(hindu_face))
+
+fa %>%
+  group_by(language, standard) %>%
+  summarize(mean=na.mean(asian_face))
+
+fl %>%
+  group_by(language) %>%
+  summarize(mean=na.mean(hindu_face))
+
+audio_face_hindu_int_glm <- glm(
+  hindu_face ~ child_age_centered*language, 
+  family="binomial", fa)
+
+audio_face_hindu_int_glm_coefs <- as.data.frame(cbind(round(exp(coef(audio_face_hindu_int_glm)), 2),
+round(exp(confint(audio_face_hindu_int_glm)), 2)))
+
+audio_face_hindu_int_glm_coefs$toss <- audio_face_hindu_int_glm_coefs$`2.5 %`<1 & audio_face_hindu_int_glm_coefs$`97.5 %`>1
+
+audio_face_hindu_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_hindu_int_glm)
+```
+
+There was a significant interaction between child age and language ($`r reportAnova(audio_face_hindu_int_glm, "child_age_centered:language")`$), such that as children got older, they increasingly selected the hindu face for Hindi ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageHindi")`$), 
+Urdu ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageUrdu")`$), 
+Gujarati ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered")`$),
+Marathi ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageMarathi")`$),
+Tamil ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageTamil")`$), and
+Indian English ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageEnglish (India)")`$), and 
+decreasingly selected it in response to clips of Mandarin ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageMandarin")`$).
+
+#### Muslim face (from audio clip) 
+
+```{r audio-muslim-stats}
+fa %>% 
+  mutate(total_trials=n(),
+    n_trials=sum(face=="muslim")) %>%
+  distinct(id, .keep_all = T) %>%
+  mutate(n_children=n(),
+         prop = n_trials/total_trials) %>%
+  distinct(n_trials, total_trials, prop, n_children)
+```
+
+```{r audio-muslim-glm, include=F}
+#audio_face_muslim_glmer <- glmer(
+#  muslim_face ~ child_age_centered + language + (1|id), 
+#  family="binomial", f[f$presentation=="audio",])
+
+#cbind(round(exp(fixef(audio_face_muslim_glmer)), 2),
+#round(exp(confint(audio_face_muslim_glmer)), 2))
+
+audio_face_muslim_glm <- glm(
+  muslim_face ~ child_age_centered + language, 
+  family="binomial", fa)
+
+audio_face_muslim_glm_coefs <- cbind(round(exp(coef(audio_face_muslim_glm)), 2),
+round(exp(confint(audio_face_muslim_glm)), 2))
+```
+
+```{r audio-muslim-int-glm}
+audio_face_muslim_int_glm <- glm(
+  muslim_face ~ child_age_centered*language, 
+  family="binomial", fa)
+
+audio_face_muslim_int_glm_coefs <- as.data.frame( cbind(round(exp(coef(audio_face_muslim_int_glm)), 2),
+round(exp(confint(audio_face_muslim_int_glm)), 2))
+)
+
+audio_face_muslim_int_glm_coefs$toss <- audio_face_muslim_int_glm_coefs$`2.5 %`<1 & audio_face_muslim_int_glm_coefs$`97.5 %`>1
+
+audio_face_muslim_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_muslim_int_glm)
+
+fa%>% group_by(language,standard) %>%
+  summarize(mean=na.mean(muslim_face))
+
+#, such that as children got older, they increasingly selected the hindu face for Indian English ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageEnglish (India)"`$)$), Hindi ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageHindi")`$), Gujarati ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageGujarati")`$),  Tamil ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageTamil")`$), and Urdu ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageUrdu")`$), and decreasingly selected it in response to clips of Mandarin ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered")`$), U.S. English .
+```
+
+There were significant effects of language ($`r reportAnova(audio_face_muslim_int_glm, "language")`$) and its interaction with child age ($`r reportAnova(audio_face_muslim_int_glm, "child_age_centered:language")`$). 
+Children tended to select the muslim face as a speaker of Urdu (52\% of trials overall; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageUrdu")`$), and not to select the muslim face as a speaker of Gujarati (12\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageGujarati")`$), Mandarin (3\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageMandarin")`$), and Marathi (6\% of trials; $`r reportORs(audio_face_muslim_int_glm_coefs, "languageMarathi")`$). 
+As children got older, they associated the muslim face with Gujarati even less (35\% of trials in 3rd grade to 6\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageGujarati")`$), and 
+increased their relative selection of it as the speaker of the Hindi (42\% of trials in 3rd grade to 61\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageHind")`$), Urdu (48\% of trials in 3rd grade to 59\% in 7th; $`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageUrdu")`$), and Indian English ($`r reportORs(audio_face_muslim_int_glm_coefs, "child_age_centered:languageEnglish (India)")`$) audio clips. 
+
+#### Dravidian face (from audio clip)
+
+```{r audio-dravidian-glm, include=F}
+audio_face_dravidian_glm <- glm(
+  dravidian_face ~ child_age_centered + language, 
+  family="binomial", fa)
+
+audio_face_dravidian_glm_coefs <-
+  cbind(round(exp(coef(audio_face_dravidian_glm)), 2),
+        round(exp(confint(audio_face_dravidian_glm)), 2))
+```
+
+```{r audio-dravidian-int-glm}
+audio_face_dravidian_int_glm <- glm(
+  dravidian_face ~ child_age_centered*language, 
+  family="binomial", fa)
+
+audio_face_dravidian_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_dravidian_int_glm)), 2),
+        round(exp(confint(audio_face_dravidian_int_glm)), 2))
+)
+
+audio_face_dravidian_int_glm_coefs$toss <- audio_face_dravidian_int_glm_coefs$`2.5 %`<1 & audio_face_dravidian_int_glm_coefs$`97.5 %`>1
+
+audio_face_dravidian_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_dravidian_int_glm)
+#Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age_centered")`$), 
+# Hindi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age_centered:languageHindi")`$), 
+```
+
+There was a significant effect of language ($`r reportAnova(audio_face_dravidian_int_glm, "language")`$), such that children were unlikely to select the dravidian face as a speaker of Mandarin ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageMandarin")`$), 
+Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "(Intercept)")`$), 
+Indian English ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageEnglish (India)")`$), Hindi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageHindi")`$), or
+U.S. English ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageEnglish (U.S.)")`$),
+and likely to select it as a speaker of Marathi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "languageMarathi")`$). 
+A significant interaction between child age and language  ($`r reportAnova(audio_face_dravidian_int_glm, "child_age_centered:language")`$), further revealed that as children got older, they increasingly selected the dravidian face in response to clips of 
+Tamil ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age_centered:languageTamil")`$) and Marathi ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age_centered:languageMarathi")`$), and decreasingly in response to Gujarati ($`r reportORs(audio_face_dravidian_int_glm_coefs, "child_age_centered")`$) and Mandarin ($`r reportORs(audio_face_hindu_int_glm_coefs, "child_age_centered:languageMandarin")`$). 
+
+#### East Asian face (from audio clip)
+
+```{r audio-asian-glm, include=F}
+audio_face_asian_glm <- glm(
+  asian_face ~ child_age_centered + language, 
+  family="binomial", fa)
+
+audio_face_asian_glm_coefs <- cbind(round(exp(coef(audio_face_asian_glm)), 2),
+round(exp(confint(audio_face_asian_glm)), 2))
+```
+
+```{r audio-asian-int-glm}
+audio_face_asian_int_glm <- glm(
+  asian_face ~ child_age_centered*language, 
+  family="binomial", fa)
+
+audio_face_asian_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_asian_int_glm)), 2),
+        round(exp(confint(audio_face_asian_int_glm)), 2))
+)
+
+audio_face_asian_int_glm_coefs$toss <- 
+  audio_face_asian_int_glm_coefs$`2.5 %`<1 &
+  audio_face_asian_int_glm_coefs$`97.5 %`>1
+
+audio_face_asian_int_glm_coefs %>%filter(toss==0)
+
+Anova(audio_face_asian_int_glm)
+```
+
+There was a significant effect of language ($`r reportAnova(audio_face_asian_int_glm, "language")`$), such that children were likely to select the asian face as the speaker of Mandarin ($`r reportORs(audio_face_asian_int_glm_coefs, "languageMandarin")`$), Tamil ($`r reportORs(audio_face_asian_int_glm_coefs, "languageTamil")`$), U.S. English ($`r reportORs(audio_face_asian_int_glm_coefs, "languageEnglish (U.S.)")`$), and Indian English ($`r reportORs(audio_face_asian_int_glm_coefs, "languageEnglish (India)")`$), and unlikely to select the asian face as the speaker of Gujarati ($`r reportORs(audio_face_asian_int_glm_coefs, "(Intercept)")`$).
+We also saw a significant interaction between language and child age ($`r reportAnova(audio_face_asian_int_glm, "child_age_centered:language")`$), such that as children got older, they increasingly selected the east asian face for 
+Mandarin ($`r reportORs(audio_face_asian_int_glm_coefs, "child_age_centered:languageMandarin")`$).
+
+#### White face (from audio clip)
+
+```{r audio-white-glm, include=F}
+audio_face_white_glm <- glm(
+  white_face ~ child_age_centered + language, 
+  family="binomial", fa)
+
+audio_face_white_glm_coefs <- 
+  cbind(round(exp(coef(audio_face_white_glm)), 2),
+        round(exp(confint(audio_face_white_glm)), 2)) 
+```
+
+```{r audio-white-int-glm}
+audio_face_white_int_glm <- glm(
+  white_face ~ child_age_centered*language, 
+  family="binomial", fa)
+
+audio_face_white_int_glm_coefs <- as.data.frame(
+  cbind(round(exp(coef(audio_face_white_int_glm)), 2),
+        round(exp(confint(audio_face_white_int_glm)), 2))
+)
+
+audio_face_white_int_glm_coefs$toss <- 
+  audio_face_white_int_glm_coefs$`2.5 %`<1 &
+  audio_face_white_int_glm_coefs$`97.5 %`>1
+
+audio_face_white_int_glm_coefs %>% filter(toss==0)
+
+Anova(audio_face_white_int_glm)
+```
+
+There was a significant effect of language ($`r reportAnova(audio_face_white_int_glm, "language")`$), such that children rarely selected the white face as a speaker of Gujarati (4\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "(Intercept)")`$), and selected it as a speaker of either English (Indian, 70\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageEnglish (India)")`$; U.S., 65\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageEnglish (U.S.)")`$), Mandarin (12\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageMandarin")`$) and Tamil (16\% of trials; $`r reportORs(audio_face_white_int_glm_coefs, "languageTamil")`$). 
+There was a significant interaction between child age and language ($`r reportAnova(audio_face_white_int_glm, "child_age_centered:language")`$), such that as children got older, they increasingly selected the white face for 
+Indian English ($`r reportORs(audio_face_white_int_glm_coefs, "child_age_centered:languageEnglish (India)")`$) and 
+U.S. English ($`r reportORs(audio_face_asian_int_glm_coefs, "child_age_centered:languageEnglish (U.S.)")`$).
+
+### LANGUAGE NAME
+
+#### Hindu face (from language name)  
+
+```{r label-hindu-stats}
+fl %>% 
+  mutate(total_trials=n(),
+    n_trials=sum(face=="hindu")) %>%
+  distinct(id, .keep_all = T) %>%
+  mutate(n_children=n(),
+         prop = n_trials/total_trials) %>%
+  distinct(n_trials, total_trials, prop, n_children)
+```
+HINDU face selected on 24\% of language-name face trials (411/1701), by 126 children.
+
+```{r label-hindu-glm, include=F}
+label_face_hindu_glm <- glm(
+  hindu_face ~ child_age_centered + language, 
+  family="binomial", fl)
+
+summary(label_face_hindu_glm)
+label_face_hindu_glm_coefs <- cbind(round(exp(coef(label_face_hindu_glm)), 2),
+round(exp(confint(label_face_hindu_glm)), 2))
+```
+
+```{r label-hindu-int-glm}
+label_face_hindu_int_glm <- glm(
+  hindu_face ~ child_age_centered*language, 
+  family="binomial", fl)
+
+label_face_hindu_int_glm_coefs <- cbind(round(exp(coef(label_face_hindu_int_glm)), 2),
+round(exp(confint(label_face_hindu_int_glm)), 2))
+
+Anova(label_face_hindu_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_hindu_int_glm, "language")`$), child age ($`r reportAnova(label_face_hindu_int_glm, "child_age_centered")`$), and their interaction ($`r reportAnova(label_face_hindu_int_glm, "child_age_centered:language")`$).
+Children robustly selected the hindu face as a speaker of Gujarati (58\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "(Intercept)")`$), and did so significantly less for Mandarin (2\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageMandarin")`$), 
+English (2\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageEnglish")`$), 
+Urdu (7\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageUrdu")`$), 
+Tamil (25\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageTamil")`$), 
+Hindi (35\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageHindi")`$), and 
+Marathi (49\% of trials; $`r reportORs(label_face_hindu_int_glm_coefs, "languageMarathi")`$).
+With age, children became less likely to select the hindu face as the speaker of 
+Urdu (from 15\% to 2\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age_centered:languageUrdu")`$), 
+Chinese (from 2\% to 1\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age_centered:languageMandarin")`$), and 
+Tamil (from 31\% to 22\%; $`r reportORs(label_face_hindu_int_glm_coefs, "child_age_centered:languageTamil")`$).
+
+#### Muslim face (from language name)
+
+```{r label-muslim-glm, include=F}
+label_face_muslim_glm <- glm(
+  muslim_face ~ child_age_centered + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_muslim_glm)), 2),
+round(exp(confint(label_face_muslim_glm)), 2)) 
+```
+
+```{r label-muslim-int-glm}
+label_face_muslim_int_glm <- glm(
+  muslim_face ~ child_age_centered*language, 
+  family="binomial", fl)
+
+label_face_muslim_int_glm_coefs <- cbind(round(exp(coef(label_face_muslim_int_glm)), 2),
+round(exp(confint(label_face_muslim_int_glm)), 2)) 
+
+Anova(label_face_muslim_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_muslim_int_glm, "language")`$), child age ($`r reportAnova(label_face_muslim_int_glm, "child_age_centered")`$), and their interaction ($`r reportAnova(label_face_muslim_int_glm, "child_age_centered:language")`$): with age, children became increasingly likely to select the \textsc{muslim} face as the speaker of Urdu (from 58\% of trials in 3rd grade to 93\% of trials in 7th; $`r reportORs(label_face_muslim_int_glm_coefs, "languageUrdu")`$).
+
+#### Dravidian face (from language name)
+
+```{r label-dravidian-glm, include=F}
+label_face_dravidian_glm <- glm(
+  dravidian_face ~ child_age_centered + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_dravidian_glm)), 2),
+round(exp(confint(label_face_dravidian_glm)), 2))
+```
+
+```{r label-dravidian-int-glm}
+label_face_dravidian_int_glm <- glm(
+  dravidian_face ~ child_age_centered*language, 
+  family="binomial", fl)
+
+label_face_dravidian_int_glm_coefs <- cbind(round(exp(coef(label_face_dravidian_int_glm)), 2),
+round(exp(confint(label_face_dravidian_int_glm)), 2))
+
+Anova(label_face_dravidian_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_dravidian_int_glm, "language")`$), such that children preferred the dravidian faces as speakers of Tamil (53\% of trials overall; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageTamil")`$) and Marathi (38\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageMarathi")`$), and significantly less for English (2\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageEnglish")`$), Mandarin (4\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageMandarin")`$), Urdu (7\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageUrdu")`$), Gujarati (21\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "(Intercept)")`$), and Hindi (10\% of trials; $`r reportORs(label_face_dravidian_int_glm_coefs, "languageEnglish")`$).  
+A significant interaction between language and child age ($`r reportAnova(label_face_dravidian_int_glm, "child_age_centered:language")`$) additionally suggested that, with age, children became more likely to identify the dravidian face as specifically a potential speaker of Tamil (from 33\% of trials in 3rd grade, to 68\% of trials in 7th grade; $`r reportORs(label_face_dravidian_int_glm_coefs, "child_age_centered:languageTamil")`$). 
+
+* This reflects accurate model of language--phenotype association
+
+#### East Asian face (from language name)
+
+```{r label-asian-glm, include=F}
+label_face_asian_glm <- glm(
+  asian_face ~ child_age_centered + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_asian_glm)), 2),
+round(exp(confint(label_face_asian_glm)), 2)) 
+```
+
+```{r label-asian-int-glm}
+label_face_asian_int_glm <- glm(
+  asian_face ~ child_age_centered*language, 
+  family="binomial", fl)
+
+label_face_asian_int_glm_coefs <- cbind(round(exp(coef(label_face_asian_int_glm)), 2),
+round(exp(confint(label_face_asian_int_glm)), 2))
+
+Anova(label_face_asian_int_glm)
+```
+
+We saw a significant effect of language ($`r reportAnova(label_face_asian_int_glm, "language")`$) and its interaction with child age ($`r reportAnova(label_face_asian_int_glm, "child_age_centered:language")`$) such that children were most likely to select the asian face in response to Chinese (85\% across trials; $`r reportORs(label_face_asian_int_glm_coefs, "languageMandarin")`$) or English (9\%; $`r reportORs(label_face_asian_int_glm_coefs, "languageEnglish")`$), and avoided it in response to Gujarati (4\% across trials; $`r reportORs(label_face_asian_int_glm_coefs, "(Intercept)")`$) --- tendencies that persisted or strengthened over time. That is, with age, children became even less likely to identify the asian face as a speaker of Gujarati (10\% to 1\%; $`r reportORs(label_face_asian_int_glm_coefs, "child_age_centered")`$), and all the more likely to identify the asian face as a speaker of Chinese (from 73\% in 3rd grade to 96\% in 7th; $`r reportORs(label_face_asian_int_glm_coefs, "child_age_centered:languageMandarin")`$) or English (14\% to 12\%; $`r reportORs(label_face_asian_int_glm_coefs, "child_age_centered:languageEnglish")`$).
+
+#### White face (from language name)
+
+```{r label-white-glm, include=F}
+label_face_white_glm <- glm(
+  white_face ~ child_age_centered + language, 
+  family="binomial", fl)
+
+cbind(round(exp(coef(label_face_white_glm)), 2),
+round(exp(confint(label_face_white_glm)), 2)) 
+```
+
+```{r label-white-int-glm}
+options(scipen=10000)
+label_face_white_int_glm <- glm(
+  white_face ~ child_age_centered*language, 
+  family="binomial", fl)
+
+label_face_white_int_glm_coefs <- cbind(round(exp(coef(label_face_white_int_glm)), 2),
+round(exp(confint(label_face_white_int_glm)), 2))
+
+Anova(label_face_white_int_glm)
+```
+
+We saw significant effects of language ($`r reportAnova(label_face_white_int_glm, "language")`$), child age ($`r reportAnova(label_face_white_int_glm, "child_age_centered")`$), and their interaction ($`r reportAnova(label_face_white_int_glm, "child_age_centered:language")`$), such that children showed a preference for the white face when asked about English (83\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageEnglish")`$), Chinese (8\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageMandarin")`$), and Tamil (9\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "languageTamil")`$), and a dispreference when asked about Gujarati (3\% of all trials; $`r reportORs(label_face_white_int_glm_coefs, "(Intercept)")`$). 
+With age, children became even more likely to select the white face in response to English (from 73\% in 3rd grade to 92\% in 7th grade; $`r reportORs(label_face_white_int_glm_coefs, "child_age_centered:languageEnglish")`$) and less likely to select the white face in response to Gujarati (6\% down to 1\%; $`r reportORs(label_face_white_int_glm_coefs, "child_age_centered")`$).
+
+## Mixed Effects Multinomial Regression  
+### AUDIO  
+
+```{r fa-mblogit, warning=F}
+# dropping idks and multiple selections
+fa_for_plots <- fa %>% filter(face!="idk",
+                              num_faces==1)
+fa_for_plots$face <- factor(fa_for_plots$face, 
+                            levels=tolower(face_labels[1:5]),
+                            labels=face_labels[1:5])
+#fa_for_plots$face <- relevel(fa_for_plots$face, ref="hindu")
+fa_for_plots$var_labeled <- fa_for_plots$face
+fa_for_plots$language <- relevel_languages(fa_for_plots$language)
+
+fa_mod <- mblogit(face ~ 0 + language*child_age_centered,
+                   random=~1|id,
+                   data = fa_for_plots)
+
+fa_null_mod <- mblogit(face ~ 0 + language + child_age_centered,
+                   random=~1|id,
+                   data = fa_for_plots)
+summary(fa_mod)
+```
+
+```{r}
+anova(fa_null_mod, fa_mod, test="LRT")
+```
+
+#### Forest Plot  
+
+```{r fa-mblogit-plot}
+fap <- make_forest_plot(fa_mod)
+fa_n <- get_point_sizes(fa_for_plots, "HINDU")
+edited_fap <- edit_forest_plot_data(fap, fa_n, 
+                                    ordered_facet_levels=c("MUSLIM",
+                                        "DRAVIDIAN",
+                                        "WHITE",
+                                        "ASIAN"))
+updated_fap <- update_forest_plot(edited_fap, "Who could be speaking?")
+final_fap <- updated_fap + theme(strip.text = element_text(face="bold"),)
+
+save_forest_plot_png(final_fap, "fa_mod_with_age_interaction.png")
+
+save_forest_plot_svg(final_fap, "fa_mod_with_age_interaction.svg")
+```
+
+#### Table  
+
+```{r fa-mod-table}
+sjPlot::tab_model(
+    fa_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file = "tables/models/primary/fa_mod_tab.html")
+
+fa_tab_df <- readHTMLTable(here('3_face_selections/tables/models/primary/fa_mod_tab.html'), 
+              header=T) 
+fa_tab_df <- as.data.frame(fa_tab_df)
+names(fa_tab_df) <- fa_tab_df[1,]
+fa_tab_df <- fa_tab_df[-1,]
+fa_tab_df$Predictors <- gsub("language", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("child_", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("_centered", "", fa_tab_df$Predictors)
+
+asian <- fa_tab_df[,2:4]
+
+dravidian <- fa_tab_df[,5:7]
+
+muslim <- fa_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fa_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fa_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fa_mod_tab, type="latex", file="tables/fa_multinomial_tab_2row.tex")
+```
+
+### Familiarity  
+
+```{r fa-id-mblogit, warning=F}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+
+fai <- merge(fa_for_plots, i, by=c("language", "id")) %>%
+  filter(language!="Hindi",
+         language!="Gujarati",
+         language!="English (India)",
+         language!= "English (U.S.)")
+
+fai_mod <- mblogit(face ~ 0 + language*familiar + child_age_centered, 
+                   random=~1|id,
+                   data = fai)
+
+fai_mod_null <- mblogit(face ~ 0 + language + familiar + child_age_centered, random=~1|id,
+                   data = fai)
+
+anova(fai_mod, fai_mod_null, test="Chisq")
+summary(fai_mod)
+```
+
+#### Table 
+```{r fa-id-mod-table}
+sjPlot::tab_model(
+    fai_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, file = "tables/models/familiarity/fa_id_mod_tab.html")
+
+fa_tab_df <- readHTMLTable(here('3_face_selections/tables/models/familiarity/fa_id_mod_tab.html'), 
+              header=T) 
+fa_tab_df <- as.data.frame(fa_tab_df)
+names(fa_tab_df) <- fa_tab_df[1,]
+fa_tab_df <- fa_tab_df[-1,]
+fa_tab_df$Predictors <- gsub("language", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("child_", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("_centered", "", fa_tab_df$Predictors)
+
+asian <- fa_tab_df[,2:4]
+
+dravidian <- fa_tab_df[,5:7]
+
+muslim <- fa_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fa_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fa_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fa_mod_tab, type="latex", file="tables/models/familiarity/fa_id_multinomial_tab_2row.tex")
+```
+
+```{r}
+fai %>%
+  group_by(language, familiar) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            muslim=na.mean(muslim_face),
+            dravidian=na.mean(dravidian_face),
+            asian=na.mean(asian_face)
+            )
+
+fai %>%
+  group_by(language, familiar) %>%
+  summarize(white=na.mean(white_face),
+            hindu=na.mean(hindu_face),
+            muslim=na.mean(muslim_face),
+            dravidian=na.mean(dravidian_face),
+            asian=na.mean(asian_face),
+            n=n(),
+            asian_n = sum(asian_face==1)
+            )
+
+i %>%
+  filter(!is.na(language)) %>%
+  distinct(id, language, .keep_all = T) %>%
+  group_by(language, id_correct) %>%
+  summarize(n=n())
+
+#id <- d %>% filter(question_type=="id")
+
+#id %>%
+#  group_by(language) %>%
+#  group_by(language, correct) %>%
+#  summarize(n=n())
+```
+
+### Gender
+
+```{r fa-gender-mblogit, warning=F}
+fa_for_plots$speaker_FEMALE <- plyr::mapvalues(fa_for_plots$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+fa_for_plots$speaker_FEMALE <- as.numeric(
+  as.character(
+    fa_for_plots$speaker_FEMALE))
+
+fa_gender_mod <- mblogit(face ~ 0 + language*speaker_FEMALE + 
+                           child_age_centered, random=~1|id,
+                   data = fa_for_plots)
+
+fa_gender_mod_null <- mblogit(face ~ 0 + language + speaker_FEMALE + 
+                           child_age_centered, random=~1|id,
+                   data = fa_for_plots)
+
+anova(fa_gender_mod, fa_gender_mod_null, test="Chisq")
+```
+
+```{r fa-gender-mod-table}
+sjPlot::tab_model(
+    fa_gender_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, 
+    file = "tables/models/gender/fa_gender_mod_tab.html")
+
+fa_tab_df <- readHTMLTable(here('3_face_selections/tables/models/gender/fa_gender_mod_tab.html'), 
+              header=T) 
+fa_tab_df <- as.data.frame(fa_tab_df)
+names(fa_tab_df) <- fa_tab_df[1,]
+fa_tab_df <- fa_tab_df[-1,]
+fa_tab_df$Predictors <- gsub("language", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("child_", "", fa_tab_df$Predictors)
+fa_tab_df$Predictors <- gsub("_centered", "", fa_tab_df$Predictors)
+
+asian <- fa_tab_df[,2:4]
+
+dravidian <- fa_tab_df[,5:7]
+
+muslim <- fa_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fa_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fa_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fa_mod_tab, type="latex", file="tables/models/gender/fa_gender_mod_tab_2row.tex")
+```
+
+### Combining Plots  
+
+```{r fa-combined-plots}
+fas <- ggplot(audio_face_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +    
+  sans_axes_theme_bigger +
+    theme(legend.position = "bottom",
+          legend.key=element_rect(color=NA),
+          legend.margin = margin(-5,0,0,0)) +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+  
+
+final_fap <- updated_fap + theme(strip.text = element_text(face="bold"))
+
+fac <- ggarrange(fas, final_fap, labels="AUTO", 
+                    ncol=2, widths=c(3, 3))
+
+save_combined_plot_svg(fac, "combined_faces_audio.svg") 
+
+ggsave(fac, filename="combined_faces_audio.png", path="plots/combined", 
+       device="png", width=7, height=3, scale=2, units="in")
+```
+
+## LABEL  
+
+```{r fl-mblogit, warning=F}
+# dropping idks and multiple selections
+fl_for_plots <- fl %>% filter(face!="idk",
+                              num_faces==1)
+fl_for_plots$face <- relevel(fl_for_plots$face, ref="hindu")
+fl_for_plots$var_labeled <- plyr::mapvalues(fl_for_plots$face,
+                                             from=tolower(face_labels[1:5]),
+                                             to=face_labels[1:5])
+fl_for_plots$var_labeled <- factor(fl_for_plots$var_labeled,
+                                   levels=face_labels[1:5])
+#fl_for_plots$language <- relevel(fl_for_plots$language, ref="Gujarati")
+fl_for_plots$language <- factor(fl_for_plots$language, 
+                                levels=c("Gujarati",
+                                         "Hindi",
+                                         "Urdu",
+                                         "Marathi",
+                                         "Tamil",
+                                         "English",
+                                         "Mandarin"))
+
+fl_mod <- mblogit(var_labeled ~ 0 + language*child_age_centered,
+                   random=~1|id,
+                   data = fl_for_plots)
+
+fl_noint_mod <- mblogit(var_labeled ~ 0 + language + child_age_centered,
+                   random=~1|id,
+                   data = fl_for_plots)
+
+anova(fl_noint_mod, fl_mod, test="LRT")
+summary(fl_mod)
+```
+
+#### Forest Plot  
+
+```{r fl-mblogit-plot}
+flp <- make_forest_plot(fl_mod)
+fl_n <- get_point_sizes(fl_for_plots, "HINDU")
+edited_flp <- edit_forest_plot_data(flp, fl_n, 
+                                    ordered_facet_levels=c("MUSLIM",
+                                        "DRAVIDIAN",
+                                        "WHITE",
+                                        "ASIAN"),
+                                    terms=c("Gujarati", "Hindi", "Urdu",
+                                            "Marathi", "Tamil", "English",
+                                            "Mandarin"))
+edited_flp$data$term <- paste('"', edited_flp$data$term, '"', sep="")
+updated_flp <- update_forest_plot(edited_flp, "Who speaks [Language]?")
+final_flp <- updated_flp + theme(strip.text = element_text(face="bold"),
+                                 axis.text.y = element_text(face="bold.italic")) +
+  xlab("Language (name)")
+
+save_forest_plot_png(final_flp, "fl_mod_with_age_interaction.png")
+
+save_forest_plot_svg(final_flp, "fl_mod_with_age_interaction.svg")
+```
+
+#### Table  
+```{r flmod-table}
+sjPlot::tab_model(
+    fl_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, file = "tables/models/primary/fl_mod_tab.html")
+
+fl_tab_df <- readHTMLTable(here('3_face_selections/tables/models/primary/fl_mod_tab.html'), 
+              header=T) 
+fl_tab_df <- as.data.frame(fl_tab_df)
+names(fl_tab_df) <- fl_tab_df[1,]
+fl_tab_df <- fl_tab_df[-1,]
+fl_tab_df$Predictors <- gsub("language", "", fl_tab_df$Predictors)
+fl_tab_df$Predictors <- gsub("child_", "", fl_tab_df$Predictors)
+fl_tab_df$Predictors <- gsub("_centered", "", fl_tab_df$Predictors)
+
+asian <- fl_tab_df[,2:4]
+
+dravidian <- fl_tab_df[,5:7]
+
+muslim <- fl_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fl_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fl_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fl_mod_tab, type="latex", 
+             file="tables/models/primary/fl_mod_tab_2row.tex")
+```
+
+### Familiarity 
+
+```{r fl-id-mblogit, warning=F}
+i <- read.csv(here('data/r_dfs/subsets/language_familiarity.csv'))
+
+fli <- merge(fl_for_plots, i, by=c("language", "id")) %>%
+  filter(language!="Hindi",
+         language!="English (India)")
+
+fli_mod <- mblogit(face ~ 0 + language*familiar + child_age_centered,
+                   random=~1|id,
+                   data = fli)
+
+fli_mod_null <- mblogit(face ~ 0 + language + familiar + child_age_centered,
+                   random=~1|id,
+                   data = fli)
+
+anova(fli_mod, fli_mod_null, test = "Chisq")
+summary(fli_mod)
+```
+
+```{r fl-id-mod-table}
+sjPlot::tab_model(
+    fli_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file = "tables/models/familiarity/fl_id_mod_tab.html")
+
+fli_tab_df <- readHTMLTable(here('3_face_selections/tables/models/familiarity/fl_id_mod_tab.html'), 
+              header=T) 
+fli_tab_df <- as.data.frame(fli_tab_df)
+names(fli_tab_df) <- fli_tab_df[1,]
+fli_tab_df <- fli_tab_df[-1,]
+fli_tab_df$Predictors <- gsub("language", "", fli_tab_df$Predictors)
+fli_tab_df$Predictors <- gsub("child_", "", fli_tab_df$Predictors)
+fli_tab_df$Predictors <- gsub("_centered", "", fli_tab_df$Predictors)
+
+asian <- fli_tab_df[,2:4]
+
+dravidian <- fli_tab_df[,5:7]
+
+muslim <- fli_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fli_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fli_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fli_mod_tab, type="latex", file="tables/models/familiarity/fl_id_mod_tab_2row.tex")
+```
+
+### Gender
+
+```{r fl-gender-mblogit, warning=F}
+fl_for_plots$speaker_FEMALE <- plyr::mapvalues(fl_for_plots$speaker_gender,
+                                                    from=c("male", "female"),
+                                                    to=c(0, 1))
+fl_for_plots$speaker_FEMALE <- as.numeric(
+  as.character(
+    fl_for_plots$speaker_FEMALE))
+
+fl_gender_mod <- mblogit(face ~ 0 + language*speaker_FEMALE + 
+                           child_age_centered, random=~1|id,
+                   data = fl_for_plots)
+
+fl_gender_mod_null <- mblogit(face ~ 0 + language + speaker_FEMALE + 
+                           child_age_centered, random=~1|id,
+                   data = fl_for_plots)
+
+anova(fl_gender_mod, fl_gender_mod_null, test="Chisq")
+```
+
+```{r fl-gender-mod-table}
+sjPlot::tab_model(
+    fl_gender_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE, 
+    file = "tables/models/gender/fl_gender_mod_tab.html")
+
+fl_tab_df <- readHTMLTable(here('3_face_selections/tables/models/gender/fl_gender_mod_tab.html'), 
+              header=T) 
+fl_tab_df <- as.data.frame(fl_tab_df)
+names(fl_tab_df) <- fl_tab_df[1,]
+fl_tab_df <- fl_tab_df[-1,]
+fl_tab_df$Predictors <- gsub("language", "", fl_tab_df$Predictors)
+fl_tab_df$Predictors <- gsub("child_", "", fl_tab_df$Predictors)
+fl_tab_df$Predictors <- gsub("_centered", "", fl_tab_df$Predictors)
+
+asian <- fl_tab_df[,2:4]
+
+dravidian <- fl_tab_df[,5:7]
+
+muslim <- fl_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- fl_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+fl_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fl_mod_tab, type="latex", file="tables/models/gender/fl_gender_mod_tab_2row.tex")
+```
+
+### Combining Plots  
+
+```{r fl-combined-plots} 
+fls <- ggplot(label_face_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=face)) +
+    geom_line(aes(lty=face)) + 
+    geom_point(aes(shape=face)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=face_colors, face_legend_title) + 
+    scale_shape_manual(values=face_shapes, face_legend_title) +
+    scale_linetype_manual(values=face_ltys,
+                          face_legend_title) +
+    ylim(0, 1) +
+    scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +    
+  sans_axes_theme_bigger +
+    theme(legend.position = "bottom",
+          legend.key=element_rect(color=NA),
+          legend.margin = margin(-5,0,0,0),
+          strip.text.x=element_text(face="bold.italic")) +
+    xlab("Grade") +
+    ylab("Mean Proportion")
+
+flc <- ggarrange(fls, final_flp, labels="AUTO", 
+                    ncol=2, widths=c(3, 3))
+
+save_combined_plot_svg(flc, "combined_faces_label.svg")
+
+ggsave(flc, filename="combined_faces_label.png", path="plots/combined", 
+       device="png", width=7, height=3, scale=2, units="in")
+```
+
+## BOTH   
+### BY MODALITY
+#### Non-English
+```{r f-presentation-mblogit, warning=F}
+f_for_plots <- f %>% filter(face!="idk",
+                            num_faces==1)
+englishes <- c("English (India)", "English (U.S.)", "English")
+
+f_for_plots$language[f_for_plots$language=="English (U.S.)" & f_for_plots$presentation=="label"] <- "English"
+#fi <- merge(f_for_plots, i, by=c("language", "id"))
+#finoeng_df <- fi %>% filter(army_navy_language!="english")
+fnoeng_df <- f_for_plots %>% filter(army_navy_language!="english")
+nrow(fnoeng_df)
+
+fnoeng_df %>%
+  filter(hindu_face==1) %>%
+  distinct(id, hindu_face) %>%
+  #summarize(n=n()) %>%
+  summarize(hindu=na.mean(hindu_face))
+
+f_present_mod <- mblogit(face ~ language*presentation,
+                   random=~1|id,
+                   data = fnoeng_df)
+
+f_present_null_mod <- mblogit(face ~ 0 + language + presentation + 
+                           child_age_centered,
+                   random=~1|id,
+                   data = fnoeng_df)
+
+summary(f_present_mod)
+
+anova(f_present_null_mod, f_present_mod, test="Chisq")
+```
+
+```{r}
+noeng_summary_tab <- f_for_plots %>%
+  filter(!language %in% englishes) %>%
+  dplyr::select(all_of(face_vars[1:5]), id, language, presentation) %>%
+  gather(face, selected, -id, -language, -presentation) %>%
+  group_by(face, language, presentation) %>%
+  reframe(mean = na.mean(selected),
+            ci.lo=mean-ci.low(selected),
+            ci.hi=mean+ci.high(selected),
+            n=n()) %>%
+  filter(!is.na(language)) 
+ # mutate(percent=round(prop*100, 0))
+
+noeng_summary_tab$language <- factor(noeng_summary_tab$language, 
+                                     levels=c("Gujarati",
+                                              "Hindi",
+                                              "Urdu",
+                                              "Marathi",
+                                              "Tamil",
+                                              "English",
+                                              "Mandarin"))
+noeng_summary_tab$face <- plyr::mapvalues(noeng_summary_tab$face, 
+                                   from=face_vars[1:5],
+                                   to=face_labels[1:5])
+noeng_summary_tab$face <- factor(noeng_summary_tab$face, levels=face_labels[1:5])
+noeng_summary_tab$presentation <- plyr::mapvalues(
+  noeng_summary_tab$presentation,
+                                   from=c("audio", "label"),
+                                   to=c("Audio", "Name"))
+noeng_summary_tab$modlang <- paste(
+  noeng_summary_tab$presentation,
+  noeng_summary_tab$language,
+  sep=":")
+noeng_summary_tab$modlang <- factor(noeng_summary_tab$modlang,
+                                    levels=paste(
+  noeng_summary_tab$presentation,
+  noeng_summary_tab$language,
+  sep=":")[1:12])
+
+
+noeng_summary_tab$langmod <- paste(
+  paste(
+  noeng_summary_tab$language,
+  toupper(noeng_summary_tab$presentation),
+  sep=" ["), "]", sep=""
+)
+
+langmod_levels <- paste(
+  paste(
+  noeng_summary_tab$language,
+  toupper(noeng_summary_tab$presentation),
+  sep=" ["), "]", sep=""
+)
+
+noeng_summary_tab$langmod <- factor(noeng_summary_tab$langmod,
+                                    levels=langmod_levels[1:12])
+
+
+ggplot(noeng_summary_tab, aes(x=langmod, y=mean, 
+                      fill=langmod, color=langmod)) +
+  geom_bar(stat="identity", position=position_dodge(width=0.9), 
+           linewidth=1.1) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0,
+                linewidth=1.1) + 
+  ylab("Mean Proportion") + 
+  sans_theme +
+  theme(legend.title = element_text(face="bold"),
+        legend.key = element_rect(color=NA),
+        legend.background = element_rect(fill=NA),
+        legend.spacing = unit(.5, "cm")) +
+  facet_wrap(~face, nrow=2) +
+  ylim(0,1) +
+  scale_fill_manual(values=c("white", "#ff7f00",  
+                             "white","#6a3d9a", 
+                             "white","#cab2d6", 
+                             "white","#fdbf6f",
+                             "white","#e31a1c", 
+                             "white","#b2df8a", 
+                             "white","#f781bf"), name="Modality:Language") +
+  scale_color_manual(values=c("#ff7f00", "#ff7f00",  
+                             "#6a3d9a", "#6a3d9a", 
+                             "#cab2d6", "#cab2d6", 
+                             "#fdbf6f", "#fdbf6f",
+                             "#e31a1c", "#e31a1c",
+                             "#b2df8a",  "#b2df8a",
+                             "#f781bf"), name="Modality:Language") 
+
+#ggsave("plots/barplots_overall/nonenglishes_barplot.pdf", device="pdf", 
+#       width=7, height=4, scale=1.25, units="in")
+```
+
+```{r tiny-barplot}
+ne <- ggplot(noeng_summary_tab, aes(x=langmod, y=mean, 
+                      fill=langmod, color=langmod)) +
+  geom_bar(stat="identity", position="dodge", width=0.75) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0) + 
+  ylab("Mean Proportion") + 
+  sans_theme +
+  theme(legend.title = element_blank(),
+        legend.key = element_rect(color=NA),
+        legend.background = element_rect(fill=NA),
+        legend.spacing = unit(.5, "cm"),
+        strip.text=element_text(size=12),
+        legend.position = "bottom",
+        legend.text=element_text(size=8),
+        legend.margin = margin(0,0,0,-20)) +
+  facet_wrap(~face, nrow=2) +
+  ylim(0,1) +
+  scale_fill_manual(values=c("white", "#ff7f00",  
+                             "white","#6a3d9a", 
+                             "white","#cab2d6", 
+                             "white","#fdbf6f",
+                             "white","#e31a1c", 
+                             "white","#b2df8a", 
+                             "white","#f781bf")) + #, name="Language\n[MODALITY]") +
+  scale_color_manual(values=c("#ff7f00", "#ff7f00",  
+                             "#6a3d9a", "#6a3d9a", 
+                             "#cab2d6", "#cab2d6", 
+                             "#fdbf6f", "#fdbf6f",
+                             "#e31a1c", "#e31a1c",
+                             "#b2df8a",  "#b2df8a",
+                             "#f781bf")) + #, name="Language\n[MODALITY]") + 
+    guides(colour = guide_legend(nrow = 4),
+           fill=guide_legend(nrow=4))
+
+ggsave("plots/barplots_overall/nonenglishes_barplot_small.png", device="png", 
+       width=3.25, height=3, scale=1.5, units="in")
+#ggsave("plots/nonenglishes_barplot.pdf", device="pdf", width=7, height=4, scale=1.25, units="in")
+```
+
+#### Englishes 
+
+```{r}
+eng_summary_tab <- f_for_plots %>%
+  dplyr::select(all_of(face_vars[1:5]), id, language, presentation) %>%
+  filter(language %in% englishes) %>% 
+  gather(face, selected, -id, -language, -presentation) %>%
+  group_by(face, language, presentation) %>%
+  reframe(mean = na.mean(selected),
+            ci.lo=mean-ci.low(selected),
+            ci.hi=mean+ci.high(selected),
+            n=n())
+
+eng_summary_tab$language <- factor(eng_summary_tab$language, levels=englishes)
+eng_summary_tab$langmod <- plyr::mapvalues(eng_summary_tab$language, 
+                                   from=englishes,
+                                   to=c("Audio: Indian English",
+                                        "Audio: U.S. English",
+                                        'Name: "English"'))
+eng_summary_tab$face <- plyr::mapvalues(eng_summary_tab$face, 
+                                   from=face_vars[1:5],
+                                   to=face_labels[1:5])
+eng_summary_tab$face <- factor(eng_summary_tab$face, levels=face_labels[1:5])
+
+ggplot(eng_summary_tab, 
+       aes(x=langmod, y=mean, color=langmod, fill=langmod)) +
+  geom_bar(stat="identity", position=position_dodge(width=0.9), 
+           linewidth=1.15) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0,
+                linewidth=1.15) + 
+  ylab("Mean Proportion") + 
+  facet_wrap(~face, nrow=1) +
+  ylim(0,1) +
+  scale_fill_manual(values=c("white", "white", "#33a02c"),
+                    name="Modality:Language") +
+  scale_color_manual(values=c("#b2df8a","#33a02c", "#33a02c"),
+                    name="Modality:Language") +
+  sans_theme +
+  theme(legend.title = element_text(face="bold"),
+        legend.key = element_rect(color=NA),
+        legend.background = element_rect(fill=NA),
+        legend.position = "bottom")
+
+ggsave("plots/barplots_overall/englishes_barplot.png", device="png", width=7, height=1.5, scale=1.5, units="in")
+ggsave("plots/barplots_overall/englishes_barplot.pdf", device="pdf", width=7, height=2, scale=1.5, units="in")
+```
+
+```{r tiny-englishes}
+eng_summary_tab$modlang <- plyr::mapvalues(eng_summary_tab$langmod, 
+                                   from=c("Audio: Indian English",
+                                        "Audio: U.S. English",
+                                        'Name: "English"'),
+                                   to=c("Indian English [AUDIO]",
+                                        "U.S. English [AUDIO]",
+                                        '"English" [NAME]'))
+
+ggplot(eng_summary_tab, 
+       aes(x=modlang, y=mean, color=modlang, fill=modlang)) +
+  geom_bar(stat="identity", position="dodge", width=0.75) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=modlang), width=0) + 
+  ylab("Mean Proportion") + 
+  sans_theme +
+  theme(legend.title = element_blank(),
+        legend.key = element_rect(color=NA),
+        legend.background = element_rect(fill=NA),
+        legend.spacing = unit(.5, "cm"),
+        strip.text=element_text(size=12),
+        legend.position = "bottom",
+        legend.text=element_text(size=8),
+        legend.margin = margin(0,0,0,-20)) +
+  ylab("Mean Proportion") + 
+  facet_wrap(~face, nrow=1) +
+  ylim(0,1) +
+  scale_fill_manual(values=c("white", "white", "#33a02c"),
+                    name="Language [Modality]") +
+  scale_color_manual(values=c("#b2df8a","#33a02c", "#33a02c"),
+                    name="Language [Modality]")
+
+ggsave("plots/barplots_overall/englishes_barplot_small_1row.png", device="png", 
+       width=3.25, height=1.25, scale=1.5, units="in")
+
+e <- ggplot(eng_summary_tab, 
+       aes(x=modlang, y=mean, color=modlang, fill=modlang)) +
+  geom_bar(stat="identity", position="dodge", width=0.75) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=modlang), width=0) + 
+  ylab("Mean Proportion") + 
+  sans_theme +
+  theme(legend.title = element_blank(),
+        legend.key = element_rect(color=NA),
+        legend.background = element_rect(fill=NA),
+        legend.spacing = unit(.5, "cm"),
+        strip.text=element_text(size=12),
+        legend.position = "bottom",
+        legend.text=element_text(size=8),
+        legend.margin = margin(0,0,0,-20)) +
+  ylab("Mean Proportion") + 
+  facet_wrap(~face, nrow=2) +
+  ylim(0,1) +
+  scale_fill_manual(values=c("white", "white", "#33a02c"),
+                    name="Language [Modality]") +
+  scale_color_manual(values=c("#b2df8a","#33a02c", "#33a02c"),
+                    name="Language [Modality]") +
+  guides(colour = guide_legend(nrow = 4),
+           fill=guide_legend(nrow=4))
+
+ggsave("plots/barplots_overall/englishes_barplot_small_2rows.png", device="png", 
+       width=3.25, height=2.5, scale=1.5, units="in")
+
+ggsave(here('3_face_selections/plots/barplots_overall/combined_modality_bars.pdf'),  
+       ggarrange(
+  e, ne, #+ theme(strip.background = element_rect(fill=NA)),  
+  labels='AUTO', widths = 1, 
+  ncol = 2, nrow = 1, align = 'v'), 
+  width = 7, height=3, units ='in', scale=1.5)
+```
+
+
+```{r}
+feng_df <- f_for_plots %>% filter(language %in% englishes)
+feng_df$langmod <- plyr::mapvalues(feng_df$language, 
+                                   from=englishes,
+                                   to=c("Audio: Indian English",
+                                        "Audio: U.S. English",
+                                        'Name: "English"'))
+
+eng_ageint_mod <- mblogit(face ~ 0 + langmod*child_age_centered,
+                   data = feng_df)
+
+eng_mod <- mblogit(face ~ 0 + langmod + child_age_centered,
+                   data = feng_df)
+
+summary(eng_mod)
+
+anova(eng_ageint_mod, eng_mod, test="Chisq")
+```
+
+```{r eng-mod-table}
+sjPlot::tab_model(
+    eng_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file = "tables/models/modality/eng_multinomial_tab.html")
+
+eng_tab_df <- readHTMLTable(here('3_face_selections/tables/models/modality/eng_multinomial_tab.html'), 
+              header=T) 
+eng_tab_df <- as.data.frame(eng_tab_df)
+names(eng_tab_df) <- eng_tab_df[1,]
+eng_tab_df <- eng_tab_df[-1,]
+eng_tab_df$Predictors <- gsub("language", "", eng_tab_df$Predictors)
+eng_tab_df$Predictors <- gsub("child_", "", eng_tab_df$Predictors)
+eng_tab_df$Predictors <- gsub("_centered", "", eng_tab_df$Predictors)
+
+asian <- eng_tab_df[,2:4]
+
+dravidian <- eng_tab_df[,5:7]
+
+muslim <- eng_tab_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- eng_tab_df[,c(1, 11:13)]
+white$space <- ""
+
+eng_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(eng_mod_tab, type="latex", file="tables/models/modality/eng_multinomial_tab_2row.tex")
+```
+
+```{r modality-white-glm, include=F}
+modality_white_glm <- glm(
+  white_face ~ child_age_centered + language*presentation, 
+  family="binomial", finoeng_df)
+
+cbind(round(exp(coef(modality_white_glm)), 2),
+round(exp(confint(modality_white_glm)), 2))
+
+modality_face_white_glm_coefs <- cbind(round(exp(coef(modality_white_glm)), 2),
+round(exp(confint(modality_white_glm)), 2))
+
+Anova(modality_white_glm)
+```
+
+
+```{r}
+library(nnet)
+fa$single_face <- factor(fa$face, levels=c("hindu", "muslim", "dravidian", 
+                                            "white", "asian"))
+fa <- fa[!is.na(fa$single_face), ]
+fa <- fa[!is.na(fa$language), ]
+fa <- fa[!is.na(fa$child_age_centered), ]
+#modeling_data$activity <- relevel(modeling_data$activity,ref='SITTING')
+#model_logistic <- multinom(activity~.,data=modeling_data)
+model_logistic <- multinom(single_face~language*child_age_centered, data=fa)
+broom::tidy(model_logistic)
+test <- predict(model_logistic, data=fa %>% select(-single_face))
+real_pred <- data.frame(
+  real=fa$single_face, 
+  test=test)
+caret::confusionMatrix(real_pred$real,real_pred$test)
+
+coeff_data <- broom::tidy(summary(model_logistic)$coefficients)
+coeff_data <- (summary(model_logistic)$coefficients)
+
+coeff_data_long <- coeff_data %>%
+  gather(variable, 
+         increase_in_log_odds, 
+         3:ncol(coeff_data))
+
+coeff_data_long %>%
+  select(.rownames, variable, increase_in_log_odds) %>%
+  mutate(pos = ifelse(increase_in_log_odds>0,'Positive','Negative')) %>%
+  ggplot(aes(x=variable,y=increase_in_log_odds,fill=pos))+
+  geom_bar(stat='identity',width=0.4,position = position_dodge(width=0.5))+
+  facet_wrap(~.rownames,nrow=5)+
+  theme(axis.text.x=element_text(size=7,angle = 90),axis.text.y = element_blank(),panel.background = element_blank(),axis.ticks.y = element_blank(),
+        legend.title = element_blank())+
+  labs(x='Variable',y='Increase in Log Odds')
+
+```
+
+```{r}
+#finoeng_df$LABEL <- plyr::mapvalues(finoeng_df$presentation,
+ ##                                                   from=c("audio", "label"),
+ #                                                   to=c(0, 1))
+#finoeng_df$LABEL <- as.numeric(
+#  as.character(
+#    finoeng_df$LABEL))
+
+#finoeng_df$face <- factor(finoeng_df$face, levels=c("hindu",
+#                                                    "muslim",
+#                                                    "dravidian",
+#                                                    "white",
+#                                                    "asian"))
+
+#f_present_mod <- mblogit(face ~ 0 + language*LABEL + child_age_centered,
+#                         random=~1|id,
+#                   finoeng_df)
+
+#summary(f_present_mod)
+```
+
+```{r}
+sjPlot::tab_model(
+    f_present_mod,
+    show.r2 = TRUE,
+    show.icc = FALSE,
+    show.re.var = FALSE,
+    p.style = "numeric_stars",
+    emph.p = TRUE,
+    file = "tables/f_present_mod_tab.html")
+```
+
+```{r f-presentation-table}
+f_p_df <- readHTMLTable(here('3_face_selections/tables/f_present_mod_tab.html'), 
+              header=T) 
+f_p_df <- as.data.frame(f_p_df)
+names(f_p_df) <- f_p_df[1,]
+f_p_df <- f_p_df[-1,]
+f_p_df$Predictors <- gsub("language", "", f_p_df$Predictors)
+f_p_df$Predictors <- gsub("child_", "", f_p_df$Predictors)
+f_p_df$Predictors <- gsub("_centered", "", f_p_df$Predictors)
+
+asian <- f_p_df[,2:4]
+
+dravidian <- f_p_df[,5:7]
+
+muslim <- f_p_df[,c(1, 8:10)]
+muslim$space <- ""
+
+white <- f_p_df[,c(1, 11:13)]
+white$space <- ""
+
+fp_mod_tab <- rbind(cbind(muslim, dravidian), cbind(white, asian))
+
+print.xtable(fp_mod_tab, type="latex", file="tables/f_presentation_multinomial_tab_2row.tex")
+
+```
+
+```{r f-presentation-mblogit-plot}
+sjPlot::plot_model(f_present_mod, axis.lim=c(0.01, 100)) +
+  theme(strip.text = element_text(color="gray30", size=12, face="bold")) +
+ # theme(panel.grid.major.y=element_line(color="gray80")) +
+  geom_hline(yintercept=1, lty=2, color="gray50") +
+  scale_color_manual(values=c("#fc8d59", "#99d594")) +
+  labs(title="Face Selection (Relative to HINDU)")
+
+ggsave("f_presentation_mod_just_age.png", device = "png", 
+       path = "plots/forest_plots/",
+       scale = 1, width = 7, height = 5, units = "in")
+```
+
+```{r f-presentation-mod-table}
+sjPlot::tab_model(f_present_mod)
+```
+
+```{r f-presentation-ageint-mblogit}
+f_present_ageint_mod <- mblogit(face ~ 0 + language*presentation*child_age_centered,
+                   #random=~1|id,
+                   data = finoeng_df)
+
+summary(f_present_ageint_mod)
+
+anova(f_present_mod, f_present_ageint_mod)
+```
+
+```{r f-presentation-ageint-mblogit-plot}
+sjPlot::plot_model(f_present_ageint_mod, axis.lim=c(0.01, 100), ) +
+  #theme_blank() +
+  theme(strip.text = element_text(color="gray30", size=12, face="bold")) +
+ # theme(panel.grid.major.y=element_line(color="gray80")) +
+  geom_hline(yintercept=1, lty=2, color="gray50") +
+  scale_color_manual(values=c("#fc8d59", "#99d594")) +
+  labs(title="Face Selection")
+
+ggsave("f_presentation_mod_with_age_interaction.png", device = "png", 
+       path = "plots/forest_plots/",
+       scale = 1, width = 7, height = 6, units = "in")
+```
+
+```{r f-presentation-ageint-table}
+sjPlot::tab_model(f_present_ageint_mod)
+```
+
+```{r}
+
+```
