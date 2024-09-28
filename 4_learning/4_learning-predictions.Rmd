@@ -241,19 +241,6 @@ plot_model(learn_mod, type = "pred", terms = c("language", "face"))
 ```
 
 
-```{r}
-summary(m1.or)
-
-ratex  <- base::readRDS(url("https://slcladal.github.io/data/ratex.rda", "rb"))
-
-m1.or <- clmm(Accent ~ (1|Rater) + Family*Group, link="logit", data = ratex[complete.cases(ratex),])
-
-exp(0.43)/exp(1.60)
-exp(1.42)/exp(1.60)
-
-```
-
-
 ```{r learning-lang-face, include=F}
 learning_summary_tab <- l %>%
   group_by(language, face) %>%
@@ -285,12 +272,12 @@ ggsave("learning_faces_barplot.png", device = "png",
 ```
 
 ```{r learning-lang-face-std}
-face_legend_title1 <- "Face:"
+face_legend_title1 <- "Face"
 learning_std_summary_tab <- l %>%
   group_by(language, standard, standard_num, face) %>%
-  summarize(mean=na.mean(rating),
-            cilo = mean-ci.low(rating),
-            cihi = mean+ci.high(rating))
+  summarize(mean=na.mean(rating_num),
+            cilo = mean-ci.low(rating_num),
+            cihi = mean+ci.high(rating_num))
 
 lp <- ggplot(learning_std_summary_tab, 
        aes(x=standard_num, y=mean, color=face)) +
@@ -311,19 +298,26 @@ lp <- ggplot(learning_std_summary_tab,
   #theme(legend.position = "bottom",
   #      axis.text.y=element_text(face="italic")) +
   xlab("Grade") +
-  labs(title='How well will she come to learn...?') +
-  sans_axes_theme +
-  ylab("Mean Predicted Learning") +
+  #labs(title='How well will she come to learn...?') +
+  sans_axes_theme_bigger +
+  ylab("Predicted Learning") +
   theme(axis.text.y = element_text(
     size=10, colour="gray30", family="sans"),
-    plot.title = element_text(face="bold.italic", size=10),
-    legend.position="bottom") 
-
-lp_final <- lp + theme(plot.title=element_text(size=0),
-           legend.key = element_rect(color=NA))
+    plot.title = element_text(face="bold.italic", size=0),
+    strip.text.x = element_text(face="bold.italic"),
+    legend.position="bottom",
+    legend.key = element_rect(color=NA)) 
 
 ggsave("learning_faces_std.png", device = "png", 
-       path = "plots/final/",
+       path = "plots/by_standard/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+ggsave("learning_faces_std.pdf", device = "pdf", 
+       path = "plots/by_standard/",
+       scale = 1, width = 7, height = 5, units = "in")
+
+ggsave("learning_faces_std.svg", 
+       path = "plots/by_standard/",
        scale = 1, width = 7, height = 5, units = "in")
 ```
 
@@ -489,7 +483,7 @@ ggplot(ld,
   coord_flip() 
 
 ggsave("learning_diverging_barplot.png", device = "png", 
-       path = "plots/final/",
+       path = "plots/barplots_overall/",
        scale = 1, width = 7, height = 5, units = "in")
 ```
 
@@ -592,14 +586,14 @@ ggsave(file="learning_age_lms.svg",
 ```
 
 ```{r}
-cl <- ggarrange(la + theme(legend.position = "none",
+cl <- ggarrange(lp + theme(legend.position = "none",
                            axis.title.y=element_text(margin=margin(0,-10,0,0))), 
                 ldc + theme(legend.position = "none",
                             axis.title.y=element_text(margin=margin(0,-5,0,0))), 
                 labels='AUTO', widths = c(3, 4), 
             ncol = 2, nrow = 1, align = 'v')
 
-ggsave("combined_learning_labeled.svg", cl, path="plots/combined/",
+ggsave("combined_learning_labeled2.svg", cl, path="plots/combined/",
        width = 190, scale=2, units ='mm')
 ```
 

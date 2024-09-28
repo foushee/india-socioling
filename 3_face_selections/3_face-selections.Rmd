@@ -1006,7 +1006,7 @@ ggsave(fac, filename="combined_faces_audio.png", path="plots/combined",
 # dropping idks and multiple selections
 fl_for_plots <- fl %>% filter(face!="idk",
                               num_faces==1)
-fl_for_plots$face <- relevel(fl_for_plots$face, ref="hindu")
+#fl_for_plots$face <- relevel(fl_for_plots$face, ref="hindu")
 fl_for_plots$var_labeled <- plyr::mapvalues(fl_for_plots$face,
                                              from=tolower(face_labels[1:5]),
                                              to=face_labels[1:5])
@@ -1217,12 +1217,12 @@ fls <- ggplot(label_face_std_summary_tab,
     scale_linetype_manual(values=face_ltys,
                           face_legend_title) +
     ylim(0, 1) +
-    scale_x_continuous(breaks=c(3, 5, 7), 
+    scale_x_continuous(breaks=c(1, 2, 3), 
                        label=std_axis_labels) +    
   sans_axes_theme_bigger +
-    theme(legend.position = "bottom",
-          legend.key=element_rect(color=NA),
-          legend.margin = margin(-5,0,0,0),
+    theme(legend.position = "none",
+          #legend.key=element_rect(color=NA),
+          #legend.margin = margin(-5,0,0,0),
           strip.text.x=element_text(face="bold.italic")) +
     xlab("Grade") +
     ylab("Mean Proportion")
@@ -1232,7 +1232,7 @@ flc <- ggarrange(fls, final_flp, labels="AUTO",
 
 save_combined_plot_svg(flc, "combined_faces_label.svg")
 
-ggsave(flc, filename="combined_faces_label.png", path="plots/combined", 
+ggsave(flc, filename="combined_faces_label.png", path="plots/combined/", 
        device="png", width=7, height=3, scale=2, units="in")
 ```
 
@@ -1328,18 +1328,64 @@ noeng_summary_tab$langmod <- factor(noeng_summary_tab$langmod,
                                     levels=langmod_levels[1:12])
 
 
-ggplot(noeng_summary_tab, aes(x=langmod, y=mean, 
-                      fill=langmod, color=langmod)) +
-  geom_bar(stat="identity", position=position_dodge(width=0.9), 
-           linewidth=1.1) +
-  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0,
-                linewidth=1.1) + 
+noeng_summary_tab$langmod_labels <- NA
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Gujarati [AUDIO]",]$langmod_labels <-  "Gujarati (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Gujarati [NAME]",]$langmod_labels <-  '"Gujarati" (name)'
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Hindi [AUDIO]",]$langmod_labels <-  "Hindi (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Hindi [NAME]",]$langmod_labels <-  '"Hindi" (name)'
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Mandarin [AUDIO]",]$langmod_labels <-  "Mandarin (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Mandarin [NAME]",]$langmod_labels <-  '"Chinese" (name)'
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Marathi [AUDIO]",]$langmod_labels <-  "Marathi (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Marathi [NAME]",]$langmod_labels <-  '"Marathi" (name)'
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Tamil [AUDIO]",]$langmod_labels <-  "Tamil (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Tamil [NAME]",]$langmod_labels <-  '"Tamil" (name)'
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Urdu [AUDIO]",]$langmod_labels <-  "Urdu (audio)"
+noeng_summary_tab[
+  noeng_summary_tab$langmod=="Urdu [NAME]",]$langmod_labels <-  '"Urdu" (name)'
+
+noeng_summary_tab$langmod_labels <- factor(noeng_summary_tab$langmod_labels, 
+                                    levels= c("Gujarati (audio)",
+                                      '"Gujarati" (name)',
+                                      "Hindi (audio)",
+                                      '"Hindi" (name)',
+                                      "Urdu (audio)",
+                                      '"Urdu" (name)',
+                                      "Marathi (audio)", 
+                                      '"Marathi" (name)',
+                                      "Tamil (audio)",
+                                      '"Tamil" (name)',
+                                      "Mandarin (audio)",
+                                      '"Chinese" (name)'))
+
+ggplot(noeng_summary_tab, aes(x=langmod_labels, y=mean, 
+                      fill=langmod_labels, color=langmod_labels)) +
+  geom_bar(stat="identity", position=position_dodge(width=0.9)) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod_labels), width=0) + 
   ylab("Mean Proportion") + 
   sans_theme +
-  theme(legend.title = element_text(face="bold"),
+  theme(axis.title.y = element_text(size=11, colour=line_color, 
+                              family="sans", face="bold"),
+        axis.text.y = element_text(size=10, colour=line_color, family="sans"),
+        strip.background = element_rect(
+    color=line_color, fill=NA, linewidth = .75),
         legend.key = element_rect(color=NA),
         legend.background = element_rect(fill=NA),
-        legend.spacing = unit(.5, "cm")) +
+        legend.position = "right",
+       legend.title = element_text(size=12, colour=line_color, family="sans", face="bold"),
+       legend.text  = element_text(size=12, colour=line_color, family="sans"),
+        strip.text.x=element_text(size=12, colour=line_color, family="sans", face="bold"),
+        legend.spacing = unit(0.5, "cm")) +
   facet_wrap(~face, nrow=2) +
   ylim(0,1) +
   scale_fill_manual(values=c("white", "#ff7f00",  
@@ -1348,17 +1394,21 @@ ggplot(noeng_summary_tab, aes(x=langmod, y=mean,
                              "white","#fdbf6f",
                              "white","#e31a1c", 
                              "white","#b2df8a", 
-                             "white","#f781bf"), name="Modality:Language") +
+                             "white","#f781bf"), 
+                   # name="Stimulus") +
+                    name="Language (modality)") +
+                   # name="Modality:Language") +
   scale_color_manual(values=c("#ff7f00", "#ff7f00",  
                              "#6a3d9a", "#6a3d9a", 
                              "#cab2d6", "#cab2d6", 
                              "#fdbf6f", "#fdbf6f",
                              "#e31a1c", "#e31a1c",
                              "#b2df8a",  "#b2df8a",
-                             "#f781bf"), name="Modality:Language") 
+                             "#f781bf"), #name="Stimulus")
+                     name="Language (modality)")
 
-#ggsave("plots/barplots_overall/nonenglishes_barplot.pdf", device="pdf", 
-#       width=7, height=4, scale=1.25, units="in")
+ggsave("plots/barplots_overall/nonenglishes_barplot.pdf", device="pdf", 
+      width=7, height=4, scale=1.25, units="in")
 ```
 
 ```{r tiny-barplot}
@@ -1416,9 +1466,9 @@ eng_summary_tab <- f_for_plots %>%
 eng_summary_tab$language <- factor(eng_summary_tab$language, levels=englishes)
 eng_summary_tab$langmod <- plyr::mapvalues(eng_summary_tab$language, 
                                    from=englishes,
-                                   to=c("Audio: Indian English",
-                                        "Audio: U.S. English",
-                                        'Name: "English"'))
+                                   to=c("Indian English (audio)",
+                                        "U.S. English (audio)",
+                                        '"English" (name)'))
 eng_summary_tab$face <- plyr::mapvalues(eng_summary_tab$face, 
                                    from=face_vars[1:5],
                                    to=face_labels[1:5])
@@ -1426,25 +1476,30 @@ eng_summary_tab$face <- factor(eng_summary_tab$face, levels=face_labels[1:5])
 
 ggplot(eng_summary_tab, 
        aes(x=langmod, y=mean, color=langmod, fill=langmod)) +
-  geom_bar(stat="identity", position=position_dodge(width=0.9), 
-           linewidth=1.15) +
-  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0,
-                linewidth=1.15) + 
+  geom_bar(stat="identity", position=position_dodge(width=0.9)) +
+  geom_errorbar(aes(ymin=ci.lo, ymax=ci.hi, color=langmod), width=0) + 
   ylab("Mean Proportion") + 
-  facet_wrap(~face, nrow=1) +
+  facet_wrap(~face, nrow=2) +
   ylim(0,1) +
   scale_fill_manual(values=c("white", "white", "#33a02c"),
-                    name="Modality:Language") +
+                    name="Language (modality)") +
   scale_color_manual(values=c("#b2df8a","#33a02c", "#33a02c"),
-                    name="Modality:Language") +
+                    name="Language (modality)") +
   sans_theme +
-  theme(legend.title = element_text(face="bold"),
+  theme(axis.title.y = element_text(size=11, colour=line_color, 
+                              family="sans", face="bold"),
+        axis.text.y = element_text(size=10, colour=line_color, family="sans"),
+        strip.background = element_rect(
+    color=line_color, fill=NA, linewidth = .75),
         legend.key = element_rect(color=NA),
         legend.background = element_rect(fill=NA),
-        legend.position = "bottom")
+        legend.position = "right",
+       legend.title = element_text(size=12, colour=line_color, family="sans", face="bold"),
+       legend.text  = element_text(size=12, colour=line_color, family="sans"),
+        strip.text.x=element_text(size=12, colour=line_color, family="sans", face="bold"))
 
-ggsave("plots/barplots_overall/englishes_barplot.png", device="png", width=7, height=1.5, scale=1.5, units="in")
-ggsave("plots/barplots_overall/englishes_barplot.pdf", device="pdf", width=7, height=2, scale=1.5, units="in")
+#ggsave("plots/barplots_overall/englishes_barplot.png", device="png", width=7, height=1.5, scale=1.5, units="in")
+ggsave("plots/barplots_overall/englishes_barplot.pdf", device="pdf", width=7, height=4, scale=1.25, units="in")
 ```
 
 ```{r tiny-englishes}

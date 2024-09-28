@@ -512,12 +512,18 @@ wb <- coded_wealth_df %>%
             cihi = mean + ci.high(coded_wealth)) %>%
 ggplot(., 
        aes(x=language, y=mean)) +
-    geom_bar(stat="identity", aes(fill=language), alpha=0.9) +
-    geom_hline(yintercept=0, lty=2, colour=line_color) +
-    scale_fill_manual(values=language_colors, name="Language") +
-    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0, color=line_color) +
-    scale_color_manual(values=language_colors, name="Language (audio)") +
-    ylim(-0.4, 0.6) +
+    geom_bar(stat="identity", 
+             aes(fill=language), alpha=0.9) +
+    geom_hline(yintercept=0, lty=2, 
+               colour=line_color) +
+    scale_fill_manual(values=language_colors, 
+                      name="Language") +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), 
+                  width=0, color=line_color) +
+    scale_color_manual(values=language_colors, 
+                       name="Language (audio)") +
+    #ylim(-0.2, 0.6) +
+    ylim(-0.4, 0.8) +
     #labs(title='Relative Wealth Associations by Language\n(0="As much money as the people in my city"') +
     ylab("Comparative Wealth") + 
     xlab("Language (audio)") +
@@ -530,11 +536,51 @@ ggsave("wealth_recoded_meaned_barplot.pdf", device = "pdf",
        scale = 1, width = 7, height = 6, units = "in")
 ```
 
+### By Standard
+
+```{r recoded-wealth-std}
+coded_wealth_df$language <- relevel_languages(coded_wealth_df$language)
+
+coded_wealth_std_summary_tab <- coded_wealth_df %>%
+  ungroup(.) %>%
+  dplyr::select("language", "standard", "standard_num", "coded_wealth") %>%
+    group_by(language, standard, standard_num) %>%
+    summarize(mean=na.mean(coded_wealth),
+              cilo = mean-ci.low(coded_wealth),
+              cihi = mean+ci.high(coded_wealth)) 
+wsl <- ggplot(coded_wealth_std_summary_tab, 
+       aes(x=standard_num, y=mean, color=language)) +
+    geom_hline(yintercept = 0, color="gray30", lty=2) +
+    #geom_line(aes(lty=language)) + 
+    geom_line() +
+    geom_point(aes(shape=language)) +
+    geom_errorbar(aes(ymin=cilo, ymax=cihi), width=0) +
+    facet_wrap(~language, ncol=4) +
+    scale_color_manual(values=language_colors, wealth_legend_title) + 
+    scale_shape_manual(values=language_shapes, wealth_legend_title) +
+    #scale_linetype_manual(values=language_ltys,
+    #                      wealth_legend_title) +
+    #ylim(-1, 1) +
+    ylim(-0.4, 0.8) +
+   # scale_x_continuous(breaks=c(1, 2, 3), 
+    #                   label=std_axis_labels) +
+   scale_x_continuous(breaks=c(3, 5, 7), 
+                       label=std_axis_labels) +
+   # labs(title="Wealth Associations Across Standards 3-7") +
+    sans_axes_theme_bigger +
+    theme(legend.position = "none") +
+   # theme(legend.position = "bottom") +
+    xlab("Grade") +
+    ylab("Comparative Wealth")
+
+ggsave("wealth_recoded_std.png", device = "png", 
+       path = "plots/by_standard/",
+       scale = 1.5, width = 6, height = 4, units = "in")
+```
+
 ### With Age  
 
 ```{r recoded-wealth-age}
-coded_wealth_df$language <- relevel_languages(coded_wealth_df$language)
-
 wal <- ggplot(coded_wealth_df, 
        aes(x=child_age, y=coded_wealth)) +
     geom_segment(aes(y=0, yend=0, x=7.2, xend=13), lty=2, 
@@ -565,7 +611,13 @@ ggsave("wealth_recoded_age_lm_6in.pdf", device = "pdf",
 ```
 
 ```{r recoded-combined-plots}
-wc <- ggarrange(wal, wb + ylim(-0.5, 1), 
+wc <- ggarrange(wsl, wb + ylim(-0.5, 1), 
+          labels='AUTO', widths = c(4, 3), 
+          ncol = 2, nrow = 1, align = 'v')
+
+save_combined_plot_svg(wc, "combined_wealth_labeled.svg")
+
+wc <- ggarrange(wsl, wb, 
           labels='AUTO', widths = c(4, 3), 
           ncol = 2, nrow = 1, align = 'v')
 
