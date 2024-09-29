@@ -1,0 +1,224 @@
+\documentclass[11pt, floatsintext]{article}
+\usepackage[vmargin=0.75in, 0.75in]{geometry}
+\usepackage{lipsum}
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{paralist}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{xcolor,colortbl}
+\usepackage{threeparttable}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{caption}
+\captionsetup[table]{
+  labelsep=newline,
+  justification=justified,
+  singlelinecheck=false,
+  textfont=it,
+}
+\captionsetup[figure]{
+  justification=justified,
+  singlelinecheck=false,
+  textfont=up,
+}
+\definecolor{lavender}{rgb}{0.788, 0.627, 0.863}
+\definecolor{lightgreen}{rgb}{0.698, 0.8745, 0.5412}
+\definecolor{lightergreen}{cmyk}{.20, 0, .38, 0} %0.13
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{30}{1em}}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\addbibresource{bibliography.bib}
+\usepackage{fancyhdr}
+\pagenumbering{roman}
+%\fancyhead{SI: Sociolinguistic development in a diverse, multilinguistic environment}
+\begin{document}
+\thispagestyle{empty}
+%\newgeometry{vmargin=1.25in, 1.25in}
+
+\begin{center}
+{\hfill}\\
+\vspace{20pt}
+    \textbf{\large Supplemental Information for:\\ \textit{Sociolinguistic development in a diverse, multilinguistic environment: Evidence from multilingual children in Gujarat, India}}
+\end{center}
+\vspace{20pt}
+
+%plotted using ggplot
+\section*{Participants}
+%Our study involved children who tended to be older (7.7--13 years). Given: 
+%\begin{inparaenum}[(a)]
+    %\item{our participants' more advanced cognitive and linguistic skills,}
+    %\item{their enhanced familiarity with thinking about languages, and}
+    %\item{our task structure, which enabled children without a strong opinion to opt out of responding, rather than add noise to the data---we hypothesized that we would see even clearer distinctions between languages and better overall understanding in our sample. }
+%\end{inparaenum}
+\input{tables/child-languages}
+\pagebreak
+\subsection*{Sample Size Justification}
+To determine our sample sizes and anticipate potential effects, we referenced findings from Wagner et al. (\citeyear{wagner2014children}), which examined 4--8-year-old children's ability to categorize different English dialects and to associate them with local vs. non-local cultural artifacts, and from 
+Weatherhead et al. (\cite{weatherhead2018accent}), which focused on 4--6-year-old children's geographic inferences based on a speaker's accent, language, and race. 
+These studies are similar to (the \textit{Speaker Associations} block of) the current study in that children selected from a constrained set of categorical responses to reflect their inferences about speakers who they heard producing different linguistic variants. 
+%Also like our study, each child responded to multiple stimuli from each language variant. 
+They differ from ours in that there were always only two responses to obligatorily choose between---one of which was correct, and without the opportunity to opt out---and in that conditions were between-subjects; that is, individual children only responded to a single question for each variant (e.g., ``Was this person born in Canada or born far away?'' for all languages or dialects), or only heard stimuli from a single dialectal contrast (e.g., a child would hear only British and Indian accents, or else only British and American accents, but never all three). 
+
+These studies showed significant differences in children's rates of selecting one option over another in response to different language variants by age 6, in designs with 24--48 children per age group, and 12--24 children per condition. 
+They also showed relative consistency \textit{within} children in terms of their responses across multiple trials for the same variant, by roughly the same age. Effect sizes for the effect of dialect on children's associations with cultural items were $\eta^{2}=0.37-0.41$ in Wagner et al. (\citeyear{wagner2014children}), and odds ratios for the effect of language on children's binary responses were between 3.06 and 9.10. 
+Thus, we expected medium effect sizes for the effect of language on children's categorical responses. 
+
+We extrapolated target sample sizes informed by these prior results along with %from these prior results, keeping in mind 
+three factors that we hypothesized would make effects in our study even more robust. 
+First, children in our study tended to be older (7.7--13 years) than previous samples, suggesting more advanced cognitive and linguistic skills. 
+Second, children in our study spoke, studied, and heard multiple languages in their day-to-day lives, which might mean enhanced familiarity with thinking about languages. 
+Third, children in our study could opt out of responding when they did not have a strong opinion for a given question, rather than add noise to the data. 
+In light of these factors, we aimed for at least 24 children per age group. 
+For the older two age groups (5th- and 7th-graders), we were able to collect data from sample sizes at the higher end of the range established by previous studies (\textit{n}s=48 and 55, respectively). 
+Running the study with the 3rd-graders took significantly longer, resulting in a smaller sample size for that age group ($n=27$). 
+%\pagebreak
+%\section*{Speaker Association Means}
+% MEANS
+\input{tables/means/geographic-means-std}
+\input{tables/means/religion-means-std}
+\input{tables/means/wealth-means-std}
+\input{tables/means/faces-audio-means-std}
+%\section*{Stereotypical Speaker Selection Means}
+\input{tables/means/faces-label-means-std}
+\input{tables/means/faces-learning-means-std}
+
+%% MULTINOMIAL MODELS
+% GEOGRAPHIC ORIGIN Primary model
+\input{tables/multinomial_tables/primary/geo_multinomial_tab}
+\input{tables/multinomial_tables/primary/rel_multinomial_tab_2row}
+\input{tables/multinomial_tables/primary/rel_chirel_multinomial_tab}
+\input{tables/multinomial_tables/primary/fa_multinomial_tab_2row}
+\input{tables/multinomial_tables/primary/fl_multinomial_tab_2row}
+
+% PRESENTATION MODALITY
+%%% No English
+\input{tables/multinomial_tables/modality/f_presentation_multinomial_tab_2row}
+%%%% Audio vs. Language Name - All other langs
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/plots/nonenglishes_barplot.pdf}
+    \caption{\textit{Proportion of Children Selecting Each Face Type by Language and Modality.} 
+    Paired bars color-coded by language reflect the mean proportion of children selecting each face type (panels), when it was presented auditorily (unfilled bars), and when it was presented by name (filled bars). 
+    Error bars show 95\% bootstrapped confidence intervals.}
+    \label{fig:nonenglangs}
+\end{figure}
+%%%% Audio vs. Language Name - English
+%\input{tables/multinomial_tables/modality/eng_multinomial_tab_2row}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{figures/plots/englishes_barplot.pdf}
+    \caption{\textit{Proportion of Children Selecting Each Face Type as a Speaker of English, Probed Three Ways.} 
+    Bars plot the overall proportion of children selecting each face type (panels), with error bars reflecting 95\% bootstrapped confidence intervals. Unfilled bars plot data for English variants presented auditorily (Indian English---leftmost bar, and U.S. English---middle bar), while filled bars plot mean selection data when children were asked about ``English'' by name.}    %for Three Ways of Asking About English.}  }
+    \label{fig:englishes}
+\end{figure}
+
+%% ORDINAL MODELS
+\input{tables/ordinal_tables/w_ordinal_tab}
+\input{tables/ordinal_tables/learn_ord_mod_gujarati}
+\input{tables/ordinal_tables/learn_ord_mod_hindi}
+\input{tables/ordinal_tables/learn_ord_mod_tamil}
+\input{tables/ordinal_tables/learn_ord_mod_english}
+\input{tables/ordinal_tables/learn_ord_mod_mandarin}
+
+% LANGUAGE FAMILIARITY
+%% Geographic origin
+%\input{tables/multinomial_tables/familiarity/geo_id_multinomial_tab_final}
+%% Religion
+%\input{tables/multinomial_tables/familiarity/rel_id_multinomial_tab}
+%% Face-audio
+%\input{tables/multinomial_tables/familiarity/fa_id_multinomial_tab_2row}
+%% Face-label
+%\input{tables/multinomial_tables/familiarity/fl_id_multinomial_tab_2row}
+
+%% GENDER
+%\input{tables/multinomial_tables/gender/geo_gender_mod_tab}
+%\input{tables/multinomial_tables/gender/rel_gender_mod_tab}
+%\input{tables/ordinal_tables/w_gender_mod_tab}
+%\input{tables/multinomial_tables/gender/fa_gender_mod_tab_2row}
+%\input{tables/multinomial_tables/gender/fl_gender_mod_tab_2row}
+
+% WEALTH
+
+%%% Gender model
+
+
+% FACE SELECTIONS
+%% FACES-AUDIO
+%%% Gender
+
+%% FACES-LANGUAGE NAME
+%%% Gender
+
+%% FACES-PRESENTATION
+%%% Plot
+
+
+
+
+
+
+
+
+% LEARNING
+%% Primary model
+
+%% Gender
+
+
+% IDENTIFICATION
+%% Means
+
+%% Primary model - GLMER
+
+
+
+
+\clearpage
+
+%\newgeometry{margin=0.5in}
+\section*{Linguistic Essentialism}
+%\begin{figure*}
+%    \centering
+%    \includegraphics[width=\linewidth]{figures/std_plots/learning_faces_std.png}
+%    \caption{\textit{Mean Predicted Learning \emph{(``How well will she come to learn---?'')} for Each Language and Face, by Grade.} Points plot mean rating (on a scale from 1--3) for each face (lines) by grade (x-axis), with error bars representing 95\% bootstrapped confidence intervals, in panels by language.}
+%    \label{fig:faces-learning-score}
+%\end{figure*}
+\subsection*{Explicit Linguistic Essentialism Prompts}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{figures/std_plots/likert_std.png}
+    \caption{\textit{Mean Responses to Likert Essentialism Prompts by Child Grade.} Points plot the mean of children's responses (on a scale from 1---\textit{Strongly Disagree} to 5---\textit{Strongly Agree}) at each grade, with error bars reflecting 95\% bootstrapped confidence intervals. 
+    Panels display the selection rates for each question individually.}
+    \label{fig:likert}
+\end{figure}
+%Link between language and religious/ethnic identity
+
+Children additionally responded to a set of Likert-style items adapting and extending classic essentialism probes (items 1--3, below; %(e.g., ``It is easier to learn a language that was spoken by your ancestors than a language that was not spoken by your ancestors, even if no one in your family currently speaks it;'' see
+\cite{gelman2007developmental, byers2015bilingualism, gelman1999biological}). Given the low intercorrelation between responses on these three items (Cronbach's $\alpha=0.035$), we did not analyze this method of accessing children's essentialist reasoning any further. 
+
+We also measured children's agreement with more general statements about what can be assumed about a person from the languages they speak (items 4--6). %(e.g., ``You can tell how much education someone has had by the language(s) they speak.''). 
+Children responded on a 5-point scale from ``Strongly Disagree'' to ``Strongly Agree,'' and justified their responses (these open-ended responses are not analyzed here). Mean responses to each question are plotted by child grade in Figure~\ref{fig:likert}. 
+\begin{enumerate}[(1)]
+    \item \textsc{Ancestors}: It is easier to learn a language that was spoken by your ancestors than a language that was not spoken by your ancestors, even if no one in your family currently speaks it. \textit{(Why?)}
+    \item \textsc{India}: Imagine two people, one who is from India, one is not from India. It will be easier for the person from India originally to learn an Indian language (e.g., Gujarati, Hindi, Marathi), even if they do not live in India now, and do not know any other Indian languages. \textit{(Why?)}
+    \item \textsc{French}: I could learn French as well as someone whose ancestors spoke French, but whose family lives in India and does not speak French. \textit{(Why?)}
+    \item \textsc{Tell a lot}: You can tell a lot about a person by the language(s) they speak.  \textit{(Why?)}
+    \item \textsc{Tell where from:} You can tell where a person is from by the language(s) they speak.  \textit{(Why?)}
+    \item \textsc{Tell education:} You can tell how much education someone has had by the language(s) they speak.  \textit{(Why?)}
+\end{enumerate}
+\printbibliography
+\end{document}

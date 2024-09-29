@@ -1,31 +1,43 @@
-% latex table generated in R 4.3.2 by xtable 1.8-4 package
-% Wed Jun 12 22:10:58 2024
-\begin{table}[ht]
-\centering
-\begin{tabular}{}
-  \hline
- & Predictors & Odds Ratios & CI & p & space & Odds Ratios & CI & p \\ 
-  \hline
-2 & Gujarati & 0.31 *** & 0.19 – 0.51 & $<$0.001 &  & 0.31 *** & 0.19 – 0.52 & $<$0.001 \\ 
-  3 & Hindi & 0.71 & 0.47 – 1.05 & 0.088 &  & 0.03 *** & 0.01 – 0.14 & $<$0.001 \\ 
-  4 & Urdu & 0.92 & 0.61 – 1.37 & 0.672 &  & 0.08 *** & 0.03 – 0.22 & $<$0.001 \\ 
-  5 & Marathi & 1.45 & 0.96 – 2.21 & 0.081 &  & 0.27 *** & 0.13 – 0.54 & $<$0.001 \\ 
-  6 & Tamil & 4.17 *** & 2.41 – 7.19 & $<$0.001 &  & 1.12 & 0.57 – 2.19 & 0.746 \\ 
-  7 & English (India) & 1.42 & 0.66 – 3.07 & 0.370 &  & 6.50 *** & 3.44 – 12.26 & $<$0.001 \\ 
-  8 & English (U.S.) & 2.82 ** & 1.32 – 6.02 & 0.007 &  & 7.38 *** & 3.68 – 14.82 & $<$0.001 \\ 
-  9 & Mandarin & 4.54 * & 1.30 – 15.80 & 0.017 &  & 27.07 *** & 8.55 – 85.73 & $<$0.001 \\ 
-  10 & speaker\_FEMALE1 & 0.58 & 0.28 – 1.20 & 0.142 &  & 0.20 ** & 0.08 – 0.54 & 0.001 \\ 
-  11 & age & 1.07 & 0.98 – 1.16 & 0.125 &  & 1.03 & 0.93 – 1.13 & 0.625 \\ 
-  12 & Hindi:speaker\_FEMALE1 & 1.06 & 0.42 – 2.66 & 0.898 &  & 9.28 * & 1.34 – 64.16 & 0.024 \\ 
-  13 & Urdu:speaker\_FEMALE1 & 0.82 & 0.32 – 2.05 & 0.663 &  & 5.75 * & 1.16 – 28.57 & 0.033 \\ 
-  14 & Marathi:speaker\_FEMALE1 & 2.21 & 0.87 – 5.60 & 0.094 &  & 6.77 ** & 1.75 – 26.18 & 0.006 \\ 
-  15 & Tamil:speaker\_FEMALE1 & 2.09 & 0.71 – 6.17 & 0.182 &  & 10.80 *** & 2.82 – 41.36 & 0.001 \\ 
-  16 & English (India):speaker\_FEMALE1 & 1.48 & 0.44 – 4.91 & 0.524 &  & 2.51 & 0.71 – 8.79 & 0.151 \\ 
-  17 & English (U.S.):speaker\_FEMALE1 & 0.98 & 0.28 – 3.42 & 0.970 &  & 4.08 * & 1.08 – 15.37 & 0.038 \\ 
-  18 & Mandarin:speaker\_FEMALE1 & 2.72 & 0.46 – 16.11 & 0.271 &  & 3.56 & 0.58 – 21.75 & 0.168 \\ 
-  19 & Observations & 1725 &  &  &  &  &  &  \\ 
-  20 & Nagelkerke's R2 & 0.492 &  &  &  &  &  &  \\ 
-  21 & * p$<$0.05   ** p$<$0.01   *** p$<$0.001 &  &  &  &  &  &  &  \\ 
-   \hline
+\begin{table*}[t]
+\small
+\caption{Mixed Effects Multinomial Model of Children's Geographic Origin Associations, Given Language, Child Age, and Speaker Gender}\label{tab:geo-gender-mod}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcrclcrc}
+ \toprule
+  & \multicolumn{4}{c}{\textbf{Another place in India vs.}} & \multicolumn{4}{c}{\textbf{Outside India (foreign) vs.}}\\
+ & \multicolumn{4}{c}{\textbf{Gujarat (same state)\tnote{a}}} & \multicolumn{4}{c}{\textbf{Gujarat (same state)\tnote{a}}}\\
+\cline{2-4} \cline{6-8}\\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} & & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} & \\ 
+\midrule
+ Gujarati & 0.31 *** & 0.19--0.51 & $<$0.001 &  & 0.31 *** & 0.19--0.52 & $<$0.001 \\ 
+ Hindi & 0.71 & 0.47--1.05 & 0.087 &  & 0.03 *** & 0.01--0.14 & $<$0.001 \\ 
+ Urdu & 0.92 & 0.61--1.37 & 0.666 &  & 0.08 *** & 0.03--0.22 & $<$0.001 \\ 
+ Marathi & 1.45 & 0.95--2.20 & 0.082 &  & 0.27 *** & 0.13--0.54 & $<$0.001 \\ 
+ Tamil & 4.16 *** & 2.41--7.18 & $<$0.001 &  & 1.12 & 0.57--2.19 & 0.748 \\ 
+ English (India) & 1.42 & 0.66--3.06 & 0.372 &  & 6.49 *** & 3.44--12.25 & $<$0.001 \\ 
+ English (U.S.) & 2.81 ** & 1.32--6.01 & 0.008 &  & 7.38 *** & 3.68--14.81 & $<$0.001 \\ 
+ Mandarin & 4.53 * & 1.30--15.78 & 0.018 &  & 27.06 *** & 8.54--85.68 & $<$0.001 \\ 
+ Age\tnote{b} & 1.07 & 0.98--1.16 & 0.125 &  & 1.03 & 0.93--1.13 & 0.624 \\ 
+ Gujarati:\textsc{Female} & 0.58 & 0.28--1.20 & 0.142 &  & 0.20 ** & 0.08--0.54 & 0.001 \\ 
+ Hindi:\textsc{Female} & 1.06 & 0.42--2.66 & 0.898 &  & 9.28 * & 1.34--64.16 & 0.024 \\ 
+ Urdu:\textsc{Female} & 0.82 & 0.32--2.05 & 0.663 &  & 5.75 * & 1.16--28.57 & 0.033 \\ 
+ Marathi:\textsc{Female} & 2.21 & 0.87--5.60 & 0.094 &  & 6.77 ** & 1.75--26.18 & 0.006 \\ 
+ Tamil:\textsc{Female} & 2.09 & 0.71--6.17 & 0.182 &  & 10.80 *** & 2.82--41.36 & 0.001 \\ 
+ English (India):\textsc{Female} & 1.48 & 0.44--4.91 & 0.524 &  & 2.51 & 0.71--8.79 & 0.151 \\ 
+ English (U.S.):\textsc{Female} & 0.98 & 0.28--3.42 & 0.970 &  & 4.08 * & 1.08--15.37 & 0.038 \\ 
+ Mandarin:\textsc{Female} & 2.72 & 0.46--16.11 & 0.271 &  & 3.56 & 0.58--21.75 & 0.168 \\ 
+\midrule
+\textbf{Observations}\tnote{c} & 1,725 & & & & & & & \\ 
+\textbf{Nagelkerke's R2} & 0.492 & & & & & & & \\ 
+\bottomrule\\[-.75em]
+\multicolumn{9}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
 \end{tabular}
-\end{table}
+\begin{tablenotes}[flushleft]
+    \item[a] Baseline response category selected on 33\% of geographic origin association trials, by 127 children. % (606/1834)
+    \item[b] Mean-centered, in years.
+    \item[c] Model data is limited to trials where children selected a geographic origin response category, i.e., excluding ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

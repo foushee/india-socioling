@@ -1,25 +1,49 @@
 % latex table generated in R 4.3.2 by xtable 1.8-4 package
 % Sun Jun  9 12:09:22 2024
 \begin{table}[ht]
-\centering
-\begin{tabular}{}
-  \hline
- & Predictors & Odds Ratios & CI & p & space & Odds Ratios & CI & p \\ 
-  \hline
-2 & langmodName: "English" & 4.33 * & 1.23 – 15.25 & 0.023 &  & 1.57 & 0.37 – 6.63 & 0.538 \\ 
-  3 & langmodAudio: Indian English & 2.37 & 0.74 – 7.62 & 0.147 &  & 8.41 *** & 2.98 – 23.78 & $<$0.001 \\ 
-  4 & langmodAudio: U.S. English & 1.29 & 0.58 – 2.84 & 0.534 &  & 2.70 ** & 1.34 – 5.41 & 0.005 \\ 
-  5 & age & 0.87 & 0.62 – 1.24 & 0.446 &  & 0.90 & 0.65 – 1.24 & 0.501 \\ 
-  6 & Observations &  &  &  &  &  &  &  \\ 
-  7 & Nagelkerke's R2 &  &  &  &  &  &  &  \\ 
-  8 & * p$<$0.05   ** p$<$0.01   *** p$<$0.001 &  &  &  &  &  &  &  \\ 
-  21 & langmodName: "English" & 67.99 *** & 21.61 – 213.91 & $<$0.001 &  & 4.77 * & 1.37 – 16.59 & 0.014 \\ 
-  31 & langmodAudio: Indian English & 38.71 *** & 14.31 – 104.72 & $<$0.001 &  & 6.92 *** & 2.42 – 19.80 & $<$0.001 \\ 
-  41 & langmodAudio: U.S. English & 14.91 *** & 8.06 – 27.60 & $<$0.001 &  & 1.41 & 0.65 – 3.06 & 0.379 \\ 
-  51 & age & 1.22 & 0.91 – 1.63 & 0.188 &  & 0.83 & 0.60 – 1.16 & 0.282 \\ 
-  61 & Observations &  &  &  &  & 710 &  &  \\ 
-  71 & Nagelkerke's R2 &  &  &  &  & 0.806 &  &  \\ 
-  81 & * p$<$0.05   ** p$<$0.01   *** p$<$0.001 &  &  &  &  &  &  &  \\ 
-   \hline
+\small
+\caption{Mixed Effects Multinomial Model of Children's Single-Face Selections as Speakers of English, Queried Three Ways}\label{tab:engmod}
+    \centering
+    \vspace{5pt}
+    \setlength{\tabcolsep}{1.75pt} 
+\begin{threeparttable}
+\begin{tabular}{lllrllllr}
+
+ \toprule
+& \multicolumn{3}{c}{\textbf{Muslim vs.}} & & \multicolumn{3}{c}{\textbf{South Indian Hindu vs.}}\\
+& \multicolumn{3}{c}{\textbf{North Indian Hindu}\tnote{a}} & & \multicolumn{3}{c}{\textbf{North Indian Hindu}\tnote{a}}\\
+\cline{2-4} \cline{6-8} \\[-.75em]
+\textbf{Predictors} & OR & 95\% CI & \multicolumn{1}{c}{\textit{p}} & & OR & 95\% CI & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+ Indian English:\textsc{Audio} & 2.37 & 0.74--7.62 & 0.147 &  & 8.41 *** & 2.98--23.78 & $<$0.001 \\ 
+ U.S. English:\textsc{Audio} & 1.29 & 0.58--2.84 & 0.534 &  & 2.70 ** & 1.34--5.41 & 0.005 \\ 
+ ``English'':\textsc{Name} & 4.33 * & 1.23--15.25 & 0.023 &  & 1.57 & 0.37--6.63 & 0.538 \\ 
+ Age\tnote{b} & 0.87 & 0.62--1.24 & 0.446 &  & 0.90 & 0.65--1.24 & 0.501 \\ 
+\midrule
+& 
+\multicolumn{3}{c}{\textbf{White vs.}} & &
+\multicolumn{3}{c}{\textbf{East Asian vs.}}\\
+
+& \multicolumn{3}{c}{\textbf{North Indian Hindu}\tnote{a}} & & \multicolumn{3}{c}{\textbf{North Indian Hindu}\tnote{a}} \\
+\cline{2-4} \cline{6-8} \\[-.75em]
+\textbf{Predictors} & OR & 95\% CI & \multicolumn{1}{c}{\textit{p}} & & OR & 95\% CI & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+ Indian English:\textsc{Audio} & 38.71 *** & 14.31--104.72 & $<$0.001 &  & 6.92 *** & 2.42--19.80 & $<$0.001 \\ 
+ U.S. English:\textsc{Audio} & 14.91 *** & 8.06--27.60 & $<$0.001 &  & 1.41 & 0.65--3.06 & 0.379 \\ 
+  `English'':\textsc{Name} & 67.99 *** & 21.61--213.91 & $<$0.001 &  & 4.77 * & 1.37--16.59 & 0.014 \\ 
+ Age\tnote{b} & 1.22 & 0.91--1.63 & 0.188 &  & 0.83 & 0.60--1.16 & 0.282 \\ 
+\midrule
+%\bfseries{\textit{N} children}\tnote{c} & 126   &  &  &  &  &  &  \\
+\textbf{Observations}\tnote{c} & 710  &  &  &  &  &  &  \\
+\textbf{Nagelkerke's R2} & 0.806  &  &  &  &  &  &  \\
+\bottomrule\\[-.75em]
+\multicolumn{8}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
 \end{tabular}
+\begin{tablenotes}[flushleft]
+    \item[a] Baseline response category designated based on overall selection rates across speaker-selection trials, but selected on only 3\% of English-language face trials, by 16 children. % (411/1701)
+    \item[b] Mean-centered, in years.
+    %\item[c] Model includes random intercepts for each child.
+    \item[c] Model data is limited to trials where children selected a single face, i.e., excluding selections of multiple faces or ``No opinion.'' 
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

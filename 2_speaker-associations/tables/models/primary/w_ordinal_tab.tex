@@ -1,25 +1,39 @@
-% latex table generated in R 4.3.2 by xtable 1.8-4 package
-% Thu Jun 13 04:33:13 2024
-\begin{table}[ht]
-\centering
-\begin{tabular}{}
-  \hline
- & Predictors & Odds Ratios & CI & p \\ 
-  \hline
-2 & poorer$|$same & 0.23 *** & 0.17 – 0.32 & $<$0.001 \\ 
-  3 & same$|$richer & 2.61 *** & 1.92 – 3.55 & $<$0.001 \\ 
-  4 & language [Hindi] & 0.95 & 0.66 – 1.38 & 0.789 \\ 
-  5 & language [English(India)] & 2.63 *** & 1.78 – 3.88 & $<$0.001 \\ 
-  6 & language [English (U.S.)] & 2.68 *** & 1.82 – 3.93 & $<$0.001 \\ 
-  7 & language [Mandarin] & 3.46 *** & 2.30 – 5.20 & $<$0.001 \\ 
-  8 & language [Marathi] & 1.07 & 0.73 – 1.57 & 0.717 \\ 
-  9 & language [Tamil] & 0.79 & 0.54 – 1.16 & 0.237 \\ 
-  10 & language [Urdu] & 1.16 & 0.81 – 1.67 & 0.424 \\ 
-  11 & child age centered & 0.88 * & 0.79 – 0.98 & 0.018 \\ 
-  12 & N id & 127 &  &  \\ 
-  13 & Observations & 1588 &  &  \\ 
-  14 & Marginal R2 / Conditional R2 & 0.076 / 0.224 &  &  \\ 
-  15 & * p$<$0.05   ** p$<$0.01   *** p$<$0.001 &  &  &  \\ 
-   \hline
+\begin{table*}[t]
+\small
+\caption{Cumulative Link Mixed Model of Children's Wealth Associations}\label{tab:wealth-ord}
+    \centering
+    \vspace{5pt}
+\begin{threeparttable}
+\begin{tabular}{llcr}
+ \toprule
+& \multicolumn{3}{c}{\textbf{Wealth}\tnote{a}} \\
+\cline{2-4} \\[-.75em]
+\textbf{Predictors} & {OR} & {95\% CI} & \multicolumn{1}{c}{\textit{p}} \\ 
+\midrule
+``less money''$|$``as much'' & 0.23 *** & 0.17--0.32 & $<$0.001 \\ 
+ ``as much''$|$``more money'' & 2.61 *** & 1.92--3.55 & $<$0.001 \\ 
+ Hindi & 0.95 & 0.66--1.38 & 0.789 \\ 
+ English (India) & 2.63 *** & 1.78--3.88 & $<$0.001 \\ 
+ English (U.S.) & 2.68 *** & 1.82--3.93 & $<$0.001 \\ 
+ Mandarin & 3.46 *** & 2.30--5.20 & $<$0.001 \\ 
+ Marathi & 1.07 & 0.73--1.57 & 0.717 \\ 
+ Tamil & 0.79 & 0.54--1.16 & 0.237 \\ 
+ Urdu & 1.16 & 0.81--1.67 & 0.424 \\ 
+ Age\tnote{b} & 0.88 * & 0.79--0.98 & 0.018 \\ 
+\midrule
+\bfseries{\textit{N} children}\tnote{c} & 127 & & \\ 
+\textbf{Observations}\tnote{d} & 1,588 & &\\ 
+ \textbf{Marginal R2} &  0.076 &&\\
+ \textbf{Conditional R2} & 0.224 &  &  \\ 
+\bottomrule\\[-.75em]
+\multicolumn{4}{r}{* $p<0.05$~~** $p<0.01$~~*** $p<0.001$}\\
 \end{tabular}
-\end{table}
+\begin{tablenotes}[flushleft]
+    \item[a] Ordinal variable: ``more money than the people in my city'' \textgreater ``as much money as the people in my city'' \textgreater ``less money than the people in my city''
+    \item[b] Mean-centered, in years.
+    \item[c] Model includes random intercepts for each child.
+    \item[d] Model data excludes ``No opinion'' selections. 
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
+
